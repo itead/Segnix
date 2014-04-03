@@ -1,4 +1,4 @@
-
+# v2.0
 SDKCCOMPILE 	:= gcc
 SDKCPPCOMPILE 	:= g++
 
