@@ -1,4 +1,4 @@
-SDK2
+SDK
 ====
 
-SDK2 for iteaduino Plus 
+SDK for iteaduino Plus 
