@@ -1,3 +1,4 @@
+# /*
 
 SDKCCOMPILE 	:= gcc
 SDKCPPCOMPILE 	:= g++
