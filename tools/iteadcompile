@@ -1,0 +1,87 @@
+#!/bin/bash
+
+#####################################################################
+# File		:	iteadcompile
+# Desc		:	This is a tool by which user can compile .c/.cpp/.ino conveniently.
+# Author	: 	Wu Pengfei
+# Company	:	ITEAD Intelligent Systems Co.,Ltd.(http://imall.iteadstudio.com/)
+# Date		:	2014/3/11
+# History	:	Version		Modified by		Date		What
+#				      v1.0		Wu Pengfei		2014/3/11	Create
+#####################################################################
+
+##
+ # (C) Copyright 2014
+ # ITEAD Intelligent Systems Co., Ltd. <http://imall.iteadstudio.com>
+ # Wu Pengfei<wupangfee@gmail.com>
+ #
+ # This program is free software; you can redistribute it and/or
+ # modify it under the terms of the GNU General Public License as
+ # published by the Free Software Foundation; either version 2 of
+ # the License, or (at your option) any later version.
+ #
+ ##
+
+SDKCCOMPILE=gcc
+SDKCPPCOMPILE=g++
+
+#echo "\$# = " $#
+#echo "\$@ = " $@
+#echo "\$* = " $*
+
+if [ $# -lt 2 ]; then
+        echo "Usage:"
+        echo "  iteadcompile objname source.ino [source2.ino] [...]"
+        echo "  iteadcompile objname source.cpp [source2.cpp] [...]"
+        echo "  iteadcompile objname source.c [source2.c] [...]"
+        echo "Examples for .ino"
+        echo "  iteadcompile hello hello.ino"
+        echo "  iteadcompile led led1.ino led2.ino"
+        echo "  iteadcompile led *.ino"
+        echo "Examples for .cpp"
+        echo "  iteadcompile hello hello.cpp"
+        echo "  iteadcompile led led1.cpp led2.cpp"
+        echo "  iteadcompile led *.cpp"
+        echo "Examples for .c"
+        echo "  iteadcompile hello hello.c"
+        echo "  iteadcompile led led1.c led2.c"
+        echo "  iteadcompile led *.c
+        echo "NOTES:"
+        echo "  objname cannot cantian \".ino\" or \".c\" or \".cpp\"""
+        exit 1
+fi
+
+
+if [[ $2 == *.ino ]] ; then
+	echo "compile by .ino"
+	params=${@/.ino/.cpp}
+	
+	mkdir .tmp
+	for var in $@ ; do
+		if [[ ${var} == *.ino  ]] ; then
+			sourcename=.tmp/${var/.ino/.cpp}
+			echo "#include <itead.h>" > ${sourcename}
+			cat ${var} >> ${sourcename}
+		fi
+	done
+	
+	cd .tmp
+	${SDKCPPCOMPILE} -o ${params} /usr/lib/iteadboot.o  -liteadc -liteadcpp -lpthread -liteadmodule
+	mv $1 ../
+	cd ../
+	
+	rm -rf .tmp
+
+fi
+
+if [[ $2 == *.cpp ]] ; then
+	echo "compile by .cpp"
+	${SDKCPPCOMPILE} -o $@  -liteadc -liteadcpp -lpthread -liteadmodule
+fi
+
+if [[ $2 == *.c ]] ; then
+	echo "compile by .c"
+	${SDKCCOMPILE} -o $@ -liteadc -lpthread
+fi
+
+exit
