@@ -1,4 +1,3 @@
-# add by wpf for test 
 
 SDKCCOMPILE 	:= gcc
 SDKCPPCOMPILE 	:= g++
