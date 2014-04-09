@@ -28,8 +28,8 @@ Up to 9th, Apr., 2014, the SDK has been added with support for GPIO, TWI ,SPI an
 ## Dependency
 * Platform :Allwinner A10/A20 SoC
 * Kernel verson: linux-sunxi-3.4 <https://github.com/linux-sunxi/linux-sunxi>
-* Kernel make configure file:<https://github.com/iteadsw/SDK/tools/iteadunio_plus_a10_defconfig> and <https://github.com/iteadsw/SDK/tools/iteadunio_plus_a20_defconfig>
-* FEX file:<https://github.com/iteadsw/SDK/tools/iteaduino_plus_a10.fex> and <https://github.com/iteadsw/SDK/tools/iteaduino_plus_a20.fex>
+* Kernel make configure file:<https://github.com/iteadsw/SDK/blob/master/tools/iteadunio_plus_a10_defconfig> and <https://github.com/iteadsw/SDK/blob/master/tools/iteadunio_plus_a20_defconfig>
+* FEX file:<https://github.com/iteadsw/SDK/blob/master/tools/iteaduino_plus_a10.fex> and <https://github.com/iteadsw/SDK/blob/master/tools/iteaduino_plus_a20.fex>
 
 Users of Iteaduino Plus A10/A20 can directly download and install the latest system img and SDK; users of other platforms are recommended to use make configure provided to compile 3.4 kernel and apply the fex file offered.
 
