@@ -29,6 +29,8 @@
 #include <linux/ioctl.h>
 #include <stdint.h>
 #include <pthread.h>
+#include <stdlib.h>
+#include <sys/mman.h>
 
 #include <itead_gpio.h>
 #include <itead_delay.h>
@@ -37,20 +39,6 @@
 
 //#define DEBUG
 #include <itead_debug.h>
-
-
-
-#define DIGITAL_GPIO_FILE			"/dev/itead_a10_a20_core_gpio"
-#define DIGITAL_GPIO_MODULE			"itead_a10_a20_core_gpio"
-
-/*
- * ioctl command 
- */
-#define MEMDEV_IOC_MAGIC  	'k'
-#define PIN_MODE_CMD   		_IOWR(MEMDEV_IOC_MAGIC, 1, uint32_t)
-#define DIGITAL_READ_CMD 	_IOWR(MEMDEV_IOC_MAGIC, 2, uint32_t)
-#define DIGITAL_WRITE_CMD 	_IOWR(MEMDEV_IOC_MAGIC, 3, uint32_t)
-
 
 typedef struct PIN_PWM_INFO_ST{
 	uint16_t 	pin_no;
@@ -67,7 +55,7 @@ typedef struct PIN_PWM_INFO_ST{
  * PIN_PWM_BASE_CNT - duty base number.
  * PIN_PWM_MAX 		- maxmial threads for pwm output. 
  */
-#define PWM_FREQUENCY		(1000)		// 1kHz
+#define PWM_FREQUENCY		(1000*1)		// 10kHz
 #define PWM_PERIOD_US		((1.0/PWM_FREQUENCY)*(1000000.0))
 #define PIN_PWM_BASE_CNT	255
 #define PIN_PWM_MAX			8
@@ -75,54 +63,55 @@ typedef struct PIN_PWM_INFO_ST{
 #define PIN_PWM_USED		1
 #define PIN_PWM_FREE		0
 
+#define CUREG   (*(cureg))
+
 static PIN_PWM_INFO pin_pwm_infos[PIN_PWM_MAX];
 static int fd = -1;
+static volatile uint32_t *gpio_base;
+
 
 /*
- * ioctl msg format:
- * uint32_t msg;
- * msg[7:0] : data,HIGH/LOW,INPUT/OUTPUT
- * msg[23:8]: pin number
- * msg[31:24]: reserved
- */
-
-/*
- * @name	: open_gpio_dev
- * @desc	: open the node of gpio driver.
+ * @name	: gpio_mmap
+ * @desc	: mmap to gpio base address
  * @param	: 
- * @return	: fd - file descriptor of DIGITAL_GPIO_FILE if success.
- *			  -1 - if open DIGITAL_GPIO_FILE failed.
+ * @return	: 1 -  if success.
+ *			  0 - if failed.
  */
-static int32_t open_gpio_dev(void)
+static inline int32_t gpio_mmap(void)
 {
-	char modstr[50];
-	
 	/* open already */
 	if (fd >= 0) {
-		return fd;
+		return 1;
 	}
+    if ((fd = open ("/dev/mem", O_RDWR | O_SYNC | O_CLOEXEC)) == -1) {
+        printf("\nopen /dev/mem error !\n");
+        return 0;
+    }
 
-	/* not open */
-	fd = open(DIGITAL_GPIO_FILE,O_RDWR);
-	if(fd<0) {
-		strcpy(modstr,"modprobe ");
-		strcat(modstr,DIGITAL_GPIO_MODULE);
-		if(system(modstr) == -1) {
-			sdkerr("\nCommand: %s failed !!!\n",modstr);
-			return -1;
-		}
-		sleep(1);
-	} else {
-		return fd;
-	}
-	
-	fd = open(DIGITAL_GPIO_FILE,O_RDWR);
-	if(fd < 0) {
-		sdkerr("\nopen file %s failed !!!\n",DIGITAL_GPIO_FILE);
-		return fd;
-	} else {
-		return fd;
-	}
+#if defined(BOARD_ITEADUINO_PLUS)
+     if ((gpio_base = (volatile uint32_t *)mmap(0, 
+            GPIO_SIZE, 
+            PROT_READ|PROT_WRITE, 
+            MAP_SHARED,
+            fd, 
+            GPIO_BASE-0x800)) == MAP_FAILED){
+        printf("\nmmap error !\n");
+        return 0;
+    }
+    gpio_base += 0x800/4;
+#elif defined(BOARD_RASPBERRY_RV2)
+    if ((gpio_base = (volatile uint32_t *)mmap(0, 
+            GPIO_SIZE, 
+            PROT_READ|PROT_WRITE, 
+            MAP_SHARED,
+            fd, 
+            GPIO_BASE)) == MAP_FAILED){
+        printf("\nmmap error !\n");
+        return 0;
+    }
+#endif
+
+	return 1;
 }
 
 /*
@@ -131,7 +120,7 @@ static int32_t open_gpio_dev(void)
  * @param	: pin - pin number.
  * @return	: 1 if available, 0 if unavailable.
  */
-static uint32_t vertify_pin(uint16_t pin)
+static inline uint32_t vertify_pin(uint16_t pin)
 {
 	if(pin < PIN_MIN || pin > PIN_MAX) {
 		return 0;
@@ -150,7 +139,7 @@ static uint32_t vertify_pin(uint16_t pin)
  * @param	: mode - INPUT or OUTPUT.
  * @return	: 1 if available, 0 if unavailable.
  */
-static uint32_t vertify_mode(uint8_t mode)
+static inline uint32_t vertify_mode(uint8_t mode)
 {
 	if(mode == INPUT || mode == OUTPUT) {
 		return 1;
@@ -164,7 +153,7 @@ static uint32_t vertify_mode(uint8_t mode)
  * @param	: val - the value of pin.
  * @return	: 1 if available, 0 if unavailable.
  */
-static uint32_t vertify_val(uint8_t val)
+static inline uint32_t vertify_val(uint8_t val)
 {
 	if(val == HIGH || val == LOW) {
 		return 1;
@@ -183,7 +172,10 @@ uint32_t pinMode(uint16_t pin, uint8_t mode)
 {
 	int fd;
 	uint32_t msg=0;
-	
+	volatile uint32_t *cureg;
+    uint16_t port_no ;
+	uint16_t index ;
+    
 	debug("\npinMode begin\n");
 	
 	if (!vertify_mode(mode)) {
@@ -196,19 +188,38 @@ uint32_t pinMode(uint16_t pin, uint8_t mode)
 		return 1;
 	}
 	
-	if((fd = open_gpio_dev()) == -1) {
-		sdkerr("\nopen file failed!\n");
+	if(!gpio_mmap()) {
+		sdkerr("\ngpio_mmap failed!\n");
 		return 1;
 	}
 	
-	/* create msg */
-	msg = (pin<<8) | mode;
+	/* write register bo set mode */
+#ifdef BOARD_ITEADUINO_PLUS
+    /* find the register address need to operate */
+    port_no = pnp[pin].port_no;
+    index   = pnp[pin].index;
+	cureg = (volatile uint32_t *)((uint32_t)gpio_base 
+		+ port_no*0x24 + 4*(index/8));
+    
+	CUREG &= ~(0xF<<((index%8)*4));
+	if( mode == INPUT ) {
+		CUREG |= 0x0 << ((index%8)*4);
+	} else if(mode == OUTPUT) {
+		CUREG |= 0x1 << ((index%8)*4);
+    }
 
-	/* send msg to kernel driver */
-	if(ioctl(fd,PIN_MODE_CMD,&msg)) {
-		sdkerr("\nioctl PIN_MODE_CMD failed!\n");
-		return 1;
-	}
+#elif defined(BOARD_RASPBERRY_RV2)
+    /* config pin as OUTPUT or INPUT */
+   cureg = gpio_base + GPIO_GPFSEL_OFFSET/4 + pin/10;
+   CUREG &= ~(0x7 << (3*(pin%10)));
+   if(mode == INPUT) {
+       CUREG |=  (0x0 << (3*(pin%10)));
+   } else {
+       CUREG |=  (0x1 << (3*(pin%10)));
+   }
+
+#endif
+
 	return 0;
 }
 
@@ -225,6 +236,9 @@ uint32_t digitalWrite(uint16_t pin, uint8_t val)
 	uint32_t msg=0;
 	int i;
 	int wait_cnt=0;
+    volatile uint32_t *cureg;
+    uint16_t port_no ;
+	uint16_t index ;
 	pthread_t	tid = pthread_self();
 
 	if (!vertify_val(val)) {
@@ -258,19 +272,35 @@ uint32_t digitalWrite(uint16_t pin, uint8_t val)
 		}
 	}
 	
-	if((fd = open_gpio_dev()) == -1) {
-		sdkerr("\nopen file failed!\n");
+	if(!gpio_mmap()) {
+		sdkerr("\ngpio_mmap failed!\n");
 		return 1;
 	}
 	
-	/* create msg */
-	msg = (pin<<8) | val;
-
-	/* send msg to kernel driver */
-	if(ioctl(fd,DIGITAL_WRITE_CMD, &msg)) {
-		sdkerr("\nioctl DIGITAL_WRITE_CMD failed!\n");
-		return 1;
+	
+    /* write register data */
+#ifdef BOARD_ITEADUINO_PLUS
+    /* get port_no and index by pin_no */
+	port_no = pnp[pin].port_no;
+	index   = pnp[pin].index;
+	
+	/* find the register address need to operate */
+	cureg = (volatile uint32_t *)((uint32_t)gpio_base 
+		+ port_no*0x24 + 4*4);
+	if( val == HIGH) {
+		CUREG |= (1 << index);
+	} else if (val == LOW) {
+		CUREG &= ~(1 << index);
 	}
+#elif defined(BOARD_RASPBERRY_RV2)
+    if( val == HIGH) {
+        cureg = gpio_base + GPIO_GPSET_OFFSET/4 + pin/32;
+    } else {
+        cureg = gpio_base + GPIO_GPCLR_OFFSET/4 + pin/32;
+    }
+    CUREG = 0x1 << (1*(pin%32)); 
+
+#endif
 	
 	return 0;
 }
@@ -289,6 +319,9 @@ uint32_t digitalRead(uint16_t pin)
 	debug("\ndigitalRead begin\n");
 	int wait_cnt=0;
 	int i;
+    volatile uint32_t *cureg;
+    uint16_t port_no ;
+	uint16_t index ;
 	pthread_t	tid = pthread_self();
 
 	if (!vertify_pin(pin)) {
@@ -318,25 +351,26 @@ uint32_t digitalRead(uint16_t pin)
 		}
 	}
 	
-	if((fd = open_gpio_dev()) == -1) {
+	if(!gpio_mmap()) {
+		sdkerr("\ngpio_mmap failed!\n");
+		return 1;
+	}
 
-		sdkerr("\nopen file failed!\n");
-		return 2;
-	}
+    /* read register data */
+#ifdef BOARD_ITEADUINO_PLUS
+    /* get port_no and index by pin_no */
+	port_no = pnp[pin].port_no;
+	index   = pnp[pin].index;
 	
-	/* create msg */
-	msg =  (pin<<8);
-	
-	/* send msg to kernel driver */
-	/* returned value saves in msg */
-	if(ioctl(fd,DIGITAL_READ_CMD, &msg)) {
-		sdkerr("\nioctl DIGITAL_READ_CMD failed!\n");
-		return 2;
-	}
-	
-	debug("ret msg = 0x%X\n",msg);
-	
-	return (msg==0) ? LOW : HIGH;
+	/* find the register address need to operate */
+	cureg = (volatile uint32_t *)((uint32_t)gpio_base 
+		+ port_no*0x24 + 4*4);
+
+	return (CUREG & (1<<index)) ? HIGH : LOW;
+#elif defined(BOARD_RASPBERRY_RV2)
+    cureg = gpio_base + GPIO_GPLEV_OFFSET/4 + pin/32;
+    return (CUREG & (0x1<<(pin%32))) ? HIGH : LOW;
+#endif
 }
 
 
@@ -512,30 +546,6 @@ uint16_t digitalRead16(STRUCT_16BITS_BUS *bus)
 	return ret;
 }
 
-#if 0 /* no call */
-static int set_high_pri (int pri)
-{
-	//nice(pri);
-	 struct sched_param param;  
-       
-        int maxRR;  
-        
-        maxRR = sched_get_priority_max(SCHED_RR);  
-        if( maxRR == -1){  
-            perror("sched_get_priority_max() error!\n");  
-            exit(1);  
-        }  
-
-        param.sched_priority = maxRR;  
-        if(sched_setscheduler(getpid(), SCHED_RR, &param) == -1){  
-            perror("sched_setscheduler() error!\n");  
-            exit(1);  
-        }
-		sdkerr ("Policy %d\n", sched_getscheduler(0));  
-	return 0;
-}
-#endif
-
 /*
  * @name	: pwm_run_clean
  * @desc	: recycle the space of pin_pwm_infos[index].
@@ -576,10 +586,10 @@ static void *pwm_run(void *arg)
 	pinMode(pin_pwm_infos[index].pin_no,OUTPUT);
 	
 	for(;;) {
-		if(pin_pwm_infos[index].duty <= 5) {
+		if(pin_pwm_infos[index].duty == 0) {
 			digitalWrite(pin_pwm_infos[index].pin_no,LOW);
 			pthread_exit((void *)0);
-		} else if( pin_pwm_infos[index].duty >= (PIN_PWM_BASE_CNT-5) ) {
+		} else if( pin_pwm_infos[index].duty == (PIN_PWM_BASE_CNT) ) {
 			digitalWrite(pin_pwm_infos[index].pin_no,HIGH);
 			pthread_exit((void *)0);
 		} else {
@@ -611,8 +621,8 @@ uint32_t analogWrite(uint16_t pin, uint8_t duty)
 	int pin_exist = 0;
 	float rate;
 
-	if((fd = open_gpio_dev()) == -1) {
-		sdkerr("\nopen file failed!\n");
+	if(!gpio_mmap()) {
+		sdkerr("\ngpio_mmap failed!\n");
 		return 1;
 	}
 	

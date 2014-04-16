@@ -1,2 +1,2 @@
 libiteadcpp.so: *.cpp
-	$(SDKCPPCOMPILE) -fpic -shared -o $@ $^ -I../../include
+	$(SDKCPPCOMPILE) $(SDK_LIB_OPTIMIZE_OPTION) -fpic -shared -o $@ $^ -I../../include

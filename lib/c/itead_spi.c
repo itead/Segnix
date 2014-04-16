@@ -32,6 +32,7 @@
 
 #include <itead_spi.h>
 #include <itead_global.h>
+#include <itead_utility.h>
 
 
 /* comment the line blow if you don't want see debug info */
@@ -53,26 +54,25 @@ typedef struct SPI_DEVICE_ST {
  * Importantly,node is the device node of spi devices.
  */
 static SPI_DEVICE spi_devices[] = {
-	[0] = {
+#ifdef BOARD_ITEADUINO_PLUS
+   [0] = {
 		.node	= "/dev/spidev0.0",
 	},
+#elif defined (BOARD_RASPBERRY_RV2)
+   [0] = {
+		.node	= "/dev/spidev0.0",
+	},
+#endif /* BOARD_ITEADUINO_PLUS */
 };
 
-/*
- * @name	: vertify_dev
- * @desc	: vertify dev for availability.
- * @param	: dev - the number of spi.
- * @return	: 1 if available, 0 if unavailable.
- */
-static uint32_t vertify_dev(uint32_t dev)
-{
-	switch(dev) {
-	case DEV_SPI0:break;
-	default:
-		return 0;
-	}
-	return 1;
-}
+static uint32_t valid_dev[] = {
+#ifdef BOARD_ITEADUINO_PLUS
+    DEV_SPI0,
+#elif defined (BOARD_RASPBERRY_RV2)
+    DEV_SPI0,
+#endif /* BOARD_ITEADUINO_PLUS */
+    DEV_NONE
+};
 
 /*
  * @name	: SPIbegin
@@ -85,7 +85,7 @@ uint32_t SPIbegin(uint32_t dev)
     int ret = 0;
     int max_speed = 0;
 	debug("\nSPIbegin\n");
-	if(!vertify_dev(dev)) {
+	if(!vertify_dev(dev,valid_dev)) {
 		sdkerr("\nbad dev=%d\n",dev);
 		return 1;
 	}
@@ -127,7 +127,7 @@ uint32_t SPIsetBitOrder(uint32_t dev, uint8_t order)
 {
     uint8_t bitorder = order;
 	int ret = 0;
-	if(!vertify_dev(dev)) {
+	if(!vertify_dev(dev,valid_dev)) {
 		sdkerr("\nbad dev=%d\n",dev);
 		return 1;
 	}
@@ -171,7 +171,7 @@ uint32_t SPIsetDataMode(uint32_t dev, uint8_t mode)
 {
     int ret = 0;
     uint8_t smode = 0;
-   	if(!vertify_dev(dev)) {
+   	if(!vertify_dev(dev,valid_dev)) {
 		sdkerr("\nbad dev=%d\n",dev);
 		return 1;
 	}
@@ -212,7 +212,7 @@ uint32_t SPIsetDataMode(uint32_t dev, uint8_t mode)
  */
 uint32_t SPIsetClockDivider(uint32_t dev, uint16_t divider)
 {
-	if(!vertify_dev(dev)) {
+	if(!vertify_dev(dev,valid_dev)) {
 		sdkerr("\nbad dev=%d\n",dev);
 		return 1;
 	}
@@ -238,7 +238,7 @@ uint32_t SPIsetClockDivider(uint32_t dev, uint16_t divider)
 uint8_t SPItransfer(uint32_t dev, uint8_t val)
 {
 	int ret=0;
-	if(!vertify_dev(dev)) {
+	if(!vertify_dev(dev,valid_dev)) {
 		sdkerr("\nbad dev=%d\n",dev);
 		return 0;
 	}
@@ -261,7 +261,7 @@ uint8_t SPItransfer(uint32_t dev, uint8_t val)
 uint32_t SPIend(uint32_t dev)
 {
 	debug("\nSPIend\n");
-	if(!vertify_dev(dev)) {
+	if(!vertify_dev(dev,valid_dev)) {
 		sdkerr("\nbad dev=%d\n",dev);
 		return 1;
 	}

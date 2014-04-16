@@ -41,10 +41,12 @@ extern "C"{
  * Actually,it is simple so that it may not meet your
  * need about fatal-time application.
  */
-#define delay(val)					usleep((val)*1000)
-#define delayMicroseconds(val) 		usleep(val)
+
 #define micros()					(millis()*1000)
+
 uint32_t 	millis(void);
+void delay (uint32_t howLong);
+void delayMicroseconds (uint32_t howLong);
 
 #ifdef __cplusplus
 }

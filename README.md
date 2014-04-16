@@ -63,21 +63,22 @@ following dynamic libraries when they use the SDK:
  
 ## How to Install
  
-Take debian as example:
- 
-    git clone https://github.com/iteadsw/SDK.git
-    cd SDK
-    make
-    sudo make install
- 
-Note: We assume that you have installed the
-make/build-essential/git-core packages in your debian system.
- 
+###Take debian as example:
+
+    $ git clone https://github.com/iteadsw/SDK.git
+$ cd SDK
+    $ make Iteaduino_Plus (or make Raspberry_Rv2 if you have a Raspberry board)
+$ make
+    $ sudo make install
+
+###Note: 
+We assume that you have installed the make,build-essential and git-core packages in your debian system.
+
 ## How to Use
  
 Tak an simple C program as example.
  
-Creat a new file named "led.ino" which reads as follwo:
+Creat a new file named "led.ino" which reads as follow:
  
     #include <stdio.h>
  
@@ -98,10 +99,12 @@ Creat a new file named "led.ino" which reads as follwo:
  
 Then run iteadcompile in the terminal
  
-    iteadcomile LED led.ino
+    $ iteadcomile LED led.ino
  
-You can run the LED program after compilation.
- 
+You can run the LED program after compilation:
+
+    $ sudo ./LED
+
 For more details, please find in project wiki. With more and more
 hardware that it supports, wiki will also be updated accordingly.
  

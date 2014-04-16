@@ -23,13 +23,20 @@
 #include <cstddef>
 #include <itead_serial.h>
 
-
+#ifdef BOARD_ITEADUINO_PLUS
 Serial_ Serial2(DEV_UART2);
+Serial_ & Serial = Serial2;
 Serial_ Serial3(DEV_UART3);
 Serial_ Serial4(DEV_UART4);
 Serial_ Serial7(DEV_UART7);
 
-Serial_ & Serial = Serial2;
+#elif defined (BOARD_RASPBERRY_RV2)
+Serial_ Serial0(DEV_UART0);
+Serial_ & Serial = Serial0;
+
+#endif /* BOARD_ITEADUINO_PLUS */
+
+
 
 Serial_::Serial_(uint32_t dev)
 {

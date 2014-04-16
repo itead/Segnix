@@ -46,6 +46,7 @@
 
 #include <itead_wire.h>
 #include <itead_global.h>
+#include <itead_utility.h>
 
 #define RXBUFFER_SIZE	(1*1024)
 #define TXBUFFER_SIZE	(1*1024)
@@ -77,7 +78,8 @@ typedef struct I2C_DEVICE_ST {
 } I2C_DEVICE;
 
 static I2C_DEVICE i2c_devices[] = {
-	[1] = {
+#ifdef BOARD_ITEADUINO_PLUS
+    [1] = {
 		.fd	  = -1,
 		.node = "/dev/i2c-1" ,
 	},
@@ -85,24 +87,23 @@ static I2C_DEVICE i2c_devices[] = {
 		.fd	  = -1,
 		.node = "/dev/i2c-2" ,
 	},
+#elif defined (BOARD_RASPBERRY_RV2)
+    [1] = {
+		.fd	  = -1,
+		.node = "/dev/i2c-1" ,
+	},
+#endif /* BOARD_ITEADUINO_PLUS */
 };
 
-/*
- * @name	: vertify_dev
- * @desc	: vertify dev for availability.
- * @param	: dev - the number of i2c.
- * @return	: 1 if available, 0 if unavailable.
- */
-static uint32_t vertify_dev(uint32_t dev)
-{
-	switch(dev) {
-	case DEV_I2C1:
-	case DEV_I2C2:break;
-	default:
-		return 0;
-	}
-	return 1;
-}
+static uint32_t valid_dev[] = {
+#ifdef BOARD_ITEADUINO_PLUS
+    DEV_I2C1,
+    DEV_I2C2,
+#elif defined (BOARD_RASPBERRY_RV2)
+    DEV_I2C1,
+#endif /* BOARD_ITEADUINO_PLUS */
+    DEV_NONE
+};
 
 
 /*
@@ -113,7 +114,7 @@ static uint32_t vertify_dev(uint32_t dev)
  */
 uint32_t Wirebegin(uint32_t dev)
 {
-	if(!vertify_dev(dev)) {
+	if(!vertify_dev(dev,valid_dev)) {
 		sdkerr("\nbad dev=%d\n",dev);
 		return 1;
 	}
@@ -143,7 +144,7 @@ uint32_t Wirebegin(uint32_t dev)
  */
 uint32_t WirebeginTransmission(uint32_t dev, uint8_t addr)
 {
-	if(!vertify_dev(dev)) {
+	if(!vertify_dev(dev,valid_dev)) {
 		sdkerr("\nbad dev=%d\n",dev);
 		return 1;
 	}
@@ -164,7 +165,7 @@ uint32_t WirebeginTransmission(uint32_t dev, uint8_t addr)
  */
 uint32_t Wirewrite(uint32_t dev, uint8_t val)
 {
-	if(!vertify_dev(dev)) {
+	if(!vertify_dev(dev,valid_dev)) {
 		sdkerr("\nbad dev=%d\n",dev);
 		return 0;
 	}
@@ -185,7 +186,7 @@ uint32_t Wirewrite(uint32_t dev, uint8_t val)
  */
 uint32_t WireendTransmission(uint32_t dev)
 {
-	if(!vertify_dev(dev)) {
+	if(!vertify_dev(dev,valid_dev)) {
 		sdkerr("\nbad dev=%d\n",dev);
 		return 1;
 	}
@@ -208,7 +209,7 @@ uint32_t WireendTransmission(uint32_t dev)
 uint32_t WirerequestFrom(uint32_t dev, uint8_t addr, uint32_t count)
 {
 	int ret;
-	if(!vertify_dev(dev)) {
+	if(!vertify_dev(dev,valid_dev)) {
 		sdkerr("\nbad dev=%d\n",dev);
 		return 0;
 	}
@@ -235,7 +236,7 @@ uint32_t WirerequestFrom(uint32_t dev, uint8_t addr, uint32_t count)
  */
 uint32_t Wireavailable(uint32_t dev)
 {
-	if(!vertify_dev(dev)) {
+	if(!vertify_dev(dev,valid_dev)) {
 		sdkerr("\nbad dev=%d\n",dev);
 		return 0;
 	}
@@ -251,7 +252,7 @@ uint32_t Wireavailable(uint32_t dev)
 uint8_t Wireread(uint32_t dev)
 {
 	uint8_t ret = 0;
-	if(!vertify_dev(dev)) {
+	if(!vertify_dev(dev,valid_dev)) {
 		sdkerr("\nbad dev=%d\n",dev);
 		return 0;
 	}
@@ -276,7 +277,7 @@ uint8_t Wireread(uint32_t dev)
  */
 uint32_t Wireend(uint32_t dev)
 {
-	if(!vertify_dev(dev)) {
+	if(!vertify_dev(dev,valid_dev)) {
 		sdkerr("\nbad dev=%d\n",dev);
 		return 1;
 	}

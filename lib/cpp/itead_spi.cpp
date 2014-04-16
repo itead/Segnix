@@ -22,8 +22,17 @@
 
 #include <itead_spi.h>
 
+#ifdef BOARD_ITEADUINO_PLUS
 SPIClass SPI0(DEV_SPI0);
 SPIClass & SPI = SPI0;
+
+#elif defined (BOARD_RASPBERRY_RV2)
+SPIClass SPI0(DEV_SPI0);
+SPIClass & SPI = SPI0;
+
+#endif /* BOARD_ITEADUINO_PLUS */
+
+
 
 SPIClass::SPIClass(uint32_t dev)
 {
@@ -50,7 +59,7 @@ void SPIClass::setDataMode(uint8_t mode)
 	SPIsetDataMode(dev,mode);
 }
 
-void SPIClass::setClockDivider(uint8_t)
+void SPIClass::setClockDivider(uint8_t divider)
 {
 	/* do nothing */
 }

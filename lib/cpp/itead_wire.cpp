@@ -23,10 +23,20 @@
 #include <cstddef>
 #include <itead_wire.h>
 
+#ifdef BOARD_ITEADUINO_PLUS
 TwoWire Wire1(DEV_I2C1);
+TwoWire & Wire = Wire1;
 TwoWire Wire2(DEV_I2C2);
 
+#elif defined (BOARD_RASPBERRY_RV2)
+TwoWire Wire1(DEV_I2C1);
 TwoWire & Wire = Wire1;
+
+#endif /* BOARD_ITEADUINO_PLUS */
+
+
+
+
 
 TwoWire::TwoWire(uint32_t dev)
 {

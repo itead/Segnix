@@ -23,10 +23,29 @@
 #ifndef __ITEAD_GPIO_PIN_MAP_H__
 #define __ITEAD_GPIO_PIN_MAP_H__
 
+#include <itead_config.h>
+
 #ifdef __cplusplus
 extern "C"{
 #endif
 
+#define PORT_NONE	65535
+#define INDEX_NONE	65535
+#define PIN_NONE	65535
+#define BLOCK_SIZE  4096
+
+typedef struct pin_no_port_index_map{
+	uint16_t port_no;
+	uint16_t index;
+} pin_no_port_index_map;
+
+
+#ifdef BOARD_ITEADUINO_PLUS
+
+#define PIN_MAX		137
+#define PIN_MIN		9
+#define GPIO_SIZE   (1*BLOCK_SIZE)
+#define GPIO_BASE   (0x01c20800)
 
 #define PORT_A	 	0
 #define PORT_B		1
@@ -37,14 +56,6 @@ extern "C"{
 #define PORT_G		6
 #define PORT_H		7
 #define PORT_I		8
-
-#define PORT_NONE	65535
-#define INDEX_NONE	65535
-
-typedef struct pin_no_port_index_map{
-	uint16_t port_no;
-	uint16_t index;
-} pin_no_port_index_map;
 
 static const pin_no_port_index_map pnp[] = {
 /*	port_no	  index				pin_no 		*/    
@@ -188,6 +199,59 @@ static const pin_no_port_index_map pnp[] = {
 	{PORT_I,	14}	,	// 12
 	{PORT_I,	15}	,	// 13
 };
+
+#elif defined(BOARD_RASPBERRY_RV2)
+
+#define PIN_MAX		31
+#define PIN_MIN		2
+#define GPIO_SIZE   (1*BLOCK_SIZE)
+#define BCM2708_PERI_BASE           (0x20000000)
+#define GPIO_BASE		            (BCM2708_PERI_BASE + 0x00200000)
+#define GPIO_GPFSEL_OFFSET          (0x00)
+#define GPIO_GPSET_OFFSET           (0x1c)
+#define GPIO_GPCLR_OFFSET           (0x28)
+#define GPIO_GPLEV_OFFSET           (0x34)
+
+#define PORT_GPIO   0
+
+static const pin_no_port_index_map pnp[] = {
+/*	port_no	  index				pin_no 		*/    
+	{PORT_NONE,	INDEX_NONE}	,	// 0
+	{PORT_NONE,	INDEX_NONE}	,	// 1
+	{PORT_GPIO,	2}	,	// 2
+	{PORT_GPIO,	3}	,	// 3
+	{PORT_GPIO,	4}	,	// 4
+	{PORT_NONE,	INDEX_NONE}	,	// 5
+	{PORT_NONE,	INDEX_NONE}	,	// 6
+	{PORT_GPIO,	7}	,	// 7
+	{PORT_GPIO,	8}	,	// 8
+	{PORT_GPIO,	9}	,	// 9
+	{PORT_GPIO,	10}	,	// 10
+	{PORT_GPIO,	11}	,	// 1     + 10
+	{PORT_NONE,	INDEX_NONE}	,	// 2
+	{PORT_NONE,	INDEX_NONE}	,	// 3
+	{PORT_GPIO,	14}	,	// 4
+	{PORT_GPIO,	15}	,	// 5
+	{PORT_NONE,	INDEX_NONE}	,	// 6
+	{PORT_GPIO,	17}	,	// 7
+	{PORT_GPIO,	18}	,	// 8
+	{PORT_NONE,	INDEX_NONE}	,	// 9
+	{PORT_NONE,	INDEX_NONE}	,	// 10
+	{PORT_NONE,	INDEX_NONE}	,	// 1     + 20
+	{PORT_NONE,	INDEX_NONE}	,	// 2
+	{PORT_GPIO,	23}	,	// 3
+	{PORT_GPIO,	24}	,	// 4
+	{PORT_GPIO,	25}	,	// 5
+	{PORT_NONE,	INDEX_NONE}	,	// 6
+	{PORT_GPIO,	27}	,	// 7
+	{PORT_GPIO,	28}	,	// 8
+	{PORT_GPIO,	29}	,	// 9
+	{PORT_GPIO,	30}	,	// 10  
+	{PORT_GPIO,	31}	,	// 1   + 30
+};
+
+#endif
+
 
 #ifdef __cplusplus
 }

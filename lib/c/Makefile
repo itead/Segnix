@@ -1,2 +1,2 @@
 libiteadc.so: *.c
-	$(SDKCCOMPILE) -fpic -shared -o $@ $^ -I../../include
+	$(SDKCCOMPILE) $(SDK_LIB_OPTIMIZE_OPTION) -fpic -shared -o $@ $^ -I../../include

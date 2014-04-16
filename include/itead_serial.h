@@ -23,6 +23,7 @@
 #ifndef __ITEAD_SERIAL_H__
 #define __ITEAD_SERIAL_H__
 
+#include <itead_config.h>
 
 #ifdef __cplusplus
 extern "C"{
@@ -30,15 +31,13 @@ extern "C"{
 
 #include <stdint.h>
 
-//typedef long unsigned int size_t;
-
-/*
- * You CAN NOT use uart0, since is's is for interactive console by kernel.
- * Thus, ONLY, DEV_UARTn(n=2,3,4,7) are available for your purpose.
- */
+#define		DEV_UART0		0
+#define		DEV_UART1		1
 #define		DEV_UART2		2
 #define		DEV_UART3		3
 #define		DEV_UART4		4
+#define		DEV_UART5		5
+#define		DEV_UART6		6
 #define		DEV_UART7		7
 
 /* 
@@ -91,12 +90,18 @@ public:
 
 };
 
-extern Serial_ Serial2;
+/* The first device has a aliase compitable with Arduino */
+extern Serial_ & Serial;
+
+#ifdef BOARD_ITEADUINO_PLUS
+extern Serial_ Serial2;  /* with aliase 'Serial' */
 extern Serial_ Serial3;
 extern Serial_ Serial4;
 extern Serial_ Serial7;
-extern Serial_ & Serial;
+#elif defined (BOARD_RASPBERRY_RV2)
+extern Serial_ Serial0; /* with aliase 'Serial' */
+#endif /* BOARD_ITEADUINO_PLUS */
 
-#endif
+#endif /* __cplusplus */
 
 #endif

@@ -41,6 +41,7 @@
 
 #include <itead_serial.h>
 #include <itead_global.h>
+#include <itead_utility.h>
 
 typedef struct SERIAL_PORT_ST {
 	int fd;								// file descriptor of node after open
@@ -48,7 +49,8 @@ typedef struct SERIAL_PORT_ST {
 } SERIAL_PORT;
 
 static SERIAL_PORT ports[] = {
-	[2] = {
+#ifdef BOARD_ITEADUINO_PLUS
+    [2] = {
 		.fd = -1,
 		.node = "/dev/ttyS1",
 	},
@@ -64,26 +66,28 @@ static SERIAL_PORT ports[] = {
 		.fd = -1,
 		.node = "/dev/ttyS4",
 	},
+#elif defined (BOARD_RASPBERRY_RV2)
+    [0] = {
+		.fd = -1,
+		.node = "/dev/ttyAMA0",
+	},
+#endif /* BOARD_ITEADUINO_PLUS */
+
 };
 
-/*
- * @name	: vertify_dev
- * @desc	: vertify dev for availability.
- * @param	: dev - the number of uart.
- * @return	: 1 if available, 0 if unavailable.
- */
-static uint32_t vertify_dev(uint32_t dev)
-{
-	switch(dev) {
-	case DEV_UART2:
-	case DEV_UART3:
-	case DEV_UART4:
-	case DEV_UART7:break;
-	default:
-		return 0;
-	}
-	return 1;
-}
+static uint32_t valid_dev[] = {
+#ifdef BOARD_ITEADUINO_PLUS
+    DEV_UART2,
+    DEV_UART3,
+    DEV_UART4,
+    DEV_UART7,
+#elif defined (BOARD_RASPBERRY_RV2)
+    DEV_UART0,
+#endif /* BOARD_ITEADUINO_PLUS */
+    DEV_NONE
+};
+
+
 
 /*
  * @name	: Serialbegin
@@ -101,7 +105,7 @@ uint32_t Serialbegin(uint32_t dev, uint32_t baud)
 	speed_t _myBaud;
 	int     _status;
 
-	if (!vertify_dev(dev)) {
+	if (!vertify_dev(dev,valid_dev)) {
 		sdkerr("\nSerialbegin:bad dev=%d\n",dev);
 		return 1;
 	}
@@ -163,7 +167,7 @@ uint32_t Serialbegin(uint32_t dev, uint32_t baud)
  */
 uint32_t Serialflush (uint32_t dev)
 {
-	if (!vertify_dev(dev)) {
+	if (!vertify_dev(dev,valid_dev)) {
 		sdkerr("\nbad dev=%d\n",dev);
 		return 1;
 	}
@@ -183,7 +187,7 @@ uint32_t Serialflush (uint32_t dev)
  */
 uint32_t Serialend (uint32_t  dev)
 {
-	if (!vertify_dev(dev)) {
+	if (!vertify_dev(dev,valid_dev)) {
 		sdkerr("\nbad dev=%d\n",dev);
 		return 1;
 	}
@@ -205,7 +209,7 @@ uint32_t Serialend (uint32_t  dev)
  */
 uint32_t Serialwrite (uint32_t dev, uint8_t val)
 {
-	if (!vertify_dev(dev)) {
+	if (!vertify_dev(dev,valid_dev)) {
 		sdkerr("\nbad dev=%d\n",dev);
 		return 0;
 	}
@@ -226,7 +230,7 @@ uint32_t Serialwrite (uint32_t dev, uint8_t val)
  */
 uint32_t Serialprint (uint32_t dev, const char *string)
 {
-	if (!vertify_dev(dev)) {
+	if (!vertify_dev(dev,valid_dev)) {
 		sdkerr("\nbad dev=%d\n",dev);
 		return 0;
 	}
@@ -244,7 +248,7 @@ uint32_t Serialprint (uint32_t dev, const char *string)
 uint32_t Serialprintln (uint32_t dev, const char *string)
 {
 	int nbyte;
-	if (!vertify_dev(dev)) {
+	if (!vertify_dev(dev,valid_dev)) {
 		sdkerr("\nbad dev=%d\n",dev);
 		return 0;
 	}
@@ -262,7 +266,7 @@ uint32_t Serialprintln (uint32_t dev, const char *string)
 uint32_t Serialavailable (uint32_t dev)
 {
   	uint32_t result;
-	if (!vertify_dev(dev)) {
+	if (!vertify_dev(dev,valid_dev)) {
 		sdkerr("\nbad dev=%d\n",dev);
 		return 0;
 	}
@@ -282,7 +286,7 @@ uint32_t Serialavailable (uint32_t dev)
 uint8_t Serialread (uint32_t dev)
 {
   	uint8_t data;
-	if (!vertify_dev(dev)) {
+	if (!vertify_dev(dev,valid_dev)) {
 		sdkerr("\nbad dev=%d\n",dev);
 		return 0;
 	}

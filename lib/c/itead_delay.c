@@ -21,9 +21,11 @@
  * the License, or (at your option) any later version.
  *
  */
+#include <sys/time.h>
 
 #include <itead_delay.h>
 #include <itead_global.h>
+
 
 /*
  * @name	: millis
@@ -43,4 +45,47 @@ uint32_t millis(void)
 	buffer[7]='\0';
 	return (uint32_t)(strtod(buffer,NULL)*1000);
 }
+
+
+void delay (uint32_t howLong)
+{
+  struct timespec sleeper, dummy ;
+
+  sleeper.tv_sec  = (time_t)(howLong / 1000) ;
+  sleeper.tv_nsec = (long)(howLong % 1000) * 1000000 ;
+
+  nanosleep (&sleeper, &dummy) ;
+}
+
+static inline void delayMicrosecondsHard (uint32_t howLong)
+{
+  struct timeval tNow, tLong, tEnd ;
+
+  gettimeofday (&tNow, NULL) ;
+  tLong.tv_sec  = howLong / 1000000 ;
+  tLong.tv_usec = howLong % 1000000 ;
+  timeradd (&tNow, &tLong, &tEnd) ;
+
+  while (timercmp (&tNow, &tEnd, <))
+    gettimeofday (&tNow, NULL) ;
+}
+
+void delayMicroseconds (uint32_t howLong)
+{
+  struct timespec sleeper ;
+  uint32_t uSecs = howLong % 1000000 ;
+  uint32_t wSecs = howLong / 1000000 ;
+
+  if (howLong ==   0)
+    return ;
+  else if (howLong  < 100)
+    delayMicrosecondsHard (howLong) ;
+  else
+  {
+    sleeper.tv_sec  = wSecs ;
+    sleeper.tv_nsec = (long)(uSecs * 1000L) ;
+    nanosleep (&sleeper, NULL) ;
+  }
+}
+
 

@@ -24,18 +24,19 @@
 #define __ITEAD_WIRE_H__
 
 #include <stdint.h>
+#include <itead_config.h>
 
 #ifdef __cplusplus
 extern "C"{
 #endif
 
 /* 
- * Now, Only dev = DEV_I2C1 or DEV_I2C2 is accepted.
- * Please do not pass other value to dev for related funcitons.
- * Segment fault will occur if you do like that.
+ * Only define number of devices.
  */
+#define DEV_I2C0              	0
 #define DEV_I2C1              	1
 #define DEV_I2C2              	2
+#define DEV_I2C3              	3
 
 uint32_t		Wirebegin(uint32_t dev);
 uint32_t		WirebeginTransmission(uint32_t dev, uint8_t addr);
@@ -67,9 +68,17 @@ public:
 	uint8_t read(void);
 };
 
+/* The first device has a aliase compitable with Arduino */
+extern TwoWire & Wire;
+#ifdef BOARD_ITEADUINO_PLUS
 extern TwoWire Wire1;
 extern TwoWire Wire2;
-extern TwoWire &Wire;
+
+#elif defined (BOARD_RASPBERRY_RV2)
+extern TwoWire Wire1;
+
+#endif /* BOARD_ITEADUINO_PLUS */
+
 
 #endif
 

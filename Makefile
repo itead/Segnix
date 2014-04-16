@@ -2,7 +2,9 @@
 SDKCCOMPILE 	:= gcc
 SDKCPPCOMPILE 	:= g++
 
-export SDKCCOMPILE SDKCPPCOMPILE
+SDK_LIB_OPTIMIZE_OPTION	:= -O2
+
+export SDKCCOMPILE SDKCPPCOMPILE SDK_LIB_OPTIMIZE_OPTION
 
 SUBDIRS := lib
 SUBDIRS += bootloader
@@ -24,7 +26,11 @@ clean: $(SUBDIRS_CLEAN)
 $(SUBDIRS_CLEAN):
 	$(MAKE) -C $(subst .clean,,$@) clean
 
-update: clean uninstall all install
+distclean: clean
+	rm -rf include/itead_config.h
+	@echo "distclean done"
+
+update: uninstall clean all install
 	@echo "update done"
 
 
@@ -94,6 +100,19 @@ uninstall:
 	
 	@echo "uninstall done"
 
+.PHONY: all install clean distclean uninstall update $(SUBDIRS_CLEAN) $(SUBDIRS) 
 
 
-.PHONY: all install clean uninstall update $(SUBDIRS_CLEAN) $(SUBDIRS)
+.PHONY: Iteaduino_Plus
+Iteaduino_Plus:
+	echo "#ifndef __ITEAD_CONFIG_H__" > include/itead_config.h
+	echo "#define __ITEAD_CONFIG_H__" >> include/itead_config.h
+	echo "#define BOARD_ITEADUINO_PLUS" >> include/itead_config.h
+	echo "#endif" >> include/itead_config.h
+
+.PHONY: Raspberry_Rv2
+Raspberry_Rv2:
+	echo "#ifndef __ITEAD_CONFIG_H__" > include/itead_config.h
+	echo "#define __ITEAD_CONFIG_H__" >> include/itead_config.h
+	echo "#define BOARD_RASPBERRY_RV2" >> include/itead_config.h
+	echo "#endif" >> include/itead_config.h

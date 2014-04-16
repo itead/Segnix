@@ -29,6 +29,11 @@ SDKCPPCOMPILE=g++
 #echo "\$@ = " $@
 #echo "\$* = " $*
 
+if [[ $1 == --version ]] || [[ $1 == -v ]] || (( $# == 0 )) ; then
+	echo "IteadOS SDK v2.1-test"
+	exit 0
+fi
+
 if [ $# -lt 2 ]; then
         echo "Usage:"
         echo "  iteadcompile objname source.ino [source2.ino] [...]"
@@ -45,11 +50,12 @@ if [ $# -lt 2 ]; then
         echo "Examples for .c"
         echo "  iteadcompile hello hello.c"
         echo "  iteadcompile led led1.c led2.c"
-        echo "  iteadcompile led *.c
+        echo "  iteadcompile led *.c"
         echo "NOTES:"
-        echo "  objname cannot cantian \".ino\" or \".c\" or \".cpp\"""
+        echo "  objname cannot cantian \".ino\" or \".c\" or \".cpp\""
         exit 1
 fi
+
 
 
 if [[ $2 == *.ino ]] ; then

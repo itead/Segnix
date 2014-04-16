@@ -30,6 +30,7 @@ extern "C"{
 #endif
 #include <stdio.h>
 #include <stdint.h>
+#include <itead_config.h>
 
 #define true	0x1
 #define false	0x0

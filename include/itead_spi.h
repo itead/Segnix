@@ -24,17 +24,17 @@
 #define __ITEAD_SPI_H__
 
 #include <stdint.h>
+#include <itead_config.h>
 
 #ifdef __cplusplus
 extern "C"{
 #endif
 
-/* 
- * Now, You can only use DEV_SPI0.
- * In future, We may support more SPI devices for your development.
- */
+/* Only define number of devices */
 #define DEV_SPI0		0
-
+#define DEV_SPI1		1
+#define DEV_SPI2		2
+#define DEV_SPI3		3
 
 /*
  * Mode		 	Clock Polarity (CPOL)		Clock Phase (CPHA)
@@ -101,8 +101,14 @@ public:
 
 };
 
-extern SPIClass SPI0;
+/* The first device has a aliase compitable with Arduino */
 extern SPIClass & SPI;
+#ifdef BOARD_ITEADUINO_PLUS
+extern SPIClass SPI0;
+#elif defined (BOARD_RASPBERRY_RV2)
+extern SPIClass SPI0;
+#endif /* BOARD_ITEADUINO_PLUS */
+
 #endif
 
 #endif

@@ -24,6 +24,7 @@
 #define __ITEAD_GPIO_H__
 
 #include <stdint.h>
+#include <itead_config.h>
 
 #ifdef __cplusplus
 extern "C"{
@@ -84,6 +85,7 @@ typedef struct
 #define INPUT 		0x0
 #define OUTPUT 		0x1
 
+#ifdef BOARD_ITEADUINO_PLUS
 /*
  * You should always replace 9 with PIN_PD0.
  * DO NOT modify the defines of all the pin numbers.
@@ -219,9 +221,64 @@ typedef struct
 #define PIN_PI14	137
 #define PIN_PI15	138
 
-#define PIN_MAX		PIN_PI15
-#define PIN_MIN		PIN_PD0
-#define PIN_NONE	65535
+#elif defined (BOARD_RASPBERRY_RV2)
+
+#define GPIO0       0 
+#define GPIO1       1 
+#define GPIO2       2 
+#define GPIO3       3 
+#define GPIO4       4 
+#define GPIO5       5 
+#define GPIO6       6 
+#define GPIO7       7 
+#define GPIO8       8 
+#define GPIO9       9 
+#define GPIO10      10
+#define GPIO11      11
+#define GPIO12      12
+#define GPIO13      13
+#define GPIO14      14
+#define GPIO15      15
+#define GPIO16      16
+#define GPIO17      17
+#define GPIO18      18
+#define GPIO19      19
+#define GPIO20      20
+#define GPIO21      21
+#define GPIO22      22
+#define GPIO23      23
+#define GPIO24      24
+#define GPIO25      25
+#define GPIO26      26
+#define GPIO27      27
+#define GPIO28      28
+#define GPIO29      29
+#define GPIO30      30
+#define GPIO31      31
+#define GPIO32      32
+#define GPIO33      33
+#define GPIO34      34
+#define GPIO35      35
+#define GPIO36      36
+#define GPIO37      37
+#define GPIO38      38
+#define GPIO39      39
+#define GPIO40      40
+#define GPIO41      41
+#define GPIO42      42
+#define GPIO43      43
+#define GPIO44      44
+#define GPIO45      45
+#define GPIO46      46
+#define GPIO47      47
+#define GPIO48      48
+#define GPIO49      49
+#define GPIO50      50
+#define GPIO51      51
+#define GPIO52      52
+#define GPIO53      53
+
+#endif /* BOARD_ITEADUINO_PLUS */
 
 /*
  * Declare functions. See defines of funcitons for more usage.

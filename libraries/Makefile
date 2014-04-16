@@ -7,7 +7,7 @@ OBJS += itead_SSD1306.o
 all: libiteadmodule.so
 
 libiteadmodule.so: $(OBJS)
-	$(SDKCPPCOMPILE) -fpic -shared -o $@ $^
+	$(SDKCPPCOMPILE) $(SDK_LIB_OPTIMIZE_OPTION) -fpic -shared -o $@ $^
 
 $(OBJS):
 	$(MAKE) -C $(subst .o,,$@) $@
