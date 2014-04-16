@@ -63,7 +63,7 @@ following dynamic libraries when they use the SDK:
  
 ## How to Install
  
-### Downlaod and install SDK in Debian
+### Download and install SDK in Debian
 In debian,you can download and install with the fellowing command:
 
     $ git clone https://github.com/iteadsw/SDK.git
