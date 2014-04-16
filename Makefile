@@ -1,4 +1,3 @@
-
 SDKCCOMPILE 	:= gcc
 SDKCPPCOMPILE 	:= g++
 
@@ -105,14 +104,16 @@ uninstall:
 
 .PHONY: Iteaduino_Plus
 Iteaduino_Plus:
-	echo "#ifndef __ITEAD_CONFIG_H__" > include/itead_config.h
-	echo "#define __ITEAD_CONFIG_H__" >> include/itead_config.h
-	echo "#define BOARD_ITEADUINO_PLUS" >> include/itead_config.h
-	echo "#endif" >> include/itead_config.h
+	@ echo "#ifndef __ITEAD_CONFIG_H__" > include/itead_config.h
+	@ echo "#define __ITEAD_CONFIG_H__" >> include/itead_config.h
+	@ echo "#define BOARD_ITEADUINO_PLUS" >> include/itead_config.h
+	@ echo "#endif" >> include/itead_config.h
+	@ echo "config board Iteaduino_Plus finished"
 
 .PHONY: Raspberry_Rv2
 Raspberry_Rv2:
-	echo "#ifndef __ITEAD_CONFIG_H__" > include/itead_config.h
-	echo "#define __ITEAD_CONFIG_H__" >> include/itead_config.h
-	echo "#define BOARD_RASPBERRY_RV2" >> include/itead_config.h
-	echo "#endif" >> include/itead_config.h
+	@ echo "#ifndef __ITEAD_CONFIG_H__" > include/itead_config.h
+	@ echo "#define __ITEAD_CONFIG_H__" >> include/itead_config.h
+	@ echo "#define BOARD_RASPBERRY_RV2" >> include/itead_config.h
+	@ echo "#endif" >> include/itead_config.h
+	@ echo "config board Raspberry_Rv2 finished"
