@@ -85,7 +85,12 @@ typedef struct
 #define INPUT 		0x0
 #define OUTPUT 		0x1
 
+
 #ifdef BOARD_ITEADUINO_PLUS
+
+#define SYSLED1		58
+#define SYSLED2		57
+
 /*
  * You should always replace 9 with PIN_PD0.
  * DO NOT modify the defines of all the pin numbers.
