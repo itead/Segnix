@@ -83,7 +83,7 @@ We assume that you have installed the make,build-essential and git-core packages
 
 ### To use SDK like an Arduino sketch
 
-Create a new file named "led.ino" which contains the folloing lines:
+Create a new file named "led.ino" which contains the fellowing lines:
     
     #include <stdio.h>
     
