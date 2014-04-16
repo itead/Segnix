@@ -63,7 +63,8 @@ following dynamic libraries when they use the SDK:
  
 ## How to Install
  
-###Take debian as example:
+### Downlaod and install SDK in Debian
+In debian,you can download and install with the fellowing command:
 
     $ git clone https://github.com/iteadsw/SDK.git
     $ cd SDK
@@ -71,12 +72,45 @@ following dynamic libraries when they use the SDK:
     $ make
     $ sudo make install
 
+To check the version of SDK installed,run this command in terminal:
+    
+    $ iteadcompile -v
+    
 ###Note: 
 We assume that you have installed the make,build-essential and git-core packages in your debian system.
 
 ## How to Use
+
+### To use SDK like an Arduino sketch
+
+Create a new file named "led.ino" which contains the folloing lines:
+    
+    #include <stdio.h>
+    
+    #define STATUS_LED1 PIN_PH21
  
-Tak an simple C program as example.
+    void setup(void)
+    {
+        printf("setup begin\n");
+        pinMode(STATUS_LED1,OUTPUT);
+    }
+    void loop(void)
+    {
+        digitalWrite(STATUS_LED1,HIGH);
+        delay(1000);
+        digitalWrite(STATUS_LED1,LOW);
+        delay(1000);
+    }
+
+Then run command as below to compile led.ino:
+
+    $ iteadcompile LED led.ino
+
+You can run the LED program after compilation:
+
+    $ sudo ./LED
+
+### To use SDK in C program
  
 Create a new file named "led.c" which reads as follow:
 
@@ -105,6 +139,7 @@ Create a new file named "led.c" which reads as follow:
             loop();
         }
     }
+    
 Then run iteadcompile in the terminal
  
     $ iteadcomile LED led.c
