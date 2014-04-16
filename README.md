@@ -78,8 +78,8 @@ We assume that you have installed the make,build-essential and git-core packages
  
 Tak an simple C program as example.
  
-Creat a new file named "led.ino" which reads as follow:
- 
+Create a new file named "led.c" which reads as follow:
+    #include <itead.h>
     #include <stdio.h>
  
     #define STATUS_LED1 PIN_PH21
@@ -96,10 +96,17 @@ Creat a new file named "led.ino" which reads as follow:
         digitalWrite(STATUS_LED1,LOW);
         delay(1000);
     }
- 
+    int main(void)
+    {
+        setup();
+        while(1)
+        {
+            loop();
+        }
+    }
 Then run iteadcompile in the terminal
  
-    $ iteadcomile LED led.ino
+    $ iteadcomile LED led.c
  
 You can run the LED program after compilation:
 
