@@ -30,7 +30,7 @@ SDKCPPCOMPILE=g++
 #echo "\$* = " $*
 
 if [[ $1 == --version ]] || [[ $1 == -v ]] || (( $# == 0 )) ; then
-	echo "IteadOS SDK v2.1-test"
+	echo "IteadOS SDK v2.1"
 	exit 0
 fi
 
