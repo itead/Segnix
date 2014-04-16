@@ -66,9 +66,9 @@ following dynamic libraries when they use the SDK:
 ###Take debian as example:
 
     $ git clone https://github.com/iteadsw/SDK.git
-$ cd SDK
+    $ cd SDK
     $ make Iteaduino_Plus (or make Raspberry_Rv2 if you have a Raspberry board)
-$ make
+    $ make
     $ sudo make install
 
 ###Note: 
