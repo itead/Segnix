@@ -43,6 +43,7 @@ uint32_t millis(void)
 	}
 	read(fd,buffer,7);
 	buffer[7]='\0';
+    close(fd);
 	return (uint32_t)(strtod(buffer,NULL)*1000);
 }
 

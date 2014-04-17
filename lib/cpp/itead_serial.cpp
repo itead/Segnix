@@ -78,16 +78,6 @@ void Serial_::flush(void)
 	Serialflush(dev);
 }
 
-size_t Serial_::print(const char* string)
-{
-	return Serialprint(dev,string);
-}
-
-size_t Serial_::println(const char* string)
-{
-	return Serialprintln(dev,string);
-}
-
 int Serial_::read(void)
 {
 	if (Serialavailable(dev)) {

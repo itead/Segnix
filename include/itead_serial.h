@@ -24,6 +24,7 @@
 #define __ITEAD_SERIAL_H__
 
 #include <itead_config.h>
+#include <itead_print.h>
 
 #ifdef __cplusplus
 extern "C"{
@@ -67,7 +68,7 @@ uint8_t			Serialread(uint32_t dev);
 /*
  * Define class Serial_ 
  */
-class Serial_  // : public Print
+class Serial_  : public Print
 {
 private:
 	uint32_t dev;
@@ -83,10 +84,8 @@ public:
 	void begin(uint32_t baud_count);
 	void end(void);
 	void flush(void);
-	size_t print(const char* string);
-	size_t println(const char* string);
 	int read(void);
-	size_t write(uint8_t c);
+	virtual size_t write(uint8_t c);
 
 };
 

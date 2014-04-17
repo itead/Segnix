@@ -55,7 +55,7 @@ typedef struct PIN_PWM_INFO_ST{
  * PIN_PWM_BASE_CNT - duty base number.
  * PIN_PWM_MAX 		- maxmial threads for pwm output. 
  */
-#define PWM_FREQUENCY		(1000*1)		// 10kHz
+#define PWM_FREQUENCY		(1000*1)		// 1kHz
 #define PWM_PERIOD_US		((1.0/PWM_FREQUENCY)*(1000000.0))
 #define PIN_PWM_BASE_CNT	255
 #define PIN_PWM_MAX			8
