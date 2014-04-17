@@ -2,7 +2,7 @@
 ## What Is It?
  
  
-IteadOS SDK is customized offers junior developers with underlying
+IteadOS SDK offers junior developers with underlying
 hardware operation interfaces. It can simplify the hardware operation,
 which is a way for software engineers who are not familiar with the
 underlying hardware and junior developers to know about "Code World" and
