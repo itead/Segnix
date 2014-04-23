@@ -202,8 +202,8 @@ static const pin_no_port_index_map pnp[] = {
 
 #elif defined(BOARD_RASPBERRY_RV2)
 
-#define PIN_MAX		31
-#define PIN_MIN		2
+#define PIN_MAX		32
+#define PIN_MIN		3
 #define GPIO_SIZE   (1*BLOCK_SIZE)
 #define BCM2708_PERI_BASE           (0x20000000)
 #define GPIO_BASE		            (BCM2708_PERI_BASE + 0x00200000)
@@ -218,36 +218,37 @@ static const pin_no_port_index_map pnp[] = {
 /*	port_no	  index				pin_no 		*/    
 	{PORT_NONE,	INDEX_NONE}	,	// 0
 	{PORT_NONE,	INDEX_NONE}	,	// 1
-	{PORT_GPIO,	2}	,	// 2
-	{PORT_GPIO,	3}	,	// 3
-	{PORT_GPIO,	4}	,	// 4
-	{PORT_NONE,	INDEX_NONE}	,	// 5
-	{PORT_NONE,	INDEX_NONE}	,	// 6
-	{PORT_GPIO,	7}	,	// 7
-	{PORT_GPIO,	8}	,	// 8
-	{PORT_GPIO,	9}	,	// 9
-	{PORT_GPIO,	10}	,	// 10
-	{PORT_GPIO,	11}	,	// 1     + 10
 	{PORT_NONE,	INDEX_NONE}	,	// 2
-	{PORT_NONE,	INDEX_NONE}	,	// 3
-	{PORT_GPIO,	14}	,	// 4
-	{PORT_GPIO,	15}	,	// 5
+	{PORT_GPIO,	2}	,	// 3
+	{PORT_NONE,	INDEX_NONE}	,	// 4
+	{PORT_GPIO,	3}	,	// 5
 	{PORT_NONE,	INDEX_NONE}	,	// 6
-	{PORT_GPIO,	17}	,	// 7
-	{PORT_GPIO,	18}	,	// 8
+	{PORT_GPIO,	4}	,	// 7
+	{PORT_GPIO,	14}	,	// 8
 	{PORT_NONE,	INDEX_NONE}	,	// 9
+	{PORT_GPIO,	15}	,	// 10
+	{PORT_GPIO,	17}	,	// 1     + 10
+	{PORT_GPIO,	18}	,	// 2
+	{PORT_GPIO,	27}	,	// 3
+	{PORT_NONE,	INDEX_NONE}	,	// 4
+	{PORT_GPIO,	22}	,	// 5
+	{PORT_GPIO,	23}	,	// 6
+	{PORT_NONE,	INDEX_NONE}	,	// 7
+	{PORT_GPIO,	24}	,	// 8
+	{PORT_GPIO,	10}	,	// 9
 	{PORT_NONE,	INDEX_NONE}	,	// 10
-	{PORT_NONE,	INDEX_NONE}	,	// 1     + 20
-	{PORT_NONE,	INDEX_NONE}	,	// 2
-	{PORT_GPIO,	23}	,	// 3
-	{PORT_GPIO,	24}	,	// 4
-	{PORT_GPIO,	25}	,	// 5
-	{PORT_NONE,	INDEX_NONE}	,	// 6
-	{PORT_GPIO,	27}	,	// 7
-	{PORT_GPIO,	28}	,	// 8
-	{PORT_GPIO,	29}	,	// 9
-	{PORT_GPIO,	30}	,	// 10  
-	{PORT_GPIO,	31}	,	// 1   + 30
+	{PORT_GPIO,	9}	,	// 1     + 20
+	{PORT_GPIO,	25}	,	// 2
+	{PORT_GPIO,	11}	,	// 3
+	{PORT_GPIO,	8}	,	// 4
+	{PORT_NONE,	INDEX_NONE}	,	// 5
+	{PORT_GPIO,	7}	,	// 6
+	{PORT_NONE,	INDEX_NONE}	,	// 7
+	{PORT_NONE,	INDEX_NONE}	,	// 8
+	{PORT_GPIO,	28}	,	// 9
+	{PORT_GPIO,	29}	,	// 10  
+	{PORT_GPIO,	30}	,	// 1   + 30
+	{PORT_GPIO,	31}	,	// 2
 };
 
 #endif

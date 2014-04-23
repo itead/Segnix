@@ -210,6 +210,7 @@ uint32_t pinMode(uint16_t pin, uint8_t mode)
 
 #elif defined(BOARD_RASPBERRY_RV2)
     /* config pin as OUTPUT or INPUT */
+   pin   = pnp[pin].index;
    cureg = gpio_base + GPIO_GPFSEL_OFFSET/4 + pin/10;
    CUREG &= ~(0x7 << (3*(pin%10)));
    if(mode == INPUT) {
@@ -293,6 +294,7 @@ uint32_t digitalWrite(uint16_t pin, uint8_t val)
 		CUREG &= ~(1 << index);
 	}
 #elif defined(BOARD_RASPBERRY_RV2)
+    pin   = pnp[pin].index;
     if( val == HIGH) {
         cureg = gpio_base + GPIO_GPSET_OFFSET/4 + pin/32;
     } else {
@@ -368,6 +370,7 @@ uint32_t digitalRead(uint16_t pin)
 
 	return (CUREG & (1<<index)) ? HIGH : LOW;
 #elif defined(BOARD_RASPBERRY_RV2)
+    pin   = pnp[pin].index;
     cureg = gpio_base + GPIO_GPLEV_OFFSET/4 + pin/32;
     return (CUREG & (0x1<<(pin%32))) ? HIGH : LOW;
 #endif
