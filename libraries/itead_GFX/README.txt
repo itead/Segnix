@@ -19,4 +19,4 @@ Place the Adafruit_GFX library folder your <arduinosketchfolder>/libraries/ fold
 MODIFIED BY !
 Desc: This lib is transplanted to itead sdk by Wu Pengfei.
 Date: 2014.3.31
-Email: wupangfee@gmail.com
+Email: pengfei.wu@itead.cc

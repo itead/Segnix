@@ -40,5 +40,5 @@ new "LCD4Bit_mod.o" with your code will appear after the next press of "verify"
 MODIFIED BY !
 Desc: This lib is transplanted to itead sdk by Wu Pengfei.
 Date: 2014.3.31
-Email: wupangfee@gmail.com
+Email: pengfei.wu@itead.cc
 

@@ -15,7 +15,7 @@ All text above must be included in any redistribution
 MODIFIED BY !
 Desc: This lib is transplanted to itead sdk by Wu Pengfei.
 Date: 2014.3.31
-Email: wupangfee@gmail.com
+Email: pengfei.wu@itead.cc
 
 ****************************************/
 

@@ -22,7 +22,7 @@ see the examples folder of this library distribution.
 MODIFIED BY !
 Desc: This lib is transplanted to itead sdk by Wu Pengfei.
 Date: 2014.3.31
-Email: wupangfee@gmail.com
+Email: pengfei.wu@itead.cc
 
 */
 

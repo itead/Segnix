@@ -65,6 +65,9 @@ install:
 	cp libraries/itead_SSD1306/itead_SSD1306.h /usr/include
 	cp libraries/itead_SSD1306/itead_SSD1306.h /usr/local/include
 	
+	cp libraries/itead_TinyGPS/itead_TinyGPS.h /usr/include
+	cp libraries/itead_TinyGPS/itead_TinyGPS.h /usr/local/include
+	
 	@echo "install done"
 
 uninstall:
@@ -96,6 +99,9 @@ uninstall:
 
 	rm -rf /usr/include/itead_SSD1306.h
 	rm -rf /usr/local/include/itead_SSD1306.h
+	
+	rm -rf /usr/include/itead_TinyGPS.h
+	rm -rf /usr/local/include/itead_TinyGPS.h
 	
 	@echo "uninstall done"
 

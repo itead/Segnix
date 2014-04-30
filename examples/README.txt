@@ -3,7 +3,7 @@ Description
 ===========
 
     Examples in this directory(SDK/examples/) is copied from Arduino Source Code.
-Some of them may be modified by Wu Pengfei <wupangfee@gmail.com> to work well
+Some of them may be modified by Wu Pengfei <pengfei.wu@itead.cc> to work well
 with Iteaduino Plus A10/A20 or others supported by IteadOS SDK such as Raspberry Rv2.
 
 How to Use

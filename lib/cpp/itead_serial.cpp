@@ -11,7 +11,7 @@
 /*
  * (C) Copyright 2014
  * ITEAD Intelligent Systems Co., Ltd. <http://imall.iteadstudio.com>
- * Wu Pengfei<wupangfee@gmail.com>
+ * Wu Pengfei<pengfei.wu@itead.cc>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -25,10 +25,10 @@
 
 #ifdef BOARD_ITEADUINO_PLUS
 Serial_ Serial2(DEV_UART2);
-Serial_ & Serial = Serial2;
 Serial_ Serial3(DEV_UART3);
 Serial_ Serial4(DEV_UART4);
 Serial_ Serial7(DEV_UART7);
+Serial_ & Serial = Serial4;
 
 #elif defined (BOARD_RASPBERRY_RV2)
 Serial_ Serial0(DEV_UART0);
