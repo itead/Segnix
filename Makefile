@@ -1,3 +1,14 @@
+#####################################################################
+# File		:	Makefile
+# Desc		:	Manage all source files in SDK.
+# Author	: 	Wu Pengfei
+# Company	:	ITEAD Intelligent Systems Co.,Ltd.(http://imall.iteadstudio.com/)
+# Date		:	2014/3/11
+# History	:	Version		Modified by		Date		What
+#               v1.0        Wu Pengfei      2014/3/11   Create
+#####################################################################
+
+
 SDKCCOMPILE 	:= gcc
 SDKCPPCOMPILE 	:= g++
 
@@ -56,9 +67,6 @@ install:
 	
 	cp tools/20-itead.rules /etc/udev/rules.d/
 
-	cp libraries/itead_LCD4Bit_mod/itead_LCD4Bit_mod.h /usr/include
-	cp libraries/itead_LCD4Bit_mod/itead_LCD4Bit_mod.h /usr/local/include
-
 	cp libraries/itead_GFX/itead_GFX.h /usr/include
 	cp libraries/itead_GFX/itead_GFX.h /usr/local/include
 
@@ -67,6 +75,9 @@ install:
 	
 	cp libraries/itead_TinyGPS/itead_TinyGPS.h /usr/include
 	cp libraries/itead_TinyGPS/itead_TinyGPS.h /usr/local/include
+	
+	cp libraries/itead_LiquidCrystal/itead_LiquidCrystal.h /usr/include
+	cp libraries/itead_LiquidCrystal/itead_LiquidCrystal.h /usr/local/include
 	
 	@echo "install done"
 
@@ -91,9 +102,6 @@ uninstall:
 	
 	rm -rf /etc/udev/rules.d/20-itead.rules
 	
-	rm -rf /usr/include/itead_LCD4Bit_mod.h
-	rm -rf /usr/local/include/itead_LCD4Bit_mod.h
-
 	rm -rf /usr/include/itead_GFX.h
 	rm -rf /usr/local/include/itead_GFX.h
 
@@ -102,6 +110,9 @@ uninstall:
 	
 	rm -rf /usr/include/itead_TinyGPS.h
 	rm -rf /usr/local/include/itead_TinyGPS.h
+	
+	rm -rf /usr/include/itead_LiquidCrystal.h
+	rm -rf /usr/local/include/itead_LiquidCrystal.h
 	
 	@echo "uninstall done"
 

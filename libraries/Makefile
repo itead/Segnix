@@ -1,8 +1,8 @@
 # /*
-OBJS := itead_LCD4Bit_mod.o
-OBJS += itead_GFX.o
+OBJS := itead_GFX.o
 OBJS += itead_SSD1306.o
 OBJS += itead_TinyGPS.o
+OBJS += itead_LiquidCrystal.o
 
 all: libiteadmodule.so
 

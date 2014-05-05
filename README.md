@@ -28,7 +28,7 @@ same chip (Allwinner A10/A20) such pcDuino, Marsboard, Cubieboard, etc.
 * Support for IIC bus operations
 * Support for SPI bus operations
 * Support for SSD1306-based IIC interfaced OLED screen operations
-* Support for LCD1602 LCD in 4-bit mode
+* Support for LiquidCrystal module
 * Support for GPS module
 * More libraries are being developed
  
@@ -77,7 +77,7 @@ To check the version of SDK installed,run this command in terminal:
     
     $ iteadcompile -v
     
-###Note1: 
+###Note: 
 We assume that you have installed the make,build-essential and git-core packages in your debian system.
 
 

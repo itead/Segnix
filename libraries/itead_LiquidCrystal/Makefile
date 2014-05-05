@@ -1,2 +1,3 @@
-itead_LCD4Bit_mod.o:itead_LCD4Bit_mod.cpp itead_LCD4Bit_mod.h
+itead_LiquidCrystal.o: itead_LiquidCrystal.cpp itead_LiquidCrystal.h
 	$(SDKCPPCOMPILE) $(SDK_LIB_OPTIMIZE_OPTION) -fpic -c -o $@ $< -I../../include -I.
+

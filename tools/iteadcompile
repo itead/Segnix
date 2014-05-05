@@ -22,7 +22,7 @@
  #
  ##
 
-SDKVERSION=2.1
+SDKVERSION=2.2
 
 SDKCCOMPILE=gcc
 SDKCPPCOMPILE=g++
@@ -55,6 +55,9 @@ if [ $# -lt 2 ] || [[ $1 == -h ]] || [[ $1 == --help ]] ; then
         echo "  iteadcompile led *.c"
         echo "NOTES:"
         echo "  objname cannot cantian \".ino\" or \".c\" or \".cpp\""
+        echo "Version:"
+        echo "  iteadcompile [-v]"
+        echo "  iteadcompile [--version]"
         exit 1
 fi
 
