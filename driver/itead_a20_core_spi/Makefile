@@ -1,4 +1,4 @@
-KERN_DIR = /Your-kernel-tree
+KERN_DIR = /home/work/sw/awlinux/linux-sunxi
 
 
 all:

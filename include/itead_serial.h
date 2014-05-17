@@ -41,14 +41,6 @@ extern "C"{
 #define		DEV_UART6		6
 #define		DEV_UART7		7
 
-/* 
- * We recommand these bauds blow.
- */
-#define BAUD_9600  	9600
-#define BAUD_19200 	19200
-#define BAUD_38400 	38400
-#define BAUD_57600 	57600
-#define BAUD_115200 115200
 
 uint32_t		Serialbegin(uint32_t dev, uint32_t baud);
 uint32_t		Serialend(uint32_t dev);
@@ -75,6 +67,7 @@ private:
 	bool started;
 	
 public:
+    Serial_();
 	Serial_(uint32_t dev);
 	
 	/* Override bool operator for if(Serial) */
@@ -84,10 +77,13 @@ public:
 	void begin(uint32_t baud_count);
 	void end(void);
 	void flush(void);
-	int read(void);
+	uint8_t read(void);
 	virtual size_t write(uint8_t c);
 
 };
+/* for some needs about SoftwareSerial */
+typedef Serial_ SoftwareSerial;
+
 
 /* The first device has a aliase compitable with Arduino */
 extern Serial_ & Serial;

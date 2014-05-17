@@ -11,10 +11,11 @@
 
 SDKCCOMPILE 	:= gcc
 SDKCPPCOMPILE 	:= g++
+SDKLINKER 	    := ld
 
 SDK_LIB_OPTIMIZE_OPTION	:= -O2
 
-export SDKCCOMPILE SDKCPPCOMPILE SDK_LIB_OPTIMIZE_OPTION
+export SDKCCOMPILE SDKCPPCOMPILE SDK_LIB_OPTIMIZE_OPTION SDKLINKER
 
 SUBDIRS := lib
 SUBDIRS += bootloader
@@ -43,6 +44,8 @@ distclean: clean
 update: uninstall clean all install
 	@echo "update done"
 
+
+itead_GSM-GPRS-GPS_HEADERS := call.h gps.h GSM.h inetGSM.h LOG.h SIM900.h sms.h Streaming.h WideTextFinder.h
 
 install:
 	chmod 755 ./* -R
@@ -79,6 +82,11 @@ install:
 	cp libraries/itead_LiquidCrystal/itead_LiquidCrystal.h /usr/include
 	cp libraries/itead_LiquidCrystal/itead_LiquidCrystal.h /usr/local/include
 	
+	cd libraries/itead_GSM-GPRS-GPS/ ;\
+	cp -f $(itead_GSM-GPRS-GPS_HEADERS) /usr/include ;\
+	cp -f $(itead_GSM-GPRS-GPS_HEADERS) /usr/local/include ;\
+	cd -
+	
 	@echo "install done"
 
 uninstall:
@@ -113,6 +121,14 @@ uninstall:
 	
 	rm -rf /usr/include/itead_LiquidCrystal.h
 	rm -rf /usr/local/include/itead_LiquidCrystal.h
+	
+	# delete itead_GSM-GPRS-GPS headers
+	cd /usr/include/ ; \
+	rm -f $(itead_GSM-GPRS-GPS_HEADERS) ; \
+	cd - ; \
+	cd /usr/local/include/ ;\
+	rm -f $(itead_GSM-GPRS-GPS_HEADERS) ;\
+	cd -
 	
 	@echo "uninstall done"
 

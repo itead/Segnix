@@ -30,6 +30,7 @@ same chip (Allwinner A10/A20) such pcDuino, Marsboard, Cubieboard, etc.
 * Support for SSD1306-based IIC interfaced OLED screen operations
 * Support for LiquidCrystal module
 * Support for GPS module
+* Support for GSM(SIM900/SIM908) module
 * More libraries are being developed
  
 Up to 9th, Apr., 2014, the SDK has been added with support for GPIO,

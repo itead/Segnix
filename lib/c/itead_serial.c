@@ -112,11 +112,24 @@ uint32_t Serialbegin(uint32_t dev, uint32_t baud)
 	
 	switch (baud)
 	{
+	    case     50:	_myBaud =     B50 ; break ;
+        case     75:	_myBaud =     B75 ; break ;
+        case    110:	_myBaud =    B110 ; break ;
+        case    134:	_myBaud =    B134 ; break ;
+        case    150:	_myBaud =    B150 ; break ;
+        case    200:	_myBaud =    B200 ; break ;
+        case    300:	_myBaud =    B300 ; break ;
+        case    600:	_myBaud =    B600 ; break ;
+        case   1200:	_myBaud =   B1200 ; break ;
+        case   1800:	_myBaud =   B1800 ; break ;
+        case   2400:	_myBaud =   B2400 ; break ;
+        case   4800:	_myBaud =   B4800 ; break ;
 		case   9600:	_myBaud =   B9600 ; break ;
 		case  19200:	_myBaud =  B19200 ; break ;
 		case  38400:	_myBaud =  B38400 ; break ;
 		case  57600:	_myBaud =  B57600 ; break ;
 		case 115200:	_myBaud = B115200 ; break ;
+        case 230400:	_myBaud = B230400 ; break ;
 		default:
 			sdkerr("\nillegal parameter: baud\n");
 			return 1;

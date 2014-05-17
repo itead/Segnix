@@ -24,15 +24,12 @@
 #define __ITEAD_GPIO_PIN_MAP_H__
 
 #include <itead_config.h>
+#include <itead_global.h>
 
 #ifdef __cplusplus
 extern "C"{
 #endif
 
-#define PORT_NONE	65535
-#define INDEX_NONE	65535
-#define PIN_NONE	65535
-#define BLOCK_SIZE  4096
 
 typedef struct pin_no_port_index_map{
 	uint16_t port_no;

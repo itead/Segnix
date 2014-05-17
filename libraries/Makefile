@@ -1,8 +1,9 @@
-# /*
+
 OBJS := itead_GFX.o
 OBJS += itead_SSD1306.o
 OBJS += itead_TinyGPS.o
 OBJS += itead_LiquidCrystal.o
+OBJS += itead_GSM-GPRS-GPS.o
 
 all: libiteadmodule.so
 

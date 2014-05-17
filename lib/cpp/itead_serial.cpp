@@ -22,6 +22,7 @@
 
 #include <cstddef>
 #include <itead_serial.h>
+#include <itead_utility.h>
 
 #ifdef BOARD_ITEADUINO_PLUS
 Serial_ Serial2(DEV_UART2);
@@ -36,7 +37,11 @@ Serial_ & Serial = Serial0;
 
 #endif /* BOARD_ITEADUINO_PLUS */
 
-
+Serial_::Serial_()
+{
+	this->dev = DEV_NONE;
+	started = false;
+}
 
 Serial_::Serial_(uint32_t dev)
 {
@@ -78,7 +83,7 @@ void Serial_::flush(void)
 	Serialflush(dev);
 }
 
-int Serial_::read(void)
+uint8_t Serial_::read(void)
 {
 	if (Serialavailable(dev)) {
 		return Serialread(dev);
