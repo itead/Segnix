@@ -20,7 +20,13 @@ The SDK can also be applied in others development boards which adopt the
 same chip (Allwinner A10/A20) such pcDuino, Marsboard, Cubieboard, etc.
  
 ## What Can It Do?
- 
+
+At present, IteadOS SDK holds the following features making it possible for users
+to manipulate hardwares such as GPIO,UART,SPI,I2C etc. Based on those, users can 
+control directly a mass of Shields(or Modules for a specific purpose) shch as GSM,1602LCD,
+OLED etc. Importantly, IteadOS SDK gets its popular with supporting more and more Shields
+and Hardware Platforms.
+
 * Support for simple GPIO operation
 * Support for GPIO 8-bit / 16-bit bus operations
 * Support for simple UART operations
@@ -30,15 +36,10 @@ same chip (Allwinner A10/A20) such pcDuino, Marsboard, Cubieboard, etc.
 * Support for SSD1306-based IIC interfaced OLED screen operations
 * Support for LiquidCrystal module
 * Support for GPS module
-* Support for GSM(SIM900/SIM908) module
+* Support for GSM(SIM900/SIM908) module including GPRS/GPS operations
 * More libraries are being developed
  
-Up to 9th, Apr., 2014, the SDK has been added with support for GPIO,
-TWI, SPI, UART and supplied with libraries of LCD1602, SSD1306 OLED,
-etc. With various API's at bus interface, users can easily operate
-UART,SPI and IIC devices; while with API's on the modules, users can use
-the functions in the library directly to control OLED screen for display
-and the same to LCD1602.
+
  
 ## Dependency
 * Platform :Allwinner A10/A20 SoC
@@ -70,7 +71,7 @@ In debian,you can download and install SDK with the fellowing command:
 
     $ git clone https://github.com/iteadsw/SDK.git
     $ cd SDK
-    $ make Iteaduino_Plus (or make Raspberry_Rv2 if you have a Raspberry board)
+    $ make Iteaduino_Plus (or make Raspberry_Rv2 if you have a Raspberry Rv2 board)
     $ make
     $ sudo make install
 
@@ -78,9 +79,13 @@ To check the version of SDK installed,run this command in terminal:
     
     $ iteadcompile -v
     
-###Note: 
+####Note: 
 We assume that you have installed the make,build-essential and git-core packages in your debian system.
 
+### Raspberry Rv2 GPIO Pin Number Map
+In IteadOS SDK, Raspberry Rv2 GPIO in number is identical to PCB Connector's number order. In others words,
+Connector P1 covers GPIO pin number 1-26 with P1's first pin corresponding to GPIO pin number 1. Specially,
+Connector P5 covers GPIO pin number 27-34 with P5's first pin corresponding to GPIO pin number 27.
 
 ## How to Use
 
@@ -105,6 +110,7 @@ Create a new file named "led.ino" which contains the fellowing lines:
         delay(1000);
     }
 
+
 Then run command as below to compile led.ino:
 
     $ iteadcompile LED led.ino
@@ -112,6 +118,12 @@ Then run command as below to compile led.ino:
 You can run the LED program after compilation:
 
     $ sudo ./LED
+
+#### Note: How to read debug information
+You DO NOT include the itead.h explicitly in you source file with suffex .ino. iteacompile will take care of 
+everything. That means you need to know the method you should use for locating your .ino sketch bugs. Actually,if you 
+have a sketch named "Hello.ino" with a bug at level ERROR in line 25, you will get some ERROR informations telling
+the ERROR bug in "Hello.cpp" with line 26(25+1) when command "iteadcompile Hello Hello.ino" is executed. Why? iteacompile insert one line like "include <itead.h>" in the head of you Hello.ino, change the suffex .ino to .cpp and compile(using g++) Hello.cpp to generate Hello which is executable binary file. When you encounter other bugs in you sketch,debug skills on C++ program will also helpful for solving your porblems.
 
 ### To use SDK in C program
  
