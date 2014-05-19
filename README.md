@@ -123,7 +123,10 @@ You can run the LED program after compilation:
 You DO NOT include the itead.h explicitly in you source file with suffex .ino. iteacompile will take care of 
 everything. That means you need to know the method you should use for locating your .ino sketch bugs. Actually,if you 
 have a sketch named "Hello.ino" with a bug at level ERROR in line 25, you will get some ERROR informations telling
-the ERROR bug in "Hello.cpp" with line 26(25+1) when command "iteadcompile Hello Hello.ino" is executed. Why? iteacompile insert one line like _include  "itead.h"_  in the head of your Hello.ino, change the suffex .ino to .cpp and compile(using g++) Hello.cpp to generate Hello which is executable binary file. When you encounter other bugs in your sketch,debug skills on C++ program will also helpful for solving your porblems.
+the ERROR bug in "Hello.cpp" with line 26(25+1) when command "iteadcompile Hello Hello.ino" is executed. Why? 
+iteacompile insert one line like _include  "itead.h"_  in the head of your Hello.ino, change the suffex .ino to 
+.cpp and compile(using g++) Hello.cpp to generate Hello which is executable binary file. When you encounter other 
+bugs in your sketch,debug skills on C++ program will also helpful for solving your porblems.
 
 ### To use SDK in C program
  

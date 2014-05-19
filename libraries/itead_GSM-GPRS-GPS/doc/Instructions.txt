@@ -32,42 +32,18 @@ Marco Martines
 martines[ dot ]marco[ at ]gmail[ dot ]com
 ***************************************************
 
+***************************************************
+This library is transplanted to IteadOS SDK by :
 
+Wu Pengfei
 
+pengfei.wu@itead.cc
+***************************************************
 
-[1] 	How to switch between Arduino Mega and Arduino Uno?
 	
-	1)
-	Open GSM.h and comment-decomment the appropriate lines like below
-	e.g. for Arduino Mega
-	//#define UNO
-	#define MEGA
 	
-	2)
-	If you use Arduino Uno comment the line in HWSerial.h or decomment if
-	you are using Arduino Mega
-	e.g. for Arduino Mega
-	#define MEGA
 
-	3)
-	Save and compile
-
-[2]	How to switch between the old shield (that uses 4 and 5 pins for
-	SoftwareSerial and the new (that used 2 and 3 pins)?
-
-	1)
-	Open GSM.cpp and comment-decomment the appropriate lines like below
-	e.g. for the new one
-
-	//#define _GSM_TXPIN_ 4
-	//#define _GSM_RXPIN_ 5
-	#define _GSM_TXPIN_ 2
-	#define _GSM_RXPIN_ 3
-	
-	2)
-	Save and compile
-
-[3]	My shield doesn't work. Why?
+[1]	My shield doesn't work. Why?
 	
 	Check this steps and then ask for support on the issues' page on google
 	code.
@@ -80,8 +56,4 @@ martines[ dot ]marco[ at ]gmail[ dot ]com
 		probably it's a communication's problem. Check the switch/jumpers
 		for Serial communication.
 
-	3)	Arduino Uno has 2 KB of RAM. Library takes about 80% (we are working
-		to reduce it), if you use more than 20% left, Arduino can restart
-		or print on serial strange strings.
-
-	4)	Check the jumper of communication, power source (battery or externel) and charge.
+	3)	Check the jumper of communication, power source (battery or externel) and charge.
