@@ -24,8 +24,8 @@
 
 SDKVERSION=2.3
 
-SDKCCOMPILE=gcc
-SDKCPPCOMPILE=g++
+SDK_C_COMPILE=gcc
+SDK_CPP_COMPILE=g++
 
 #echo "\$# = " $#
 #echo "\$@ = " $@
@@ -77,7 +77,7 @@ if [[ $2 == *.ino ]] ; then
 	done
 	
 	cd .tmp
-	${SDKCPPCOMPILE} -o ${params} /usr/lib/iteadboot.o  -liteadc -liteadcpp -lpthread -liteadmodule
+	${SDK_CPP_COMPILE} -o ${params} /usr/lib/iteadboot.o  -liteadc -liteadcpp -lpthread -liteadmodule
 	mv $1 ../
 	cd ../
 	
@@ -87,12 +87,12 @@ fi
 
 if [[ $2 == *.cpp ]] ; then
 	echo "compile by .cpp"
-	${SDKCPPCOMPILE} -o $@  -liteadc -liteadcpp -lpthread -liteadmodule
+	${SDK_CPP_COMPILE} -o $@  -liteadc -liteadcpp -lpthread -liteadmodule
 fi
 
 if [[ $2 == *.c ]] ; then
 	echo "compile by .c"
-	${SDKCCOMPILE} -o $@ -liteadc -lpthread
+	${SDK_C_COMPILE} -o $@ -liteadc -lpthread
 fi
 
 exit

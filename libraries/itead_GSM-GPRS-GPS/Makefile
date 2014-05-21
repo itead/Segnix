@@ -10,9 +10,9 @@ OBJS += WideTextFinder.o
 
 
 itead_GSM-GPRS-GPS.o: $(OBJS)
-	$(SDKLINKER) -r -o $@ $^
-	rm -rf $(OBJS)
+	$(SDK_LINKER) -r -o $@ $^
+	rm -rf $^
 
 %.o:%.cpp
-	$(SDKCPPCOMPILE) $(SDK_LIB_OPTIMIZE_OPTION) -fpic -c -o $@ $< -I../../include
+	$(SDK_CPP_COMPILE) $(SDK_LIB_OPTIMIZE_OPTION) -fpic -c -o $@ $< -I../../include
 

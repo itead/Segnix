@@ -1,20 +1,39 @@
 
-OBJS := itead_GFX.o
-OBJS += itead_SSD1306.o
-OBJS += itead_TinyGPS.o
-OBJS += itead_LiquidCrystal.o
-OBJS += itead_GSM-GPRS-GPS.o
+OBJS :=
 
+ifeq ($(INSTALL_LIBRARIES_itead_GSM-GPRS-GPS),y)
+OBJS += itead_GSM-GPRS-GPS.o
+endif
+
+ifeq ($(INSTALL_LIBRARIES_itead_LiquidCrystal),y)
+OBJS += itead_LiquidCrystal.o
+endif
+
+ifeq ($(INSTALL_LIBRARIES_itead_SSD1306),y)
+OBJS += itead_SSD1306.o
+endif
+
+ifeq ($(INSTALL_LIBRARIES_itead_GFX),y)
+OBJS += itead_GFX.o
+endif
+
+ifeq ($(INSTALL_LIBRARIES_itead_TinyGPS),y)
+OBJS += itead_TinyGPS.o
+endif
+
+
+
+.PHONY: all
 all: libiteadmodule.so
 
 libiteadmodule.so: $(OBJS)
-	$(SDKCPPCOMPILE) $(SDK_LIB_OPTIMIZE_OPTION) -fpic -shared -o $@ $^
+	$(SDK_CPP_COMPILE) $(SDK_LIB_OPTIMIZE_OPTION) -fpic -shared -o $@ $^
 
+.PHONY: $(OBJS)
 $(OBJS):
 	$(MAKE) -C $(subst .o,,$@) $@
 	mv $(subst .o,,$@)/$@ ./
 
+.PHONY: clean
 clean:
 	rm -rf  $(OBJS) libiteadmodule.so
-
-.PHONY: all $(OBJS)
