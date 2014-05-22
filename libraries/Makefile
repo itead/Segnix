@@ -21,6 +21,9 @@ ifeq ($(INSTALL_LIBRARIES_itead_TinyGPS),y)
 OBJS += itead_TinyGPS.o
 endif
 
+ifeq ($(INSTALL_LIBRARIES_itead_PN532_SPI),y)
+OBJS += itead_PN532_SPI.o
+endif
 
 
 .PHONY: all

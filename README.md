@@ -25,7 +25,8 @@ At present, IteadOS SDK holds the following features making it possible for user
 to manipulate hardwares such as GPIO,UART,SPI,I2C etc. Based on those, users can 
 control directly a mass of Shields(or Modules for a specific purpose) shch as GSM,1602LCD,
 OLED etc. Importantly, IteadOS SDK gets its popular with supporting more and more Shields
-and Hardware Platforms.
+and Hardware Platforms. Additionally, IteadOS SDK provide most of Arudino API. Your sketches 
+run perfectly with or without few changes.
 
 * Support for simple GPIO operation
 * Support for GPIO 8-bit / 16-bit bus operations
@@ -37,6 +38,7 @@ and Hardware Platforms.
 * Support for LiquidCrystal module
 * Support for GPS module
 * Support for GSM(SIM900/SIM908) module including GPRS/GPS operations
+* Support for NFC(PN532) module
 * More libraries are being developed
  
 

@@ -107,6 +107,10 @@ HEADERS_itead_SSD1306		:= $(addprefix libraries/itead_SSD1306/,$(HEADERS_itead_S
 HEADERS_itead_TinyGPS 		:= itead_TinyGPS.h
 HEADERS_itead_TinyGPS		:= $(addprefix libraries/itead_TinyGPS/,$(HEADERS_itead_TinyGPS))
 
+HEADERS_itead_PN532_SPI 	:= PN532.h
+HEADERS_itead_PN532_SPI		:= $(addprefix libraries/itead_PN532_SPI/,$(HEADERS_itead_PN532_SPI))
+
+
 #
 # include config.mk for optional libraries.
 #
@@ -134,6 +138,10 @@ endif
 
 ifeq ($(INSTALL_LIBRARIES_itead_TinyGPS),y)
 HEADERS_libraries += $(HEADERS_itead_TinyGPS)
+endif
+
+ifeq ($(INSTALL_LIBRARIES_itead_PN532_SPI),y)
+HEADERS_libraries += $(HEADERS_itead_PN532_SPI)
 endif
 
 ###############################################################################
@@ -164,6 +172,7 @@ $(SUBDIRS):
 
 .PHONY: clean
 clean: $(SUBDIRS_CLEAN)
+	rm -f libraries/*.o
 	@echo "clean done"
 
 .PHONY: $(SUBDIRS_CLEAN)
@@ -174,7 +183,6 @@ $(SUBDIRS_CLEAN):
 distclean: clean
 	rm -f include/itead_config.h
 	rm -f config.mk
-	rm -f libraries/*.o
 	@echo "distclean done"
 
 .PHONY: update

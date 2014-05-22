@@ -5,6 +5,10 @@
 # your system.
 # if INSTALL_LIBRARIES_* is not "y", the library will be ignored.
 #
+# NOTE:
+#    Blank spaces behind letter "y" in lines which begin with INSTALL_LIBRARIES_*
+# will cause some exceptions unexpectedly. In other words, Letter "y" MUST be
+# the last one in those lines.
 ###############################################################################
 
 #
@@ -19,7 +23,7 @@ INSTALL_LIBRARIES_itead_LiquidCrystal   := y
 INSTALL_LIBRARIES_itead_SSD1306         := y
 INSTALL_LIBRARIES_itead_GFX             := y
 INSTALL_LIBRARIES_itead_TinyGPS         := y
-
+INSTALL_LIBRARIES_itead_PN532_SPI       := y
 
 
 ###############################################################################
@@ -44,3 +48,4 @@ export INSTALL_LIBRARIES_itead_LiquidCrystal
 export INSTALL_LIBRARIES_itead_SSD1306
 export INSTALL_LIBRARIES_itead_GFX
 export INSTALL_LIBRARIES_itead_TinyGPS
+export INSTALL_LIBRARIES_itead_PN532_SPI

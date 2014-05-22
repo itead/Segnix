@@ -21,6 +21,7 @@
  */
 
 #include <itead_spi.h>
+#include <itead_utility.h>
 
 #ifdef BOARD_ITEADUINO_PLUS
 SPIClass SPI0(DEV_SPI0);
@@ -32,6 +33,11 @@ SPIClass & SPI = SPI0;
 
 #endif /* BOARD_ITEADUINO_PLUS */
 
+
+SPIClass::SPIClass(void)
+{
+	this->dev = DEV_NONE;
+}
 
 
 SPIClass::SPIClass(uint32_t dev)

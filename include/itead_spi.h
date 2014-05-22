@@ -90,6 +90,7 @@ private:
 	uint32_t dev;
 
 public:
+    SPIClass(void);
 	SPIClass(uint32_t dev);
 	
 	void begin();
