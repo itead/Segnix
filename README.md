@@ -122,8 +122,8 @@ You can run the LED program after compilation:
 
     $ sudo ./LED
 
-#### Note: How to read debug information
-You DO NOT include the itead.h explicitly in you source file with suffex .ino. iteacompile will take care of 
+#### Note: How to understand debug information from compiler
+You DO NOT include the itead.h explicitly in your source file with suffex .ino. iteacompile will take care of 
 everything. That means you need to know the method you should use for locating your .ino sketch bugs. Actually,if you 
 have a sketch named "Hello.ino" with a bug at level ERROR in line 25, you will get some ERROR informations telling
 the ERROR bug in "Hello.cpp" with line 26(25+1) when command "iteadcompile Hello Hello.ino" is executed. Why? 
