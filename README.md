@@ -25,7 +25,7 @@ At present, IteadOS SDK holds the following features making it possible for user
 to manipulate hardwares such as GPIO,UART,SPI,I2C etc. Based on those, users can 
 control directly a mass of Shields(or Modules for a specific purpose) such as GSM,1602LCD,
 OLED etc. Importantly, IteadOS SDK gets its popular with supporting more and more Shields
-and Hardware Platforms. Additionally, IteadOS SDK provide most of Arduino API. Your sketches 
+and Hardware Platforms. Additionally, IteadOS SDK provides most of Arduino API. Your sketches 
 run perfectly with or without few changes.
 
 * Support for simple GPIO operation
