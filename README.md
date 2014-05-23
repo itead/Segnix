@@ -74,7 +74,7 @@ In debian,you can download and install SDK with the fellowing command:
     $ git clone https://github.com/iteadsw/SDK.git
     $ cd SDK
     $ make Iteaduino_Plus (or make Raspberry_Rv2 if you have a Raspberry Rv2 board)
-    $ vi comfig.mk (Select which libraries you want to install or skip for install all)
+    $ vi config.mk (Select which libraries you want to install or skip for install all)
     $ make
     $ sudo make install
 
