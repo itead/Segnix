@@ -29,6 +29,7 @@
 #include <sys/time.h>
 #include <sys/mman.h>
 #include <linux/spi/spidev.h>
+#include <errno.h>
 
 #include <itead_spi.h>
 #include <itead_global.h>
@@ -139,6 +140,7 @@ uint32_t SPIsetBitOrder(uint32_t dev, uint8_t order)
      ret = ioctl(spi_devices[dev].fd, SPI_IOC_WR_LSB_FIRST, &bitorder);
      if (ret == -1) {
 	 	sdkerr("\ncan't set bits order\n");
+         sdkerr("NO.=%d,%s\n",errno,strerror(errno));
 		return 1;
 	 }
 	 
@@ -183,8 +185,11 @@ uint32_t SPIsetDataMode(uint32_t dev, uint8_t mode)
 	/* set polarity and phase */
     smode &= ~0x3;
     smode |= (mode&0x3);
+    
 	/* !!! open Full-duplex synchronous !!! */
+    #ifdef  BOARD_ITEADUINO_PLUS // add by wpf
 	smode |= SPI_RECEIVE_ALL_ACTIVE_;
+	#endif
 	
 	ret = ioctl(spi_devices[dev].fd, SPI_IOC_WR_MODE, &smode);
    	if (ret == -1) {
@@ -201,7 +206,7 @@ uint32_t SPIsetDataMode(uint32_t dev, uint8_t mode)
 	return 0;
 }
 
-#if 0 /* may be useless */
+#if 1 /* may be useless */
 /*
  * @name	: SPIsetClockDivider
  * @desc	: modify spi frequency of dev's spi clock baseon max_speed_hz
@@ -217,7 +222,11 @@ uint32_t SPIsetClockDivider(uint32_t dev, uint16_t divider)
 		return 1;
 	}
 	if( divider ) {
+        #if 0 // add by wpf
 		spi_devices[dev].tr.speed_hz |= divider;	
+        #else
+        spi_devices[dev].tr.speed_hz /= divider;	
+        #endif
 	} else {
 		sdkerr("\nset clock divider err: cannot be 0\n");
 		return 1;

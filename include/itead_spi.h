@@ -70,7 +70,7 @@ extern "C"{
 uint32_t		SPIbegin(uint32_t dev);
 uint32_t		SPIend(uint32_t dev);
 
-#if 0	/* may be useless */
+#if 1	/* may be useless */
 uint32_t		SPIsetClockDivider(uint32_t dev, uint16_t divider);
 #endif
 

@@ -22,6 +22,7 @@
 
 #include <itead_spi.h>
 #include <itead_utility.h>
+#include <itead_global.h>
 
 #ifdef BOARD_ITEADUINO_PLUS
 SPIClass SPI0(DEV_SPI0);
@@ -57,7 +58,17 @@ void SPIClass::end()
 
 void SPIClass::setBitOrder(uint8_t order)
 {
+#ifdef BOARD_RASPBERRY_RV2
+    if( order == MSBFIRST) {
 	SPIsetBitOrder(dev,order);
+    } else {
+        #if 0 // disabled by wpf
+        sdkerr("RPi DO NOT support LSBFIRST on SPI\nPlease reverse bit order in software by hand\n");
+        #endif
+    }
+#else
+	SPIsetBitOrder(dev,order);
+#endif
 }
 
 void SPIClass::setDataMode(uint8_t mode)
@@ -68,6 +79,7 @@ void SPIClass::setDataMode(uint8_t mode)
 void SPIClass::setClockDivider(uint8_t divider)
 {
 	/* do nothing */
+    SPIsetClockDivider(dev,divider);
 }
 
 uint8_t SPIClass::transfer(uint8_t val)

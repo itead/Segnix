@@ -110,13 +110,38 @@ HEADERS_itead_TinyGPS		:= $(addprefix libraries/itead_TinyGPS/,$(HEADERS_itead_T
 HEADERS_itead_PN532_SPI 	:= PN532.h
 HEADERS_itead_PN532_SPI		:= $(addprefix libraries/itead_PN532_SPI/,$(HEADERS_itead_PN532_SPI))
 
+HEADERS_itead_nRF24L01 		:= nRF24L01P.h
+HEADERS_itead_nRF24L01		:= $(addprefix libraries/itead_nRF24L01/,$(HEADERS_itead_nRF24L01))
+
 
 #
 # include config.mk for optional libraries.
 #
 ifeq (config.mk,$(wildcard config.mk))
 include config.mk
+
+#
+# itead_SSD1306 depends on itead_GFX
+#
+ifeq ($(INSTALL_LIBRARIES_itead_SSD1306),y)
+INSTALL_LIBRARIES_itead_GFX 			:= y
 endif
+
+#
+# export for other programs.
+#
+export INSTALL_LIBRARIES_itead_GSM-GPRS-GPS
+export INSTALL_LIBRARIES_itead_LiquidCrystal
+export INSTALL_LIBRARIES_itead_SSD1306
+export INSTALL_LIBRARIES_itead_GFX
+export INSTALL_LIBRARIES_itead_TinyGPS
+export INSTALL_LIBRARIES_itead_PN532_SPI
+export INSTALL_LIBRARIES_itead_nRF24L01
+
+
+endif  # ifeq (config.mk,$(wildcard config.mk))
+
+
 
 HEADERS_libraries :=
 
@@ -143,6 +168,11 @@ endif
 ifeq ($(INSTALL_LIBRARIES_itead_PN532_SPI),y)
 HEADERS_libraries += $(HEADERS_itead_PN532_SPI)
 endif
+
+ifeq ($(INSTALL_LIBRARIES_itead_nRF24L01),y)
+HEADERS_libraries += $(HEADERS_itead_nRF24L01)
+endif
+
 
 ###############################################################################
 # SDK components needed to be copied into SYS_USR_INCLUDE

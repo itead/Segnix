@@ -1,8 +1,8 @@
 # 
 # copy this file to /etc/udev/rules.d/
 #
-KERNEL=="i2c-*"  MODE="0766"
-KERNEL=="spidev*"  MODE="0766"
-KERNEL=="ttyS*"  MODE="0766"
-KERNEL=="mem"  MODE="0766"
-KERNEL=="ttyAMA*"  MODE="0766"
+#KERNEL=="i2c-*"  MODE="0766"
+#KERNEL=="spidev*"  MODE="0766"
+#KERNEL=="ttyS*"  MODE="0766"
+#KERNEL=="mem"  MODE="0766"
+#KERNEL=="ttyAMA*"  MODE="0766"

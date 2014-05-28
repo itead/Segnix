@@ -68,6 +68,7 @@ if [[ $2 == *.ino ]] ; then
 	params=${@/.ino/.cpp}
 	
 	mkdir .tmp
+	#cp -f *.h .tmp/
 	for var in $@ ; do
 		if [[ ${var} == *.ino  ]] ; then
 			sourcename=.tmp/${var/.ino/.cpp}
