@@ -1,7 +1,6 @@
 #include "nRF24L01P.h"
-
-nRF24L01P rf2401p;
-//nRF24L01P rf2401p(SPI);
+/*                              ce, cs, SPI */
+nRF24L01P rf2401p(11,109,SPI);
 
 void setup()
 {
@@ -14,11 +13,13 @@ void setup()
 }
 void loop()
 {
-    unsigned char tmp[5]={0};
-    if(rf2401p.nRF24L01_RxPacket(tmp))
+    unsigned char rec_buffer[RX_PLOAD_WIDTH]={0};
+    if(rf2401p.nRF24L01_RxPacket(rec_buffer))
     {
-        tmp[4]='\0';
-        printf("Received:%s\n",(char *)tmp);
+        printf("Received(HEX):\n");
+        for(int i=0;i<RX_PLOAD_WIDTH;i++)
+            printf("%02X ",rec_buffer[i]);
+        printf("\n");
     }
-    delay(1000);
+    
 }

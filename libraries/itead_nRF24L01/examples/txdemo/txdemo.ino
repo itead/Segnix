@@ -1,6 +1,7 @@
 #include "nRF24L01P.h"
 
-nRF24L01P rf2401p;
+/*                              ce, cs, SPI */
+nRF24L01P rf2401p(11,109,SPI);
 
 
 void setup()
@@ -14,9 +15,11 @@ void setup()
 }
 void loop()
 {
-  unsigned char tmp[5]={'L','i','n','u','x'};
-  printf("Send Linux\n");
-  rf2401p.nRF24L01_TxPacket(tmp);
+  unsigned char send_buffer[TX_PLOAD_WIDTH];
+  for(int i=0;i<TX_PLOAD_WIDTH;i++)
+    send_buffer[i]=TX_PLOAD_WIDTH-i;
+  printf("Send\n");
+  rf2401p.nRF24L01_TxPacket(send_buffer);
   delay(1000);
 }
 

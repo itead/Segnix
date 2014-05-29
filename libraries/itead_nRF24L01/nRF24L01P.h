@@ -5,7 +5,7 @@
 * Company	:	ITEAD Intelligent Systems Co.,Ltd.(http://imall.iteadstudio.com/)
 * Date		:	2014/3/11
 * History	:	Version		Modified by		Date		    What
-*				v1.0		Zheng Zhiyu		2014/5/24	    Create
+*                        v1.0            Zheng Zhiyu            2014/5/24    create
 ********************************************************************/
 
 /*
@@ -32,8 +32,8 @@
 #endif
 
 #define ADR_WIDTH 5
-#define RX_PLOAD_WIDTH 5
-#define TX_PLOAD_WIDTH 5
+#define RX_PLOAD_WIDTH 32
+#define TX_PLOAD_WIDTH 32
 #define Buffer_Size 32
 
 //Define RF power value
@@ -50,8 +50,7 @@
 
 class nRF24L01P { 
 public:    
-    nRF24L01P(void);
-    nRF24L01P(SPIClass & SPI);
+    nRF24L01P(uint16_t ce, uint16_t cs, SPIClass & SPI);
 
     // Layer 1 functions declaration
     void nRF24L01_HW_Init(void);
@@ -76,11 +75,15 @@ private:
     void nRF24L01_SPI_NSS_H(void);    
     void nRF24L01_SPI_NSS_L(void);
     
+    void nRF24L01_CE_H(void);
+    void nRF24L01_CE_L(void);
     //Define the other function
     void nRF24L01_Delay_us(unsigned long n);
     
 private:
     SPIClass *_SPI;
+    uint16_t spi_cs;
+    uint16_t ce;
     unsigned char TxBuf[Buffer_Size];
     unsigned char RxBuf[Buffer_Size];
     

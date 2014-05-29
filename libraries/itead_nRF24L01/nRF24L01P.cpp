@@ -65,7 +65,7 @@
 ///**************************************************************************************
 
 
-nRF24L01P::nRF24L01P(void) 
+nRF24L01P::nRF24L01P(uint16_t ce, uint16_t cs, SPIClass & SPI) 
 {
     int i;
     nRF24L01_Freq = 0;
@@ -80,23 +80,8 @@ nRF24L01P::nRF24L01P(void)
     }
     
     _SPI =  &SPI;
-}
-
-nRF24L01P::nRF24L01P(SPIClass & SPI) 
-{
-    int i;
-    nRF24L01_Freq = 0;
-    nRF24L01_power_rate = 0;
-    for(i=0; i<Buffer_Size; i++) {
-        TxBuf[i] = 0;
-        RxBuf[i] = 0;
-    }
-    for(i=0; i<ADR_WIDTH; i++) {
-        TX_ADDRESS[i] = 0xE7;
-        RX_ADDRESS[i] = 0xE7;
-    }
-    
-    _SPI =  &SPI;
+    spi_cs = cs;
+    this->ce = ce;
 }
 
 
@@ -109,7 +94,16 @@ void nRF24L01P::nRF24L01_HW_Init(void)
 	_SPI->setDataMode(0); /* Is It OK ??? */
     _SPI->setBitOrder(MSBFIRST);
     _SPI->setClockDivider(SPI_CLOCK_DIV32);
-	pinMode(109,OUTPUT);
+	pinMode(spi_cs,OUTPUT);
+    pinMode(ce,OUTPUT);
+    nRF24L01_CE_L();
+    
+    /* PWR_DOWN */
+    SPI_WR_Reg(WRITE_nRF_REG + CONFIG, 0x00);
+    delay(5);
+    /* PWR_UP */
+    SPI_WR_Reg(WRITE_nRF_REG + CONFIG, 0x02); // add by wpf 
+    delay(5);
 }
 
 void nRF24L01P::nRF24L01_Set_TX_Address(	unsigned char A,
@@ -141,8 +135,11 @@ unsigned char nRF24L01P::nRF24L01_Config(unsigned char freq, unsigned char power
 {
 	nRF24L01_Freq = 0;
 	nRF24L01_power_rate = 0;
-
+    #if 0 // add by wpf
 	if((freq>125)&&(freq<0))
+    #else
+    if((freq>125)||(freq<0))
+    #endif
 		return 0;
 	else
 		nRF24L01_Freq = freq;
@@ -175,11 +172,12 @@ void nRF24L01P::RX_Mode(void)
 {
     unsigned char buf[5]={0};
 
-	SPI_Read_Buf(TX_ADDR, buf, ADR_WIDTH);
+    nRF24L01_CE_L();
+    nRF24L01_Delay_us(1);
     
+	SPI_Read_Buf(TX_ADDR, buf, ADR_WIDTH);
 	SPI_Write_Buf(WRITE_nRF_REG + RX_ADDR_P0, RX_ADDRESS, ADR_WIDTH);
 
-    
 	SPI_WR_Reg(WRITE_nRF_REG + EN_AA, 0);
 	SPI_WR_Reg(WRITE_nRF_REG + EN_RXADDR, 0x01);
 	SPI_WR_Reg(WRITE_nRF_REG + SETUP_RETR, 0x1a);
@@ -188,14 +186,18 @@ void nRF24L01P::RX_Mode(void)
 	SPI_WR_Reg(WRITE_nRF_REG + RF_SETUP, nRF24L01_power_rate);
 
 	SPI_WR_Reg(WRITE_nRF_REG + CONFIG, 0x03);
-
+    nRF24L01_CE_H();
 	nRF24L01_Delay_us(200);
+    
 }
 
 void nRF24L01P::TX_Mode(void)
 {
 
 
+    nRF24L01_CE_L();
+    nRF24L01_Delay_us(1);
+    
 	SPI_Write_Buf(WRITE_nRF_REG + TX_ADDR, TX_ADDRESS, ADR_WIDTH);
 	SPI_Write_Buf(WRITE_nRF_REG + RX_ADDR_P0, RX_ADDRESS, ADR_WIDTH);
 
@@ -206,6 +208,8 @@ void nRF24L01P::TX_Mode(void)
 	SPI_WR_Reg(WRITE_nRF_REG + RF_SETUP,  nRF24L01_power_rate);
 	SPI_WR_Reg(WRITE_nRF_REG + CONFIG, 0x02);
 
+    nRF24L01_CE_H();
+	nRF24L01_Delay_us(200);
 }
 
 void nRF24L01P::nRF24L01_TxPacket(unsigned char * tx_buf)
@@ -298,14 +302,24 @@ unsigned char nRF24L01P::nRF24L01_SPI_Send_Byte(unsigned char dat)
   return _SPI->transfer(dat);
 }
 
+void nRF24L01P::nRF24L01_CE_H(void)
+{
+	digitalWrite(ce,HIGH);
+}
+
+void nRF24L01P::nRF24L01_CE_L(void)
+{
+	digitalWrite(ce,LOW);
+}
+
 void nRF24L01P::nRF24L01_SPI_NSS_H(void)
 {
-	digitalWrite(109,HIGH);
+	digitalWrite(spi_cs,HIGH);
 }
 
 void nRF24L01P::nRF24L01_SPI_NSS_L(void)
 {
-	digitalWrite(109,LOW);
+	digitalWrite(spi_cs,LOW);
 }
 
 //Define the other function
