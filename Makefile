@@ -116,6 +116,8 @@ HEADERS_itead_nRF24L01-lite		:= $(addprefix libraries/itead_nRF24L01-lite/,$(HEA
 HEADERS_itead_NRF24L01P		:= NRF24L01P.h
 HEADERS_itead_NRF24L01P		:= $(addprefix libraries/itead_NRF24L01P/,$(HEADERS_itead_NRF24L01P))
 
+HEADERS_itead_SHT1x		:= SHT1x.h
+HEADERS_itead_SHT1x		:= $(addprefix libraries/itead_SHT1x/,$(HEADERS_itead_SHT1x))
 
 #
 # include config.mk for optional libraries.
@@ -141,6 +143,7 @@ export INSTALL_LIBRARIES_itead_TinyGPS
 export INSTALL_LIBRARIES_itead_PN532_SPI
 export INSTALL_LIBRARIES_itead_nRF24L01-lite
 export INSTALL_LIBRARIES_itead_NRF24L01P
+export INSTALL_LIBRARIES_itead_SHT1x
 
 endif  # ifeq (config.mk,$(wildcard config.mk))
 
@@ -180,6 +183,9 @@ ifeq ($(INSTALL_LIBRARIES_itead_NRF24L01P),y)
 HEADERS_libraries += $(HEADERS_itead_NRF24L01P)
 endif
 
+ifeq ($(INSTALL_LIBRARIES_itead_SHT1x),y)
+HEADERS_libraries += $(HEADERS_itead_SHT1x)
+endif
 
 
 ###############################################################################

@@ -33,6 +33,9 @@ ifeq ($(INSTALL_LIBRARIES_itead_NRF24L01P),y)
 OBJS += itead_NRF24L01P.o
 endif
 
+ifeq ($(INSTALL_LIBRARIES_itead_SHT1x),y)
+OBJS += itead_SHT1x.o
+endif
 
 
 .PHONY: all
