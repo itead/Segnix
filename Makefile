@@ -66,7 +66,7 @@ INSTALL_USR_LOCAL_BIN := $(INSTALL_USR_BIN)
 ###############################################################################
 # SDK components needed to be copied into SYS_UDEV_RULES
 ###############################################################################
-INSTALL_UDEV_RULES := tools/20-itead.rules
+INSTALL_UDEV_RULES := tools/final-itead.rules
 
 
 ###############################################################################
@@ -113,6 +113,9 @@ HEADERS_itead_PN532_SPI		:= $(addprefix libraries/itead_PN532_SPI/,$(HEADERS_ite
 HEADERS_itead_nRF24L01-lite 		:= nRF24L01P.h
 HEADERS_itead_nRF24L01-lite		:= $(addprefix libraries/itead_nRF24L01-lite/,$(HEADERS_itead_nRF24L01-lite))
 
+HEADERS_itead_NRF24L01P		:= NRF24L01P.h
+HEADERS_itead_NRF24L01P		:= $(addprefix libraries/itead_NRF24L01P/,$(HEADERS_itead_NRF24L01P))
+
 
 #
 # include config.mk for optional libraries.
@@ -137,7 +140,7 @@ export INSTALL_LIBRARIES_itead_GFX
 export INSTALL_LIBRARIES_itead_TinyGPS
 export INSTALL_LIBRARIES_itead_PN532_SPI
 export INSTALL_LIBRARIES_itead_nRF24L01-lite
-
+export INSTALL_LIBRARIES_itead_NRF24L01P
 
 endif  # ifeq (config.mk,$(wildcard config.mk))
 
@@ -172,6 +175,11 @@ endif
 ifeq ($(INSTALL_LIBRARIES_itead_nRF24L01-lite),y)
 HEADERS_libraries += $(HEADERS_itead_nRF24L01-lite)
 endif
+
+ifeq ($(INSTALL_LIBRARIES_itead_NRF24L01P),y)
+HEADERS_libraries += $(HEADERS_itead_NRF24L01P)
+endif
+
 
 
 ###############################################################################

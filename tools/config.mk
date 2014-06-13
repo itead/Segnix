@@ -25,3 +25,4 @@ INSTALL_LIBRARIES_itead_GFX             := y
 INSTALL_LIBRARIES_itead_TinyGPS         := y
 INSTALL_LIBRARIES_itead_PN532_SPI       := y
 INSTALL_LIBRARIES_itead_nRF24L01-lite       	:= y
+INSTALL_LIBRARIES_itead_NRF24L01P		:= y

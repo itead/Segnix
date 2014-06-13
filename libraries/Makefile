@@ -29,6 +29,11 @@ ifeq ($(INSTALL_LIBRARIES_itead_nRF24L01-lite),y)
 OBJS += itead_nRF24L01-lite.o
 endif
 
+ifeq ($(INSTALL_LIBRARIES_itead_NRF24L01P),y)
+OBJS += itead_NRF24L01P.o
+endif
+
+
 
 .PHONY: all
 all: libiteadmodule.so
