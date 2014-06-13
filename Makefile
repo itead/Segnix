@@ -110,8 +110,8 @@ HEADERS_itead_TinyGPS		:= $(addprefix libraries/itead_TinyGPS/,$(HEADERS_itead_T
 HEADERS_itead_PN532_SPI 	:= PN532.h
 HEADERS_itead_PN532_SPI		:= $(addprefix libraries/itead_PN532_SPI/,$(HEADERS_itead_PN532_SPI))
 
-HEADERS_itead_nRF24L01 		:= nRF24L01P.h
-HEADERS_itead_nRF24L01		:= $(addprefix libraries/itead_nRF24L01/,$(HEADERS_itead_nRF24L01))
+HEADERS_itead_nRF24L01-lite 		:= nRF24L01P.h
+HEADERS_itead_nRF24L01-lite		:= $(addprefix libraries/itead_nRF24L01-lite/,$(HEADERS_itead_nRF24L01-lite))
 
 
 #
@@ -136,7 +136,7 @@ export INSTALL_LIBRARIES_itead_SSD1306
 export INSTALL_LIBRARIES_itead_GFX
 export INSTALL_LIBRARIES_itead_TinyGPS
 export INSTALL_LIBRARIES_itead_PN532_SPI
-export INSTALL_LIBRARIES_itead_nRF24L01
+export INSTALL_LIBRARIES_itead_nRF24L01-lite
 
 
 endif  # ifeq (config.mk,$(wildcard config.mk))
@@ -169,8 +169,8 @@ ifeq ($(INSTALL_LIBRARIES_itead_PN532_SPI),y)
 HEADERS_libraries += $(HEADERS_itead_PN532_SPI)
 endif
 
-ifeq ($(INSTALL_LIBRARIES_itead_nRF24L01),y)
-HEADERS_libraries += $(HEADERS_itead_nRF24L01)
+ifeq ($(INSTALL_LIBRARIES_itead_nRF24L01-lite),y)
+HEADERS_libraries += $(HEADERS_itead_nRF24L01-lite)
 endif
 
 

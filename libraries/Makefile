@@ -25,8 +25,8 @@ ifeq ($(INSTALL_LIBRARIES_itead_PN532_SPI),y)
 OBJS += itead_PN532_SPI.o
 endif
 
-ifeq ($(INSTALL_LIBRARIES_itead_nRF24L01),y)
-OBJS += itead_nRF24L01.o
+ifeq ($(INSTALL_LIBRARIES_itead_nRF24L01-lite),y)
+OBJS += itead_nRF24L01-lite.o
 endif
 
 
