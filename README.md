@@ -40,6 +40,7 @@ run perfectly with or without few changes.
 * Support for GSM(SIM900/SIM908) module including GPRS/GPS operations
 * Support for NFC(PN532) module
 * Support for nRF24L01 module
+* Support for Temperature & Humidity module
 * More libraries are being developed
  
 
