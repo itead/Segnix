@@ -39,7 +39,7 @@ typedef struct pin_no_port_index_map{
 
 #ifdef BOARD_ITEADUINO_PLUS
 
-#define PIN_MAX		137
+#define PIN_MAX		138
 #define PIN_MIN		9
 #define GPIO_SIZE   (1*BLOCK_SIZE)
 #define GPIO_BASE   (0x01c20800)
