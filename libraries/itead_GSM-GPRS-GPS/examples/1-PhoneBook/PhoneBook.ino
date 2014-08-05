@@ -1,7 +1,6 @@
 //Simple sketch to delete/get/write phone number.
 #include <SIM900.h>
 
-//static SIMCOM900 gsm(11,Serial2);
 static SIMCOM900 gsm(11,Serial2);
 
 boolean started=false;

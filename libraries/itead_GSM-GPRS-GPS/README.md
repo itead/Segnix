@@ -41,7 +41,7 @@ Contributions have been made by the following organizations:
 - [Hwkitchen](http://www.hwkitchen.com)
 
 As well as, but not limited to, the following individuals:
- - [@MarcoMartines](https://github.com/MarcoMartines)
- - [@madmaze](https://github.com/madmaze)
+ - [MarcoMartines](https://github.com/MarcoMartines)
+ - [madmaze](https://github.com/madmaze)
  - commiters from google code: https://code.google.com/p/gsm-shield-arduino/people/list
 names listed in no particular order.

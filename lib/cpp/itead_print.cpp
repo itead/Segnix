@@ -1,3 +1,8 @@
+/**
+ * @file itead_print.cpp
+ *
+ * copy of Print.cpp and modified by Wu Pengfei.
+ */
 /*
  itead_print.cpp - copy of Print.cpp and modified by Wu Pengfei.
 

@@ -1,25 +1,17 @@
-/********************************************************************
-* File		:	itead_gpio.h
-* Desc		:	Provide the implementation of Arduino API on gpio
-* Author	: 	Wu Pengfei
-* Company	:	ITEAD Intelligent Systems Co.,Ltd.(http://imall.iteadstudio.com/)
-* Date		:	2014/3/11
-* History	:	Version		Modified by		Date		What
-*				v1.0		Wu Pengfei		2014/3/11	Create
-********************************************************************/
-
-/*
- * (C) Copyright 2014
- * ITEAD Intelligent Systems Co., Ltd. <http://imall.iteadstudio.com>
- * Wu Pengfei<pengfei.wu@itead.cc>
+/**
+ * @file itead_gpio.h
  *
+ * Provide the implementation of Arduino API on gpio
+ *
+ * @author  Wu Pengfei (email:<pengfei.wu@itead.cc>)
+ * @date    2014/3/11
+ * @copyright 
+ * Copyright (C) 2013-2014 ITEAD Intelligent Systems Co., Ltd. \n
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
  * published by the Free Software Foundation; either version 2 of
  * the License, or (at your option) any later version.
- *
  */
-
 #ifndef __ITEAD_GPIO_H__
 #define __ITEAD_GPIO_H__
 

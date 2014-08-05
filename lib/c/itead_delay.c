@@ -1,26 +1,21 @@
-/********************************************************************
-* File		:	itead_delay.c
-* Desc		:	Provide the implementation of Arduino API on delay.
+/**
+ * @file itead_delay.c
+ *
+ * Provide the implementation of Arduino API on delay.
+ * 
 *				Actually,it is simple so that it may not meet your
 *				need about fatal-time application.
-* Author	: 	Wu Pengfei
-* Company	:	ITEAD Intelligent Systems Co.,Ltd.(http://imall.iteadstudio.com/)
-* Date		:	2014/3/11
-* History	:	Version		Modified by		Date		What
-*				v1.0		Wu Pengfei		2014/3/11	Create
-********************************************************************/
-
-/*
- * (C) Copyright 2014
- * ITEAD Intelligent Systems Co., Ltd. <http://imall.iteadstudio.com>
- * Wu Pengfei<pengfei.wu@itead.cc>
  *
+ * @author  Wu Pengfei (email:<pengfei.wu@itead.cc>)
+ * @date    2014/3/11
+ * @copyright 
+ * Copyright (C) 2013-2014 ITEAD Intelligent Systems Co., Ltd. \n
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
  * published by the Free Software Foundation; either version 2 of
  * the License, or (at your option) any later version.
- *
  */
+
 #include <sys/time.h>
 
 #include <itead_delay.h>

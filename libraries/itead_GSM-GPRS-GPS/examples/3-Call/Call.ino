@@ -1,4 +1,3 @@
-//Simple sketch to delete/get/write phone number.
 #include <SIM900.h>
 #include <sms.h>
 #include <call.h>
