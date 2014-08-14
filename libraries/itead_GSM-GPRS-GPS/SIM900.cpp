@@ -276,7 +276,7 @@ boolean SIMCOM900::readCall(char* number, int nlength)
      if(WaitResp(5000, 50, "+CLIP: \"")!=RX_FINISHED_STR_RECV)
           //if(_tf.find("+CLIP: \""))
      {
-          _tf.getString("", "\"", number, nlength);
+          _tf.getString((char *)"", (char *)"\"", number, nlength);
           
           SimpleWriteln(F("ATH"));
           delay(1000);
@@ -357,7 +357,7 @@ int SIMCOM900::getCCI(char *cci)
      SimpleWriteln(F("AT+QCCID"));
 
      //Read response from modem
-     _tf.getString("AT+QCCID\r\r\r\n","\r\n",cci, 21);
+     _tf.getString((char *)"AT+QCCID\r\r\r\n",(char *)"\r\n",cci, 21);
 
      //Expect str_ok.
      if(WaitResp(5000, 50, str_ok)!=RX_FINISHED_STR_NOT_RECV)
@@ -377,7 +377,7 @@ int SIMCOM900::getIMEI(char *imei)
      SimpleWriteln(F("AT+GSN"));
 
      //Read response from modem
-     _tf.getString("\r\n","\r\n",imei, 16);
+     _tf.getString((char *)"\r\n",(char *)"\r\n",imei, 16);
 
      //Expect str_ok.
      if(WaitResp(5000, 50, str_ok)!=RX_FINISHED_STR_NOT_RECV)

@@ -15,6 +15,8 @@
 #ifndef __ITEAD_GPIO_PIN_MAP_H__
 #define __ITEAD_GPIO_PIN_MAP_H__
 
+#include <assert.h>
+
 #include <itead_config.h>
 #include <itead_global.h>
 
@@ -29,7 +31,7 @@ typedef struct pin_no_port_index_map{
 } pin_no_port_index_map;
 
 
-#ifdef BOARD_ITEADUINO_PLUS
+#if defined(BOARD_ITEADUINO_PLUS)
 
 #define PIN_MAX		138
 #define PIN_MIN		9
@@ -240,6 +242,8 @@ static const pin_no_port_index_map pnp[] = {
 	{PORT_GPIO,	31}	,	// 2
 };
 
+#else
+    assert(! "Unsupported Board. You need to choose a valid one.");
 #endif
 
 

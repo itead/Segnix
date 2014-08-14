@@ -15,13 +15,14 @@
 #ifndef __ITEAD_GLOBAL_H__
 #define __ITEAD_GLOBAL_H__
 
+#include <stdio.h>
+#include <stdint.h>
+#include <itead_config.h>
 
 #ifdef __cplusplus
 extern "C"{
 #endif
-#include <stdio.h>
-#include <stdint.h>
-#include <itead_config.h>
+
 
 #define true	0x1
 #define false	0x0
@@ -34,10 +35,12 @@ typedef uint8_t byte;
 
 #ifdef SDKERR_OUTPUT
 #define sdkerr(fmt, args...)	\
+    do {                                                                    \
 		printf("\n[SDKERROR:%s,%d,%s]-> ",__FILE__,__LINE__,__FUNCTION__);\
-		printf(fmt, ##args)
+		printf(fmt, ##args);                                                \
+    } while(0)
 #else
-#define sdkerr(fmt, args...)	
+#define sdkerr(fmt, args...) do{}while(0)
 #endif
 
 #define PI 3.1415926535897932384626433832795

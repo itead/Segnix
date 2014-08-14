@@ -84,6 +84,7 @@ HEADERS_include += itead_serial.h
 HEADERS_include += itead_spi.h
 HEADERS_include += itead_utility.h
 HEADERS_include += itead_wire.h
+HEADERS_include += itead_interrupt.h
 
 HEADERS_include := $(addprefix include/,$(HEADERS_include))
 

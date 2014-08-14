@@ -17,12 +17,13 @@
 
 #include <itead_config.h>
 #include <itead_print.h>
+#include <stdint.h>
 
 #ifdef __cplusplus
 extern "C"{
 #endif
 
-#include <stdint.h>
+
 
 #define		DEV_UART0		0
 #define		DEV_UART1		1

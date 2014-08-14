@@ -14,7 +14,7 @@
  */
 #ifndef __ITEAD_H__
 #define __ITEAD_H__
-
+#include <itead_config.h>
 #include <itead_global.h>
 #include <itead_gpio.h>
 #include <itead_delay.h>
@@ -22,5 +22,7 @@
 #include <itead_serial.h>
 #include <itead_wire.h>
 #include <itead_print.h>
+#include <itead_interrupt.h>
+
 
 #endif

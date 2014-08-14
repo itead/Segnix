@@ -12,17 +12,20 @@
  * published by the Free Software Foundation; either version 2 of
  * the License, or (at your option) any later version.
  */
-#include <sys/types.h>
-#include <sys/stat.h>
+ 
+
 #include <fcntl.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
-#include <linux/ioctl.h>
 #include <stdint.h>
 #include <pthread.h>
 #include <stdlib.h>
+
+#include <linux/ioctl.h>
 #include <sys/mman.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 
 #include <itead_gpio.h>
 #include <itead_delay.h>
@@ -32,14 +35,17 @@
 //#define DEBUG
 #include <itead_debug.h>
 
-typedef struct PIN_PWM_INFO_ST{
+
+typedef struct PinPwmInfo{
 	uint16_t 	pin_no;
 	uint8_t 	duty;
 	pthread_t	tid;
 	uint8_t		state;
 	uint32_t	high_us;
 	uint32_t	low_us;
-} PIN_PWM_INFO;
+} PinPwmInfo;
+
+#define CUREG   (*(cureg))
 
 /*
  * PWM_FREQUENCY 	- pwm frequency.
@@ -50,15 +56,13 @@ typedef struct PIN_PWM_INFO_ST{
 #define PWM_FREQUENCY		(1000*1)		// 1kHz
 #define PWM_PERIOD_US		((1.0/PWM_FREQUENCY)*(1000000.0))
 #define PIN_PWM_BASE_CNT	255
-#define PIN_PWM_MAX			8
-
 #define PIN_PWM_USED		1
 #define PIN_PWM_FREE		0
+#define PIN_PWM_MAX			8
 
-#define CUREG   (*(cureg))
 
-static PIN_PWM_INFO pin_pwm_infos[PIN_PWM_MAX];
-static int fd = -1;
+static PinPwmInfo           pin_pwm_infos[PIN_PWM_MAX];
+static int                  fd_dev_mem = -1;
 static volatile uint32_t *gpio_base;
 
 
@@ -72,10 +76,10 @@ static volatile uint32_t *gpio_base;
 static inline int32_t gpio_mmap(void)
 {
 	/* open already */
-	if (fd >= 0) {
+	if (fd_dev_mem >= 0) {
 		return 1;
 	}
-    if ((fd = open ("/dev/mem", O_RDWR | O_SYNC | O_CLOEXEC)) == -1) {
+    if ((fd_dev_mem = open ("/dev/mem", O_RDWR | O_SYNC | O_CLOEXEC)) == -1) {
         printf("\nopen /dev/mem error !\n");
         return 0;
     }
@@ -85,7 +89,7 @@ static inline int32_t gpio_mmap(void)
             GPIO_SIZE, 
             PROT_READ|PROT_WRITE, 
             MAP_SHARED,
-            fd, 
+            fd_dev_mem, 
             GPIO_BASE-0x800)) == MAP_FAILED){
         printf("\nmmap error !\n");
         return 0;
@@ -96,7 +100,7 @@ static inline int32_t gpio_mmap(void)
             GPIO_SIZE, 
             PROT_READ|PROT_WRITE, 
             MAP_SHARED,
-            fd, 
+            fd_dev_mem, 
             GPIO_BASE)) == MAP_FAILED){
         printf("\nmmap error !\n");
         return 0;
@@ -162,7 +166,6 @@ static inline uint32_t vertify_val(uint8_t val)
  */
 uint32_t pinMode(uint16_t pin, uint8_t mode)
 {
-	int fd;
 	uint32_t msg=0;
 	volatile uint32_t *cureg;
     uint16_t port_no ;
@@ -225,7 +228,6 @@ uint32_t pinMode(uint16_t pin, uint8_t mode)
  */
 uint32_t digitalWrite(uint16_t pin, uint8_t val)
 {
-	int fd;
 	uint32_t msg=0;
 	int i;
 	int wait_cnt=0;
@@ -307,7 +309,6 @@ uint32_t digitalWrite(uint16_t pin, uint8_t val)
  */
 uint32_t digitalRead(uint16_t pin)
 {
-	int fd;
 	uint32_t ret;
 	uint32_t msg=0;
 	debug("\ndigitalRead begin\n");
