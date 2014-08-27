@@ -12,6 +12,9 @@
  * published by the Free Software Foundation; either version 2 of
  * the License, or (at your option) any later version.
  */
+#include <itead_config.h>
+
+#if defined(BOARD_ITEADUINO_PLUS)
 
 #include <itead_interrupt.h>
 #include <itead_global.h>
@@ -262,3 +265,5 @@ int32_t interrupt(void)
     }
     return ioctl(gpio_node, CMD_EINT_INTERRUPT);
 }
+
+#endif /* #if defined(BOARD_ITEADUINO_PLUS) */

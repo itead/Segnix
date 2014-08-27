@@ -51,6 +51,8 @@ perfectly with or without few changes.
 - **Support for Temperature and Humidity module**
 - More libraries are being developed
 
+## NOTES: At present, external interrupts operation is supported on Iteaduino Plus A10/A20 hardware platform ONLY!
+
 # Where Can It Run?
  
 At present, platforms supported by SDK are fellowing:
