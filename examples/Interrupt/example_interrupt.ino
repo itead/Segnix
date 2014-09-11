@@ -3,10 +3,7 @@
  *
  * Show usage of attachInterrupt/detachInterrupt/noInterrupt/interrupt functions.
  * 
- * Before you run this example, you need to load module(itead_gpio_int_for_IteadOS_2.0.4.ko)
- * using command "sudo insmod ./itead_gpio_int_for_IteadOS_2.0.4.ko"
- *
- * @warning ONLY works on Iteaduino Plus A10/A20 for now !
+ * @warning ONLY works on ITEAD-OS for now !
  * 
  * @author  Wu Pengfei (email:<pengfei.wu@itead.cc>)
  * @date    2014/8/14

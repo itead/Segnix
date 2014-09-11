@@ -1,25 +1,25 @@
-# [IteadOS SDK](https://github.com/iteadsw/SDK)
+# [ITEAD-SDK](https://github.com/iteadsw/SDK)
 --------------------------------------------------------------------------------
  
 # What Is It?
 
-IteadOS SDK is an open-source interface of hardware access based on Linux 
-platform and compatible with Arduino API. IteadOS SDK is dedicated to provide a 
+ITEAD-SDK is an open-source interface of hardware access based on Linux 
+platform and compatible with Arduino API. ITEAD-SDK is dedicated to provide a 
 fast, efficient and unified software development environment for the person 
 like you with a strong electronic design idea. 
 
 
 # What Can It Do?
 
-Through IteadOS SDK, users can directly access to the Linux platform hardware 
-resources such as GPIO, UART, SPI, I2C etc. IteadOS SDK supports various 
+Through ITEAD-SDK, users can directly access to the Linux platform hardware 
+resources such as GPIO, UART, SPI, I2C etc. ITEAD-SDK supports various 
 hardware platforms. For now, it supports Iteaduino Plus A10/A20 Core ,ibox 
 and Raspberry Pi. Meanwhile, It also provides a great amount of libraries 
 for all kinds of child board like NFC(PN532) module, GPS shield, 
 GSM(SIM900/SIM908) shield, nRF24L01 module, OLED and LCD module etc. Without 
 any codes modified, the libraries and users codes for Arduino can be run on 
-IteadOS SDK. IteadOS SDK will support much more hardware platforms and 
-functional modules in the future. In the Linux thriving time, IteadOS SDK 
+ITEAD-SDK. ITEAD-SDK will support much more hardware platforms and 
+functional modules in the future. In the Linux thriving time, ITEAD-SDK 
 will make any impossible fanatic idea possible, are you ready?
 
 Simplifying the hardware operation makes it possible for software engineers 
@@ -32,7 +32,7 @@ some understanding of Arduino. Moreover, with the SDK, Python users can operate
 the underlying hardware more easily.
 
 
-Additionally, IteadOS SDK provides most of Arduino API. Your sketches run 
+Additionally, ITEAD-SDK provides most of Arduino API. Your sketches run 
 perfectly with or without few changes.
  
 - **Support for external interrupts operation**
@@ -275,7 +275,7 @@ more and more hardware that it supports, wiki will also be updated accordingly.
 
 # Raspberry Rv2 GPIO Pin Number Map
 
-In IteadOS SDK, Raspberry Rv2 GPIO in number is identical to PCB Connector's 
+In ITEAD-SDK, Raspberry Rv2 GPIO in number is identical to PCB Connector's 
 number order. In others words, Connector P1 covers GPIO pin number 1-26 with 
 P1's first pin corresponding to GPIO pin number 1. Specially, Connector P5 
 covers GPIO pin number 27-34 with P5's first pin corresponding to GPIO pin 
@@ -291,22 +291,6 @@ following dynamic libraries when they use the SDK:
 * libiteadcpp.so(core c++ dynamic library):/usr/lib, /usr/local/lib
 * libiteadmodule.so(all the c++ modules library):/usr/lib, /usr/local/lib
 
-# Dependency
-
-* Platform :Allwinner A10/A20 SoC
-* Kernel verson: linux-sunxi-3.4
-<https://github.com/linux-sunxi/linux-sunxi>
-* Kernel make configure
-file:<https://github.com/iteadsw/SDK/blob/master/tools/iteaduino_plus_a10_defconfig>
-and <https://github.com/iteadsw/SDK/blob/master/tools/iteaduino_plus_a20_defconfig>
-* FEX file:<https://github.com/iteadsw/SDK/blob/master/tools/iteaduino_plus_a10.fex>
-and <https://github.com/iteadsw/SDK/blob/master/tools/iteaduino_plus_a20.fex>
- 
-Users of Iteaduino Plus A10/A20 can directly download and install the
-latest system img and SDK; users of other platforms are recommended to
-use make configure provided to compile 3.4 kernel and apply the fex file
-offered.
-
 
 # Plan for Next Stage
  
@@ -320,7 +304,7 @@ If you are interested and want to contribute to this project, yet you
 are suffering from lack of the related hardware. It does not matter.
 Just write an E-mail to <info@iteadstudio.com>, attach your github
 username in it and say something about your experience on the related
-projects, Itead Studio will send you a hardware for free after approval.
+projects, ITEAD Studio will send you a hardware for free after approval.
  
 After receiving Iteaduino Plus A10/A20, you only need to:
  
@@ -330,7 +314,7 @@ After receiving Iteaduino Plus A10/A20, you only need to:
  
 # License GPL
  
-Copyright (C) 2013 Itead Studio
+Copyright (C) 2013 ITEAD Studio
 This program is free software: you can redistribute it and/or modify it under 
 the terms of the GNU General Public License as published by the Free Software 
 Foundation, either version 2 of the License, or (at your option) any later 

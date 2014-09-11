@@ -33,7 +33,7 @@ martines[ dot ]marco[ at ]gmail[ dot ]com
 ***************************************************
 
 ***************************************************
-This library is transplanted to IteadOS SDK by :
+This library is transplanted to ITEAD-SDK by :
 
 Wu Pengfei
 

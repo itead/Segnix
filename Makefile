@@ -236,29 +236,36 @@ update: uninstall clean all install
 
 .PHONY: install
 install:
-	chmod 755 \
-	$(INSTALL_USR_LIB) \
-	$(INSTALL_USR_LOCAL_LIB) \
-	$(INSTALL_USR_BIN) \
-	$(INSTALL_USR_LOCAL_BIN) \
-	$(INSTALL_UDEV_RULES) \
-	$(INSTALL_USER_INCLUDE) \
-	$(INSTALL_USER_LOCAL_INCLUDE)
+#	chmod 755 \
+#	$(INSTALL_USR_LIB) \
+#	$(INSTALL_USR_LOCAL_LIB) \
+#	$(INSTALL_USR_BIN) \
+#	$(INSTALL_USR_LOCAL_BIN) \
+#	$(INSTALL_UDEV_RULES) \
+#	$(INSTALL_USER_INCLUDE) \
+#	$(INSTALL_USER_LOCAL_INCLUDE)
 	
 # install into 	SYS_USR_LIB
 	cp -f $(INSTALL_USR_LIB) $(SYS_USR_LIB)
+	cd $(SYS_USR_LIB) && chmod 755 $(notdir $(INSTALL_USR_LIB))
 # install into 	SYS_USR_LOCAL_LIB
 	cp -f $(INSTALL_USR_LOCAL_LIB) $(SYS_USR_LOCAL_LIB)
+	cd $(SYS_USR_LOCAL_LIB) && chmod 755 $(notdir $(INSTALL_USR_LOCAL_LIB))
 # install into 	SYS_USR_BIN
 	cp -f $(INSTALL_USR_BIN) $(SYS_USR_BIN)
+	cd $(SYS_USR_BIN) && chmod 755 $(notdir $(INSTALL_USR_BIN))
 # install into 	SYS_USR_LOCAL_BIN
 	cp -f $(INSTALL_USR_LOCAL_BIN) $(SYS_USR_LOCAL_BIN)
+	cd $(SYS_USR_LOCAL_BIN) && chmod 755 $(notdir $(INSTALL_USR_LOCAL_BIN))
 # install into 	SYS_UDEV_RULES
 	cp -f $(INSTALL_UDEV_RULES) $(SYS_UDEV_RULES)
+	cd $(SYS_UDEV_RULES) && chmod 755 $(notdir $(INSTALL_UDEV_RULES))
 # install into 	SYS_USR_INCLUDE
 	cp -f $(INSTALL_USER_INCLUDE) $(SYS_USR_INCLUDE)
+	cd $(SYS_USR_INCLUDE) && chmod 755 $(notdir $(INSTALL_USER_INCLUDE))
 # install into 	SYS_USR_LOCAL_INCLUDE
 	cp -f $(INSTALL_USER_LOCAL_INCLUDE) $(SYS_USR_LOCAL_INCLUDE)
+	cd $(SYS_USR_LOCAL_INCLUDE) && chmod 755 $(notdir $(INSTALL_USER_LOCAL_INCLUDE))
 	
 	@echo "install done"
 
@@ -284,7 +291,7 @@ uninstall:
 
 ###############################################################################
 # make BoardName to generate include/itead_config.h 
-# to compile with your board supported by IteadOS SDK.
+# to compile with your board supported by ITEAD-SDK.
 # BoardName: Iteaduino_Plus,Raspberry_Rv2
 ###############################################################################
 .PHONY: Iteaduino_Plus

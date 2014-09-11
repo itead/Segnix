@@ -6,3 +6,4 @@
 #KERNEL=="ttyS*"  MODE="0766"
 #KERNEL=="mem"  MODE="0766"
 #KERNEL=="ttyAMA*"  MODE="0766"
+#KERNEL=="itead_gpio_int"  MODE="0766"

@@ -22,7 +22,7 @@
  #
  ##
 
-SDKVERSION=2.9.1
+SDKVERSION=2.9.2
 
 SDK_C_COMPILE=gcc
 SDK_CPP_COMPILE=g++
@@ -32,7 +32,7 @@ SDK_CPP_COMPILE=g++
 #echo "\$* = " $*
 
 if [[ $1 == --version ]] || [[ $1 == -v ]] || (( $# == 0 )) ; then
-	echo "IteadOS SDK v${SDKVERSION}"
+	echo "ITEAD-SDK v${SDKVERSION}"
 	exit 0
 fi
 
