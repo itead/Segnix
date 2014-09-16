@@ -216,6 +216,70 @@ typedef struct
  * -# PI14	
  * -# PI15	
  *
+ * @par On ITEAD CORE EVB
+ * -# PB5
+ * -# PB6	 
+ * -# PB7	 
+ * -# PB8	 
+ * -# PB18	
+ * -# PB19	
+ * -# PB20	
+ * -# PB21	
+ * -# PB22	
+ * -# PB23	
+ * -# PD0	 
+ * -# PD1	 
+ * -# PD2	 
+ * -# PD3	 
+ * -# PD4	 
+ * -# PD5	 
+ * -# PD6	 
+ * -# PD7	 
+ * -# PD8	 
+ * -# PD9	 
+ * -# PD10	
+ * -# PD11	
+ * -# PD12	
+ * -# PD13	
+ * -# PD14	
+ * -# PD15	
+ * -# PD16	
+ * -# PD17	
+ * -# PD18	
+ * -# PD19	
+ * -# PD20	
+ * -# PD21	
+ * -# PD22	
+ * -# PD23	
+ * -# PD24	
+ * -# PD25	
+ * -# PD26	
+ * -# PD27	
+ * -# PG0	 
+ * -# PG1	 
+ * -# PG2	 
+ * -# PG3	 
+ * -# PG4	 
+ * -# PG5	 
+ * -# PG6	 
+ * -# PG7	 
+ * -# PG8	 
+ * -# PG9	 
+ * -# PG10	
+ * -# PG11	
+ * -# PI10	
+ * -# PI11	
+ * -# PI12	
+ * -# PI13	
+ * -# PI14	
+ * -# PI15	
+ * -# PI16	
+ * -# PI17	
+ * -# PI18	
+ * -# PI19	
+ * -# PI20	
+ * -# PI21	
+ *
  * @par On Raspberry Rv2
  * -# GPIO2 
  * -# GPIO3 
@@ -270,14 +334,8 @@ typedef struct
  */
 
 
-#ifdef BOARD_ITEADUINO_PLUS
+#if defined(BOARD_ITEADUINO_PLUS)
 
-/*
- * You should always replace 9 with PIN_PD0.
- * DO NOT modify the defines of all the pin numbers.
- * In your program, it's a bad idea to pass a pin number
- * without defines here to functions related to.
- */
 #define PD0		9
 #define PD1		10
 #define PD2		11
@@ -407,7 +465,72 @@ typedef struct
 #define PI14	137
 #define PI15	138
 
-#elif defined (BOARD_RASPBERRY_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
+#elif defined (BOARD_ITEAD_CORE_EVB)
+
+#define PB5	    (0)
+#define PB6	    (1)
+#define PB7	    (2)
+#define PB8	    (3)
+#define PB18	(4)
+#define PB19	(5)
+#define PB20	(6)
+#define PB21	(7)
+#define PB22	(8)
+#define PB23	(9)
+#define PD0	    (10)
+#define PD1	    (11)
+#define PD2	    (12)
+#define PD3	    (13)
+#define PD4	    (14)
+#define PD5	    (15)
+#define PD6	    (16)
+#define PD7	    (17)
+#define PD8	    (18)
+#define PD9	    (19)
+#define PD10	(20)
+#define PD11	(21)
+#define PD12	(22)
+#define PD13	(23)
+#define PD14	(24)
+#define PD15	(25)
+#define PD16	(26)
+#define PD17	(27)
+#define PD18	(28)
+#define PD19	(29)
+#define PD20	(30)
+#define PD21	(31)
+#define PD22	(32)
+#define PD23	(33)
+#define PD24	(34)
+#define PD25	(35)
+#define PD26	(36)
+#define PD27	(37)
+#define PG0	    (38)
+#define PG1	    (39)
+#define PG2	    (40)
+#define PG3	    (41)
+#define PG4	    (42)
+#define PG5	    (43)
+#define PG6	    (44)
+#define PG7	    (45)
+#define PG8	    (46)
+#define PG9	    (47)
+#define PG10	(48)
+#define PG11	(49)
+#define PI10	(50)
+#define PI11	(51)
+#define PI12	(52)
+#define PI13	(53)
+#define PI14	(54)
+#define PI15	(55)
+#define PI16	(56)
+#define PI17	(57)
+#define PI18	(58)
+#define PI19	(59)
+#define PI20	(60)
+#define PI21	(61)
+
+#elif defined (BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
 
 #define GPIO2       3 
 #define GPIO3       5 
@@ -426,7 +549,7 @@ typedef struct
 #define GPIO11      23
 #define GPIO8       24
 #define GPIO7       26
-#if defined(BOARD_RASPBERRY_RV2)
+#if defined(BOARD_RASPBERRY_PI_RV2)
 #define GPIO28      29
 #define GPIO29      30
 #define GPIO30      31
@@ -441,9 +564,9 @@ typedef struct
 #define GPIO20      (33)
 #define GPIO21      (34)
 #define GPIO26      (35)
-#endif /* defined(BOARD_RASPBERRY_RV2) */
+#endif /* defined(BOARD_RASPBERRY_PI_RV2) */
 
-#endif /* BOARD_ITEADUINO_PLUS */
+#endif 
 
 /**
  * @addtogroup gpio

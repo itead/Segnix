@@ -69,7 +69,7 @@ public:
  * @details Accroding to different boards, user can use instances below directly,
  *  because these have been defined in ITEAD-SDK. 
  * 
- * @par On Iteaduino Plus
+ * @par On Iteaduino Plus and ITEAD CORE EVB
  * - Wire - A reference to Wire1
  * - Wire1 - I2C1(SDA:PB19, SCK:PB18)
  * - Wire2 - I2C2(SDA:PB21, SCK:PB20)
@@ -81,14 +81,14 @@ public:
 
 extern TwoWire & Wire;
 
-#ifdef BOARD_ITEADUINO_PLUS
+#if defined(BOARD_ITEADUINO_PLUS) || defined(BOARD_ITEAD_CORE_EVB)
 extern TwoWire Wire1;
 extern TwoWire Wire2;
 
-#elif defined (BOARD_RASPBERRY_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
+#elif defined (BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
 extern TwoWire Wire1;
 
-#endif /* BOARD_ITEADUINO_PLUS */
+#endif 
 
 
 #endif

@@ -117,6 +117,10 @@ public:
  * - SPI - A reference to SPI0
  * - SPI0 - SPI0(CS:PI10, SCK:PI11, MOSI:PI12, MISO:PI13)
  * 
+ * @par On ITEAD CORE EVB
+ * - SPI - A reference to SPI0
+ * - SPI0 - SPI0(CS0:PI10, CS1:PI14, SCK:PI11, MOSI:PI12, MISO:PI13)
+ *
  * @par On Raspberry Rv2 and Raspberry Pi Model B+
  * - SPI - A reference to SPI0
  * - SPI0 - SPI0(CE0:GPIO8, CE1:GPIO7, SCK:GPIO11, MOSI:GPIO10, MISO:GPIO9)
@@ -124,11 +128,11 @@ public:
 
 extern SPIClass & SPI;
 
-#ifdef BOARD_ITEADUINO_PLUS
+#if defined(BOARD_ITEADUINO_PLUS) || defined (BOARD_ITEAD_CORE_EVB)
 extern SPIClass SPI0;
-#elif defined (BOARD_RASPBERRY_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
+#elif defined (BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
 extern SPIClass SPI0;
-#endif /* BOARD_ITEADUINO_PLUS */
+#endif 
 
 #endif
 

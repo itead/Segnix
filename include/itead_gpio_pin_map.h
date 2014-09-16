@@ -31,10 +31,16 @@ typedef struct pin_no_port_index_map{
 } pin_no_port_index_map;
 
 
-#if defined(BOARD_ITEADUINO_PLUS)
+#if defined(BOARD_ITEADUINO_PLUS) || defined(BOARD_ITEAD_CORE_EVB)
 
+#if defined(BOARD_ITEADUINO_PLUS)
 #define PIN_MAX		138
 #define PIN_MIN		9
+#elif defined(BOARD_ITEAD_CORE_EVB)
+#define PIN_MAX		61
+#define PIN_MIN		0
+#endif
+
 #define GPIO_SIZE   (1*BLOCK_SIZE)
 #define GPIO_BASE   (0x01c20800)
 
@@ -48,8 +54,9 @@ typedef struct pin_no_port_index_map{
 #define PORT_H		7
 #define PORT_I		8
 
-static const pin_no_port_index_map pnp[] = {
-/*	port_no	  index				pin_no 		*/    
+static const pin_no_port_index_map pnp[] = { 
+    /*  port_no   index             pin_no      */   
+#if defined(BOARD_ITEADUINO_PLUS)
 	{PORT_NONE,	INDEX_NONE}	,	// 0
 	{PORT_NONE,	INDEX_NONE}	,	// 1
 	{PORT_NONE,	INDEX_NONE}	,	// 2
@@ -189,11 +196,76 @@ static const pin_no_port_index_map pnp[] = {
 	{PORT_B,	17}	,	// 11
 	{PORT_I,	14}	,	// 12
 	{PORT_I,	15}	,	// 13
+#elif defined(BOARD_ITEAD_CORE_EVB)
+    {PORT_B, 5	}, /* 0  */
+    {PORT_B, 6	}, /* 1  */
+    {PORT_B, 7	}, /* 2  */
+    {PORT_B, 8	}, /* 3  */
+    {PORT_B, 18	}, /* 4  */
+    {PORT_B, 19	}, /* 5  */
+    {PORT_B, 20	}, /* 6  */
+    {PORT_B, 21	}, /* 7  */
+    {PORT_B, 22	}, /* 8  */
+    {PORT_B, 23	}, /* 9  */
+    {PORT_D, 0	}, /* 10 */
+    {PORT_D, 1	}, /* 11 */
+    {PORT_D, 2	}, /* 12 */
+    {PORT_D, 3	}, /* 13 */
+    {PORT_D, 4	}, /* 14 */
+    {PORT_D, 5	}, /* 15 */
+    {PORT_D, 6	}, /* 16 */
+    {PORT_D, 7	}, /* 17 */
+    {PORT_D, 8	}, /* 18 */
+    {PORT_D, 9	}, /* 19 */
+    {PORT_D, 10	}, /* 20 */
+    {PORT_D, 11	}, /* 21 */
+    {PORT_D, 12	}, /* 22 */
+    {PORT_D, 13	}, /* 23 */
+    {PORT_D, 14	}, /* 24 */
+    {PORT_D, 15	}, /* 25 */
+    {PORT_D, 16	}, /* 26 */
+    {PORT_D, 17	}, /* 27 */
+    {PORT_D, 18	}, /* 28 */
+    {PORT_D, 19	}, /* 29 */
+    {PORT_D, 20	}, /* 30 */
+    {PORT_D, 21	}, /* 31 */
+    {PORT_D, 22	}, /* 32 */
+    {PORT_D, 23	}, /* 33 */
+    {PORT_D, 24	}, /* 34 */
+    {PORT_D, 25	}, /* 35 */
+    {PORT_D, 26	}, /* 36 */
+    {PORT_D, 27	}, /* 37 */
+    {PORT_G, 0	}, /* 38 */
+    {PORT_G, 1	}, /* 39 */
+    {PORT_G, 2	}, /* 40 */
+    {PORT_G, 3	}, /* 41 */
+    {PORT_G, 4	}, /* 42 */
+    {PORT_G, 5	}, /* 43 */
+    {PORT_G, 6	}, /* 44 */
+    {PORT_G, 7	}, /* 45 */
+    {PORT_G, 8	}, /* 46 */
+    {PORT_G, 9	}, /* 47 */
+    {PORT_G, 10	}, /* 48 */
+    {PORT_G, 11	}, /* 49 */
+    {PORT_I, 10 }, /* 50 */
+    {PORT_I, 11	}, /* 51 */
+    {PORT_I, 12	}, /* 52 */
+    {PORT_I, 13	}, /* 53 */
+    {PORT_I, 14	}, /* 54 */
+    {PORT_I, 15	}, /* 55 */
+    {PORT_I, 16	}, /* 56 */
+    {PORT_I, 17	}, /* 57 */
+    {PORT_I, 18	}, /* 58 */
+    {PORT_I, 19	}, /* 59 */
+    {PORT_I, 20	}, /* 60 */
+    {PORT_I, 21	}, /* 61 */
+
+#endif
 };
 
-#elif defined(BOARD_RASPBERRY_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
+#elif defined(BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
 
-#if defined(BOARD_RASPBERRY_RV2)
+#if defined(BOARD_RASPBERRY_PI_RV2)
 #define PIN_MAX		32
 #elif defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
 #define PIN_MAX		35
@@ -239,7 +311,7 @@ static const pin_no_port_index_map pnp[] = {
 	{PORT_GPIO,	8}	,	// 4
 	{PORT_NONE,	INDEX_NONE}	,	// 5
 	{PORT_GPIO,	7}	,	// 6
-#if defined(BOARD_RASPBERRY_RV2)	
+#if defined(BOARD_RASPBERRY_PI_RV2)	
 	{PORT_NONE,	INDEX_NONE}	,	// 27
 	{PORT_NONE,	INDEX_NONE}	,	// 28
 	{PORT_GPIO,	28}	,	// 29

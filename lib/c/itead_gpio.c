@@ -84,7 +84,7 @@ static inline int32_t gpio_mmap(void)
         return 0;
     }
 
-#if defined(BOARD_ITEADUINO_PLUS)
+#if defined(BOARD_ITEADUINO_PLUS) || defined(BOARD_ITEAD_CORE_EVB)
      if ((gpio_base = (volatile uint32_t *)mmap(0, 
             GPIO_SIZE, 
             PROT_READ|PROT_WRITE, 
@@ -95,7 +95,7 @@ static inline int32_t gpio_mmap(void)
         return 0;
     }
     gpio_base += 0x800/4;
-#elif defined(BOARD_RASPBERRY_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
+#elif defined(BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
     if ((gpio_base = (volatile uint32_t *)mmap(0, 
             GPIO_SIZE, 
             PROT_READ|PROT_WRITE, 
@@ -190,7 +190,7 @@ uint32_t pinMode(uint16_t pin, uint8_t mode)
 	}
 	
 	/* write register bo set mode */
-#ifdef BOARD_ITEADUINO_PLUS
+#if defined(BOARD_ITEADUINO_PLUS) || defined(BOARD_ITEAD_CORE_EVB)
     /* find the register address need to operate */
     port_no = pnp[pin].port_no;
     index   = pnp[pin].index;
@@ -204,7 +204,7 @@ uint32_t pinMode(uint16_t pin, uint8_t mode)
 		CUREG |= 0x1 << ((index%8)*4);
     }
 
-#elif defined(BOARD_RASPBERRY_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
+#elif defined(BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
     /* config pin as OUTPUT or INPUT */
    pin   = pnp[pin].index;
    cureg = gpio_base + GPIO_GPFSEL_OFFSET/4 + pin/10;
@@ -275,7 +275,7 @@ uint32_t digitalWrite(uint16_t pin, uint8_t val)
 	
 	
     /* write register data */
-#ifdef BOARD_ITEADUINO_PLUS
+#if defined(BOARD_ITEADUINO_PLUS) || defined(BOARD_ITEAD_CORE_EVB)
     /* get port_no and index by pin_no */
 	port_no = pnp[pin].port_no;
 	index   = pnp[pin].index;
@@ -288,7 +288,7 @@ uint32_t digitalWrite(uint16_t pin, uint8_t val)
 	} else if (val == LOW) {
 		CUREG &= ~(1 << index);
 	}
-#elif defined(BOARD_RASPBERRY_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
+#elif defined(BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
     pin   = pnp[pin].index;
     if( val == HIGH) {
         cureg = gpio_base + GPIO_GPSET_OFFSET/4 + pin/32;
@@ -353,7 +353,7 @@ uint32_t digitalRead(uint16_t pin)
 	}
 
     /* read register data */
-#ifdef BOARD_ITEADUINO_PLUS
+#if defined(BOARD_ITEADUINO_PLUS) || defined(BOARD_ITEAD_CORE_EVB)
     /* get port_no and index by pin_no */
 	port_no = pnp[pin].port_no;
 	index   = pnp[pin].index;
@@ -363,7 +363,7 @@ uint32_t digitalRead(uint16_t pin)
 		+ port_no*0x24 + 4*4);
 
 	return (CUREG & (1<<index)) ? HIGH : LOW;
-#elif defined(BOARD_RASPBERRY_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
+#elif defined(BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
     pin   = pnp[pin].index;
     cureg = gpio_base + GPIO_GPLEV_OFFSET/4 + pin/32;
     return (CUREG & (0x1<<(pin%32))) ? HIGH : LOW;

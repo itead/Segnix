@@ -101,6 +101,10 @@ typedef Serial_ SoftwareSerial;
  * - Serial4 - UART4(RX:PG11, TX:PG10)
  * - Serial7 - UART7(RX:PI21, TX:PI20)
  * 
+ * @par On ITEAD CORE EVB
+ * - Serial - A reference to Serial1
+ * - Serial1 - UART1(RX:PG11, TX:PG10)
+ *
  * @par On Raspberry Rv2 and Raspberry Pi Model B+
  * - Serial - A reference to Serial0
  * - Serial0 - UART0(RX:GPIO15, TX:GPIO14)
@@ -116,9 +120,11 @@ extern Serial_ Serial2;  /* with aliase 'Serial' */
 extern Serial_ Serial3;
 extern Serial_ Serial4;
 extern Serial_ Serial7;
-#elif defined (BOARD_RASPBERRY_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
+#elif defined (BOARD_ITEAD_CORE_EVB)
+extern Serial_ Serial1;
+#elif defined (BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
 extern Serial_ Serial0; /* with aliase 'Serial' */
-#endif /* BOARD_ITEADUINO_PLUS */
+#endif 
 
 #endif /* __cplusplus */
 

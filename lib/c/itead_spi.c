@@ -47,23 +47,23 @@ typedef struct SPI_DEVICE_ST {
  * Importantly,node is the device node of spi devices.
  */
 static SPI_DEVICE spi_devices[] = {
-#ifdef BOARD_ITEADUINO_PLUS
+#if defined(BOARD_ITEADUINO_PLUS) || defined(BOARD_ITEAD_CORE_EVB)
    [0] = {
 		.node	= "/dev/spidev0.0",
 	},
-#elif defined (BOARD_RASPBERRY_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
+#elif defined (BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
    [0] = {
 		.node	= "/dev/spidev0.0",
 	},
-#endif /* BOARD_ITEADUINO_PLUS */
+#endif 
 };
 
 static uint32_t valid_dev[] = {
-#ifdef BOARD_ITEADUINO_PLUS
+#if defined(BOARD_ITEADUINO_PLUS) || defined (BOARD_ITEAD_CORE_EVB)
     DEV_SPI0,
-#elif defined (BOARD_RASPBERRY_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
+#elif defined (BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
     DEV_SPI0,
-#endif /* BOARD_ITEADUINO_PLUS */
+#endif 
     DEV_NONE
 };
 
@@ -179,7 +179,7 @@ uint32_t SPIsetDataMode(uint32_t dev, uint8_t mode)
     smode |= (mode&0x3);
     
 	/* !!! open Full-duplex synchronous !!! */
-    #ifdef  BOARD_ITEADUINO_PLUS // add by wpf
+    #if defined(BOARD_ITEADUINO_PLUS) || defined(BOARD_ITEAD_CORE_EVB)
 	smode |= SPI_RECEIVE_ALL_ACTIVE_;
 	#endif
 	

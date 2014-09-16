@@ -15,16 +15,14 @@
 #include <cstddef>
 #include <itead_wire.h>
 
-#ifdef BOARD_ITEADUINO_PLUS
+#if defined(BOARD_ITEADUINO_PLUS) || defined(BOARD_ITEAD_CORE_EVB)
 TwoWire Wire1(DEV_I2C1);
 TwoWire & Wire = Wire1;
 TwoWire Wire2(DEV_I2C2);
-
-#elif defined (BOARD_RASPBERRY_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
+#elif defined (BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
 TwoWire Wire1(DEV_I2C1);
 TwoWire & Wire = Wire1;
-
-#endif /* BOARD_ITEADUINO_PLUS */
+#endif 
 
 
 TwoWire::TwoWire(uint32_t dev)

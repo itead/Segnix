@@ -303,11 +303,21 @@ Iteaduino_Plus:
 	@ cp tools/config.mk ./
 	@ echo "config board Iteaduino_Plus finished"
 
-.PHONY: Raspberry_Rv2
-Raspberry_Rv2:
+.PHONY: ITEAD_CORE_EVB
+ITEAD_CORE_EVB:
 	@ echo "#ifndef __ITEAD_CONFIG_H__" > include/itead_config.h
 	@ echo "#define __ITEAD_CONFIG_H__" >> include/itead_config.h
-	@ echo "#define BOARD_RASPBERRY_RV2" >> include/itead_config.h
+	@ echo "#define BOARD_ITEAD_CORE_EVB" >> include/itead_config.h
+	@ echo "#endif" >> include/itead_config.h
+	@ cp tools/config.mk ./
+	@ echo "config board ITEAD_CORE_EVB finished"
+
+
+.PHONY: Raspberry_Pi_Rv2
+Raspberry_Pi_Rv2:
+	@ echo "#ifndef __ITEAD_CONFIG_H__" > include/itead_config.h
+	@ echo "#define __ITEAD_CONFIG_H__" >> include/itead_config.h
+	@ echo "#define BOARD_RASPBERRY_PI_RV2" >> include/itead_config.h
 	@ echo "#endif" >> include/itead_config.h
 	@ cp tools/config.mk ./
 	@ echo "config board Raspberry_Rv2 finished"

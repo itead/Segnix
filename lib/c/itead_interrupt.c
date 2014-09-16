@@ -74,6 +74,18 @@ typedef struct GpioEintMap {
  * -# PI18
  * -# PI19
  *
+ * @par On ITEAD CORE EVB
+ * -# PI10
+ * -# PI11
+ * -# PI12
+ * -# PI13
+ * -# PI14
+ * -# PI15
+ * -# PI16
+ * -# PI17
+ * -# PI18
+ * -# PI19
+ *
  * @par On Raspberry Rv2 and Raspberry Pi Model B+
  * Sorry! No interruptable gpio supported now.
  */
@@ -112,7 +124,18 @@ static const GpioEintMap gpio_eint_map[GPIO_EINT_NUMBER_TOTAL+1] = {
     { PI17, 29 },
     { PI18, 30 },
     { PI19, 31 },
-#endif /* #if defined(BOARD_ITEADUINO_PLUS) */
+#elif defined(BOARD_ITEAD_CORE_EVB)
+    { PI10, 22 },
+    { PI11, 23 },
+    { PI12, 24 },
+    { PI13, 25 },
+    { PI14, 26 },
+    { PI15, 27 },
+    { PI16, 28 },
+    { PI17, 29 },
+    { PI18, 30 },
+    { PI19, 31 },
+#endif
     { GPIO_PIN_NONE, GPIO_EINT_NONE },
 };
 

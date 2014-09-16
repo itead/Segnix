@@ -52,16 +52,13 @@ perfectly with or without few changes.
 - Support for Temperature and Humidity module
 - More libraries are being developed
 
-#### NOTE
-At present, external interrupts operation is supported on Iteaduino Plus A10/A20
-hardware platform ONLY!
 
 # Where Can It Run?
  
 At present, platforms supported by SDK are fellowing:
  
 - Iteaduino Plus A10/A20
-- ibox
+- ITEAD CORE EVB(IBOX)
 - Raspberry Pi Rv2 
 - Raspberry Pi Model B+
 
@@ -103,13 +100,21 @@ source code directory.
 For now, platforms supported by SDK and the configuration commands are below. 
 You **MUST** choose the one fitting your board.
 
-- Iteaduino Plus A10/A20 and ibox
+- Iteaduino Plus A10/A20
         
         $ make Iteaduino_Plus
 
+- ITEAD CORE EVB
+        
+        $ make ITEAD_CORE_EVB
+
 - Raspberry Pi Rv2
 
-        $ make Raspberry_Rv2
+        $ make Raspberry_Pi_Rv2
+
+- Raspberry Pi Model B+
+
+		$ make Raspberry_Pi_Model_BPlus
 
 ### Step 3: Select Functional Libraries to Install (Optional)
 

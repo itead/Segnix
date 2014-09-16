@@ -16,15 +16,14 @@
 #include <itead_utility.h>
 #include <itead_global.h>
 
-#ifdef BOARD_ITEADUINO_PLUS
+#if defined(BOARD_ITEADUINO_PLUS) || defined (BOARD_ITEAD_CORE_EVB)
+SPIClass SPI0(DEV_SPI0);
+SPIClass & SPI = SPI0;
+#elif defined (BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
 SPIClass SPI0(DEV_SPI0);
 SPIClass & SPI = SPI0;
 
-#elif defined (BOARD_RASPBERRY_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
-SPIClass SPI0(DEV_SPI0);
-SPIClass & SPI = SPI0;
-
-#endif /* BOARD_ITEADUINO_PLUS */
+#endif 
 
 
 SPIClass::SPIClass(void)
@@ -56,7 +55,7 @@ void SPIClass::end()
  */
 void SPIClass::setBitOrder(uint8_t order)
 {
-#if defined(BOARD_RASPBERRY_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
+#if defined(BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
     if( order == MSBFIRST) {
 	SPIsetBitOrder(dev,order);
     } else {
