@@ -73,10 +73,9 @@ typedef struct GpioEintMap {
  * -# PI17
  * -# PI18
  * -# PI19
- * 
- * @par On Raspberry Rv2
- * No interruptable gpio supported now. 
  *
+ * @par On Raspberry Rv2 and Raspberry Pi Model B+
+ * Sorry! No interruptable gpio supported now.
  */
 
 static const GpioEintMap gpio_eint_map[GPIO_EINT_NUMBER_TOTAL+1] = {

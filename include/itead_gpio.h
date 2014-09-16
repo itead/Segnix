@@ -239,13 +239,38 @@ typedef struct
  * -# GPIO30
  * -# GPIO31
  *
+ * @par On Raspberry Pi Model B+
+ * -# GPIO2 
+ * -# GPIO3 
+ * -# GPIO4 
+ * -# GPIO14
+ * -# GPIO15
+ * -# GPIO17
+ * -# GPIO18
+ * -# GPIO27
+ * -# GPIO22
+ * -# GPIO23
+ * -# GPIO24
+ * -# GPIO10
+ * -# GPIO9 
+ * -# GPIO25
+ * -# GPIO11
+ * -# GPIO8 
+ * -# GPIO7 
+ * -# GPIO5 
+ * -# GPIO6 
+ * -# GPIO12
+ * -# GPIO13
+ * -# GPIO16
+ * -# GPIO19
+ * -# GPIO20
+ * -# GPIO21
+ * -# GPIO26
+ *
  */
 
 
 #ifdef BOARD_ITEADUINO_PLUS
-
-#define SYSLED1		58
-#define SYSLED2		57
 
 /*
  * You should always replace 9 with PIN_PD0.
@@ -382,7 +407,7 @@ typedef struct
 #define PI14	137
 #define PI15	138
 
-#elif defined (BOARD_RASPBERRY_RV2)
+#elif defined (BOARD_RASPBERRY_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
 
 #define GPIO2       3 
 #define GPIO3       5 
@@ -401,10 +426,22 @@ typedef struct
 #define GPIO11      23
 #define GPIO8       24
 #define GPIO7       26
+#if defined(BOARD_RASPBERRY_RV2)
 #define GPIO28      29
 #define GPIO29      30
 #define GPIO30      31
 #define GPIO31      32
+#elif defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
+#define GPIO5       (27)
+#define GPIO6       (28)
+#define GPIO12      (29)
+#define GPIO13      (30)
+#define GPIO16      (31)
+#define GPIO19      (32)
+#define GPIO20      (33)
+#define GPIO21      (34)
+#define GPIO26      (35)
+#endif /* defined(BOARD_RASPBERRY_RV2) */
 
 #endif /* BOARD_ITEADUINO_PLUS */
 

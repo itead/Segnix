@@ -74,7 +74,7 @@ public:
  * - Wire1 - I2C1(SDA:PB19, SCK:PB18)
  * - Wire2 - I2C2(SDA:PB21, SCK:PB20)
  * 
- * @par On Raspberry Rv2
+ * @par On Raspberry Rv2 and Raspberry Pi Model B+
  * - Wire - A reference to Wire1
  * - Wire1 - I2C1(SDA:GPIO2, SCK:GPIO3)
  */
@@ -85,7 +85,7 @@ extern TwoWire & Wire;
 extern TwoWire Wire1;
 extern TwoWire Wire2;
 
-#elif defined (BOARD_RASPBERRY_RV2)
+#elif defined (BOARD_RASPBERRY_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
 extern TwoWire Wire1;
 
 #endif /* BOARD_ITEADUINO_PLUS */

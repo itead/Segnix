@@ -532,9 +532,9 @@ uint32_t PN532::readPassiveTargetID(uint8_t cardbaudrate)
 /*Function:Transmit a byte to PN532 through the SPI interface. */
 inline void PN532::write(uint8_t _data) 
 {
-#ifdef BOARD_RASPBERRY_RV2
+#if defined(BOARD_RASPBERRY_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
     _data = BitReverseTable256[_data];
-#endif /* BOARD_RASPBERRY_RV2 */
+#endif
 
   pn532_SPI->transfer(_data);
 }
@@ -544,9 +544,9 @@ inline uint8_t PN532::read(void)
 {
   uint8_t data_ = pn532_SPI->transfer(0);
   
-#ifdef BOARD_RASPBERRY_RV2
+#if defined(BOARD_RASPBERRY_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
       data_ = BitReverseTable256[data_];
-#endif /* BOARD_RASPBERRY_RV2 */
+#endif
 
   return data_;
 }

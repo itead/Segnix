@@ -191,9 +191,14 @@ static const pin_no_port_index_map pnp[] = {
 	{PORT_I,	15}	,	// 13
 };
 
-#elif defined(BOARD_RASPBERRY_RV2)
+#elif defined(BOARD_RASPBERRY_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
 
+#if defined(BOARD_RASPBERRY_RV2)
 #define PIN_MAX		32
+#elif defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
+#define PIN_MAX		35
+#endif
+
 #define PIN_MIN		3
 #define GPIO_SIZE   (1*BLOCK_SIZE)
 #define BCM2708_PERI_BASE           (0x20000000)
@@ -234,12 +239,24 @@ static const pin_no_port_index_map pnp[] = {
 	{PORT_GPIO,	8}	,	// 4
 	{PORT_NONE,	INDEX_NONE}	,	// 5
 	{PORT_GPIO,	7}	,	// 6
-	{PORT_NONE,	INDEX_NONE}	,	// 7
-	{PORT_NONE,	INDEX_NONE}	,	// 8
-	{PORT_GPIO,	28}	,	// 9
-	{PORT_GPIO,	29}	,	// 10  
-	{PORT_GPIO,	30}	,	// 1   + 30
-	{PORT_GPIO,	31}	,	// 2
+#if defined(BOARD_RASPBERRY_RV2)	
+	{PORT_NONE,	INDEX_NONE}	,	// 27
+	{PORT_NONE,	INDEX_NONE}	,	// 28
+	{PORT_GPIO,	28}	,	// 29
+	{PORT_GPIO,	29}	,	// 30  
+	{PORT_GPIO,	30}	,	// 31
+	{PORT_GPIO,	31}	,	// 32
+#elif defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
+    {PORT_GPIO,	5 }	,	// 27
+    {PORT_GPIO,	6 }	,	// 28
+    {PORT_GPIO,	12}	,	// 29
+    {PORT_GPIO,	13}	,	// 30
+    {PORT_GPIO,	16}	,	// 31
+    {PORT_GPIO,	19}	,	// 32
+    {PORT_GPIO,	20}	,	// 33
+    {PORT_GPIO,	21}	,	// 34
+    {PORT_GPIO,	26}	,	// 35
+#endif
 };
 
 #else

@@ -20,7 +20,7 @@
 SPIClass SPI0(DEV_SPI0);
 SPIClass & SPI = SPI0;
 
-#elif defined (BOARD_RASPBERRY_RV2)
+#elif defined (BOARD_RASPBERRY_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
 SPIClass SPI0(DEV_SPI0);
 SPIClass & SPI = SPI0;
 
@@ -56,7 +56,7 @@ void SPIClass::end()
  */
 void SPIClass::setBitOrder(uint8_t order)
 {
-#ifdef BOARD_RASPBERRY_RV2
+#if defined(BOARD_RASPBERRY_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
     if( order == MSBFIRST) {
 	SPIsetBitOrder(dev,order);
     } else {

@@ -312,6 +312,16 @@ Raspberry_Rv2:
 	@ cp tools/config.mk ./
 	@ echo "config board Raspberry_Rv2 finished"
 
+.PHONY: Raspberry_Pi_Model_BPlus
+Raspberry_Pi_Model_BPlus:
+	@ echo "#ifndef __ITEAD_CONFIG_H__" > include/itead_config.h
+	@ echo "#define __ITEAD_CONFIG_H__" >> include/itead_config.h
+	@ echo "#define BOARD_RASPBERRY_PI_MODEL_BPLUS" >> include/itead_config.h
+	@ echo "#endif" >> include/itead_config.h
+	@ cp tools/config.mk ./
+	@ echo "config board Raspberry_Pi_Model_BPlus finished"
+
+
 ###############################################################################
 # Top Level Makefile End !
 ###############################################################################

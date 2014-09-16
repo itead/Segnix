@@ -63,7 +63,8 @@ At present, platforms supported by SDK are fellowing:
 - Iteaduino Plus A10/A20
 - ibox
 - Raspberry Pi Rv2 
- 
+- Raspberry Pi Model B+
+
 If you don't know yet Iteaduino Plus or ibox, see 
 <http://imall.iteadstudio.com/iteaduino-plus-a20.html/> and
 <http://imall.iteadstudio.com/ibox.html/>
@@ -291,7 +292,7 @@ following dynamic libraries when they use the SDK:
 # Plan for Next Stage
  
 - Provide more API for user's application
-- Support more hardware platform, such as Raspberry PI
+- Support more hardware platform
  
  
 # How to Contribute
