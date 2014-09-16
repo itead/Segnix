@@ -1,5 +1,5 @@
 /**
- * @file itead_interrupt.h
+ * @file itead_interrupt.c
  *
  * Porvide implementation of Arduino Interrupt API
  *
@@ -12,14 +12,9 @@
  * published by the Free Software Foundation; either version 2 of
  * the License, or (at your option) any later version.
  */
-#include <itead_config.h>
-
-#if defined(BOARD_ITEADUINO_PLUS)
-
 #include <itead_interrupt.h>
 #include <itead_global.h>
-
-#define GPIO_EINT_NUMBER_TOTAL      (32)
+#include <itead_gpio.h>
 
 #define MEMDEV_IOC_MAGIC  	        'k'
 #define CMD_EINT_REQUEST            _IOW(MEMDEV_IOC_MAGIC, 4, gpio_eint_ioctl_t)
@@ -37,39 +32,88 @@ typedef struct GpioEintMap {
 #define GPIO_PIN_NONE       (65535)
 #define GPIO_EINT_NONE      (65535)
 
+#define GPIO_EINT_NUMBER_TOTAL      (32)
+
+/**
+ * @ingroup interrupt
+ * @defgroup interrupt_gpio Interruptable GPIO Table
+ * @details Accroding to different boards, user can use gpio below as interrupt source.
+ *  These have been defined in ITEAD-SDK. When calling attachInterrupt/detachInterrupt,
+ *  user need to pass pin name below into them. 
+ *
+ * @par On Iteaduino Plus
+ * -# PH0
+ * -# PH2
+ * -# PH3
+ * -# PH4
+ * -# PH5
+ * -# PH6
+ * -# PH7
+ * -# PH8
+ * -# PH9
+ * -# PH10
+ * -# PH11
+ * -# PH12
+ * -# PH13
+ * -# PH14
+ * -# PH15
+ * -# PH16
+ * -# PH17
+ * -# PH18
+ * -# PH19
+ * -# PH20
+ * -# PH21
+ * -# PI10
+ * -# PI11
+ * -# PI12
+ * -# PI13
+ * -# PI14
+ * -# PI15
+ * -# PI16
+ * -# PI17
+ * -# PI18
+ * -# PI19
+ * 
+ * @par On Raspberry Rv2
+ * No interruptable gpio supported now. 
+ *
+ */
+
 static const GpioEintMap gpio_eint_map[GPIO_EINT_NUMBER_TOTAL+1] = {
     /* pin, eint_no */
-    { 37, 0 },
-    { 39, 2 },
-    { 40, 3 },
-    { 41, 4 },
-    { 42, 5 },
-    { 43, 6 },
-    { 44, 7 },
-    { 45, 8 },
-    { 46, 9 },
-    { 47, 10 },
-    { 48, 11 },
-    { 49, 12 },
-    { 50, 13 },
-    { 51, 14 },
-    { 52, 15 },
-    { 53, 16 },
-    { 54, 17 },
-    { 55, 18 },
-    { 56, 19 },
-    { 57, 20 },
-    { 58, 21 },
-    { 109 , 22 },
-    { 110, 23 },
-    { 111, 24 },
-    { 112, 25 },
-    { 137, 26 },
-    { 138, 27 },
-    { 78, 28 },
-    { 77, 29 },
-    { 76, 30 },
-    { 75, 31 },
+#if defined(BOARD_ITEADUINO_PLUS)
+    { PH0, 0 },
+    { PH2, 2 },
+    { PH3, 3 },
+    { PH4, 4 },
+    { PH5, 5 },
+    { PH6, 6 },
+    { PH7, 7 },
+    { PH8, 8 },
+    { PH9, 9 },
+    { PH10, 10 },
+    { PH11, 11 },
+    { PH12, 12 },
+    { PH13, 13 },
+    { PH14, 14 },
+    { PH15, 15 },
+    { PH16, 16 },
+    { PH17, 17 },
+    { PH18, 18 },
+    { PH19, 19 },
+    { PH20, 20 },
+    { PH21, 21 },
+    { PI10, 22 },
+    { PI11, 23 },
+    { PI12, 24 },
+    { PI13, 25 },
+    { PI14, 26 },
+    { PI15, 27 },
+    { PI16, 28 },
+    { PI17, 29 },
+    { PI18, 30 },
+    { PI19, 31 },
+#endif /* #if defined(BOARD_ITEADUINO_PLUS) */
     { GPIO_PIN_NONE, GPIO_EINT_NONE },
 };
 
@@ -168,12 +212,13 @@ static inline registerSigio(void)
 }
 
 /**
- * Specifies a named Interrupt Service Routine (ISR) to call when an interrupt  occurs.
+ * Register a named Interrupt Service Routine (ISR) to call when an interrupt  occurs. 
  * Replaces any previous function that was attached to the interrupt.
  * 
  * @param pin - the pin number
- * @param isr - the ISR to call when interrupt occurs.
- * @param mode - RAISING/FALLING/HIGH/LOW/DEDGE
+ * @param isr - the ISR to call when interrupt occurs on that pin.
+ * @param mode - one member of GpioEintMode. 
+ * @param pdata - private data pointer for user's purpose.  
  * 
  * @retval 0 - success
  * @retval negative - failed
@@ -208,8 +253,9 @@ int32_t attachInterrupt(uint16_t pin, gpio_eint_isr_t isr, void *pdata, uint32_t
 }
 
 /**
- * @param pin - the pin number
+ * Detach ISR from pin
  * 
+ * @param pin - the pin number
  * @retval 0 - success
  * @retval negative - failed
  */
@@ -242,6 +288,7 @@ int32_t detachInterrupt(uint16_t pin)
 }
 
 /**
+ * Disable all registered GPIO interrupts. 
  * @retval 0 - success
  * @retval negative - failed
  */
@@ -255,6 +302,7 @@ int32_t noInterrupt(void)
 
 
 /**
+ * Enable all registered GPIO interrupts. 
  * @retval 0 - success
  * @retval negative - failed
  */
@@ -265,5 +313,3 @@ int32_t interrupt(void)
     }
     return ioctl(gpio_node, CMD_EINT_INTERRUPT);
 }
-
-#endif /* #if defined(BOARD_ITEADUINO_PLUS) */

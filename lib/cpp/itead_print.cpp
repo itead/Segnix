@@ -33,18 +33,12 @@
 
 #include <itead_print.h>
 
-// Public Methods //////////////////////////////////////////////////////////////
-
-/* default implementation: may be overridden */
-size_t Print::write(const uint8_t *buffer, size_t size)
-{
-  size_t n = 0;
-  while (size--) {
-    n += write(*buffer++);
-  }
-  return n;
-}
-
+/**
+ * Print a string. 
+ *
+ * @param s - A reference of an object of class string. 
+ * @return The legnth in byte of data written actually. 
+ */
 size_t Print::print(const string &s)
 {
   size_t n = 0;
@@ -54,31 +48,71 @@ size_t Print::print(const string &s)
   return n;
 }
 
+/**
+ * Print a string. 
+ *
+ * @param str - A pointer to an array of type char. 
+ * @return The legnth in byte of data written actually. 
+ */
 size_t Print::print(const char str[])
 {
   return write(str);
 }
 
+/**
+ * Print a char 
+ *
+ * @param c - Data to print
+ * @return The legnth in byte of data written actually. 
+ */
 size_t Print::print(char c)
 {
   return write(c);
 }
 
+/**
+ * Print variable with specific scale
+ *
+ * @param b - Variable to print
+ * @param base - Scale (default:DEC)
+ * @return The legnth in byte of data written actually. 
+ */
 size_t Print::print(unsigned char b, int base)
 {
   return print((unsigned long) b, base);
 }
 
+/**
+ * Print variable with specific scale
+ *
+ * @param n - Variable to print
+ * @param base - Scale (default:DEC)
+ * @return The legnth in byte of data written actually. 
+ */
 size_t Print::print(int n, int base)
 {
   return print((long) n, base);
 }
 
+/**
+ * Print variable with specific scale
+ *
+ * @param n - Variable to print
+ * @param base - Scale (default:DEC)
+ * @return The legnth in byte of data written actually. 
+ */
 size_t Print::print(unsigned int n, int base)
 {
   return print((unsigned long) n, base);
 }
 
+/**
+ * Print variable with specific scale
+ *
+ * @param n - Variable to print
+ * @param base - Scale (default:DEC)
+ * @return The legnth in byte of data written actually. 
+ */
 size_t Print::print(long n, int base)
 {
   if (base == 0) {
@@ -95,19 +129,36 @@ size_t Print::print(long n, int base)
   }
 }
 
+/**
+ * Print variable with specific scale
+ *
+ * @param n - Variable to print
+ * @param base - Scale (default:DEC)
+ * @return The legnth in byte of data written actually. 
+ */
 size_t Print::print(unsigned long n, int base)
 {
   if (base == 0) return write(n);
   else return printNumber(n, base);
 }
 
+/**
+ * Print variable with type of Double
+ *
+ * @param n - Variable to print
+ * @param digits - Decimal digits(default:2)
+ * @return The legnth in byte of data written actually. 
+ */
 size_t Print::print(double n, int digits)
 {
   return printFloat(n, digits);
 }
 
-
-
+/** 
+ * Print a combination of "\r\n". 
+ *
+ * @return The legnth in byte of data written actually. 
+ */
 size_t Print::println(void)
 {
   size_t n = print('\r');
@@ -115,6 +166,12 @@ size_t Print::println(void)
   return n;
 }
 
+/**
+ * Print a string ending with "\r\n". 
+ *
+ * @param s - A reference of an object of class string. 
+ * @return The legnth in byte of data written actually. 
+ */
 size_t Print::println(const string &s)
 {
   size_t n = print(s);
@@ -122,13 +179,25 @@ size_t Print::println(const string &s)
   return n;
 }
 
-size_t Print::println(const char c[])
+/**
+ * Print a string ending with "\r\n". 
+ *
+ * @param str - A pointer to an array of type char. 
+ * @return The legnth in byte of data written actually. 
+ */
+size_t Print::println(const char str[])
 {
-  size_t n = print(c);
+  size_t n = print(str);
   n += println();
   return n;
 }
 
+/**
+ * Print a char ending with "\r\n".  
+ *
+ * @param c - Data to print
+ * @return The legnth in byte of data written actually. 
+ */
 size_t Print::println(char c)
 {
   size_t n = print(c);
@@ -136,6 +205,13 @@ size_t Print::println(char c)
   return n;
 }
 
+/**
+ * Print variable with specific scale ending with "\r\n". 
+ *
+ * @param b - Variable to print
+ * @param base - Scale (default:DEC)
+ * @return The legnth in byte of data written actually. 
+ */
 size_t Print::println(unsigned char b, int base)
 {
   size_t n = print(b, base);
@@ -143,6 +219,13 @@ size_t Print::println(unsigned char b, int base)
   return n;
 }
 
+/**
+ * Print variable with specific scale ending with "\r\n". 
+ *
+ * @param num - Variable to print
+ * @param base - Scale (default:DEC)
+ * @return The legnth in byte of data written actually. 
+ */
 size_t Print::println(int num, int base)
 {
   size_t n = print(num, base);
@@ -150,6 +233,13 @@ size_t Print::println(int num, int base)
   return n;
 }
 
+/**
+ * Print variable with specific scale ending with "\r\n". 
+ *
+ * @param num - Variable to print
+ * @param base - Scale (default:DEC)
+ * @return The legnth in byte of data written actually. 
+ */
 size_t Print::println(unsigned int num, int base)
 {
   size_t n = print(num, base);
@@ -157,6 +247,13 @@ size_t Print::println(unsigned int num, int base)
   return n;
 }
 
+/**
+ * Print variable with specific scale ending with "\r\n". 
+ *
+ * @param num - Variable to print
+ * @param base - Scale (default:DEC)
+ * @return The legnth in byte of data written actually. 
+ */
 size_t Print::println(long num, int base)
 {
   size_t n = print(num, base);
@@ -164,6 +261,13 @@ size_t Print::println(long num, int base)
   return n;
 }
 
+/**
+ * Print variable with specific scale ending with "\r\n". 
+ *
+ * @param num - Variable to print
+ * @param base - Scale (default:DEC)
+ * @return The legnth in byte of data written actually. 
+ */
 size_t Print::println(unsigned long num, int base)
 {
   size_t n = print(num, base);
@@ -171,6 +275,13 @@ size_t Print::println(unsigned long num, int base)
   return n;
 }
 
+/**
+ * Print variable with type of Double ending with "\r\n". 
+ *
+ * @param num - Variable to print
+ * @param digits - Decimal digits(default:2)
+ * @return The legnth in byte of data written actually. 
+ */
 size_t Print::println(double num, int digits)
 {
   size_t n = print(num, digits);
@@ -178,8 +289,6 @@ size_t Print::println(double num, int digits)
   return n;
 }
 
-
-// Private Methods /////////////////////////////////////////////////////////////
 
 size_t Print::printNumber(unsigned long n, uint8_t base) {
   char buf[8 * sizeof(long) + 1]; // Assumes 8-bit chars plus zero byte.

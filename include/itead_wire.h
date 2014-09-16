@@ -22,9 +22,6 @@
 extern "C"{
 #endif
 
-/* 
- * Only define number of devices.
- */
 #define DEV_I2C0              	0
 #define DEV_I2C1              	1
 #define DEV_I2C2              	2
@@ -44,6 +41,12 @@ uint32_t		Wireend(uint32_t dev);
 #endif
 
 #ifdef __cplusplus
+
+/**
+ * Provide simple methods to manipulate I2C bus. 
+ * 
+ * @ingroup i2c
+ */
 class TwoWire
 {
 private:
@@ -60,8 +63,24 @@ public:
 	uint8_t read(void);
 };
 
-/* The first device has a aliase compitable with Arduino */
+/**
+ * @ingroup i2c
+ * @defgroup i2c_instance Predefined Instance of class TwoWire
+ * @details Accroding to different boards, user can use instances below directly,
+ *  because these have been defined in ITEAD-SDK. 
+ * 
+ * @par On Iteaduino Plus
+ * - Wire - A reference to Wire1
+ * - Wire1 - I2C1(SDA:PB19, SCK:PB18)
+ * - Wire2 - I2C2(SDA:PB21, SCK:PB20)
+ * 
+ * @par On Raspberry Rv2
+ * - Wire - A reference to Wire1
+ * - Wire1 - I2C1(SDA:GPIO2, SCK:GPIO3)
+ */
+
 extern TwoWire & Wire;
+
 #ifdef BOARD_ITEADUINO_PLUS
 extern TwoWire Wire1;
 extern TwoWire Wire2;

@@ -41,33 +41,41 @@ Serial_::Serial_(uint32_t dev)
 	started = false;
 }
 
-/*
- * always success.
- */
+/** Overload bool operator for if(Serial). */
 Serial_::operator bool() {
 	return started;
 }
 
-
+/**
+ * Check if there are unread data. 
+ * 
+ * @retval 0 - no unread data
+ * @retval positive - the length of unread data in byte.
+ */
 int Serial_::available(void)
 {
 	return (int)Serialavailable(dev);
 }
 
+/**
+ * Start serial with baudrate. 
+ * 
+ * @param baud_count - baudrate for communication
+ */
 void Serial_::begin(uint32_t baud_count)
 {
 	Serialbegin(dev, baud_count);
 	started = true;
 }
 
+/** Close serial */
 void Serial_::end(void)
 {
 	Serialend(dev);
 	started = false;
 }
 
-/* 
- * flush has different beheavor from Arduino API
+/**
  * Empty the buffer of tx and rx instead waiting for outgoing completed.
  */
 void Serial_::flush(void)
@@ -75,6 +83,13 @@ void Serial_::flush(void)
 	Serialflush(dev);
 }
 
+/**
+ * Read one byte from received buffer. 
+ *
+ * After this call, the value of available() will be decreased by 1 byte.
+ * 
+ * @return The first unread data
+ */
 uint8_t Serial_::read(void)
 {
 	if (Serialavailable(dev)) {
@@ -84,6 +99,13 @@ uint8_t Serial_::read(void)
 	}
 }
 
+/**
+ * Write one byte to serial. 
+ *
+ * @param c - data to write
+ * @retval 1 - success
+ * @retval 0 - fail
+ */
 size_t Serial_::write(uint8_t c)
 {
 	Serialwrite(dev,c);

@@ -17,7 +17,6 @@
 #define __ITEAD_INTERRUPT_H__
 
 #include <itead_config.h>
-#if defined(BOARD_ITEADUINO_PLUS)
 
 #include <stdint.h>
 #include <fcntl.h>
@@ -34,14 +33,35 @@
 extern "C"{
 #endif
 
-typedef enum GpioEintMode{
-    GPIO_EINT_CFG_RAISING   = 0x0,
-    GPIO_EINT_CFG_FALLING   = 0x1,
-    GPIO_EINT_CFG_HIGH      = 0x2,
-    GPIO_EINT_CFG_LOW       = 0x3,
-    GPIO_EINT_CFG_DEDGE     = 0x4,
-} GpioEintMode;
+/**
+ * @addtogroup interrupt
+ * @{
+ */
 
+
+/**
+ * GPIO external interrupt trigger method. 
+ */
+enum GpioEintMode{
+    GPIO_EINT_CFG_RAISING   = 0x0, /**< Raising edge */
+    GPIO_EINT_CFG_FALLING   = 0x1, /**< Falling edge */
+    GPIO_EINT_CFG_HIGH      = 0x2, /**< High level */
+    GPIO_EINT_CFG_LOW       = 0x3, /**< Low level */
+    GPIO_EINT_CFG_DEDGE     = 0x4, /**< Double edge */
+};
+
+/** A short name of enum GpioEintMode */
+typedef enum GpioEintMode GpioEintMode;
+
+/** 
+ * Prototype of GPIO Interrupt Service Routine. 
+ *
+ * Called by ITEAD-SDK when GPIO interrupt occurs.
+ *
+ * @param pin - the number of interrupt source's pin.
+ * @param pdata - private data pointer registered by attachInterrupt(). 
+ * @note Parameters, pin and pdata passed into it, are set by ITEAD-SDK accroding to interrupt source.
+ */
 typedef void (*gpio_eint_isr_t)(uint16_t pin, void *pdata);
 
 int32_t attachInterrupt(uint16_t pin, gpio_eint_isr_t isr, void *pdata, uint32_t mode);
@@ -49,11 +69,10 @@ int32_t detachInterrupt(uint16_t pin);
 int32_t noInterrupt(void);
 int32_t interrupt(void);
 
+/** @} */
 
 #ifdef __cplusplus
 }
 #endif
-
-#endif /* #if defined(BOARD_ITEADUINO_PLUS) */
 
 #endif /* #ifndef __ITEAD_INTERRUPT_H__ */

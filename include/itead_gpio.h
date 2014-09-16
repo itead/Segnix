@@ -71,11 +71,175 @@ typedef struct
  * You should always replace 1 with HIGH.
  * DO NOT modify the defines of HIGH,LOW,INPUT,OUTPUT.
  */
-#define HIGH		0x1
-#define LOW			0x0
 
-#define INPUT 		0x0
-#define OUTPUT 		0x1
+/**
+ * @addtogroup gpio
+ * @{
+ */
+#define HIGH		(0x1)   /**< HIGH = 0x1  */
+#define LOW			(0x0)   /**< LOW = 0x0  */
+#define INPUT 		(0x0)   /**< INPUT = 0x0  */
+#define OUTPUT 		(0x1)   /**< OUTPUT = 0x1  */
+/** @} */
+
+
+/**
+ * @ingroup gpio
+ * @defgroup gpioPinName Available Pin Name
+ * @details Accroding to different boards, user can use pin name below directly, intead of a number, 
+ *  since these have been defined in ITEAD-SDK. When calling pinMode/digitalRead/digitalWrite/analogWrite 
+ *  functions, user can pass pin name replacing a number.
+ * 
+ * @par On Iteaduino Plus
+ * -# PD0	
+ * -# PD1	
+ * -# PD2	
+ * -# PD3	
+ * -# PD4	
+ * -# PD5	
+ * -# PD6	
+ * -# PD7	
+ * -# PD8	
+ * -# PD9	
+ * -# PD10	
+ * -# PD11	
+ * -# PD12	
+ * -# PD13	
+ * -# PD14	
+ * -# PD15	
+ * -# PD16	
+ * -# PD17	
+ * -# PD18	
+ * -# PD19	
+ * -# PD20	
+ * -# PD21	
+ * -# PD22	
+ * -# PD23	
+ * -# PD24	
+ * -# PD25	
+ * -# PD26	
+ * -# PD27	
+ * -# PH0	
+ * -# PH1	
+ * -# PH2	
+ * -# PH3	
+ * -# PH4	
+ * -# PH5	
+ * -# PH6	
+ * -# PH7	
+ * -# PH8	
+ * -# PH9	
+ * -# PH10	
+ * -# PH11	
+ * -# PH12	
+ * -# PH13	
+ * -# PH14	
+ * -# PH15	
+ * -# PH16	
+ * -# PH17	
+ * -# PH18	
+ * -# PH19	
+ * -# PH20	
+ * -# PH21	
+ * -# PH22	
+ * -# PH23	
+ * -# PH24	
+ * -# PH25	
+ * -# PH26	
+ * -# PH27	
+ * -# PB18	
+ * -# PB19	
+ * -# PB20	
+ * -# PB21	
+ * -# PB22	
+ * -# PB23	
+ * -# PI19	
+ * -# PI18	
+ * -# PI17	
+ * -# PI16	
+ * -# PG0	
+ * -# PG1	
+ * -# PG2	
+ * -# PG3	
+ * -# PG4	
+ * -# PG5	
+ * -# PG6	
+ * -# PG7	
+ * -# PG8	
+ * -# PG9	
+ * -# PG10	
+ * -# PG11	
+ * -# PE0	
+ * -# PE1	
+ * -# PE2	
+ * -# PE3	
+ * -# PE4	
+ * -# PE5	
+ * -# PE6	
+ * -# PE7	
+ * -# PE8	
+ * -# PE9	
+ * -# PE10	
+ * -# PE11	
+ * -# PI0	
+ * -# PI1	
+ * -# PI2	
+ * -# PI3	
+ * -# PB2	
+ * -# PI10	
+ * -# PI11	
+ * -# PI12	
+ * -# PI13	
+ * -# PI4	
+ * -# PI5	
+ * -# PI6	
+ * -# PI7	
+ * -# PI8	
+ * -# PI9	
+ * -# PI20	
+ * -# PI21	
+ * -# PB3	
+ * -# PB4	
+ * -# PB5	
+ * -# PB6	
+ * -# PB7	
+ * -# PB8	
+ * -# PB9	
+ * -# PB10	
+ * -# PB11	
+ * -# PB12	
+ * -# PB13	
+ * -# PB14	
+ * -# PB15	
+ * -# PB16	
+ * -# PB17	
+ * -# PI14	
+ * -# PI15	
+ *
+ * @par On Raspberry Rv2
+ * -# GPIO2 
+ * -# GPIO3 
+ * -# GPIO4 
+ * -# GPIO14
+ * -# GPIO15
+ * -# GPIO17
+ * -# GPIO18
+ * -# GPIO27
+ * -# GPIO22
+ * -# GPIO23
+ * -# GPIO24
+ * -# GPIO10
+ * -# GPIO9 
+ * -# GPIO25
+ * -# GPIO11
+ * -# GPIO8 
+ * -# GPIO7 
+ * -# GPIO28
+ * -# GPIO29
+ * -# GPIO30
+ * -# GPIO31
+ *
+ */
 
 
 #ifdef BOARD_ITEADUINO_PLUS
@@ -89,197 +253,166 @@ typedef struct
  * In your program, it's a bad idea to pass a pin number
  * without defines here to functions related to.
  */
-#define PIN_PD0		9
-#define PIN_PD1		10
-#define PIN_PD2		11
-#define PIN_PD3		12
-#define PIN_PD4		13
-#define PIN_PD5		14
-#define PIN_PD6		15
-#define PIN_PD7		16
-#define PIN_PD8		17
-#define PIN_PD9		18
-#define PIN_PD10	19	
-#define PIN_PD11	20	
-#define PIN_PD12	21	
-#define PIN_PD13	22	
-#define PIN_PD14	23	
-#define PIN_PD15	24	
-#define PIN_PD16	25	
-#define PIN_PD17	26	
-#define PIN_PD18	27	
-#define PIN_PD19	28	
-#define PIN_PD20	29	
-#define PIN_PD21	30	
-#define PIN_PD22	31	
-#define PIN_PD23	32	
-#define PIN_PD24	33	
-#define PIN_PD25	34	
-#define PIN_PD26	35
-#define PIN_PD27	36
-#define PIN_PH0		37
-#define PIN_PH1		38
-#define PIN_PH2		39
-#define PIN_PH3		40
-#define PIN_PH4		41
-#define PIN_PH5		42
-#define PIN_PH6		43
-#define PIN_PH7		44
-#define PIN_PH8		45
-#define PIN_PH9		46
-#define PIN_PH10	47
-#define PIN_PH11	48
-#define PIN_PH12	49
-#define PIN_PH13	50
-#define PIN_PH14	51
-#define PIN_PH15	52
-#define PIN_PH16	53
-#define PIN_PH17	54
-#define PIN_PH18	55
-#define PIN_PH19	56
-#define PIN_PH20	57
-#define PIN_PH21	58
-#define PIN_PH22	59
-#define PIN_PH23	60
-#define PIN_PH24	61
-#define PIN_PH25	62
-#define PIN_PH26	63
-#define PIN_PH27	64
+#define PD0		9
+#define PD1		10
+#define PD2		11
+#define PD3		12
+#define PD4		13
+#define PD5		14
+#define PD6		15
+#define PD7		16
+#define PD8		17
+#define PD9		18
+#define PD10	19	
+#define PD11	20	
+#define PD12	21	
+#define PD13	22	
+#define PD14	23	
+#define PD15	24	
+#define PD16	25	
+#define PD17	26	
+#define PD18	27	
+#define PD19	28	
+#define PD20	29	
+#define PD21	30	
+#define PD22	31	
+#define PD23	32	
+#define PD24	33	
+#define PD25	34	
+#define PD26	35
+#define PD27	36
+#define PH0		37
+#define PH1		38
+#define PH2		39
+#define PH3		40
+#define PH4		41
+#define PH5		42
+#define PH6		43
+#define PH7		44
+#define PH8		45
+#define PH9		46
+#define PH10	47
+#define PH11	48
+#define PH12	49
+#define PH13	50
+#define PH14	51
+#define PH15	52
+#define PH16	53
+#define PH17	54
+#define PH18	55
+#define PH19	56
+#define PH20	57
+#define PH21	58
+#define PH22	59
+#define PH23	60
+#define PH24	61
+#define PH25	62
+#define PH26	63
+#define PH27	64
 
-#define PIN_PB18	67
-#define PIN_PB19	68
-#define PIN_PB20	69
-#define PIN_PB21	70
-#define PIN_PB22	71
-#define PIN_PB23	72
+#define PB18	67
+#define PB19	68
+#define PB20	69
+#define PB21	70
+#define PB22	71
+#define PB23	72
 
-#define PIN_PI19	75	
-#define PIN_PI18	76
-#define PIN_PI17	77
-#define PIN_PI16	78
-#define PIN_PG0		79
-#define PIN_PG1		80
-#define PIN_PG2		81
-#define PIN_PG3		82
-#define PIN_PG4		83
-#define PIN_PG5		84
-#define PIN_PG6		85
-#define PIN_PG7		86
-#define PIN_PG8		87
-#define PIN_PG9		88
-#define PIN_PG10	89
-#define PIN_PG11	90
-#define PIN_PE0		91
-#define PIN_PE1		92
-#define PIN_PE2		93
-#define PIN_PE3		94
-#define PIN_PE4		95
-#define PIN_PE5		96
-#define PIN_PE6		97
-#define PIN_PE7		98
-#define PIN_PE8		99
-#define PIN_PE9		100
-#define PIN_PE10	101
-#define PIN_PE11	102
-#define PIN_PI0		103
-#define PIN_PI1		104
-#define PIN_PI2		105
+#define PI19	75	
+#define PI18	76
+#define PI17	77
+#define PI16	78
+#define PG0		79
+#define PG1		80
+#define PG2		81
+#define PG3		82
+#define PG4		83
+#define PG5		84
+#define PG6		85
+#define PG7		86
+#define PG8		87
+#define PG9		88
+#define PG10	89
+#define PG11	90
+#define PE0		91
+#define PE1		92
+#define PE2		93
+#define PE3		94
+#define PE4		95
+#define PE5		96
+#define PE6		97
+#define PE7		98
+#define PE8		99
+#define PE9		100
+#define PE10	101
+#define PE11	102
+#define PI0		103
+#define PI1		104
+#define PI2		105
 
-#define PIN_PI3		107
-#define PIN_PB2		108	
-#define PIN_PI10	109
-#define PIN_PI11	110
-#define PIN_PI12	111
-#define PIN_PI13	112
-#define PIN_PI4		113
-#define PIN_PI5		114
-#define PIN_PI6		113
-#define PIN_PI7		116
-#define PIN_PI8		117
-#define PIN_PI9		118
-#define PIN_PI20	119
-#define PIN_PI21	120
-#define PIN_PB3		121
-#define PIN_PB4		122
-#define PIN_PB5		123
-#define PIN_PB6		124
-#define PIN_PB7		125
-#define PIN_PB8		126
-#define PIN_PB9		127
-#define PIN_PB10	128
-#define PIN_PB11	129
-#define PIN_PB12	130
-#define PIN_PB13	131
+#define PI3		107
+#define PB2		108	
+#define PI10	109
+#define PI11	110
+#define PI12	111
+#define PI13	112
+#define PI4		113
+#define PI5		114
+#define PI6		113
+#define PI7		116
+#define PI8		117
+#define PI9		118
+#define PI20	119
+#define PI21	120
+#define PB3		121
+#define PB4		122
+#define PB5		123
+#define PB6		124
+#define PB7		125
+#define PB8		126
+#define PB9		127
+#define PB10	128
+#define PB11	129
+#define PB12	130
+#define PB13	131
 
-#define PIN_PB14	133
-#define PIN_PB15	134
-#define PIN_PB16	135
-#define PIN_PB17	136
-#define PIN_PI14	137
-#define PIN_PI15	138
+#define PB14	133
+#define PB15	134
+#define PB16	135
+#define PB17	136
+#define PI14	137
+#define PI15	138
 
 #elif defined (BOARD_RASPBERRY_RV2)
 
-#define GPIO0       0 
-#define GPIO1       1 
-#define GPIO2       2 
-#define GPIO3       3 
-#define GPIO4       4 
-#define GPIO5       5 
-#define GPIO6       6 
-#define GPIO7       7 
-#define GPIO8       8 
-#define GPIO9       9 
-#define GPIO10      10
-#define GPIO11      11
-#define GPIO12      12
-#define GPIO13      13
-#define GPIO14      14
-#define GPIO15      15
-#define GPIO16      16
-#define GPIO17      17
-#define GPIO18      18
-#define GPIO19      19
-#define GPIO20      20
-#define GPIO21      21
-#define GPIO22      22
-#define GPIO23      23
-#define GPIO24      24
-#define GPIO25      25
-#define GPIO26      26
-#define GPIO27      27
-#define GPIO28      28
-#define GPIO29      29
-#define GPIO30      30
-#define GPIO31      31
-#define GPIO32      32
-#define GPIO33      33
-#define GPIO34      34
-#define GPIO35      35
-#define GPIO36      36
-#define GPIO37      37
-#define GPIO38      38
-#define GPIO39      39
-#define GPIO40      40
-#define GPIO41      41
-#define GPIO42      42
-#define GPIO43      43
-#define GPIO44      44
-#define GPIO45      45
-#define GPIO46      46
-#define GPIO47      47
-#define GPIO48      48
-#define GPIO49      49
-#define GPIO50      50
-#define GPIO51      51
-#define GPIO52      52
-#define GPIO53      53
+#define GPIO2       3 
+#define GPIO3       5 
+#define GPIO4       7 
+#define GPIO14      8 
+#define GPIO15      10
+#define GPIO17      11
+#define GPIO18      12
+#define GPIO27      13
+#define GPIO22      15
+#define GPIO23      16
+#define GPIO24      18
+#define GPIO10      19
+#define GPIO9       21
+#define GPIO25      22
+#define GPIO11      23
+#define GPIO8       24
+#define GPIO7       26
+#define GPIO28      29
+#define GPIO29      30
+#define GPIO30      31
+#define GPIO31      32
 
 #endif /* BOARD_ITEADUINO_PLUS */
 
-/*
- * Declare functions. See defines of funcitons for more usage.
+/**
+ * @addtogroup gpio
+ * @{
  */
+
 uint32_t pinMode(uint16_t pin, uint8_t mode);
 uint32_t digitalWrite(uint16_t pin, uint8_t val);
 uint32_t digitalRead(uint16_t pin);
@@ -301,6 +434,8 @@ uint32_t digitalWrite8(STRUCT_8BITS_BUS *bus, uint8_t val);
 uint32_t digitalWrite16(STRUCT_16BITS_BUS *bus, uint16_t val);
 uint8_t digitalRead8(STRUCT_8BITS_BUS *bus);
 uint16_t digitalRead16(STRUCT_16BITS_BUS *bus);
+
+/** @} */
 
 #ifdef __cplusplus
 } // extern "C"

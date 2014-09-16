@@ -1,5 +1,6 @@
-# [ITEAD-SDK](https://github.com/iteadsw/SDK)
---------------------------------------------------------------------------------
+@mainpage
+
+# ITEAD-SDK
  
 # What Is It?
 
@@ -35,23 +36,25 @@ the underlying hardware more easily.
 Additionally, ITEAD-SDK provides most of Arduino API. Your sketches run 
 perfectly with or without few changes.
  
-- **Support for external interrupts operation**
-- **Support for GPIO operation**
-- **Support for GPIO 8-bit / 16-bit bus operations**
-- **Support for UART operations**
-- **Support for upper-layer time operation functions**
-- **Support for I2C bus operations**
-- **Support for SPI bus operations**
-- **Support for SSD1306-based I2C OLED screen operations**
-- **Support for 1602 LiquidCrystal module**
-- **Support for GPS module**
-- **Support for GSM(SIM900/SIM908) module including GPRS/GPS operations**
-- **Support for NFC(PN532) module**
-- **Support for nRF24L01 module**
-- **Support for Temperature and Humidity module**
+- Support for external interrupts operation
+- Support for GPIO operation
+- Support for GPIO 8-bit / 16-bit bus operations
+- Support for UART operations
+- Support for upper-layer time operation functions
+- Support for I2C bus operations
+- Support for SPI bus operations
+- Support for SSD1306-based I2C OLED screen operations
+- Support for 1602 LiquidCrystal module
+- Support for GPS module
+- Support for GSM(SIM900/SIM908) module including GPRS/GPS operations
+- Support for NFC(PN532) module
+- Support for nRF24L01 module
+- Support for Temperature and Humidity module
 - More libraries are being developed
 
-## NOTES: At present, external interrupts operation is supported on Iteaduino Plus A10/A20 hardware platform ONLY!
+#### NOTE
+At present, external interrupts operation is supported on Iteaduino Plus A10/A20
+hardware platform ONLY!
 
 # Where Can It Run?
  
@@ -89,8 +92,10 @@ You can download SDK by command:
 
 Or you can get SDK via other ways you prefer at <https://github.com/iteadsw/SDK>
 
-***Note: All the commands of the fellowing steps should be run under SDK's 
-source code directory.***
+#### NOTE
+
+All the commands of the fellowing steps should be run under SDK's 
+source code directory.
 
 ### Step 2: Configuration Your Board
 
@@ -178,7 +183,7 @@ Create a new file named "led.c" which reads as follow:
 
 Then run iteadcompile in the terminal
 
-    $ iteadcomile LED led.c
+    $ iteadcompile LED led.c
 
 You can run the LED program after compilation:
 
@@ -218,7 +223,7 @@ Create a new file named "led.cpp" which reads as follow:
     
 Then run iteadcompile in the terminal
  
-    $ iteadcomile LED led.cpp
+    $ iteadcompile LED led.cpp
  
 You can run the LED program after compilation:
 
@@ -273,15 +278,6 @@ skills on C++ program will also helpful for solving your porblems.
 Please find in project wiki at <http://wiki.iteadstudio.com/Itead_SDK>. With 
 more and more hardware that it supports, wiki will also be updated accordingly.
 
-# Raspberry Rv2 GPIO Pin Number Map
-
-In ITEAD-SDK, Raspberry Rv2 GPIO in number is identical to PCB Connector's 
-number order. In others words, Connector P1 covers GPIO pin number 1-26 with 
-P1's first pin corresponding to GPIO pin number 1. Specially, Connector P5 
-covers GPIO pin number 27-34 with P5's first pin corresponding to GPIO pin 
-number 27.
-
-
 # Dynamic Library(.so file) Catalogue
 
 Python users need to know the specific installation locations of the
@@ -294,8 +290,8 @@ following dynamic libraries when they use the SDK:
 
 # Plan for Next Stage
  
-* Provide more API for user's application
-* Support more hardware platform, such as Raspberry PI
+- Provide more API for user's application
+- Support more hardware platform, such as Raspberry PI
  
  
 # How to Contribute

@@ -22,11 +22,22 @@
 #include <itead_global.h>
 
 
-/*
- * @name	: millis
- * @desc	: returns the number of milliseconds since the system began.
- * @param	: void.
- * @return	: milliseconds - if success, 0 if failed.
+/**
+ * Simply return the time of which system run in micro second.
+ *
+ * @note This is a so simple implementation!
+ */
+uint32_t micros(void)
+{
+    return (millis()*1000);
+}
+
+
+/**
+ * Return the number of milliseconds since the system began until now.
+ *
+ * @retval >0 - success
+ * @retval 0 - fail
  */
 uint32_t millis(void)
 {
@@ -42,7 +53,11 @@ uint32_t millis(void)
 	return (uint32_t)(strtod(buffer,NULL)*1000);
 }
 
-
+/**
+ * Make caller sleep for some milliseconds specified by howLong
+ *
+ * @param howLong - time to sleep in millisecond.
+ */
 void delay (uint32_t howLong)
 {
   struct timespec sleeper, dummy ;
@@ -66,6 +81,11 @@ static inline void delayMicrosecondsHard (uint32_t howLong)
     gettimeofday (&tNow, NULL) ;
 }
 
+/**
+ * Make caller sleep for some microseconds specified by howLong
+ *
+ * @param howLong - time to sleep in microseconds.
+ */
 void delayMicroseconds (uint32_t howLong)
 {
   struct timespec sleeper ;

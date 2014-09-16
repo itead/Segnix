@@ -37,54 +37,97 @@
 #include <string>
 using std::string;
 
-
+#if 0 // replaced by Print.SCALE
 #define DEC 10
 #define HEX 16
 #define OCT 8
 #define BIN 2
+#endif
 
+/**
+ * Abstract class provides protable methods for print message and variable with format. 
+ *
+ * Subclass of Print must implements pure virtual method "virtual size_t write(uint8_t) = 0;". 
+ * Thus, print and println methods here can be used to output some message/number with specific format.
+ * The output of print and println methods is related to the implementation of pure virtual method "write".
+ * class Serial_, for example, inherits from Print and implements the "write" method with UART communication
+ * protocol. So the output will be shown on Serial Console or other terminals. 
+ *
+ * @ingroup serial
+ */
 class Print
 {
-  private:
-    int write_error;
-    size_t printNumber(unsigned long, uint8_t);
-    size_t printFloat(double, uint8_t);
-  protected:
-    void setWriteError(int err = 1) { write_error = err; }
   public:
-    Print() : write_error(0) {}
+    /** Define scale name for print/println methods */
+    enum SCALE{
+         BIN = 2,   /**< 2 */
+         OCT = 8,   /**< 8 */
+         DEC = 10,  /**< 10 */
+         HEX = 16,  /**< 16 */
+    };
   
-    int getWriteError() { return write_error; }
-    void clearWriteError() { setWriteError(0); }
+    /**
+     * Pure virtual method called by print/println methods. 
+     * Subclass must implement it for using print/println methods with format output.
+     * 
+     * @param c - Data to write
+     * @return The length of data written in byte. Acutally, 1 if success, 0 if fail. 
+     */
+    virtual size_t write(uint8_t c) = 0;
+
+    /** 
+     * Print data from buffer. 
+     *
+     * @param buffer - Pointer to data
+     * @param size - The size of data to write
+     * @return The legnth in byte of data written actually. 
+     */
+    size_t write(const uint8_t *buffer, size_t size) {
+        size_t n = 0;
+        while (size--) {
+            n += write(*buffer++);
+        }
+        return n;
+    }
   
-    virtual size_t write(uint8_t) = 0;
+    /**
+     * Print a string
+     *
+     * @param str - Pointer to an array of type char
+     * @return The legnth in byte of data written actually. 
+     */
     size_t write(const char *str) {
       if (str == NULL) return 0;
       return write((const uint8_t *)str, strlen(str));
     }
-    virtual size_t write(const uint8_t *buffer, size_t size);
     
-    size_t print(const string &);
-    size_t print(const char[]);
-    size_t print(char);
-    size_t print(unsigned char, int = DEC);
-    size_t print(int, int = DEC);
-    size_t print(unsigned int, int = DEC);
-    size_t print(long, int = DEC);
-    size_t print(unsigned long, int = DEC);
-    size_t print(double, int = 2);
+    size_t print(const string & s);
+    size_t print(const char str[]);
+    size_t print(char c);
+    size_t print(unsigned char b, int base = DEC);
+    size_t print(int n, int base = DEC);
+    size_t print(unsigned int n, int base = DEC);
+    size_t print(long n, int base = DEC);
+    size_t print(unsigned long n, int base = DEC);
+    size_t print(double n, int digits = 2);
 
     size_t println(const string &s);
-    size_t println(const char[]);
-    size_t println(char);
-    size_t println(unsigned char, int = DEC);
-    size_t println(int, int = DEC);
-    size_t println(unsigned int, int = DEC);
-    size_t println(long, int = DEC);
-    size_t println(unsigned long, int = DEC);
-    size_t println(double, int = 2);
+    size_t println(const char str[]);
+    size_t println(char c);
+    size_t println(unsigned char b, int base = DEC);
+    size_t println(int num, int base = DEC);
+    size_t println(unsigned int num, int base = DEC);
+    size_t println(long num, int scale = DEC);
+    size_t println(unsigned long num, int base = DEC);
+    size_t println(double num, int digits = 2);
     size_t println(void);
+
+private:
+    size_t printNumber(unsigned long, uint8_t);
+    size_t printFloat(double, uint8_t);
+
+    
 };
 
-#endif
+#endif /* #ifdef __cplusplus */
 #endif

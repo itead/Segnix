@@ -35,41 +35,70 @@ TwoWire::TwoWire(uint32_t dev)
 	this->dev = dev;
 }
 
+/** Open and init i2c bus. */
 void TwoWire::begin(void)
 {
 	Wirebegin(dev);
 }
 
+/** Close i2c bus. */
 void TwoWire::end(void)
 {
 	Wireend(dev);
 }
 
+/**
+ * Set slave addr and empty the tx buffer
+ * @param addr - 7bits address of slave.
+ */
 void TwoWire::beginTransmission(uint8_t addr)
 {
 	WirebeginTransmission(dev,addr);
 }
 
+/**
+ * Write val to buffer. DO NOT transmit.
+ * @return The number of data written to txbuffer.
+ */
 size_t TwoWire::write(uint8_t val)
 {
 	Wirewrite(dev,val);
 }
 
+/**
+ * Actually, transmit tx buffer data to slave.
+ * @retval 0 - success
+ * @retval 1 - fail
+ */
 uint32_t TwoWire::endTransmission(void)
 {
 	return WireendTransmission(dev);
 }
 
+/**
+ * Read data from addr to rx buffer. 
+ * @param addr - Address of i2c device. 
+ * @param count - The length of data you want to read. 
+ * @return The number of avaiable data actually.
+ */
 uint32_t TwoWire::requestFrom(uint8_t addr, uint32_t count)
 {
 	return WirerequestFrom(dev,addr,count);
 }
 
+/**
+ * Get the number of data unread in rx buffer. 
+ * @return	: the number of unread data (equivalent to available data).
+ */
 uint32_t TwoWire::available(void)
 {
 	return Wireavailable(dev);
 }
 
+/**
+ * Read a date type of uint8_t from rx buffer. 
+ * @return The first unread byte in buffer.
+ */
 uint8_t TwoWire::read(void)
 {
 	return Wireread(dev);

@@ -28,44 +28,34 @@ extern "C"{
 #define DEV_SPI2		2
 #define DEV_SPI3		3
 
-/*
- * Mode		 	Clock Polarity (CPOL)		Clock Phase (CPHA)
- * SPI_MODE0		0							0
- * SPI_MODE1		0							1
- * SPI_MODE2		1							0
- * SPI_MODE3		1							1
+/**
+ * @addtogroup spi
+ * @{
  */
-#define SPI_MODE0 0x00
-#define SPI_MODE1 0x01
-#define SPI_MODE2 0x02
-#define SPI_MODE3 0x03
 
-/*
- * These defines below can be pass to SPIsetClockDivider
- * to modify the clock of spi_clk. 
- */
-#define SPI_CLOCK_DIV1   0x01
-#define SPI_CLOCK_DIV2   0x02
-#define SPI_CLOCK_DIV4   0x04
-#define SPI_CLOCK_DIV8   0x08
-#define SPI_CLOCK_DIV16  0x10
-#define SPI_CLOCK_DIV32  0x20
-#define SPI_CLOCK_DIV64  0x40
-#define SPI_CLOCK_DIV128 0x80
+#define SPI_MODE0 0x00  /**< CPOL = 0, CPHA = 0 */
+#define SPI_MODE1 0x01  /**< CPOL = 0, CPHA = 1 */
+#define SPI_MODE2 0x02  /**< CPOL = 1, CPHA = 0 */
+#define SPI_MODE3 0x03  /**< CPOL = 1, CPHA = 1 */
 
-/*
- * You can determine the first bit to send by spi.
- */
-#define LSBFIRST 	1
-#define MSBFIRST 	0
+#define SPI_CLOCK_DIV1   0x01   /**< Clock devider = 1, only passed to SPIsetClockDivider */
+#define SPI_CLOCK_DIV2   0x02   /**< Clock devider = 2, only passed to SPIsetClockDivider */
+#define SPI_CLOCK_DIV4   0x04   /**< Clock devider = 4, only passed to SPIsetClockDivider */
+#define SPI_CLOCK_DIV8   0x08   /**< Clock devider = 8, only passed to SPIsetClockDivider */
+#define SPI_CLOCK_DIV16  0x10   /**< Clock devider = 16, only passed to SPIsetClockDivider */
+#define SPI_CLOCK_DIV32  0x20   /**< Clock devider = 32, only passed to SPIsetClockDivider */
+#define SPI_CLOCK_DIV64  0x40   /**< Clock devider = 64, only passed to SPIsetClockDivider */
+#define SPI_CLOCK_DIV128 0x80   /**< Clock devider = 128, only passed to SPIsetClockDivider */
+
+#define LSBFIRST 	1   /**< LSB first passed to SPIsetBitOrder */
+#define MSBFIRST 	0   /**< MSB first passed to SPIsetBitOrder */
+
+/** @} */
 
 uint32_t		SPIbegin(uint32_t dev);
 uint32_t		SPIend(uint32_t dev);
 
-#if 1	/* may be useless */
 uint32_t		SPIsetClockDivider(uint32_t dev, uint16_t divider);
-#endif
-
 uint32_t		SPIsetDataMode(uint32_t dev, uint8_t mode);
 uint32_t		SPIsetBitOrder(uint32_t dev, uint8_t order);
 uint8_t			SPItransfer(uint32_t dev, uint8_t val);
@@ -76,6 +66,29 @@ uint8_t			SPItransfer(uint32_t dev, uint8_t val);
 
 
 #ifdef __cplusplus
+
+/**
+ * Provide simple methods to manipulate SPI bus. 
+ * 
+ * @par An example for using SPIClass
+ * We assume that SPI is an instance of class SPIClass.
+ * @code
+ *      uint8_t receive_data;
+ *      // Step 1: init spi
+ *      SPI.begin();
+ *      // Step 2: configure
+ *      SPI.setBitOrder(MSBFIRST);
+ *      SPI.setDataMode(SPI_MODE0);
+ *      SPI.ClockDivider(SPI_CLOCK_DIV16);
+ *      // Step 3: transfer
+ *      receive_data = transfer(0x55);
+ *      ...
+ *      // Step 4: close it
+ *      SPI.end();
+ * @endcode
+ *
+ * @ingroup spi
+ */
 class SPIClass 
 {
 private:
@@ -94,8 +107,23 @@ public:
 
 };
 
-/* The first device has a aliase compitable with Arduino */
+/**
+ * @ingroup spi
+ * @defgroup spi_instance Predefined Instance of class SPIClass
+ * @details Accroding to different boards, user can use instances below directly,
+ *  because these have been defined in ITEAD-SDK. 
+ * 
+ * @par On Iteaduino Plus
+ * - SPI - A reference to SPI0
+ * - SPI0 - SPI0(CS:PI10, SCK:PI11, MOSI:PI12, MISO:PI13)
+ * 
+ * @par On Raspberry Rv2
+ * - SPI - A reference to SPI0
+ * - SPI0 - SPI0(CE0:GPIO8, CE1:GPIO7, SCK:GPIO11, MOSI:GPIO10, MISO:GPIO9)
+ */
+
 extern SPIClass & SPI;
+
 #ifdef BOARD_ITEADUINO_PLUS
 extern SPIClass SPI0;
 #elif defined (BOARD_RASPBERRY_RV2)

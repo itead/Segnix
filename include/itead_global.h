@@ -23,12 +23,26 @@
 extern "C"{
 #endif
 
+/**
+ * @addtogroup global_macro
+ * @{
+ */
+#define true	(0x1) /**< true = 0x1 */
+#define false	(0x0) /**< false = 0x0 */
+/** @} */
 
-#define true	0x1
-#define false	0x0
+/**
+ * @addtogroup global_datatype
+ * @{
+ */
 
+/**
+ * boolean is uint8_t actually. 
+ * The right value of variable typed of boolean is only true or false.
+ */
 typedef uint8_t boolean;
-typedef uint8_t byte;
+typedef uint8_t byte;       /**< byte is uint8_t actually */
+/** @} */
 
 
 #define SDKERR_OUTPUT

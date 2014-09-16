@@ -157,12 +157,13 @@ static inline uint32_t vertify_val(uint8_t val)
 	return 0;
 }
 
-/*
- * @name	: pinMode
- * @desc	: set the specific gpio(by pin number) to related mode.
- * @param	: pin - pin number.
- *			  mode - INPUT or OUTPUT.
- * @return	: 0 if success, 1 if failed.
+/**
+ * Set pin as INPUT or OUTPUT mode
+ *
+ * @param pin - the pin number
+ * @param mode - only INPUT or OUTPUT can be accepted
+ * @retval 0 - success
+ * @retval 1 - fail
  */
 uint32_t pinMode(uint16_t pin, uint8_t mode)
 {
@@ -219,12 +220,12 @@ uint32_t pinMode(uint16_t pin, uint8_t mode)
 	return 0;
 }
 
-/*
- * @name	: digitalWrite
- * @desc	: write val to the specific gpio(by pin number).
- * @param	: pin - pin number
- *			  val - HIGH or LOW
- * @return	: 0 if success, 1 if failed.
+/**
+ * Write val to the specific gpio(by pin number).
+ *
+ * @param pin - pin number
+ * @param val - HIGH or LOW
+ * @return 0 if success, 1 if failed.
  */
 uint32_t digitalWrite(uint16_t pin, uint8_t val)
 {
@@ -301,11 +302,11 @@ uint32_t digitalWrite(uint16_t pin, uint8_t val)
 	return 0;
 }
 
-/*
- * @name	: digitalRead
- * @desc	: read state of the specific gpio(by pin number).
- * @param	: pin - pin number
- * @return	: HIGH or LOW if success, 2 if failed.
+/**
+ * Read state of the specific gpio(by pin number).
+ *
+ * @param pin - pin number
+ * @return HIGH or LOW if success, 2 if failed.
  */
 uint32_t digitalRead(uint16_t pin)
 {
@@ -370,13 +371,20 @@ uint32_t digitalRead(uint16_t pin)
 }
 
 
-/*
- * @name	: set8BitsBUS
- * @desc	: set every pin of the bus to the mode specified
- * @param	: bus - pointer to a bus which has been init
- *			  DBn - n=0-7, the corresponding bits of bus
- *			  mode - INPUT or OUTPUT
- * @return	: 0 if success, 1 if failed.
+/**
+ * Set every pin of the bus to the mode specified
+ *
+ * @param bus - pointer to a bus which has been init
+ * @param DB0 - bit0 of the bus
+ * @param DB1 - bit1 of the bus
+ * @param DB2 - bit2 of the bus
+ * @param DB3 - bit3 of the bus
+ * @param DB4 - bit4 of the bus
+ * @param DB5 - bit5 of the bus
+ * @param DB6 - bit6 of the bus
+ * @param DB7 - bit7 of the bus
+ * @param mode - INPUT or OUTPUT
+ * @return 0 if success, 1 if failed.
  */
 uint32_t set8BitsBUS(STRUCT_8BITS_BUS *bus,
 	uint16_t DB0, uint16_t DB1, uint16_t DB2, uint16_t DB3,
@@ -405,13 +413,28 @@ uint32_t set8BitsBUS(STRUCT_8BITS_BUS *bus,
 	return 0;
 }
 
-/*
- * @name	: set16BitsBUS
- * @desc	: set every pin of the bus to the mode specified
- * @param	: bus - pointer to a bus which has been init
- *			  DBn - n=0-15, the corresponding bits of bus
- *			  mode - INPUT or OUTPUT
- * @return	: 0 if success, 1 if failed.
+/**
+ * Set every pin of the bus to the mode specified. 
+ *
+ * @param bus - pointer to a bus which has been init
+ * @param DB0 - bit0 of the bus
+ * @param DB1 - bit1 of the bus
+ * @param DB2 - bit2 of the bus
+ * @param DB3 - bit3 of the bus
+ * @param DB4 - bit4 of the bus
+ * @param DB5 - bit5 of the bus
+ * @param DB6 - bit6 of the bus
+ * @param DB7 - bit7 of the bus
+ * @param DB8 - bit8 of the bus
+ * @param DB9 - bit9 of the bus
+ * @param DB10 - bit10 of the bus
+ * @param DB11 - bit11 of the bus
+ * @param DB12 - bit12 of the bus
+ * @param DB13 - bit13 of the bus
+ * @param DB14 - bit14 of the bus
+ * @param DB15 - bit15 of the bus
+ * @param mode - INPUT or OUTPUT
+ * @return 0 if success, 1 if failed.
  */
 uint32_t set16BitsBUS(STRUCT_16BITS_BUS *bus, 
 	uint16_t DB0, uint16_t DB1, uint16_t DB2, uint16_t DB3,
@@ -450,12 +473,12 @@ uint32_t set16BitsBUS(STRUCT_16BITS_BUS *bus,
 	return 0;
 }
 
-/*
- * @name	: digitalWrite8
- * @desc	: write val to bus
- * @param	: bus - pointer to a bus which has been set
- *			  val - the value with type of uint8_t
- * @return	: 0 if success, 1 if failed.
+/**
+ * Write val to bus.
+ *
+ * @param bus - pointer to a bus which has been set
+ * @param val - the value with type of uint8_t
+ * @return 0 if success, 1 if failed.
  */
 uint32_t digitalWrite8(STRUCT_8BITS_BUS *bus, uint8_t val)
 {
@@ -471,12 +494,12 @@ uint32_t digitalWrite8(STRUCT_8BITS_BUS *bus, uint8_t val)
 	return 0;
 }
 
-/*
- * @name	: digitalWrite16
- * @desc	: write val to bus
- * @param	: bus - pointer to a bus which has been set
- *			  val - the value with type of uint16_t
- * @return	: 0 if success, 1 if failed.
+/**
+ * Write val to bus.
+ *
+ * @param bus - pointer to a bus which has been set
+ * @param val - the value with type of uint16_t
+ * @return  0 if success, 1 if failed.
  */
 uint32_t digitalWrite16(STRUCT_16BITS_BUS *bus, uint16_t val)
 {
@@ -492,11 +515,11 @@ uint32_t digitalWrite16(STRUCT_16BITS_BUS *bus, uint16_t val)
 	return 0;
 }
 
-/*
- * @name	: digitalRead8
- * @desc	: read value from bus
- * @param	: bus - pointer to a bus which has been set
- * @return	: value of bus
+/**
+ * Read value from bus. 
+ *
+ * @param bus - pointer to a bus which has been set
+ * @return value of bus
  */
 uint8_t digitalRead8(STRUCT_8BITS_BUS *bus)
 {
@@ -517,11 +540,11 @@ uint8_t digitalRead8(STRUCT_8BITS_BUS *bus)
 	return ret;
 }
 
-/*
- * @name	: digitalRead16
- * @desc	: read value from bus
- * @param	: bus - pointer to a bus which has been set
- * @return	: value of bus
+/**
+ * Read value from bus. 
+ *
+ * @param bus - pointer to a bus which has been set
+ * @return value of bus
  */
 uint16_t digitalRead16(STRUCT_16BITS_BUS *bus)
 {
@@ -599,13 +622,13 @@ static void *pwm_run(void *arg)
     pthread_cleanup_pop(0);
 }
 
-/*
- * @name	: analogWrite
- * @desc	: output pwm with duty via the pin.
- * @param	: pin - the number of the pin neet to output pwm.
- *			  duty ratio - 0-255.
- * @return	: 0 - success, 1 - failed.
- * @notes	: may be unstable when the duty be close to 0 or 255.
+/**
+ * Output pwm with duty via the pin. 
+ * 
+ * @param pin - the number of the pin to output pwm.
+ * @param duty - 0-255.
+ * @return 0 - success, 1 - failed.
+ * @note May be unstable when the duty be close to 0 or 255.
  *			  A delay should be insert between two analogWrite calls.
  */
 uint32_t analogWrite(uint16_t pin, uint8_t duty)

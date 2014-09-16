@@ -15,9 +15,10 @@
 #ifndef __ITEAD_SERIAL_H__
 #define __ITEAD_SERIAL_H__
 
+#include <stdint.h>
+
 #include <itead_config.h>
 #include <itead_print.h>
-#include <stdint.h>
 
 #ifdef __cplusplus
 extern "C"{
@@ -50,8 +51,11 @@ uint8_t			Serialread(uint32_t dev);
 
 
 #ifdef __cplusplus
-/*
- * Define class Serial_ 
+
+/**
+ * Provide methods to manipulate serial port.
+ *
+ * @ingroup serial
  */
 class Serial_  : public Print
 {
@@ -63,7 +67,6 @@ public:
     Serial_();
 	Serial_(uint32_t dev);
 	
-	/* Override bool operator for if(Serial) */
 	operator bool();
 	
 	int available(void);
@@ -74,8 +77,35 @@ public:
 	virtual size_t write(uint8_t c);
 
 };
-/* for some needs about SoftwareSerial */
+
+/**
+ * @addtogroup serial
+ * @{
+ */
+
+/** For some needs about SoftwareSerial */
 typedef Serial_ SoftwareSerial;
+
+/** @} */
+
+/**
+ * @ingroup serial
+ * @defgroup serial_instance Predefined Instance of class Serial_
+ * @details Accroding to different boards, user can use instances below directly,
+ *  because these have been defined in ITEAD-SDK. 
+ *
+ * @par On Iteaduino Plus
+ * - Serial - A reference to Serial4
+ * - Serial2 - UART2(RX:PI19, TX:PI18)
+ * - Serial3 - UART3(RX:PG7, TX:PG6)
+ * - Serial4 - UART4(RX:PG11, TX:PG10)
+ * - Serial7 - UART7(RX:PI21, TX:PI20)
+ * 
+ * @par On Raspberry Rv2
+ * - Serial - A reference to Serial0
+ * - Serial0 - UART0(RX:GPIO15, TX:GPIO14)
+ *
+ */
 
 
 /* The first device has a aliase compitable with Arduino */

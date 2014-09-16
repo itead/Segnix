@@ -38,16 +38,22 @@ SPIClass::SPIClass(uint32_t dev)
 	this->dev = dev;
 }
 
+/** Init SPI bus */
 void SPIClass::begin()
 {
 	SPIbegin(dev);
 }
 
+/** Close SPI bus */
 void SPIClass::end()
 {
 	SPIend(dev);
 }
 
+/**
+ * Set bit order on SPI data lines. 
+ * @param order - Only LSBFIRST or MSBFIRST.
+ */
 void SPIClass::setBitOrder(uint8_t order)
 {
 #ifdef BOARD_RASPBERRY_RV2
@@ -63,17 +69,29 @@ void SPIClass::setBitOrder(uint8_t order)
 #endif
 }
 
+/**
+ * Set data mode
+ * @param mode - Only SPI_MODE0, SPI_MODE1, SPI_MODE2 or SPI_MODE3
+ */
 void SPIClass::setDataMode(uint8_t mode)
 {
 	SPIsetDataMode(dev,mode);
 }
 
+/**
+ * Set clock divider
+ * @param divider - Only SPI_CLOCK_DIVn (n=1, 2, 4, 8, 16, 32, 64, 128)
+ */
 void SPIClass::setClockDivider(uint8_t divider)
 {
-	/* do nothing */
     SPIsetClockDivider(dev,divider);
 }
 
+/**
+ * Send and Receive data
+ * @param val - Data to send
+ * @return Data received at the same time.
+ */
 uint8_t SPIClass::transfer(uint8_t val)
 {
 	return SPItransfer(dev, val);
