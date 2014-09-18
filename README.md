@@ -14,7 +14,7 @@ like you with a strong electronic design idea.
 
 Through ITEAD-SDK, users can directly access to the Linux platform hardware 
 resources such as GPIO, UART, SPI, I2C etc. ITEAD-SDK supports various 
-hardware platforms. For now, it supports Iteaduino Plus A10/A20 Core ,ibox 
+hardware platforms. For now, it supports Iteaduino Plus A10/A20 Core, ibox 
 and Raspberry Pi. Meanwhile, It also provides a great amount of libraries 
 for all kinds of child board like NFC(PN532) module, GPS shield, 
 GSM(SIM900/SIM908) shield, nRF24L01 module, OLED and LCD module etc. Without 
@@ -55,7 +55,7 @@ perfectly with or without few changes.
 
 # Where Can It Run?
  
-At present, platforms supported by SDK are fellowing:
+At present, platforms supported by SDK are following:
  
 - Iteaduino Plus A10/A20
 - ITEAD CORE EVB(IBOX)
@@ -72,7 +72,7 @@ More platforms will be supported as soon as possible.
 # Installation and Uninstallation
 
 Before all, we assume that you have installed the required packages:
-`make build-essential git-core` in your debian system. If not, you can install
+`make build-essential git-core` in your Debian system. If not, you can install
 them by command:
  
     $ sudo apt-get install make build-essential git-core
@@ -92,7 +92,7 @@ Or you can get SDK via other ways you prefer at <https://github.com/iteadsw/SDK>
 
 #### NOTE
 
-All the commands of the fellowing steps should be run under SDK's 
+All the commands of the following steps should be run under SDK's 
 source code directory.
 
 ### Step 2: Configuration Your Board
@@ -122,7 +122,7 @@ You **MUST** choose the one fitting your board.
 
 It's allowed for user to select functional libraries to install. Open file
 `config.mk` and edit it by **adding or removing letter "#"** at the head of each
-line for **unselecting or selecting** the corresponding library. More 
+line for **deselecting or selecting** the corresponding library. More 
 description for selecting libraries can be found in `config.mk`. For example:
 
     $ vi config.mk
@@ -130,7 +130,7 @@ description for selecting libraries can be found in `config.mk`. For example:
 
 ### Step 4: Compile and Install
 
-Installing SDK requires root(super user)'s previlege. Run command:
+Installing SDK requires root(super user)'s privilege. Run command:
 
     $ make
     $ sudo make install
@@ -164,7 +164,7 @@ Create a new file named "led.c" which reads as follow:
     #include <itead.h>
     #include <stdio.h>
     
-    #define STATUS_LED1 PIN_PH21
+    #define STATUS_LED1 PH21
  
     void setup(void)
     {
@@ -203,7 +203,7 @@ Create a new file named "led.cpp" which reads as follow:
     #include <itead.h>
     #include <stdio.h>
  
-    #define STATUS_LED1 PIN_PH21
+    #define STATUS_LED1 PH21
  
     void setup(void)
     {
@@ -242,7 +242,7 @@ Create a new file named "led.ino" which contains the fellowing lines:
 
     #include <stdio.h>
     
-    #define STATUS_LED1 PIN_PH21
+    #define STATUS_LED1 PH21
  
     void setup(void)
     {
@@ -267,21 +267,21 @@ You can run the LED program after compilation:
 
 ### Note: How to understand debug information from compiler
 
-You DO NOT include the itead.h explicitly in your source file with suffex .ino.
-iteacompile will take care of everything. That means you need to know the method
+You DO NOT include the itead.h explicitly in your source file with suffix .ino.
+iteadcompile will take care of everything. That means you need to know the method
 you should use for locating your .ino sketch bugs. Actually,if you have a sketch
 named "Hello.ino" with a bug at level ERROR in line 25, you will get some ERROR 
 informations telling the ERROR bug in "Hello.cpp" with line 26(25+1) when 
-command "iteadcompile Hello Hello.ino" is executed. Why? iteacompile insert one 
-line like _include  "itead.h"_  in the head of your Hello.ino, change the suffex
+command "iteadcompile Hello Hello.ino" is executed. Why? iteadcompile insert one 
+line like _include  "itead.h"_  in the head of your Hello.ino, change the suffix
 .ino to .cpp and compile(using g++) Hello.cpp to generate Hello which is 
 executable binary file. When you encounter other bugs in your sketch,debug 
-skills on C++ program will also helpful for solving your porblems.
+skills on C++ program will also helpful for solving your problems.
 
 
 # For more help
 
-Please find in project wiki at <http://wiki.iteadstudio.com/Itead_SDK>. With 
+Please find in project wiki at <http://wiki.iteadstudio.com/ITEAD_SDK>. With 
 more and more hardware that it supports, wiki will also be updated accordingly.
 
 # Dynamic Library(.so file) Catalogue
