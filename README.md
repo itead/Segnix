@@ -238,7 +238,7 @@ You can run the LED program after compilation:
  
 ## To use SDK like an Arduino sketch(.ino)
 
-Create a new file named "led.ino" which contains the fellowing lines:
+Create a new file named "led.ino" which contains the following lines:
 
     #include <stdio.h>
     
@@ -273,7 +273,7 @@ you should use for locating your .ino sketch bugs. Actually,if you have a sketch
 named "Hello.ino" with a bug at level ERROR in line 25, you will get some ERROR 
 informations telling the ERROR bug in "Hello.cpp" with line 26(25+1) when 
 command "iteadcompile Hello Hello.ino" is executed. Why? iteadcompile insert one 
-line like _include  "itead.h"_  in the head of your Hello.ino, change the suffix
+line like `include  "itead.h"`  in the head of your Hello.ino, change the suffix
 .ino to .cpp and compile(using g++) Hello.cpp to generate Hello which is 
 executable binary file. When you encounter other bugs in your sketch,debug 
 skills on C++ program will also helpful for solving your problems.
