@@ -85,10 +85,10 @@ Only a few steps, DO IT !
 
 You can download SDK by command:
 
-    $ git clone https://github.com/iteadsw/SDK.git
+    $ git clone https://github.com/itead/SDK.git
     $ cd SDK
 
-Or you can get SDK via other ways you prefer at <https://github.com/iteadsw/SDK>
+Or you can get SDK via other ways you prefer at <https://github.com/itead/SDK>
 
 #### NOTE
 
