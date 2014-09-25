@@ -9,7 +9,6 @@ platform and compatible with Arduino API. ITEAD-SDK is dedicated to provide a
 fast, efficient and unified software development environment for the person 
 like you with a strong electronic design idea. 
 
-
 # What Can It Do?
 
 Through ITEAD-SDK, users can directly access to the Linux platform hardware 
