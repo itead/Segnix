@@ -71,6 +71,13 @@ int32_t interrupt(void);
 
 /** @} */
 
+#define GPIO_PIN_NONE       (65535)
+#define GPIO_EINT_NONE      (65535)
+
+#define GPIO_EINT_NUMBER_TOTAL      (32)
+uint32_t get_eint_no(uint16_t pin);
+
+
 #ifdef __cplusplus
 }
 #endif

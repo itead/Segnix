@@ -29,10 +29,6 @@ typedef struct GpioEintMap {
 } GpioEintMap;
 
 
-#define GPIO_PIN_NONE       (65535)
-#define GPIO_EINT_NONE      (65535)
-
-#define GPIO_EINT_NUMBER_TOTAL      (32)
 
 /**
  * @ingroup interrupt
@@ -139,7 +135,7 @@ static const GpioEintMap gpio_eint_map[GPIO_EINT_NUMBER_TOTAL+1] = {
     { GPIO_PIN_NONE, GPIO_EINT_NONE },
 };
 
-static inline uint32_t get_eint_no(uint16_t pin)
+uint32_t get_eint_no(uint16_t pin)
 {
     int32_t i;
     
