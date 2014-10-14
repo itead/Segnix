@@ -5,10 +5,11 @@
  
 # What Is It?
 
-ITEAD-SDK is an open-source interface of hardware access based on Linux 
-platform and compatible with Arduino API. ITEAD-SDK is dedicated to provide a 
-fast, efficient and unified software development environment for the person 
-like you with a strong electronic design idea. 
+ITEAD-SDK is an open-source interface library for hardware manipulation 
+based on Linux platform and compatible with Arduino API. You can work 
+with it by using C/C++ and Python. ITEAD-SDK is dedicated to provide 
+a fast, efficient and unified software development environment for the 
+person like you with a strong electronic design idea. 
 
 # Which Language?
 
