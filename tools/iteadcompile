@@ -22,7 +22,7 @@
  #
  ##
 
-SDKVERSION=2.9.5
+SDKVERSION=2.9.6-alpha
 
 SDK_C_COMPILE=gcc
 SDK_CPP_COMPILE=g++
