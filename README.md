@@ -106,7 +106,7 @@ Or you can get SDK via other ways you prefer at <https://github.com/itead/SDK>
 All the commands of the following steps should be run under SDK's 
 source code directory.
 
-### Step 2: Configuration Your Board
+### Step 2: Configure Your Board
 
 For now, platforms supported by SDK and the configuration commands are below. 
 You **MUST** choose the one fitting your board.
@@ -322,6 +322,8 @@ skills on C++ program will also helpful for solving your problems.
 
 
 # For more help
+
+You can find some important and helpful documents in directory `SDK/doc/`. 
 
 Please find in project wiki at <http://wiki.iteadstudio.com/ITEAD_SDK>. With 
 more and more hardware that it supports, wiki will also be updated accordingly.
