@@ -328,16 +328,6 @@ You can find some important and helpful documents in directory [SDK/doc](https:/
 Please find in project wiki at <http://wiki.iteadstudio.com/ITEAD_SDK>. With 
 more and more hardware that it supports, wiki will also be updated accordingly.
 
-# Dynamic Library(.so file) Catalogue
-
-Python users need to know the specific installation locations of the
-following dynamic libraries when they use the SDK:
- 
-* libiteadc.so(core c language dynamic library):/usr/lib, /usr/local/lib
-* libiteadcpp.so(core c++ dynamic library):/usr/lib, /usr/local/lib
-* libiteadmodule.so(all the c++ modules library):/usr/lib, /usr/local/lib
-
-
 # Plan for Next Stage
  
 - Provide more API for user's application
