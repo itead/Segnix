@@ -10,6 +10,13 @@ platform and compatible with Arduino API. ITEAD-SDK is dedicated to provide a
 fast, efficient and unified software development environment for the person 
 like you with a strong electronic design idea. 
 
+# Which Language?
+
+You can implement your design based on ITEAD-SDK in **C** or **C++**.
+
+**Especially and amazingly, ITEAD-SDK provides Python API for Python user. 
+A few beautiful lines of code will achieve your goals!**
+
 # What Can It Do?
 
 Through ITEAD-SDK, users can directly access to the Linux platform hardware 
