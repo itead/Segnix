@@ -9,7 +9,7 @@ ITEAD-SDK Python Interface Module
 ###############################################################################
 # Import board type
 ###############################################################################
-from config import BOARD_TYPE
+from itead_config import BOARD_TYPE
 
 _supported_board_type = (
     'BOARD_ITEADUINO_PLUS',

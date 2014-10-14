@@ -216,7 +216,7 @@ $(SUBDIRS):
 	$(MAKE) -C $@ all
 
 .PHONY: clean
-clean: $(SUBDIRS_CLEAN)
+clean: $(SUBDIRS_CLEAN) SDK_Python_clean
 	rm -f libraries/*.o
 	@echo "clean done"
 
@@ -227,6 +227,7 @@ $(SUBDIRS_CLEAN):
 .PHONY: distclean
 distclean: clean
 	rm -f include/itead_config.h
+	rm -f SDK_Python/itead_config.py
 	rm -f config.mk
 	@echo "distclean done"
 
@@ -301,6 +302,7 @@ Iteaduino_Plus:
 	@ echo "#define BOARD_ITEADUINO_PLUS" >> include/itead_config.h
 	@ echo "#endif" >> include/itead_config.h
 	@ cp tools/config.mk ./
+	@ echo "BOARD_TYPE = 'BOARD_ITEADUINO_PLUS'" > SDK_Python/itead_config.py
 	@ echo "config board Iteaduino_Plus finished"
 
 .PHONY: ITEAD_CORE_EVB
@@ -310,6 +312,7 @@ ITEAD_CORE_EVB:
 	@ echo "#define BOARD_ITEAD_CORE_EVB" >> include/itead_config.h
 	@ echo "#endif" >> include/itead_config.h
 	@ cp tools/config.mk ./
+	@ echo "BOARD_TYPE = 'BOARD_ITEAD_CORE_EVB'" > SDK_Python/itead_config.py
 	@ echo "config board ITEAD_CORE_EVB finished"
 
 
@@ -320,6 +323,7 @@ Raspberry_Pi_Rv2:
 	@ echo "#define BOARD_RASPBERRY_PI_RV2" >> include/itead_config.h
 	@ echo "#endif" >> include/itead_config.h
 	@ cp tools/config.mk ./
+	@ echo "BOARD_TYPE = 'BOARD_RASPBERRY_PI_RV2'" > SDK_Python/itead_config.py
 	@ echo "config board Raspberry_Rv2 finished"
 
 .PHONY: Raspberry_Pi_Model_BPlus
@@ -329,7 +333,23 @@ Raspberry_Pi_Model_BPlus:
 	@ echo "#define BOARD_RASPBERRY_PI_MODEL_BPLUS" >> include/itead_config.h
 	@ echo "#endif" >> include/itead_config.h
 	@ cp tools/config.mk ./
+	@ echo "BOARD_TYPE = 'BOARD_RASPBERRY_PI_MODEL_BPLUS'" > SDK_Python/itead_config.py
 	@ echo "config board Raspberry_Pi_Model_BPlus finished"
+
+###############################################################################
+# Manage SDK_Python install clean uninstall
+###############################################################################
+.PHONY: SDK_Python_install
+SDK_Python_install:
+	$(MAKE) -C SDK_Python install
+
+.PHONY: SDK_Python_uninstall
+SDK_Python_uninstall:
+	$(MAKE) -C SDK_Python uninstall
+
+.PHONY: SDK_Python_clean
+SDK_Python_clean:
+	$(MAKE) -C SDK_Python clean
 
 
 ###############################################################################
