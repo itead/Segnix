@@ -174,8 +174,29 @@ If you have installed ITEAD-SDK Python API, you can uninstall it by running:
     
 # How to Use
 
+**ITEAD-SDK Python API will be recommanded for Python users.**
 **SDK works well with C(.c) and C++(.cpp) programs. Especially, it is 
 compatiable with Arduino Sketch(.ino).**
+
+## To use SDK in Python
+
+Create a new file named `blink.py` which reads as follow:
+
+	#! /usr/bin/env python
+	from iteadsdk import *
+	LED = PD0
+	pinMode(LED, OUTPUT)
+	while True:
+	    digitalWrite(LED, HIGH)
+	    delay(1000)
+	    digitalWrite(LED, LOW)
+	    delay(1000)
+
+Then, run it:
+
+	$ ./blink.py
+
+You can get commutative HIGH and LOW from GPIO PD0, if you've run it on Allwinner A10/A20 SoC.
 
 ## To use SDK in C program
 
