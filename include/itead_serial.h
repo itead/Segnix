@@ -103,7 +103,7 @@ typedef Serial_ SoftwareSerial;
  * 
  * @par On ITEAD CORE EVB
  * - Serial - A reference to Serial4
- * - Serial1 - UART4(RX:PG11, TX:PG10)
+ * - Serial4 - UART4(RX:PG11, TX:PG10)
  *
  * @par On Raspberry Rv2 and Raspberry Pi Model B+
  * - Serial - A reference to Serial0
