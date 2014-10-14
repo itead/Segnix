@@ -79,11 +79,15 @@ More platforms will be supported as soon as possible.
 # Installation and Uninstallation
 
 Before all, we assume that you have installed the required packages:
-`make build-essential git-core` in your Debian system. If not, you can install
+`make build-essential git-core python python-dev` in your Debian system. If not, you can install
 them by command:
  
-    $ sudo apt-get install make build-essential git-core
- 
+    $ sudo apt-get install make build-essential git-core python python-dev
+
+#### NOTE
+
+ITEAD-SDK Python API depends python2.7 not python3.x.
+
 ## Download and Install SDK in Debian
 
 Only a few steps, DO IT !
@@ -142,6 +146,10 @@ Installing SDK requires root(super user)'s privilege. Run command:
     $ make
     $ sudo make install
 
+If you are a lover of Python, you can install ITEAD-SDK Python API by running:
+
+	$ sudo make SDK_Python_install
+
 ## Version and Help
 
 To check the version of SDK installed, run command:
@@ -158,6 +166,11 @@ To uninstall the SDK, just run command:
 
     $ cd SDK
     $ sudo make uninstall
+
+If you have installed ITEAD-SDK Python API, you can uninstall it by running:
+
+	$ sudo make SDK_Python_uninstall
+
     
 # How to Use
 
