@@ -14,8 +14,8 @@ like you with a strong electronic design idea.
 
 You can implement your design based on ITEAD-SDK in **C** or **C++**.
 
-**Especially and amazingly, ITEAD-SDK provides Python API for Python user. 
-A few beautiful lines of code will achieve your goals!**
+**Especially and amazingly**, **ITEAD-SDK Python API** is provided for Python users. 
+**A few beautiful lines of code will achieve your goals!**
 
 # What Can It Do?
 
@@ -113,7 +113,7 @@ You **MUST** choose the one fitting your board.
 
 - Iteaduino Plus A10/A20
         
-        $ make Iteaduino_Plus
+	    $ make Iteaduino_Plus
 
 - ITEAD CORE EVB
         
@@ -196,7 +196,8 @@ Then, run it:
 
 	$ ./blink.py
 
-You can get commutative HIGH and LOW from GPIO PD0, if you've run it on Allwinner A10/A20 SoC.
+You can get commutative HIGH and LOW from GPIO PD0, if you've run it on IBOX
+or other platforms based onAllwinner A10/A20 SoC.
 
 ## To use SDK in C program
 
