@@ -197,7 +197,7 @@ Then, run it:
 	$ ./blink.py
 
 You can get commutative HIGH and LOW from GPIO PD0, if you've run it on IBOX
-or other platforms based onAllwinner A10/A20 SoC.
+or other platforms based on Allwinner A10/A20 SoC.
 
 ## To use SDK in C program
 
@@ -323,7 +323,7 @@ skills on C++ program will also helpful for solving your problems.
 
 # For more help
 
-You can find some important and helpful documents in directory `SDK/doc/`. 
+You can find some important and helpful documents in directory [SDK/doc](https://github.com/itead/SDK/tree/master/doc). 
 
 Please find in project wiki at <http://wiki.iteadstudio.com/ITEAD_SDK>. With 
 more and more hardware that it supports, wiki will also be updated accordingly.
