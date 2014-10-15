@@ -70,7 +70,7 @@ At present, platforms supported by SDK are following:
 - Raspberry Pi Rv2 
 - Raspberry Pi Model B+
 
-If you don't know yet Iteaduino Plus or ibox, see 
+If you don't know yet Iteaduino Plus or IBOX, see 
 <http://imall.iteadstudio.com/iteaduino-plus-a20.html/> and
 <http://imall.iteadstudio.com/ibox.html/>
  
@@ -198,7 +198,7 @@ Then, run it:
 
 	$ ./blink.py
 
-You can get commutative HIGH and LOW from GPIO PD0, if you've run it on IBOX
+You can get commutative HIGH and LOW from GPIO PD0, if you've run it on [IBOX](http://imall.iteadstudio.com/ibox.html/)
 or other platforms based on Allwinner A10/A20 SoC.
 
 ## To use SDK in C program
