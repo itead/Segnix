@@ -83,6 +83,7 @@ Before all, we assume that you have installed the required packages:
 `make build-essential git-core python python-dev` in your Debian system. If not, you can install
 them by command:
  
+    $ sudo apt-get update
     $ sudo apt-get install make build-essential git-core python python-dev
 
 #### NOTE
