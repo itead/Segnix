@@ -194,6 +194,10 @@ Create a new file named `blink.py` which reads as follow:
 	    digitalWrite(LED, LOW)
 	    delay(1000)
 
+Make `blink.py` executable:
+	
+    $ chmod +x blink.py 
+
 Then, run it:
 
 	$ ./blink.py
