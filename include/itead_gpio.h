@@ -517,16 +517,16 @@ typedef struct
 #define PG9	    (47)
 #define PG10	(48)
 #define PG11	(49)
-#define PI10	(50)
-#define PI11	(51)
-#define PI12	(52)
-#define PI13	(53)
-#define PI14	(54)
-#define PI15	(55)
-#define PI16	(56)
-#define PI17	(57)
-#define PI18	(58)
-#define PI19	(59)
+#define PI10	(109)   /* itead_gpio_int.c 22 */
+#define PI11	(110)   /* itead_gpio_int.c 23 */
+#define PI12	(111)   /* itead_gpio_int.c 24 */
+#define PI13	(112)   /* itead_gpio_int.c 25 */
+#define PI14	(137)   /* itead_gpio_int.c 26 */
+#define PI15	(138)   /* itead_gpio_int.c 27 */
+#define PI16	(78)   /* itead_gpio_int.c 28 */
+#define PI17	(77)   /* itead_gpio_int.c 29 */
+#define PI18	(76)   /* itead_gpio_int.c 30 */
+#define PI19	(75)   /* itead_gpio_int.c 31 */
 #define PI20	(60)
 #define PI21	(61)
 
