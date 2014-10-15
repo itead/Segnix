@@ -200,7 +200,7 @@ Make `blink.py` executable:
 
 Then, run it:
 
-	$ ./blink.py
+	$ sudo ./blink.py
 
 You can get commutative HIGH and LOW from GPIO PD0, if you've run it on [IBOX](http://imall.iteadstudio.com/ibox.html/)
 or other platforms based on Allwinner A10/A20 SoC.
