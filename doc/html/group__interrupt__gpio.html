@@ -46,6 +46,9 @@
 </div><!--header-->
 <div class="contents">
 <p>Accroding to different boards, user can use gpio below as interrupt source. These have been defined in ITEAD-SDK. When calling attachInterrupt/detachInterrupt, user need to pass pin name below into them.</p>
+<dl class="section warning"><dt>Warning</dt><dd>For Iteaduino Plus, you can't use Serial2(UART2) or SPI0, when you've loaded itead_gpio_int.ko to enable GPIO interrupt functions, such as <a class="el" href="group__interrupt.html#ga01241fd930bd6036539f790bf3907b1d" title="Register a named Interrupt Service Routine (ISR) to call when an interrupt occurs. ">attachInterrupt()</a>, <a class="el" href="group__interrupt.html#ga3a969df1fe8e97f0e5955547aab6c28a" title="Detach ISR from pin. ">detachInterrupt()</a> and so on.</dd>
+<dd>
+For ITEAD CORE EVB, you can't use SPI0, when you've loaded itead_gpio_int.ko to enable GPIO interrupt functions, such as <a class="el" href="group__interrupt.html#ga01241fd930bd6036539f790bf3907b1d" title="Register a named Interrupt Service Routine (ISR) to call when an interrupt occurs. ">attachInterrupt()</a>, <a class="el" href="group__interrupt.html#ga3a969df1fe8e97f0e5955547aab6c28a" title="Detach ISR from pin. ">detachInterrupt()</a> and so on.</dd></dl>
 <dl class="section user"><dt>On Iteaduino Plus</dt><dd><ol type="1">
 <li>PH0</li>
 <li>PH2</li>
@@ -97,7 +100,7 @@
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Oct 16 2014 13:08:15 for ITEAD-SDK Help by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Oct 16 2014 14:06:20 for ITEAD-SDK Help by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

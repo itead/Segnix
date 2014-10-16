@@ -13,7 +13,7 @@ person like you with a strong electronic design idea.
 
 # Which Language?
 
-You can implement your design based on ITEAD-SDK in **C** or **C++**.
+You can implement your design based on ITEAD-SDK in C or C++.
 
 **Especially and amazingly**, **ITEAD-SDK Python API** is provided for Python users. 
 **A few beautiful lines of code will achieve your goals!**
