@@ -79,7 +79,7 @@ static uint32_t valid_dev[] = {
     DEV_UART4,
     DEV_UART7,
 #elif defined(BOARD_ITEAD_CORE_EVB)    
-    DEV_UART1,
+    DEV_UART4,
 #elif defined (BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
     DEV_UART0,
 #endif 
