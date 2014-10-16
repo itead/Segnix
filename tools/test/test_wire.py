@@ -1,40 +1,41 @@
 #! /usr/bin/env python
 
-from iteadsdk import Wire, delay
+from iteadsdk import Wire, Wire1, Wire2, delay
 
 EEPROM_ADDR	= 0x50
+I2C = Wire
 
 def test_wire(val):
-    Wire.begin()
+    I2C.begin()
     
     for i in range(16):
-        Wire.beginTransmission(EEPROM_ADDR)
-        Wire.write(i * 16)
+        I2C.beginTransmission(EEPROM_ADDR)
+        I2C.write(i * 16)
         for k in range(16):
-            Wire.write(val)
-        Wire.endTransmission()
+            I2C.write(val)
+        I2C.endTransmission()
         delay(10)
     
-    Wire.beginTransmission(EEPROM_ADDR)
-    Wire.write(0)
-    Wire.endTransmission()
+    I2C.beginTransmission(EEPROM_ADDR)
+    I2C.write(0)
+    I2C.endTransmission()
     delay(10)
     
-    Wire.requestFrom(EEPROM_ADDR,256)
-    count = Wire.available()
+    I2C.requestFrom(EEPROM_ADDR,256)
+    count = I2C.available()
     print "Available =%d" % (count)
     
     print "Read:"
     for i in range(count):
-        print hex(Wire.read()),
+        print hex(I2C.read()),
         if (i+1)%16 == 0:
             print ""
     print "\nRead done"
     
-    count = Wire.available()
+    count = I2C.available()
     print "Available =%d" % (count)
             
-    Wire.end()
+    I2C.end()
     
 
 ###############################################################################

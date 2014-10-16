@@ -186,7 +186,7 @@ Create a new file named `blink.py` which reads as follow:
 
 	#! /usr/bin/env python
 	from iteadsdk import *
-	LED = PD0
+	LED = PG9
 	pinMode(LED, OUTPUT)
 	while True:
 	    digitalWrite(LED, HIGH)
@@ -202,7 +202,7 @@ Then, run it:
 
 	$ sudo ./blink.py
 
-You can get commutative HIGH and LOW from GPIO PD0, if you've run it on [IBOX](http://imall.iteadstudio.com/ibox.html/)
+You can get commutative HIGH and LOW from GPIO PG9, if you've run it on [IBOX](http://imall.iteadstudio.com/ibox.html/)
 or other platforms based on Allwinner A10/A20 SoC.
 
 ## To use SDK in C program
@@ -212,7 +212,7 @@ Create a new file named "led.c" which reads as follow:
     #include <itead.h>
     #include <stdio.h>
     
-    #define STATUS_LED1 PH21
+    #define STATUS_LED1 PG9
  
     void setup(void)
     {
@@ -251,7 +251,7 @@ Create a new file named "led.cpp" which reads as follow:
     #include <itead.h>
     #include <stdio.h>
  
-    #define STATUS_LED1 PH21
+    #define STATUS_LED1 PG9
  
     void setup(void)
     {
@@ -290,7 +290,7 @@ Create a new file named "led.ino" which contains the following lines:
 
     #include <stdio.h>
     
-    #define STATUS_LED1 PH21
+    #define STATUS_LED1 PG9
  
     void setup(void)
     {
