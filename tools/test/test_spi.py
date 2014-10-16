@@ -17,7 +17,7 @@ def test_spi(val):
 # main function
 ###############################################################################
 def main():
-	print 'BOARD_TYPE =', BOARD_TYPE
+    print 'BOARD_TYPE =', BOARD_TYPE
     for i in range(256):
         test_spi(i)
         
