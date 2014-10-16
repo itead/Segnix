@@ -16,6 +16,20 @@
 /**
  * @defgroup interrupt Interrupt
  * Details about attachInterrupt, detachInterrupt, interrupt, and noInterrupt etc. 
+ * 
+ * @warning 
+ *  You need to load itead_gpio_int.ko for using GPIO interrupt functions. 
+ * 
+ * @warning 
+ *  For Iteaduino Plus, you can't use Serial2(UART2) or SPI0, when you've loaded itead_gpio_int.ko
+ *  to enable GPIO interrupt functions, such as attachInterrupt(), detachInterrupt() 
+ *  and so on.
+ *
+ * @warning 
+ *  For ITEAD CORE EVB, you can't use SPI0, when you've loaded itead_gpio_int.ko
+ *  to enable GPIO interrupt functions, such as attachInterrupt(), detachInterrupt() 
+ *  and so on.
+ *
  */
 
 /**

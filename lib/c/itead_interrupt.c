@@ -36,6 +36,9 @@ typedef struct GpioEintMap {
  * @details Accroding to different boards, user can use gpio below as interrupt source.
  *  These have been defined in ITEAD-SDK. When calling attachInterrupt/detachInterrupt,
  *  user need to pass pin name below into them. 
+ *
+ * @warning 
+ *  You need to load itead_gpio_int.ko for using GPIO interrupt functions. 
  * 
  * @warning 
  *  For Iteaduino Plus, you can't use Serial2(UART2) or SPI0, when you've loaded itead_gpio_int.ko
