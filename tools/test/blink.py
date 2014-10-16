@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 from iteadsdk import *
-LED = PD0
+LED = PG9
 pinMode(LED, OUTPUT)
 while True:
     digitalWrite(LED, HIGH)

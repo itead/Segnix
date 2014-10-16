@@ -23,8 +23,8 @@ def ledThread(pin, cnt, interval):
 def testTimeGPIO():
     print 'micros() =', micros()
     print 'millis() =', millis()
-    thread.start_new_thread(ledThread,(PD0, 10, 0.25))
-    analogWrite(PD1, 200)
+    thread.start_new_thread(ledThread,(PG9, 10, 0.25))
+    analogWrite(PG8, 200)
     time.sleep(6)
     
     
@@ -37,9 +37,9 @@ def gpioIsr(id):
 def testInterruptModule():
     #set_callback(gpioIsr)
     #test_callback()
-    
+    EPIN = PI15
     pdata = ['ITEAD-SDK-Py', 'ET']
-    attachInterrupt(PH21, generalGpioIsr, pdata, GPIO_EINT_CFG_FALLING)
+    attachInterrupt(EPIN, generalGpioIsr, pdata, GPIO_EINT_CFG_FALLING)
     print 'Waiting interrupt...'
     #time.sleep(5) # error
     delay(5000)
@@ -47,17 +47,17 @@ def testInterruptModule():
     for i in range(10):
         print 'i=', i
         if i ==  3:
-            detachInterrupt(PH21)
+            detachInterrupt(EPIN)
             #noInterrupt()
             
         if i == 5:
-            attachInterrupt(PH21, generalGpioIsr, pdata, GPIO_EINT_CFG_FALLING)
+            attachInterrupt(EPIN, generalGpioIsr, pdata, GPIO_EINT_CFG_FALLING)
             #interrupt()
             
         pdata[1] = str(i)
         delay(2000)
+    detachInterrupt(EPIN)
     print 'testInterruptModule done'
-
 
 ###############################################################################
 # main function
