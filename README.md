@@ -77,6 +77,13 @@ If you don't know yet Iteaduino Plus or IBOX, see
 More platforms will be supported as soon as possible.
 
 
+# Documentation
+
+You can find some important and helpful documents in directory [SDK/doc](https://github.com/itead/SDK/tree/master/doc). 
+
+Please find in project wiki at <http://wiki.iteadstudio.com/ITEAD_SDK>. With 
+more and more hardware that it supports, wiki will also be updated accordingly.
+
 # Installation and Uninstallation
 
 Before all, we assume that you have installed the required packages:
@@ -326,13 +333,6 @@ line like `include  "itead.h"`  in the head of your Hello.ino, change the suffix
 executable binary file. When you encounter other bugs in your sketch,debug 
 skills on C++ program will also helpful for solving your problems.
 
-
-# For more help
-
-You can find some important and helpful documents in directory [SDK/doc](https://github.com/itead/SDK/tree/master/doc). 
-
-Please find in project wiki at <http://wiki.iteadstudio.com/ITEAD_SDK>. With 
-more and more hardware that it supports, wiki will also be updated accordingly.
 
 # Plan for Next Stage
  
