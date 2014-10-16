@@ -202,7 +202,7 @@ Then, run it:
 
 	$ sudo ./blink.py
 
-You can get commutative HIGH and LOW from GPIO PG9, if you've run it on [IBOX](http://imall.iteadstudio.com/ibox.html/)
+You can get commutative HIGH and LOW from GPIO PG9, if you've run it on ITEAD CORE EVB
 or other platforms based on Allwinner A10/A20 SoC.
 
 ## To use SDK in C program
