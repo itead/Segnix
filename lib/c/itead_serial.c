@@ -41,7 +41,7 @@ typedef struct SERIAL_PORT_ST {
 } SERIAL_PORT;
 
 static SERIAL_PORT ports[] = {
-#ifdef BOARD_ITEADUINO_PLUS
+#if defined(BOARD_ITEADUINO_PLUS) || defined(BOARD_ITEAD_CORE_EVB)	
     [2] = {
 		.fd = -1,
 		.node = "/dev/ttyS1",
@@ -57,11 +57,6 @@ static SERIAL_PORT ports[] = {
 	[7] = {
 		.fd = -1,
 		.node = "/dev/ttyS4",
-	},
-#elif defined(BOARD_ITEAD_CORE_EVB)	
-    [1] = {
-		.fd = -1,
-		.node = "/dev/ttyS1",
 	},
 #elif defined (BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
     [0] = {
