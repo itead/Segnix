@@ -179,7 +179,7 @@ uint32_t SPIsetDataMode(uint32_t dev, uint8_t mode)
     smode |= (mode&0x3);
     
 	/* !!! open Full-duplex synchronous !!! */
-    #if defined(BOARD_ITEADUINO_PLUS)// || defined(BOARD_ITEAD_CORE_EVB)
+    #if defined(BOARD_ITEADUINO_PLUS) || defined(BOARD_ITEAD_CORE_EVB)
 	smode |= SPI_RECEIVE_ALL_ACTIVE_;
 	#endif
 	
