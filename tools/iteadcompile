@@ -1,13 +1,13 @@
 #!/bin/bash
 
 #####################################################################
-# File		:	iteadcompile
-# Desc		:	This is a tool by which user can compile .c/.cpp/.ino conveniently.
-# Author	: 	Wu Pengfei
-# Company	:	ITEAD Intelligent Systems Co.,Ltd.(http://imall.iteadstudio.com/)
-# Date		:	2014/3/11
-# History	:	Version		Modified by		Date		What
-#				      v1.0		Wu Pengfei		2014/3/11	Create
+# File      :   iteadcompile
+# Desc      :   This is a tool by which user can compile .c/.cpp/.ino conveniently.
+# Author    :   Wu Pengfei
+# Company   :   ITEAD Intelligent Systems Co.,Ltd.(http://imall.iteadstudio.com/)
+# Date      :   2014/3/11
+# History   :   Version     Modified by     Date        What
+#               v1.0        Wu Pengfei      2014/3/11   Create
 #####################################################################
 
 ##
@@ -22,7 +22,7 @@
  #
  ##
 
-SDKVERSION=2.9.6-beta
+SDKVERSION=2.9.6
 
 SDK_C_COMPILE=gcc
 SDK_CPP_COMPILE=g++
