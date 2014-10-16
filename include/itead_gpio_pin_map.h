@@ -37,7 +37,7 @@ typedef struct pin_no_port_index_map{
 #define PIN_MAX		138
 #define PIN_MIN		9
 #elif defined(BOARD_ITEAD_CORE_EVB)
-#define PIN_MAX		61
+#define PIN_MAX		138
 #define PIN_MIN		0
 #endif
 
@@ -247,18 +247,29 @@ static const pin_no_port_index_map pnp[] = {
     {PORT_G, 9	}, /* 47 */
     {PORT_G, 10	}, /* 48 */
     {PORT_G, 11	}, /* 49 */
-    {PORT_I, 10 }, /* 50 */
-    {PORT_I, 11	}, /* 51 */
-    {PORT_I, 12	}, /* 52 */
-    {PORT_I, 13	}, /* 53 */
-    {PORT_I, 14	}, /* 54 */
-    {PORT_I, 15	}, /* 55 */
-    {PORT_I, 16	}, /* 56 */
-    {PORT_I, 17	}, /* 57 */
-    {PORT_I, 18	}, /* 58 */
-    {PORT_I, 19	}, /* 59 */
+    {PORT_NONE, INDEX_NONE }, /* 50 */
+    {PORT_NONE, INDEX_NONE	}, /* 51 */
+    {PORT_NONE, INDEX_NONE	}, /* 52 */
+    {PORT_NONE, INDEX_NONE	}, /* 53 */
+    {PORT_NONE, INDEX_NONE	}, /* 54 */
+    {PORT_NONE, INDEX_NONE	}, /* 55 */
+    {PORT_NONE, INDEX_NONE	}, /* 56 */
+    {PORT_NONE, INDEX_NONE	}, /* 57 */
+    {PORT_NONE, INDEX_NONE	}, /* 58 */
+    {PORT_NONE, INDEX_NONE	}, /* 59 */
     {PORT_I, 20	}, /* 60 */
     {PORT_I, 21	}, /* 61 */
+
+    [109] = {PORT_I, 10},
+    [110] = {PORT_I, 11},
+    [111] = {PORT_I, 12},
+    [112] = {PORT_I, 13},
+    [137] = {PORT_I, 14},
+    [138] = {PORT_I, 15},
+    [78 ] = {PORT_I, 16},
+    [77 ] = {PORT_I, 17},
+    [76 ] = {PORT_I, 18},
+    [75 ] = {PORT_I, 19},
 
 #endif
 };
