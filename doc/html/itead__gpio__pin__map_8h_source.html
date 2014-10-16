@@ -81,7 +81,7 @@
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#define PIN_MAX     138</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#define PIN_MIN     9</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#elif defined(BOARD_ITEAD_CORE_EVB)</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#define PIN_MAX     61</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#define PIN_MAX     138</span></div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#define PIN_MIN     0</span></div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
@@ -291,105 +291,116 @@
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    {PORT_G, 9  }, <span class="comment">/* 47 */</span></div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    {PORT_G, 10 }, <span class="comment">/* 48 */</span></div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    {PORT_G, 11 }, <span class="comment">/* 49 */</span></div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    {PORT_I, 10 }, <span class="comment">/* 50 */</span></div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    {PORT_I, 11 }, <span class="comment">/* 51 */</span></div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    {PORT_I, 12 }, <span class="comment">/* 52 */</span></div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    {PORT_I, 13 }, <span class="comment">/* 53 */</span></div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    {PORT_I, 14 }, <span class="comment">/* 54 */</span></div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    {PORT_I, 15 }, <span class="comment">/* 55 */</span></div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    {PORT_I, 16 }, <span class="comment">/* 56 */</span></div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    {PORT_I, 17 }, <span class="comment">/* 57 */</span></div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    {PORT_I, 18 }, <span class="comment">/* 58 */</span></div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    {PORT_I, 19 }, <span class="comment">/* 59 */</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    {PORT_NONE, INDEX_NONE }, <span class="comment">/* 50 */</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    {PORT_NONE, INDEX_NONE  }, <span class="comment">/* 51 */</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    {PORT_NONE, INDEX_NONE  }, <span class="comment">/* 52 */</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    {PORT_NONE, INDEX_NONE  }, <span class="comment">/* 53 */</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    {PORT_NONE, INDEX_NONE  }, <span class="comment">/* 54 */</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    {PORT_NONE, INDEX_NONE  }, <span class="comment">/* 55 */</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    {PORT_NONE, INDEX_NONE  }, <span class="comment">/* 56 */</span></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    {PORT_NONE, INDEX_NONE  }, <span class="comment">/* 57 */</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    {PORT_NONE, INDEX_NONE  }, <span class="comment">/* 58 */</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    {PORT_NONE, INDEX_NONE  }, <span class="comment">/* 59 */</span></div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    {PORT_I, 20 }, <span class="comment">/* 60 */</span></div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    {PORT_I, 21 }, <span class="comment">/* 61 */</span></div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;};</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="preprocessor">#elif defined(BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)</span></div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="preprocessor">#if defined(BOARD_RASPBERRY_PI_RV2)</span></div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="preprocessor">#define PIN_MAX     32</span></div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="preprocessor">#elif defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)</span></div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="preprocessor">#define PIN_MAX     35</span></div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    [109] = {PORT_I, 10},</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    [110] = {PORT_I, 11},</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    [111] = {PORT_I, 12},</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    [112] = {PORT_I, 13},</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    [137] = {PORT_I, 14},</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    [138] = {PORT_I, 15},</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    [78 ] = {PORT_I, 16},</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    [77 ] = {PORT_I, 17},</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    [76 ] = {PORT_I, 18},</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    [75 ] = {PORT_I, 19},</div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="preprocessor">#define PIN_MIN     3</span></div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="preprocessor">#define GPIO_SIZE   (1*BLOCK_SIZE)</span></div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;<span class="preprocessor">#define BCM2708_PERI_BASE           (0x20000000)</span></div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;<span class="preprocessor">#define GPIO_BASE                   (BCM2708_PERI_BASE + 0x00200000)</span></div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;<span class="preprocessor">#define GPIO_GPFSEL_OFFSET          (0x00)</span></div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;<span class="preprocessor">#define GPIO_GPSET_OFFSET           (0x1c)</span></div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;<span class="preprocessor">#define GPIO_GPCLR_OFFSET           (0x28)</span></div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;<span class="preprocessor">#define GPIO_GPLEV_OFFSET           (0x34)</span></div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="preprocessor">#define PORT_GPIO   0</span></div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;};</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;<span class="preprocessor">#elif defined(BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)</span></div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;<span class="preprocessor">#if defined(BOARD_RASPBERRY_PI_RV2)</span></div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;<span class="preprocessor">#define PIN_MAX     32</span></div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;<span class="preprocessor">#elif defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)</span></div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="preprocessor">#define PIN_MAX     35</span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="keyword">static</span> <span class="keyword">const</span> pin_no_port_index_map pnp[] = {</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="comment">/*  port_no   index             pin_no      */</span>    </div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    {PORT_NONE, INDEX_NONE} ,   <span class="comment">// 0</span></div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    {PORT_NONE, INDEX_NONE} ,   <span class="comment">// 1</span></div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    {PORT_NONE, INDEX_NONE} ,   <span class="comment">// 2</span></div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    {PORT_GPIO, 2}  ,   <span class="comment">// 3</span></div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    {PORT_NONE, INDEX_NONE} ,   <span class="comment">// 4</span></div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    {PORT_GPIO, 3}  ,   <span class="comment">// 5</span></div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    {PORT_NONE, INDEX_NONE} ,   <span class="comment">// 6</span></div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    {PORT_GPIO, 4}  ,   <span class="comment">// 7</span></div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    {PORT_GPIO, 14} ,   <span class="comment">// 8</span></div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    {PORT_NONE, INDEX_NONE} ,   <span class="comment">// 9</span></div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    {PORT_GPIO, 15} ,   <span class="comment">// 10</span></div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    {PORT_GPIO, 17} ,   <span class="comment">// 1     + 10</span></div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    {PORT_GPIO, 18} ,   <span class="comment">// 2</span></div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    {PORT_GPIO, 27} ,   <span class="comment">// 3</span></div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    {PORT_NONE, INDEX_NONE} ,   <span class="comment">// 4</span></div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    {PORT_GPIO, 22} ,   <span class="comment">// 5</span></div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    {PORT_GPIO, 23} ,   <span class="comment">// 6</span></div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    {PORT_NONE, INDEX_NONE} ,   <span class="comment">// 7</span></div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    {PORT_GPIO, 24} ,   <span class="comment">// 8</span></div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    {PORT_GPIO, 10} ,   <span class="comment">// 9</span></div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    {PORT_NONE, INDEX_NONE} ,   <span class="comment">// 10</span></div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    {PORT_GPIO, 9}  ,   <span class="comment">// 1     + 20</span></div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    {PORT_GPIO, 25} ,   <span class="comment">// 2</span></div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    {PORT_GPIO, 11} ,   <span class="comment">// 3</span></div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    {PORT_GPIO, 8}  ,   <span class="comment">// 4</span></div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    {PORT_NONE, INDEX_NONE} ,   <span class="comment">// 5</span></div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    {PORT_GPIO, 7}  ,   <span class="comment">// 6</span></div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;<span class="preprocessor">#if defined(BOARD_RASPBERRY_PI_RV2) </span></div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    {PORT_NONE, INDEX_NONE} ,   <span class="comment">// 27</span></div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    {PORT_NONE, INDEX_NONE} ,   <span class="comment">// 28</span></div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    {PORT_GPIO, 28} ,   <span class="comment">// 29</span></div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    {PORT_GPIO, 29} ,   <span class="comment">// 30  </span></div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    {PORT_GPIO, 30} ,   <span class="comment">// 31</span></div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    {PORT_GPIO, 31} ,   <span class="comment">// 32</span></div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;<span class="preprocessor">#elif defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)</span></div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    {PORT_GPIO, 5 } ,   <span class="comment">// 27</span></div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    {PORT_GPIO, 6 } ,   <span class="comment">// 28</span></div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    {PORT_GPIO, 12} ,   <span class="comment">// 29</span></div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    {PORT_GPIO, 13} ,   <span class="comment">// 30</span></div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    {PORT_GPIO, 16} ,   <span class="comment">// 31</span></div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    {PORT_GPIO, 19} ,   <span class="comment">// 32</span></div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    {PORT_GPIO, 20} ,   <span class="comment">// 33</span></div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    {PORT_GPIO, 21} ,   <span class="comment">// 34</span></div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    {PORT_GPIO, 26} ,   <span class="comment">// 35</span></div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;};</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    assert(! <span class="stringliteral">&quot;Unsupported Board. You need to choose a valid one.&quot;</span>);</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;}</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="preprocessor">#define PIN_MIN     3</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="preprocessor">#define GPIO_SIZE   (1*BLOCK_SIZE)</span></div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="preprocessor">#define BCM2708_PERI_BASE           (0x20000000)</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="preprocessor">#define GPIO_BASE                   (BCM2708_PERI_BASE + 0x00200000)</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;<span class="preprocessor">#define GPIO_GPFSEL_OFFSET          (0x00)</span></div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;<span class="preprocessor">#define GPIO_GPSET_OFFSET           (0x1c)</span></div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;<span class="preprocessor">#define GPIO_GPCLR_OFFSET           (0x28)</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;<span class="preprocessor">#define GPIO_GPLEV_OFFSET           (0x34)</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;<span class="preprocessor">#define PORT_GPIO   0</span></div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;<span class="keyword">static</span> <span class="keyword">const</span> pin_no_port_index_map pnp[] = {</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;<span class="comment">/*  port_no   index             pin_no      */</span>    </div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    {PORT_NONE, INDEX_NONE} ,   <span class="comment">// 0</span></div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    {PORT_NONE, INDEX_NONE} ,   <span class="comment">// 1</span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    {PORT_NONE, INDEX_NONE} ,   <span class="comment">// 2</span></div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    {PORT_GPIO, 2}  ,   <span class="comment">// 3</span></div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    {PORT_NONE, INDEX_NONE} ,   <span class="comment">// 4</span></div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    {PORT_GPIO, 3}  ,   <span class="comment">// 5</span></div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    {PORT_NONE, INDEX_NONE} ,   <span class="comment">// 6</span></div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    {PORT_GPIO, 4}  ,   <span class="comment">// 7</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    {PORT_GPIO, 14} ,   <span class="comment">// 8</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    {PORT_NONE, INDEX_NONE} ,   <span class="comment">// 9</span></div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    {PORT_GPIO, 15} ,   <span class="comment">// 10</span></div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    {PORT_GPIO, 17} ,   <span class="comment">// 1     + 10</span></div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    {PORT_GPIO, 18} ,   <span class="comment">// 2</span></div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    {PORT_GPIO, 27} ,   <span class="comment">// 3</span></div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    {PORT_NONE, INDEX_NONE} ,   <span class="comment">// 4</span></div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    {PORT_GPIO, 22} ,   <span class="comment">// 5</span></div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    {PORT_GPIO, 23} ,   <span class="comment">// 6</span></div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    {PORT_NONE, INDEX_NONE} ,   <span class="comment">// 7</span></div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    {PORT_GPIO, 24} ,   <span class="comment">// 8</span></div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    {PORT_GPIO, 10} ,   <span class="comment">// 9</span></div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    {PORT_NONE, INDEX_NONE} ,   <span class="comment">// 10</span></div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    {PORT_GPIO, 9}  ,   <span class="comment">// 1     + 20</span></div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    {PORT_GPIO, 25} ,   <span class="comment">// 2</span></div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    {PORT_GPIO, 11} ,   <span class="comment">// 3</span></div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    {PORT_GPIO, 8}  ,   <span class="comment">// 4</span></div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    {PORT_NONE, INDEX_NONE} ,   <span class="comment">// 5</span></div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    {PORT_GPIO, 7}  ,   <span class="comment">// 6</span></div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;<span class="preprocessor">#if defined(BOARD_RASPBERRY_PI_RV2) </span></div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    {PORT_NONE, INDEX_NONE} ,   <span class="comment">// 27</span></div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    {PORT_NONE, INDEX_NONE} ,   <span class="comment">// 28</span></div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    {PORT_GPIO, 28} ,   <span class="comment">// 29</span></div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    {PORT_GPIO, 29} ,   <span class="comment">// 30  </span></div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    {PORT_GPIO, 30} ,   <span class="comment">// 31</span></div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    {PORT_GPIO, 31} ,   <span class="comment">// 32</span></div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;<span class="preprocessor">#elif defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)</span></div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    {PORT_GPIO, 5 } ,   <span class="comment">// 27</span></div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    {PORT_GPIO, 6 } ,   <span class="comment">// 28</span></div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    {PORT_GPIO, 12} ,   <span class="comment">// 29</span></div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    {PORT_GPIO, 13} ,   <span class="comment">// 30</span></div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    {PORT_GPIO, 16} ,   <span class="comment">// 31</span></div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    {PORT_GPIO, 19} ,   <span class="comment">// 32</span></div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    {PORT_GPIO, 20} ,   <span class="comment">// 33</span></div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    {PORT_GPIO, 21} ,   <span class="comment">// 34</span></div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    {PORT_GPIO, 26} ,   <span class="comment">// 35</span></div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;};</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    assert(! <span class="stringliteral">&quot;Unsupported Board. You need to choose a valid one.&quot;</span>);</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;}</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="itead__global_8h_html"><div class="ttname"><a href="itead__global_8h.html">itead_global.h</a></div><div class="ttdoc">GLobal defines and declarations. </div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Oct 14 2014 16:59:07 for ITEAD-SDK Help by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Oct 16 2014 13:08:14 for ITEAD-SDK Help by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
