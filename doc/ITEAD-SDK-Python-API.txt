@@ -1,0 +1,31 @@
+ITEAD-SDK Python API
+====================
+
+ITEAD-SDK Python API is Python Application Program Interface of ITEAD-SDK. It
+provides Python functions, variables and classes for Python users. All functions,
+variables and classes in Python API have the same name as those in ITEAD-SDK Help.
+The strategy to programing with them is just like C or C++. 
+
+All of the above, we provide no documentation for ITEAD-SDK Python API at present.
+
+Note
+====
+
+Functions unimplemented in ITEAD-SDK Python API:
+
+    set8BitsBUS
+    set16BitsBUS
+    digitalWrite8 
+    digitalWrite16 
+    digitalRead8 
+    digitalRead16 
+
+In attachInterrupt function, the trigger methods below do not supported in 
+ITEAD-SDK Python API:
+
+    GPIO_EINT_CFG_HIGH
+    GPIO_EINT_CFG_LOW
+
+-------------------------------------------------------------------------------
+# The end of this doc
+-------------------------------------------------------------------------------
