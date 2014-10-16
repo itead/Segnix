@@ -8,8 +8,8 @@ The strategy to programing with them is just like C or C++.
 
 All of the above, we provide no documentation for ITEAD-SDK Python API at present.
 
-Note
-====
+Difference
+==========
 
 Functions unimplemented in ITEAD-SDK Python API:
 
