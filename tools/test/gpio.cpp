@@ -12,13 +12,13 @@ int main(int argc, char **argv)
 return_help:
 
         printf("Usage:\n");
-        printf("  ./itead_gpio r pin\n");
-        printf("  ./itead_gpio w pin value\n");
+        printf("  ./gpio r pin\n");
+        printf("  ./gpio w pin value\n");
         printf("\n");
         printf("Example:\n");
-        printf("  ./itead_gpio r 36\n");
-        printf("  ./itead_gpio w 36 1\n");
-        printf("  ./itead_gpio w 36 0\n");        
+        printf("  ./gpio r 47\n");
+        printf("  ./gpio w 47 1\n");
+        printf("  ./gpio w 47 0\n");        
         printf("\n");
         
         return 0;

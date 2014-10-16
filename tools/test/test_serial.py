@@ -1,15 +1,14 @@
 #!/usr/bin/env python
 
 import time
-import thread
 
-from iteadsdk import Serial
+from iteadsdk import *
 
 ###############################################################################
 # main function
 ###############################################################################
 def main():
-    
+    print 'BOARD_TYPE =', BOARD_TYPE
     Serial.begin(115200)
     Serial.write(ord('A'));
     Serial.write(ord('z'));

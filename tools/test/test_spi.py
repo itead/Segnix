@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 
-from iteadsdk import SPI, SPI_MODE0, MSBFIRST, SPI_CLOCK_DIV8
+from iteadsdk import *
 
 
 def test_spi(val):
@@ -17,6 +17,7 @@ def test_spi(val):
 # main function
 ###############################################################################
 def main():
+	print 'BOARD_TYPE =', BOARD_TYPE
     for i in range(256):
         test_spi(i)
         

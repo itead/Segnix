@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 
-from iteadsdk import Wire, Wire1, Wire2, delay
+from iteadsdk import *
 
 EEPROM_ADDR	= 0x50
 I2C = Wire
@@ -42,6 +42,7 @@ def test_wire(val):
 # main function
 ###############################################################################
 def main():
+	print 'BOARD_TYPE =', BOARD_TYPE
     for i in range(5):
         test_wire(i)
         
