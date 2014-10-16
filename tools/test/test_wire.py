@@ -42,7 +42,7 @@ def test_wire(val):
 # main function
 ###############################################################################
 def main():
-	print 'BOARD_TYPE =', BOARD_TYPE
+    print 'BOARD_TYPE =', BOARD_TYPE
     for i in range(5):
         test_wire(i)
         
