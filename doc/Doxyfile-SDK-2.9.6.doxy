@@ -51,7 +51,7 @@ PROJECT_BRIEF          = "API of ITEAD-SDK"
 # and the maximum width should not exceed 200 pixels. Doxygen will copy the logo
 # to the output directory.
 
-PROJECT_LOGO           = X:/nfsroot/itead-logo.JPG
+PROJECT_LOGO           = X:/nfsroot/SDK-new/doc/itead-logo.JPG
 
 # The OUTPUT_DIRECTORY tag is used to specify the (relative or absolute) path
 # into which the generated documentation will be written. If a relative path is
@@ -765,9 +765,9 @@ WARN_LOGFILE           =
 # Note: If this tag is empty the current directory is searched.
 
 INPUT                  = SDK-new/include \
-                         SDK-new/lib \
                          SDK-new/examples \
-                         SDK-new/README.md
+                         SDK-new/README.md \
+                         SDK-new/lib
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses
