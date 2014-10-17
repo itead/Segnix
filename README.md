@@ -87,13 +87,17 @@ more and more hardware that it supports, wiki will also be updated accordingly.
 # Installation and Uninstallation
 
 Before all, we assume that you have installed the required packages:
-`make build-essential git-core python python-dev` in your Debian system. If not, you can install
+`build-essential git-core` in your Debian system. If not, you can install
 them by command:
  
     $ sudo apt-get update
-    $ sudo apt-get install make build-essential git-core python python-dev
+    $ sudo apt-get install build-essential git-core
 
-#### NOTE
+If you are a Python user, the following packages should be installed:
+
+    $ sudo apt-get python2.7 python2.7-dev
+
+#### Note
 
 ITEAD-SDK Python API depends python2.7 not python3.x.
 
