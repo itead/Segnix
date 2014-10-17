@@ -32,6 +32,7 @@ At present, ITEAD-SDK has a set of **core features** as below:
 
   - Support for external interrupts operations
   - Support for upper-layer time functions
+  - Support for PWM output with any GPIO
   - Support for GPIO operations
   - Support for GPIO 8bit/16bit bus operations
   - Support for UART bus operations
