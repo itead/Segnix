@@ -1,12 +1,34 @@
 ITEAD-SDK Python API
 ====================
 
-ITEAD-SDK Python API is Python Application Program Interface of ITEAD-SDK. It
-provides Python functions, variables and classes for Python users. All functions,
-variables and classes in Python API have the same name as those in ITEAD-SDK Help.
-The strategy to programing with them is just like C or C++. 
+ITEAD-SDK Python API is Python Application Program Interface of ITEAD-SDK.
+It provides Python functions, variables and classes for Python users. All
+functions, variables and classes in it , amazingly, have the same name as those
+in ITEAD-SDK API. Python's syntax is more simple than C/C++. Besides, the ways
+of invoking functions and accessing class members(include methods and datas) in
+Python is almost the same as those in C/C++. The strategies and thoughts of
+developing with Python have no much differences between two.
 
-All of the above, we provide no documentation for ITEAD-SDK Python API at present.
+All of the above, we provide no documents for ITEAD-SDK Python API at present.
+Python users can simply regard ITEAD-SDK API as ITEAD-SDK Python API when
+programing.
+
+Type Mapping
+============
+
+        C/C++                           Python
+
+    int*_t                              int/long
+    uint*_t                             int/long
+    [signed|unsigned] char              int/long
+    [signed|unsigned] short int         int/long
+    [signed|unsigned] int               int/long
+    [signed|unsigned] long int          int/long
+    [signed|unsigned] long long         int/long
+    float                               float
+    double                              float
+    char *                              str
+    string                              str
 
 Difference
 ==========
@@ -26,6 +48,8 @@ ITEAD-SDK Python API:
     GPIO_EINT_CFG_HIGH
     GPIO_EINT_CFG_LOW
 
--------------------------------------------------------------------------------
-# The end of this doc
--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+# The End
+
+--------------------------------------------------------------------------------
