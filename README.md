@@ -67,7 +67,7 @@ You can implement your design based on ITEAD-SDK in C or C++.
 [ITEAD-SDK API][2], which is compatible with [Arduino API][1], makes it easier
 for those who have some understanding of Arduino to get started. Without any
 codes modified, the libraries and user's codes for Arduino can be run on
-prefectly ITEAD-SDK.
+ITEAD-SDK prefectly.
 
 Especially and amazingly, [ITEAD-SDK Python API][2] is provided for Python users. 
 **A few beautiful lines of code will achieve your goals!**
