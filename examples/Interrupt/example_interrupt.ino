@@ -3,7 +3,10 @@
  *
  * Show usage of attachInterrupt/detachInterrupt/noInterrupt/interrupt functions.
  * 
- * @warning ONLY works on ITEAD-OS for now !
+ * @warning 
+ *  ONLY works on ITEAD-OS for now !
+ *  You need to load itead_gpio_int.ko to enable interrupt functions, such as
+ *  attachInterrupt, detachInterrupt, noInterrupt, interrupt, etc.
  * 
  * @author  Wu Pengfei (email:<pengfei.wu@itead.cc>)
  * @date    2014/8/14

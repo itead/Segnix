@@ -56,51 +56,51 @@
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> gpioShareIsr(uint16_t pin, <span class="keywordtype">void</span> *pdata)</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    printf(<span class="stringliteral">&quot;\n============ gpio_share_isr begin===========\n&quot;</span>);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    printf(<span class="stringliteral">&quot;pin = %d\n&quot;</span>, pin);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordflow">if</span>( pdata == NULL) {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        printf(<span class="stringliteral">&quot;pdata == NULL\n&quot;</span>);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        printf(<span class="stringliteral">&quot;*pdata = %s\n&quot;</span>, (<span class="keywordtype">char</span> *)pdata);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    }</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    printf(<span class="stringliteral">&quot;============ gpio_share_isr   end===========\n&quot;</span>);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keywordtype">void</span> setup(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> main_loop_counter = 0;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">char</span> *msg1 = (<span class="keywordtype">char</span> *)<span class="stringliteral">&quot;This is pin1&quot;</span>;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">char</span> *msg2 = (<span class="keywordtype">char</span> *)<span class="stringliteral">&quot;This is pin2&quot;</span>;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    uint16_t pin1 = 37;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    uint16_t pin2 = 39;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="group__interrupt.html#ga01241fd930bd6036539f790bf3907b1d">attachInterrupt</a>(pin1, gpioShareIsr, (<span class="keywordtype">void</span> *)msg1, <a class="code" href="group__interrupt.html#gga0461a173a7d489c46b4f62ab9936319facff4ef44bee8b6021a9d053a6c3f566e">GPIO_EINT_CFG_FALLING</a>);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="group__interrupt.html#ga01241fd930bd6036539f790bf3907b1d">attachInterrupt</a>(pin2, gpioShareIsr, (<span class="keywordtype">void</span> *)msg2, <a class="code" href="group__interrupt.html#gga0461a173a7d489c46b4f62ab9936319fab6e2fd6159bc07f7d0138d4f64c728bc">GPIO_EINT_CFG_RAISING</a>);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">while</span> (main_loop_counter &lt; 10)</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        main_loop_counter++;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">if</span> (main_loop_counter == 4 &amp;&amp; (<a class="code" href="group__interrupt.html#ga22d1dc3308c6db6c73df02852dd51879">noInterrupt</a>()== 0)) {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            printf(<span class="stringliteral">&quot;\n=====No Interrupt======\n&quot;</span>);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">if</span> (main_loop_counter == 6 &amp;&amp; (<a class="code" href="group__interrupt.html#gab089f79138027f919d1e081e26629f61">interrupt</a>()== 0)) {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            printf(<span class="stringliteral">&quot;\n=====Interrupt======\n&quot;</span>);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        }</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        printf(<span class="stringliteral">&quot;main_loop_counter = %lu\n&quot;</span>, main_loop_counter);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        sleep(5);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="group__interrupt.html#ga3a969df1fe8e97f0e5955547aab6c28a">detachInterrupt</a>(pin1);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="group__interrupt.html#ga3a969df1fe8e97f0e5955547aab6c28a">detachInterrupt</a>(pin2);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keywordtype">void</span> loop(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;{</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    exit(0);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> gpioShareIsr(uint16_t pin, <span class="keywordtype">void</span> *pdata)</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    printf(<span class="stringliteral">&quot;\n============ gpio_share_isr begin===========\n&quot;</span>);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    printf(<span class="stringliteral">&quot;pin = %d\n&quot;</span>, pin);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">if</span>( pdata == NULL) {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        printf(<span class="stringliteral">&quot;pdata == NULL\n&quot;</span>);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        printf(<span class="stringliteral">&quot;*pdata = %s\n&quot;</span>, (<span class="keywordtype">char</span> *)pdata);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    }</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    printf(<span class="stringliteral">&quot;============ gpio_share_isr   end===========\n&quot;</span>);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keywordtype">void</span> setup(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> main_loop_counter = 0;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">char</span> *msg1 = (<span class="keywordtype">char</span> *)<span class="stringliteral">&quot;This is pin1&quot;</span>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">char</span> *msg2 = (<span class="keywordtype">char</span> *)<span class="stringliteral">&quot;This is pin2&quot;</span>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    uint16_t pin1 = 37;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    uint16_t pin2 = 39;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="group__interrupt.html#ga01241fd930bd6036539f790bf3907b1d">attachInterrupt</a>(pin1, gpioShareIsr, (<span class="keywordtype">void</span> *)msg1, <a class="code" href="group__interrupt.html#gga0461a173a7d489c46b4f62ab9936319facff4ef44bee8b6021a9d053a6c3f566e">GPIO_EINT_CFG_FALLING</a>);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="group__interrupt.html#ga01241fd930bd6036539f790bf3907b1d">attachInterrupt</a>(pin2, gpioShareIsr, (<span class="keywordtype">void</span> *)msg2, <a class="code" href="group__interrupt.html#gga0461a173a7d489c46b4f62ab9936319fab6e2fd6159bc07f7d0138d4f64c728bc">GPIO_EINT_CFG_RAISING</a>);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">while</span> (main_loop_counter &lt; 10)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        main_loop_counter++;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordflow">if</span> (main_loop_counter == 4 &amp;&amp; (<a class="code" href="group__interrupt.html#ga22d1dc3308c6db6c73df02852dd51879">noInterrupt</a>()== 0)) {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            printf(<span class="stringliteral">&quot;\n=====No Interrupt======\n&quot;</span>);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">if</span> (main_loop_counter == 6 &amp;&amp; (<a class="code" href="group__interrupt.html#gab089f79138027f919d1e081e26629f61">interrupt</a>()== 0)) {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            printf(<span class="stringliteral">&quot;\n=====Interrupt======\n&quot;</span>);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        printf(<span class="stringliteral">&quot;main_loop_counter = %lu\n&quot;</span>, main_loop_counter);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        sleep(5);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="group__interrupt.html#ga3a969df1fe8e97f0e5955547aab6c28a">detachInterrupt</a>(pin1);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="group__interrupt.html#ga3a969df1fe8e97f0e5955547aab6c28a">detachInterrupt</a>(pin2);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keywordtype">void</span> loop(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;{</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    exit(0);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
 <div class="ttc" id="group__interrupt_html_gga0461a173a7d489c46b4f62ab9936319fab6e2fd6159bc07f7d0138d4f64c728bc"><div class="ttname"><a href="group__interrupt.html#gga0461a173a7d489c46b4f62ab9936319fab6e2fd6159bc07f7d0138d4f64c728bc">GPIO_EINT_CFG_RAISING</a></div><div class="ttdoc">Raising edge. </div><div class="ttdef"><b>Definition:</b> <a href="itead__interrupt_8h_source.html#l00046">itead_interrupt.h:46</a></div></div>
 <div class="ttc" id="group__interrupt_html_gga0461a173a7d489c46b4f62ab9936319facff4ef44bee8b6021a9d053a6c3f566e"><div class="ttname"><a href="group__interrupt.html#gga0461a173a7d489c46b4f62ab9936319facff4ef44bee8b6021a9d053a6c3f566e">GPIO_EINT_CFG_FALLING</a></div><div class="ttdoc">Falling edge. </div><div class="ttdef"><b>Definition:</b> <a href="itead__interrupt_8h_source.html#l00047">itead_interrupt.h:47</a></div></div>
 <div class="ttc" id="group__interrupt_html_ga3a969df1fe8e97f0e5955547aab6c28a"><div class="ttname"><a href="group__interrupt.html#ga3a969df1fe8e97f0e5955547aab6c28a">detachInterrupt</a></div><div class="ttdeci">int32_t detachInterrupt(uint16_t pin)</div><div class="ttdoc">Detach ISR from pin. </div><div class="ttdef"><b>Definition:</b> <a href="itead__interrupt_8c_source.html#l00293">itead_interrupt.c:293</a></div></div>
@@ -110,7 +110,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 17 2014 17:42:52 for ITEAD-SDK API by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Oct 18 2014 10:54:09 for ITEAD-SDK API by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

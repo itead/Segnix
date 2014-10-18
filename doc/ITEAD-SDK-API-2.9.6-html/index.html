@@ -57,6 +57,7 @@
 <ul>
 <li>Support for external interrupts operations</li>
 <li>Support for upper-layer time functions</li>
+<li>Support for PWM output with any GPIO</li>
 <li>Support for GPIO operations</li>
 <li>Support for GPIO 8bit/16bit bus operations</li>
 <li>Support for UART bus operations</li>
@@ -83,8 +84,8 @@
 </ul>
 <p>If you don't know yet Iteaduino Plus, IBOX or ITEAD Core EVB, see <a href="http://imall.iteadstudio.com">http://imall.iteadstudio.com</a>.</p>
 <h1>Which Language for Developing?</h1>
-<p>You can implement your design based on ITEAD-SDK in C or C++. <a href="https://github.com/itead/SDK/tree/master/doc" title="SDK/doc">ITEAD-SDK API</a>, which is compatible with <a href="http://arduino.cc/en/Reference/HomePage" title="Arduino API">Arduino API</a>, makes it easier for those who have some understanding of Arduino to get started. Without any codes modified, the libraries and user's codes for Arduino can be run on prefectly ITEAD-SDK.</p>
-<p>Especially and amazingly, <a href="https://github.com/itead/SDK/tree/master/doc" title="SDK/doc">ITEAD-SDK Python API</a> is provided for Python users. <b>A few beautiful lines of code will achieve your goals!</b></p>
+<p>You can implement your design based on ITEAD-SDK in C or C++. <a href="https://github.com/itead/SDK/tree/master/doc" title="SDK/doc">ITEAD-SDK API</a>, which is compatible with <a href="http://arduino.cc/en/Reference/HomePage" title="Arduino API">Arduino API</a>, makes it easier for those who have some understanding of Arduino to get started. Without any codes modified, the libraries and user's codes for Arduino can be run on ITEAD-SDK prefectly.</p>
+<p><a href="https://github.com/itead/SDK/tree/master/doc" title="SDK/doc">ITEAD-SDK Python API</a>, especially and amazingly, is provided for Python users. <b>A few beautiful lines of code will achieve your goals!</b></p>
 <h1>Documentation</h1>
 <p>You can find some important and helpful documents in directory <a href="https://github.com/itead/SDK/tree/master/doc" title="SDK/doc">SDK/doc</a>.</p>
 <p>Please find in project wiki at <a href="http://wiki.iteadstudio.com/ITEAD_SDK">http://wiki.iteadstudio.com/ITEAD_SDK</a>. With more and more hardware that it supports, wiki will also be updated accordingly.</p>
@@ -99,7 +100,7 @@ $ sudo apt-get install build-essential git-core
 <h3>Step 1: Getting the Source Code</h3>
 <p>You can download SDK by command: </p><pre class="fragment">$ git clone https://github.com/itead/SDK.git
 $ cd SDK
-</pre><p>Or you can get SDK via other ways you prefer at <a href="https://github.com/itead/SDK">https://github.com/itead/SDK</a></p>
+</pre><p>or you can get SDK via other ways you prefer at <a href="https://github.com/itead/SDK">https://github.com/itead/SDK</a></p>
 <h4>NOTE</h4>
 <p>All the commands of the following steps should be run under SDK's source code directory.</p>
 <h3>Step 2: Configure Your Board</h3>
@@ -241,7 +242,7 @@ void loop(void)
  </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 17 2014 17:42:54 for ITEAD-SDK API by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Oct 18 2014 10:54:11 for ITEAD-SDK API by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
