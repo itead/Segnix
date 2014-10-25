@@ -76,10 +76,8 @@ ITEAD-SDK prefectly.
 
 # Documentation
 
-You can find some important and helpful documents in directory [SDK/doc][2].
-
-Please find in project wiki at <http://wiki.iteadstudio.com/ITEAD_SDK>. With 
-more and more hardware that it supports, wiki will also be updated accordingly.
+Online ITEAD-SDK API can be reached from [here][2].
+You can find some important and helpful documents in directory [SDK/doc][3].
 
 # Installation and Uninstallation
 
