@@ -377,4 +377,5 @@ this program. If not, see <http://www.gnu.org/licenses/>.
 
   [0]:https://github.com/itead/SDK "ITEAD-SDK"
   [1]:http://arduino.cc/en/Reference/HomePage "Arduino API"
-  [2]:https://github.com/itead/SDK/tree/master/doc "SDK/doc"
+  [2]:http://docs.iteadstudio.com/sdk/ "Online ITEAD-SDK API"
+  [3]:https://github.com/itead/SDK/tree/master/doc "SDK/doc"
