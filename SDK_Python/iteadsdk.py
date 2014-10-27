@@ -1,5 +1,5 @@
 '''
-ITEAD-SDK Python Interface Module
+ITEAD-OS-SDK Python Interface Module
 @author Wu Pengfei
 @email pengfei.wu@itead.cc
 @date 2014.10.7
@@ -37,7 +37,7 @@ else:
     
 
 ###############################################################################
-# Import core modules of ITEAD-SDK
+# Import core modules of ITEAD-OS-SDK
 ###############################################################################
 from iteadcfunction         import *
 from iteadserial            import Serial_

@@ -1,21 +1,21 @@
 @mainpage
 
-# ITEAD-SDK
+# ITEAD-OS-SDK
 
 --------------------------------------------------------------------------------
 
 # What Is It?
 
-ITEAD-SDK is an open-source interface library for hardware manipulation 
+ITEAD-OS-SDK is an open-source interface library for hardware manipulation 
 based on Linux platform and compatible with [Arduino API][1].
-You can develop with it by using C/C++ and Python. ITEAD-SDK is dedicated to provide
+You can develop with it by using C/C++ and Python. ITEAD-OS-SDK is dedicated to provide
 a fast, efficient and unified software development environment for the person
 like you with a strong electronic design idea.
 
 # What Can It Do?
 
-Through ITEAD-SDK, users can directly access to the Linux platform hardware 
-resources such as GPIO, UART, SPI, I2C etc. ITEAD-SDK supports various 
+Through ITEAD-OS-SDK, users can directly access to the Linux platform hardware 
+resources such as GPIO, UART, SPI, I2C etc. ITEAD-OS-SDK supports various 
 hardware platforms, such as Iteaduino Plus A10/A20, IBOX,
 ITEAD Core EVB, Raspberry Pi and Raspberry Pi Model B+ and so on. Meanwhile, It also
 provides a great amount of libraries for all kinds of child board like NFC(PN532)
@@ -28,7 +28,7 @@ as a rapid prototyping development tool.
 
 # Features
 
-At present, ITEAD-SDK has a set of **core features** as below:
+At present, ITEAD-OS-SDK has a set of **core features** as below:
 
   - Support for external interrupts operations
   - Support for upper-layer time functions
@@ -63,20 +63,20 @@ If you don't know yet Iteaduino Plus, IBOX or ITEAD Core EVB, see
 
 # Which Language for Developing?
 
-You can implement your design based on ITEAD-SDK in C or C++.
-[ITEAD-SDK API][2], which is compatible with [Arduino API][1], makes it easier
+You can implement your design based on ITEAD-OS-SDK in C or C++.
+[ITEAD-OS-SDK API][2], which is compatible with [Arduino API][1], makes it easier
 for those who have some understanding of Arduino to get started. Without any
 codes modified, the libraries and user's codes for Arduino can be run on
-ITEAD-SDK prefectly.
+ITEAD-OS-SDK prefectly.
 
-[ITEAD-SDK Python API][2], especially and amazingly, is provided for Python users. 
+[ITEAD-OS-SDK Python API][2], especially and amazingly, is provided for Python users. 
 **A few beautiful lines of code will achieve your goals!**
 
 
 
 # Documentation
 
-Online ITEAD-SDK API can be reached from [here][2].
+Online ITEAD-OS-SDK API can be reached from [here][2].
 You can find some important and helpful documents in directory [SDK/doc][3].
 
 # Installation and Uninstallation
@@ -94,7 +94,7 @@ If you are a Python user, the following packages should be installed:
 
 #### Note
 
-[ITEAD-SDK Python API][2] depends python2.7 not python3.x.
+[ITEAD-OS-SDK Python API][2] depends python2.7 not python3.x.
 
 ## Download and Install SDK in Debian
 
@@ -155,7 +155,7 @@ Installing SDK requires root(super user)'s privilege. Run command:
     $ make
     $ sudo make install
 
-If you are a lover of Python, you can install [ITEAD-SDK Python API][2] by running:
+If you are a lover of Python, you can install [ITEAD-OS-SDK Python API][2] by running:
 
 	$ sudo make SDK_Python_install
 
@@ -176,13 +176,13 @@ To uninstall the SDK, just run command:
     $ cd SDK
     $ sudo make uninstall
 
-If you have installed [ITEAD-SDK Python API][2], you can uninstall it by running:
+If you have installed [ITEAD-OS-SDK Python API][2], you can uninstall it by running:
 
 	$ sudo make SDK_Python_uninstall
 
 # How to Start
 
-[ITEAD-SDK Python API][2] will be recommanded for Python users.
+[ITEAD-OS-SDK Python API][2] will be recommanded for Python users.
 SDK works well with C(.c) and C++(.cpp) programs. Especially, it is
 compatiable with Arduino Sketch(.ino).
 
@@ -334,8 +334,8 @@ skills on C++ program will also helpful for solving your problems.
 
 # Plan for Next Stage
  
-ITEAD-SDK will support much more hardware platforms and 
-functional modules in the future. In the Linux thriving time, ITEAD-SDK 
+ITEAD-OS-SDK will support much more hardware platforms and 
+functional modules in the future. In the Linux thriving time, ITEAD-OS-SDK 
 will make any impossible fanatic idea possible, are you ready?
 
 # How to Contribute
@@ -373,7 +373,7 @@ this program. If not, see <http://www.gnu.org/licenses/>.
 
 --------------------------------------------------------------------------------
 
-  [0]:https://github.com/itead/SDK "ITEAD-SDK"
+  [0]:https://github.com/itead/SDK "ITEAD-OS-SDK"
   [1]:http://arduino.cc/en/Reference/HomePage "Arduino API"
-  [2]:http://docs.iteadstudio.com/sdk/ "Online ITEAD-SDK API"
+  [2]:http://docs.iteadstudio.com/sdk/ "Online ITEAD-OS-SDK API"
   [3]:https://github.com/itead/SDK/tree/master/doc "SDK/doc"

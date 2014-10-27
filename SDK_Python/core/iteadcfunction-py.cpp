@@ -408,7 +408,7 @@ PyMODINIT_FUNC inititeadcfunction(void)
     (
         "iteadcfunction", 
         iteadcfunction_methods, 
-        "iteadcfunction module implements the Python interface to C functions in ITEAD-SDK."
+        "iteadcfunction module implements the Python interface to C functions in ITEAD-OS-SDK."
     );
 }
 

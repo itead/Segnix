@@ -56,11 +56,11 @@ typedef enum GpioEintMode GpioEintMode;
 /** 
  * Prototype of GPIO Interrupt Service Routine. 
  *
- * Called by ITEAD-SDK when GPIO interrupt occurs.
+ * Called by ITEAD-OS-SDK when GPIO interrupt occurs.
  *
  * @param pin - the number of interrupt source's pin.
  * @param pdata - private data pointer registered by attachInterrupt(). 
- * @note Parameters, pin and pdata passed into it, are set by ITEAD-SDK accroding to interrupt source.
+ * @note Parameters, pin and pdata passed into it, are set by ITEAD-OS-SDK accroding to interrupt source.
  */
 typedef void (*gpio_eint_isr_t)(uint16_t pin, void *pdata);
 

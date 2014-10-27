@@ -87,7 +87,7 @@ typedef struct
  * @ingroup gpio
  * @defgroup gpioPinName Available Pin Name
  * @details Accroding to different boards, user can use pin name below directly, intead of a number, 
- *  since these have been defined in ITEAD-SDK. When calling pinMode/digitalRead/digitalWrite/analogWrite 
+ *  since these have been defined in ITEAD-OS-SDK. When calling pinMode/digitalRead/digitalWrite/analogWrite 
  *  functions, user can pass pin name replacing a number.
  * 
  * @par On Iteaduino Plus

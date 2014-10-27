@@ -292,7 +292,7 @@ uninstall:
 
 ###############################################################################
 # make BoardName to generate include/itead_config.h 
-# to compile with your board supported by ITEAD-SDK.
+# to compile with your board supported by ITEAD-OS-SDK.
 # BoardName: Iteaduino_Plus,Raspberry_Rv2
 ###############################################################################
 .PHONY: Iteaduino_Plus
