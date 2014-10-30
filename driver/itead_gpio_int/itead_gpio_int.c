@@ -1,11 +1,9 @@
 /********************************************************************
-* File		:	itead_a10_a20_core_gpio.c
+* File		:	itead_gpio_int.c
 * Desc		:	ioctl to manipulate gpio external interrupts of itead a10/a20 core
 * Author	: 	Wu Pengfei
 * Company	:	ITEAD Intelligent Systems Co.,Ltd.(http://imall.iteadstudio.com/)
 * Date		:	2014/8/14
-* History	:	Version		Modified by		Date		What
-*				v1.0		Wu Pengfei		2014/3/11	Create
 ********************************************************************/
 
 /*
@@ -356,6 +354,7 @@ static volatile uint32_t *cureg = NULL;
 static struct fasync_struct *gpio_async = NULL;
 static volatile uint32_t gpio_eint_state = 0;
 static GpioEintRegistered registered_eint[GPIO_EINT_NUMBER_TOTAL] = {0};
+static uint8_t eint_old_mode[GPIO_EINT_NUMBER_TOTAL] = {0};
 
 
 
@@ -380,7 +379,7 @@ static uint32_t vertify_pin(uint16_t pin)
  * @name	: pin_mode
  * @desc	: config pin to the specific mode.
  * @param	: pin - the number of specific pin.
- *			  mode - INPUT or OUTPUT or GPIO_MODE_EINT
+ *			  mode - INPUT or OUTPUT or GPIO_MODE_EINT or mode < 0x8
  * @return	: none.
  */
 static void pin_mode(uint16_t pin, uint8_t mode) 
@@ -403,10 +402,42 @@ static void pin_mode(uint16_t pin, uint8_t mode)
 	} else if (mode == GPIO_MODE_EINT){
 	    (*cureg) &= ~(0xF<<((index%8)*4));
 		(*cureg) |= GPIO_MODE_EINT << ((index%8)*4);
+	} else if (mode < 0x8) {
+	    (*cureg) &= ~(0xF<<((index%8)*4));
+	    (*cureg) |= mode << ((index%8)*4);
 	} else {
 		printk("\nIllegal mode\n");
 	}
 	
+}
+
+/*
+ * @name	: get_pin_mode
+ * @desc	: get the mode of pin.
+ * @param	: pin - the number of specific pin.
+ * @return	: Mode value (low 3 bits is valid).
+ */
+static uint8_t get_pin_mode(uint16_t pin) 
+{
+	/* get port_no and index by pin_no */
+	port_no = pnp[pin].port_no;
+	index   = pnp[pin].index;
+	
+	/* find the register address need to operate */
+	cureg = (volatile uint32_t *)((uint32_t)a10_a20_pio_base 
+		+ port_no*0x24 + 4*(index/8));
+
+	return (uint8_t)(0b111 && ( (*cureg)>>( (index%8) * 4) ));	
+}
+
+static inline uint16_t get_pin_no(uint32_t eint_no)
+{
+    uint32_t i;
+    for(i=0; i<ARRAY_SIZE(gpio_eint_map); i++){
+        if(gpio_eint_map[i].eint_no == eint_no)
+            return gpio_eint_map[i].pin;
+    }
+    return GPIO_PIN_NONE;
 }
 
 #if 0 
@@ -491,6 +522,9 @@ static inline int32_t gpio_eint_request(uint16_t pin, GpioEintMode mode)
         return -EINVAL;
     }
 
+    /* Save old pin mode */
+    eint_old_mode[eint_no] = get_pin_mode(pin);
+    
     /* Set GPIO as interrupt function */
     pin_mode(pin, GPIO_MODE_EINT);
     
@@ -536,37 +570,25 @@ static inline int32_t gpio_eint_free(uint16_t pin)
     /* Unregister */
     registered_eint[eint_no] = GPIO_EINT_FREE;
 
-    /* Set GPIO as INPUT function */
-    pin_mode(pin, INPUT);
+    /* Restore pin mode saved before */
+    pin_mode(pin, eint_old_mode[eint_no]);
     
     debug("function done.\n");
     return 0;
 }
 
+static inline int32_t gpio_eint_no_interrupt(void);
 static inline void gpio_eint_free_all(void)
 {
-    int32_t i;
-    uint32_t eint_no;
-    uint16_t pin;
+    uint32_t i;
     
-    for (i=0; i<ARRAY_SIZE(gpio_eint_map); i++) {
-        if (gpio_eint_map[i].pin != GPIO_PIN_NONE) {
-            eint_no = gpio_eint_map[i].eint_no;
-            pin = gpio_eint_map[i].pin;
-            
-            /* Disable */
-            PIO_INT_CTL &= ~(0x1 << eint_no);
-            
-            /* Clear pending bit */
-            PIO_INT_STA |= 0x1 << eint_no;
-            
-            /* Unregister */
-            registered_eint[eint_no] = GPIO_EINT_FREE;
-
-            /* Set GPIO as INPUT function */
-            pin_mode(pin, INPUT);
-        } else {
-            return;
+    gpio_eint_no_interrupt();
+    
+    /* Disable EINTX registered and restore the pin mode saved before */
+    for (i=0; i<ARRAY_SIZE(registered_eint); i++) {
+        if (registered_eint[i] == GPIO_EINT_REGISTERED) {
+            registered_eint[i] = GPIO_EINT_FREE;        /* Unregister */
+            pin_mode(get_pin_no(i), eint_old_mode[i]);  /* Restore pin mode saved before */
         }
     }
 }
@@ -689,8 +711,8 @@ static int digital_gpio_open (struct inode * inode, struct file * file)
 		return -EBUSY;
 	}
 	
-	gpio_eint_free_all();
-    
+	gpio_eint_free_all();   
+	
 	debug("digital_gpio_open done\n");
 	return 0;
 }
@@ -743,8 +765,6 @@ static int  itead_gpio_int_init(void)
 		pr_err("Can't request irq %d\n", GPIO_IRQ_NO);
 	}
 
-    gpio_eint_free_all();
-
 
 	debug("itead_gpio_int_init done\n");
 	
@@ -754,8 +774,6 @@ static int  itead_gpio_int_init(void)
 
 static void itead_gpio_int_exit(void)
 {
-
-    gpio_eint_free_all();
     
     free_irq(GPIO_IRQ_NO, &major);
     
