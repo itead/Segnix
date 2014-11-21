@@ -26,6 +26,8 @@ SDKVERSION=2.9.6
 
 SDK_C_COMPILE=gcc
 SDK_CPP_COMPILE=g++
+PYTHON27_LDFLAGS=`python2.7-config --ldflags`
+PYTHON27_INCLUDES=`python2.7-config --includes`
 
 #echo "\$# = " $#
 #echo "\$@ = " $@
@@ -77,7 +79,7 @@ if [[ $2 == *.ino ]] ; then
 	done
 	
 	cd .tmp
-	${SDK_CPP_COMPILE} -o ${params} /usr/lib/iteadboot.o  -liteadc -liteadcpp -lpthread -liteadmodule -I../
+	${SDK_CPP_COMPILE} -o ${params} /usr/lib/iteadboot.o  -liteadc -liteadcpp -lpthread -liteadmodule ${PYTHON27_LDFLAGS} ${PYTHON27_INCLUDES} -I../
 	mv $1 ../
 	cd ../
 	
@@ -87,7 +89,7 @@ fi
 
 if [[ $2 == *.cpp ]] ; then
 	echo "compile by .cpp"
-	${SDK_CPP_COMPILE} -o $@  -liteadc -liteadcpp -lpthread -liteadmodule
+	${SDK_CPP_COMPILE} -o $@  -liteadc -liteadcpp -lpthread -liteadmodule ${PYTHON27_LDFLAGS} ${PYTHON27_INCLUDES}
 fi
 
 if [[ $2 == *.c ]] ; then

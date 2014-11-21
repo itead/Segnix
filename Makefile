@@ -120,6 +120,18 @@ HEADERS_itead_NRF24L01P		:= $(addprefix libraries/itead_NRF24L01P/,$(HEADERS_ite
 HEADERS_itead_SHT1x		:= SHT1x.h
 HEADERS_itead_SHT1x		:= $(addprefix libraries/itead_SHT1x/,$(HEADERS_itead_SHT1x))
 
+HEADERS_itead_IoTgo	:= Dev_Light.h
+HEADERS_itead_IoTgo	+= Dev_Switch.h
+HEADERS_itead_IoTgo	+= Dev_THSensor.h
+HEADERS_itead_IoTgo	+= Dev_THSensorInterface.h
+HEADERS_itead_IoTgo	+= IoTgo_debug.h
+HEADERS_itead_IoTgo	+= IoTgo_device.h
+HEADERS_itead_IoTgo	+= IoTgo_doxygen.h
+HEADERS_itead_IoTgo	+= IoTgo_error.h
+HEADERS_itead_IoTgo	+= IoTgo.h
+HEADERS_itead_IoTgo := $(addprefix libraries/itead_IoTgo/,$(HEADERS_itead_IoTgo))
+
+
 #
 # include config.mk for optional libraries.
 #
@@ -145,6 +157,7 @@ export INSTALL_LIBRARIES_itead_PN532_SPI
 export INSTALL_LIBRARIES_itead_nRF24L01-lite
 export INSTALL_LIBRARIES_itead_NRF24L01P
 export INSTALL_LIBRARIES_itead_SHT1x
+export INSTALL_LIBRARIES_itead_IoTgo
 
 endif  # ifeq (config.mk,$(wildcard config.mk))
 
@@ -188,6 +201,9 @@ ifeq ($(INSTALL_LIBRARIES_itead_SHT1x),y)
 HEADERS_libraries += $(HEADERS_itead_SHT1x)
 endif
 
+ifeq ($(INSTALL_LIBRARIES_itead_IoTgo),y)
+HEADERS_libraries += $(HEADERS_itead_IoTgo)
+endif
 
 ###############################################################################
 # SDK components needed to be copied into SYS_USR_INCLUDE

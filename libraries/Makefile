@@ -37,6 +37,9 @@ ifeq ($(INSTALL_LIBRARIES_itead_SHT1x),y)
 OBJS += itead_SHT1x.o
 endif
 
+ifeq ($(INSTALL_LIBRARIES_itead_IoTgo),y)
+OBJS += itead_IoTgo.o
+endif
 
 .PHONY: all
 all: libiteadmodule.so

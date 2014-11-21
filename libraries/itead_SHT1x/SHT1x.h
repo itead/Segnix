@@ -13,14 +13,43 @@
 #define __SHT1X_H__
 
 #include <itead.h>
+#include <Dev_THSensorInterface.h>
 
-class SHT1x
+/**
+ * SHT1x implements THSensorInterface. 
+ *
+ */
+class SHT1x : public THSensorInterface
 {
-  public:
+public: /* Implementation of methods in THSensorInterface */
+    virtual int32_t begin(void)
+    {
+        /* Nothing to do */
+        return 0;
+    }
+    virtual int32_t getData(float *temp_c, float *temp_f, float *hum)
+    {
+        if (temp_c) 
+            *temp_c = readTemperatureC();
+        if (temp_f)
+            *temp_f = readTemperatureF();
+        if (hum)
+            *hum = readHumidity();
+        return 0;
+    }
+    virtual int32_t end(void)
+    {
+        /* Nothing to do */
+        return 0;
+    }
+    
+public: /* Constructors */
     SHT1x(int dataPin, int clockPin);
+
     float readHumidity();
     float readTemperatureC();
     float readTemperatureF();
+    
   private:
     int _dataPin;
     int _clockPin;
@@ -34,4 +63,4 @@ class SHT1x
     void skipCrcSHT(int _dataPin, int _clockPin);
 };
 
-#endif
+#endif /* #ifndef __SHT1X_H__ */
