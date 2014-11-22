@@ -1,0 +1,55 @@
+Segnix Python API
+====================
+
+Segnix Python API is Python Application Program Interface of Segnix.
+It provides Python functions, variables and classes for Python users. All
+functions, variables and classes in it , amazingly, have the same name as those
+in Segnix API. Python's syntax is more simple than C/C++. Besides, the ways
+of invoking functions and accessing class members(include methods and datas) in
+Python is almost the same as those in C/C++. The strategies and thoughts of
+developing with Python have no much differences from C/C++.
+
+All of the above, we provide no documents for Segnix Python API at present.
+Python users can simply regard Segnix API as Segnix Python API when
+programing.
+
+Type Mapping
+============
+
+        C/C++                           Python
+
+    int*_t                              int/long
+    uint*_t                             int/long
+    [signed|unsigned] char              int/long
+    [signed|unsigned] short int         int/long
+    [signed|unsigned] int               int/long
+    [signed|unsigned] long int          int/long
+    [signed|unsigned] long long         int/long
+    float                               float
+    double                              float
+    char *                              str
+    string                              str
+
+Difference
+==========
+
+Functions unimplemented in Segnix Python API:
+
+    set8BitsBUS
+    set16BitsBUS
+    digitalWrite8 
+    digitalWrite16 
+    digitalRead8 
+    digitalRead16 
+
+In attachInterrupt function, the trigger methods below do not supported in 
+Segnix Python API:
+
+    GPIO_EINT_CFG_HIGH
+    GPIO_EINT_CFG_LOW
+
+--------------------------------------------------------------------------------
+
+# The End
+
+--------------------------------------------------------------------------------
