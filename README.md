@@ -12,6 +12,10 @@ You can develop with it by using C/C++ and Python. Segnix is dedicated to provid
 a fast, efficient and unified software development environment for the person
 like you with a strong electronic design idea.
 
+# CAUTION!
+
+## Before November 22, 2014, Segnix was named ITEAD-OS-SDK
+
 # What Can It Do?
 
 Through Segnix, users can directly access to the Linux platform hardware 
