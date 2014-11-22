@@ -92,7 +92,7 @@ typedef Serial_ SoftwareSerial;
  * @ingroup serial
  * @defgroup serial_instance Predefined Instance of class Serial_
  * @details Accroding to different boards, user can use instances below directly,
- *  because these have been defined in ITEAD-OS-SDK. 
+ *  because these have been defined in Segnix. 
  *
  * @par On Iteaduino Plus
  * - Serial - A reference to Serial4

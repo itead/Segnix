@@ -34,7 +34,7 @@ typedef struct GpioEintMap {
  * @ingroup interrupt
  * @defgroup interrupt_gpio Interruptable GPIO Table
  * @details Accroding to different boards, user can use gpio below as interrupt source.
- *  These have been defined in ITEAD-OS-SDK. When calling attachInterrupt/detachInterrupt,
+ *  These have been defined in Segnix. When calling attachInterrupt/detachInterrupt,
  *  user need to pass pin name below into them. 
  *
  * @warning 

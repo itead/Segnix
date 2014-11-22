@@ -5,7 +5,7 @@
 // by Seeed Technology Inc (www.seeedstudio.com)
 
 // PN532 library was Transplanted by Wu Pengfei to compitable with 
-// ITEAD-OS-SDK <https://github.com/iteadsw/SDK>.
+// Segnix <https://github.com/iteadsw/Segnix>.
 // Company:ITEAD Intelligent Systems Co.,Ltd.(http://imall.iteadstudio.com/)
 // Date: 2014/05/22
 // Email: pengfei.wu@itead.cc

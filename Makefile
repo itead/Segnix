@@ -1,6 +1,6 @@
 #####################################################################
 # File		:	Makefile
-# Desc		:	Manage all source files in SDK.
+# Desc		:	Manage all source files in Segnix.
 # Author	: 	Wu Pengfei
 # Company	:	ITEAD Intelligent Systems Co.,Ltd.(http://imall.iteadstudio.com/)
 # Date		:	2014/3/11
@@ -30,7 +30,7 @@ SUBDIRS_CLEAN := $(addsuffix .clean,$(SUBDIRS))
 
 
 ###############################################################################
-# Host system path to install SDK components into.
+# Host system path to install Segnix components into.
 ###############################################################################
 SYS_USR_LIB 			:= /usr/lib
 SYS_USR_LOCAL_LIB 		:= /usr/local/lib
@@ -41,7 +41,7 @@ SYS_USR_INCLUDE 		:= /usr/include
 SYS_USR_LOCAL_INCLUDE 	:= /usr/local/include
 
 ###############################################################################
-# SDK components needed to be copied into SYS_USR_LIB
+# Segnix components needed to be copied into SYS_USR_LIB
 ###############################################################################
 INSTALL_USR_LIB := bootloader/iteadboot.o
 INSTALL_USR_LIB += lib/libiteadc.so
@@ -49,22 +49,22 @@ INSTALL_USR_LIB += lib/libiteadcpp.so
 INSTALL_USR_LIB += libraries/libiteadmodule.so
 
 ###############################################################################
-# SDK components needed to be copied into SYS_USR_LOCAL_LIB
+# Segnix components needed to be copied into SYS_USR_LOCAL_LIB
 ###############################################################################
 INSTALL_USR_LOCAL_LIB := $(INSTALL_USR_LIB)
 
 ###############################################################################
-# SDK components needed to be copied into SYS_USR_BIN
+# Segnix components needed to be copied into SYS_USR_BIN
 ###############################################################################
 INSTALL_USR_BIN := tools/iteadcompile
 
 ###############################################################################
-# SDK components needed to be copied into SYS_USR_LOCAL_BIN
+# Segnix components needed to be copied into SYS_USR_LOCAL_BIN
 ###############################################################################
 INSTALL_USR_LOCAL_BIN := $(INSTALL_USR_BIN)
 
 ###############################################################################
-# SDK components needed to be copied into SYS_UDEV_RULES
+# Segnix components needed to be copied into SYS_UDEV_RULES
 ###############################################################################
 INSTALL_UDEV_RULES := tools/final-itead.rules
 
@@ -206,13 +206,13 @@ HEADERS_libraries += $(HEADERS_itead_IoTgo)
 endif
 
 ###############################################################################
-# SDK components needed to be copied into SYS_USR_INCLUDE
+# Segnix components needed to be copied into SYS_USR_INCLUDE
 ###############################################################################
 INSTALL_USER_INCLUDE := $(HEADERS_include)
 INSTALL_USER_INCLUDE += $(HEADERS_libraries)
 
 ###############################################################################
-# SDK components needed to be copied into SYS_USR_LOCAL_INCLUDE
+# Segnix components needed to be copied into SYS_USR_LOCAL_INCLUDE
 ###############################################################################
 INSTALL_USER_LOCAL_INCLUDE := $(INSTALL_USER_INCLUDE)
 
@@ -308,7 +308,7 @@ uninstall:
 
 ###############################################################################
 # make BoardName to generate include/itead_config.h 
-# to compile with your board supported by ITEAD-OS-SDK.
+# to compile with your board supported by Segnix.
 # BoardName: Iteaduino_Plus,Raspberry_Rv2
 ###############################################################################
 .PHONY: Iteaduino_Plus

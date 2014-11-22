@@ -30,7 +30,7 @@ BSD license, check license.txt for more information
 All text above, and the splash screen must be included in any redistribution
 
 MODIFIED BY !
-Desc: This lib is transplanted to itead sdk by Wu Pengfei.
+Desc: This lib is transplanted to itead Segnix by Wu Pengfei.
 Date: 2014.3.31
 Email: pengfei.wu@itead.cc
 

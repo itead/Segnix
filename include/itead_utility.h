@@ -1,7 +1,7 @@
 /**
  * @file itead_utility.h
  *
- * Provide utilities used in SDK.
+ * Provide utilities used in Segnix.
  *
  * @author  Wu Pengfei (email:<pengfei.wu@itead.cc>)
  * @date    2014/3/11

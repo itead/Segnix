@@ -111,7 +111,7 @@ public:
  * @ingroup spi
  * @defgroup spi_instance Predefined Instance of class SPIClass
  * @details Accroding to different boards, user can use instances below directly,
- *  because these have been defined in ITEAD-OS-SDK. 
+ *  because these have been defined in Segnix. 
  * 
  * @par On Iteaduino Plus
  * - SPI - A reference to SPI0
