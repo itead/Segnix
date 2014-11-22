@@ -51,7 +51,7 @@ Based on core features, plenty of **functional features** can be reached:
 
 # Where Can It Run?
 
-At present, platforms supported by SDK are following:
+At present, platforms supported by Segnix are following:
  
   - Iteaduino Plus A10/A20
   - ITEAD CORE EVB(IBOX)
@@ -77,7 +77,7 @@ Segnix prefectly.
 # Documentation
 
 Online Segnix API can be reached from [here][2].
-You can find some important and helpful documents in directory [SDK/doc][3].
+You can find some important and helpful documents in directory [Segnix/doc][3].
 
 # Installation and Uninstallation
 
@@ -96,27 +96,27 @@ If you are a Python user, the following packages should be installed:
 
 [Segnix Python API][2] depends python2.7 not python3.x.
 
-## Download and Install SDK in Debian
+## Download and Install Segnix in Debian
 
 Only a few steps, DO IT !
 
 ### Step 1: Getting the Source Code
 
-You can download SDK by command:
+You can download Segnix by command:
 
-    $ git clone https://github.com/itead/SDK.git
-    $ cd SDK
+    $ git clone https://github.com/itead/Segnix.git
+    $ cd Segnix
 
-or you can get SDK via other ways you prefer at <https://github.com/itead/SDK>
+or you can get Segnix via other ways you prefer at <https://github.com/itead/Segnix>
 
 #### NOTE
 
-All the commands of the following steps should be run under SDK's 
+All the commands of the following steps should be run under Segnix's 
 source code directory.
 
 ### Step 2: Configure Your Board
 
-For now, platforms supported by SDK and the configuration commands are below. 
+For now, platforms supported by Segnix and the configuration commands are below. 
 You **MUST** choose the one fitting your board.
 
   - Iteaduino Plus A10/A20
@@ -150,7 +150,7 @@ description for selecting libraries can be found in `config.mk`. For example:
 
 ### Step 4: Compile and Install
 
-Installing SDK requires root(super user)'s privilege. Run command:
+Installing Segnix requires root(super user)'s privilege. Run command:
 
     $ make
     $ sudo make install
@@ -161,7 +161,7 @@ If you are a lover of Python, you can install [Segnix Python API][2] by running:
 
 ## Version and Help
 
-To check the version of SDK installed, run command:
+To check the version of Segnix installed, run command:
     
     $ iteadcompile -v
     
@@ -171,9 +171,9 @@ For some brief help information:
 
 ## Uninstall
 
-To uninstall the SDK, just run command:
+To uninstall the Segnix, just run command:
 
-    $ cd SDK
+    $ cd Segnix
     $ sudo make uninstall
 
 If you have installed [Segnix Python API][2], you can uninstall it by running:
@@ -183,10 +183,10 @@ If you have installed [Segnix Python API][2], you can uninstall it by running:
 # How to Start
 
 [Segnix Python API][2] will be recommanded for Python users.
-SDK works well with C(.c) and C++(.cpp) programs. Especially, it is
+Segnix works well with C(.c) and C++(.cpp) programs. Especially, it is
 compatiable with Arduino Sketch(.ino).
 
-## To use SDK in Python
+## To use Segnix in Python
 
 Create a new file named `blink.py` which reads as follow:
 
@@ -211,7 +211,7 @@ Then, run it:
 You can get commutative HIGH and LOW from GPIO PG9, if you've run it on ITEAD CORE EVB
 or other platforms based on Allwinner A10/A20 SoC.
 
-## To use SDK in C program
+## To use Segnix in C program
 
 Create a new file named "led.c" which reads as follow:
 
@@ -250,7 +250,7 @@ You can run the LED program after compilation:
     $ sudo ./LED
 
 
-## To use SDK in C++ program
+## To use Segnix in C++ program
  
 Create a new file named "led.cpp" which reads as follow:
 
@@ -290,7 +290,7 @@ You can run the LED program after compilation:
     $ sudo ./LED
 
  
-## To use SDK like an Arduino sketch(.ino)
+## To use Segnix like an Arduino sketch(.ino)
 
 Create a new file named "led.ino" which contains the following lines:
 
@@ -373,7 +373,7 @@ this program. If not, see <http://www.gnu.org/licenses/>.
 
 --------------------------------------------------------------------------------
 
-  [0]:https://github.com/itead/SDK "Segnix"
+  [0]:https://github.com/itead/Segnix "Segnix"
   [1]:http://arduino.cc/en/Reference/HomePage "Arduino API"
-  [2]:http://docs.iteadstudio.com/sdk/ "Online Segnix API"
-  [3]:https://github.com/itead/SDK/tree/master/doc "SDK/doc"
+  [2]:http://docs.iteadstudio.com/Segnix/ "Online Segnix API"
+  [3]:https://github.com/itead/Segnix/tree/master/doc "Segnix/doc"
