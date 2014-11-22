@@ -48,62 +48,38 @@
 /* An unique identifier of user registed on IoTgo platform */
 #define SWITCH_APIKEY        "9bed6c2c-fbc6-4400-9ef8-087f9f0d996e"
 
-/* 
- * The SSID (more generally, WiFi's name) for accessing to internet.
- * Maybe you need to replace "ITEAD" with yours. 
- */
-#define WIFI_SSID           "ITEAD"
-
-/* 
- * The SSID's password
- * Is it the same to yours? if not, change it.
- */
-#define WIFI_PASS           "12345678"
-
-/*
- * IP address or domain name of IoTgo platform servers. 
- * Maybe you need to change it.
- */
-#define IOT_SERVER          "172.16.7.6"
-
-#define SWITCH_PIN           (13)
+#define SWITCH_PIN           (PG11)
 
 Switch sw(SWITCH_PIN);
 
 void setup()
 {
     const char *apikey;
-    sw.setServer(IOT_SERVER);
-    if (!sw.connectWiFi(WIFI_SSID, WIFI_PASS))
-    {
-        Serial.println("connectWiFI error and halt...");
-        while(1);
-    }
 
-    Serial.println("Connecting device to server...");
+    printf("Connecting device to server...\n");
+    
     apikey = sw.init(SWITCH_ID, SWITCH_APIKEY);
     //apikey = sw.init(SWITCH_ID, SWITCH_CHECK_CODE, DEVICE_PRODUCT);
-    Serial.print("apikey = ");
-    Serial.println(apikey);    
+    printf("apikey = %s\n", apikey);
     
-    Serial.println("setup done.");
+    printf("setup done.\n");
 }
 
 void loop()
 {
     static int32_t counter = 0;
-    Serial.print("\ncounter = ");
-    Serial.println(++counter);
+    printf("\ncounter = %d\n", ++counter);
+
     int32_t ret;
 
     ret = sw.sync();
     if(!ret)
     {
-        Serial.println("sync okay");
+        printf("sync okay\n");
     }
     else
     {
-        Serial.println("sync() err!");
+        printf("sync() err!\n");
     }
     
     delay(1000);

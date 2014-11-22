@@ -48,63 +48,38 @@
 /* An unique identifier of user registed on IoTgo platform */
 #define LIGHT_APIKEY        "9bed6c2c-fbc6-4400-9ef8-087f9f0d996e"
 
-/* 
- * The SSID (more generally, WiFi's name) for accessing to internet.
- * Maybe you need to replace "ITEAD" with yours. 
- */
-#define WIFI_SSID           "ITEAD"
 
-/* 
- * The SSID's password
- * Is it the same to yours? if not, change it.
- */
-#define WIFI_PASS           "12345678"
-
-/*
- * IP address or domain name of IoTgo platform servers. 
- * Maybe you need to change it.
- */
-#define IOT_SERVER          "172.16.7.6"
-
-#define LIGHT_PIN           (13)
+#define LIGHT_PIN           (PG11)
 
 Light light(LIGHT_PIN);
 
 void setup()
 {
     const char *apikey;
-    light.setServer(IOT_SERVER);
-    if (!light.connectWiFi(WIFI_SSID, WIFI_PASS))
-    {
-        Serial.println("connectWiFI error and halt...");
-        while(1);
-    }
 
-    Serial.println("Connecting device to server...");
+    printf("Connecting device to server...\n");
     apikey = light.init(LIGHT_ID, LIGHT_APIKEY);
     //apikey = light.init(LIGHT_ID, LIGHT_CHECK_CODE, DEVICE_PRODUCT);
-    Serial.print("apikey = ");
-    Serial.println(apikey);    
+    printf("apikey = %s\n", apikey);
     
-    Serial.println("setup done.");
+    printf("setup done\n");
 }
 
 void loop()
 {
     static int32_t counter = 0;
-    Serial.print("\ncounter = ");
-    Serial.println(++counter);
+    printf("\ncounter = %d\n", ++counter);
+
     int32_t ret;
 
     ret = light.sync();
     if(!ret)
     {
-        Serial.println("sync okay");
+        printf("sync okay\n");
     }
     else
     {
-        Serial.print("sync() err! ret = ");
-        Serial.println(ret);
+        printf("sync() err! ret = %d\n", ret);
     }
     
     delay(1000);
