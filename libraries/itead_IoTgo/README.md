@@ -9,7 +9,7 @@ More about IoTgo open source cloud platform at https://github.com/itead/IoTgo-Pl
 ## How to get started
 
 On the homepage of API documentation, the tabs of Modules, Classes and Examples 
-will be useful for developers of Segnix and Raspberry Pi. 
+will be useful for developers of Segnix and Arduino. 
 
 # Author
 
