@@ -34,7 +34,7 @@ PYTHON27_INCLUDES=`python2.7-config --includes`
 #echo "\$* = " $*
 
 if [[ $1 == --version ]] || [[ $1 == -v ]] || (( $# == 0 )) ; then
-	echo "ITEAD-OS-SDK v${SDKVERSION}"
+	echo "Segnix v${SDKVERSION}"
 	exit 0
 fi
 
