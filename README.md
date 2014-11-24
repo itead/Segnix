@@ -52,6 +52,7 @@ Based on core features, plenty of **functional features** can be reached:
   - Support for NFC(PN532) module
   - Support for nRF24L01 module
   - Support for Temperature and Humidity module
+  - Support for [IoTgo platform](http://iotgo.iteadstudio.com)
 
 # Where Can It Run?
 
