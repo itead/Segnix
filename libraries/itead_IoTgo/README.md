@@ -4,6 +4,8 @@
 
 Online API documentation can be reached at <http://docs.iteadstudio.com/IoTgo-ino/>.
 
+More about IoTgo open source cloud platform at https://github.com/itead/IoTgo-Platform.
+
 ## How to get started
 
 On the homepage of API documentation, the tabs of Modules, Classes and Examples 
