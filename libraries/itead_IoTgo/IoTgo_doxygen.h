@@ -17,30 +17,41 @@
 #define __IOTGO_DOXYGEN_H__
 
 /**
- * @defgroup IoTgo IoTgo
- * @brief Just like a http proxy in charge of communication
- *  between local device and IoTgo platform(server). 
+ * @defgroup IoTgo_Device_Library  IoTgo Device Library
+ * @brief Provides the unified API for manipulating devices based on
+ *  IoTgo platform. 
  */
 
-/**
- * @defgroup Switch Switch
- * @brief Switch device of IoTgo platform. 
- */
+    /**
+     * @ingroup IoTgo_Device_Library
+     * @defgroup IoTgo IoTgo
+     * @brief Just like a http proxy in charge of communication
+     *  between local device and IoTgo platform(server). 
+     */
 
-/**
- * @defgroup Light Light
- * @brief Light device of IoTgo platform. 
- */
+    /**    
+     * @ingroup IoTgo_Device_Library
+     * @defgroup Switch Switch
+     * @brief Switch device of IoTgo platform. 
+     */
 
-/**
- * @defgroup THSensor THSensor
- * @brief THSensor device of IoTgo platform. 
- */
+    /**
+     * @ingroup IoTgo_Device_Library
+     * @defgroup Light Light
+     * @brief Light device of IoTgo platform. 
+     */
 
-/**
- * @defgroup Error Error
- * @brief Constants of error types. 
- */
+    /**
+     * @ingroup IoTgo_Device_Library
+     * @defgroup THSensor THSensor
+     * @brief THSensor device of IoTgo platform. 
+     */
+
+    /**
+     * @ingroup IoTgo_Device_Library
+     * @defgroup Error Error
+     * @brief Constants of error types. 
+     */
 
 
 #endif /* #ifndef __IOTGO_DOXYGEN_H__ */
