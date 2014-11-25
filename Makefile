@@ -4,24 +4,21 @@
 # Author	: 	Wu Pengfei
 # Company	:	ITEAD Intelligent Systems Co.,Ltd.(http://imall.iteadstudio.com/)
 # Date		:	2014/3/11
-# History	:	Version		Modified by		Date		What
-#               v1.0        Wu Pengfei      2014/3/11   Create
-#				v2.0		Wu Pengfei		2014/5/20	Change for extension
 #####################################################################
 
-###############################################################################
+#
 # Global variables in Makefile tree
-###############################################################################
-SDK_C_COMPILE 		:= gcc
-SDK_CPP_COMPILE 	:= g++
-SDK_LINKER 	    	:= ld
+#
+SDK_C_COMPILE 			:= gcc
+SDK_CPP_COMPILE 		:= g++
+SDK_LINKER 	    		:= ld
 SDK_LIB_OPTIMIZE_OPTION	:= -O2
 
 export SDK_C_COMPILE SDK_CPP_COMPILE SDK_LIB_OPTIMIZE_OPTION SDK_LINKER
 
-###############################################################################
+#
 # SUBDIRS: directories to go into and make all or clean
-###############################################################################
+#
 SUBDIRS := lib
 SUBDIRS += bootloader
 SUBDIRS += libraries
@@ -29,9 +26,9 @@ SUBDIRS += libraries
 SUBDIRS_CLEAN := $(addsuffix .clean,$(SUBDIRS))
 
 
-###############################################################################
+#
 # Host system path to install Segnix components into.
-###############################################################################
+#
 SYS_USR_LIB 			:= /usr/lib
 SYS_USR_LOCAL_LIB 		:= /usr/local/lib
 SYS_USR_BIN 			:= /usr/bin
@@ -40,38 +37,39 @@ SYS_UDEV_RULES			:= /etc/udev/rules.d
 SYS_USR_INCLUDE 		:= /usr/include
 SYS_USR_LOCAL_INCLUDE 	:= /usr/local/include
 
-###############################################################################
+#
 # Segnix components needed to be copied into SYS_USR_LIB
-###############################################################################
+#
 INSTALL_USR_LIB := bootloader/iteadboot.o
 INSTALL_USR_LIB += lib/libiteadc.so
 INSTALL_USR_LIB += lib/libiteadcpp.so
 INSTALL_USR_LIB += libraries/libiteadmodule.so
 
-###############################################################################
+#
 # Segnix components needed to be copied into SYS_USR_LOCAL_LIB
-###############################################################################
+#
 INSTALL_USR_LOCAL_LIB := $(INSTALL_USR_LIB)
 
-###############################################################################
+#
 # Segnix components needed to be copied into SYS_USR_BIN
-###############################################################################
+#
 INSTALL_USR_BIN := tools/iteadcompile
+INSTALL_USR_BIN += tools/segnix
 
-###############################################################################
+#
 # Segnix components needed to be copied into SYS_USR_LOCAL_BIN
-###############################################################################
+#
 INSTALL_USR_LOCAL_BIN := $(INSTALL_USR_BIN)
 
-###############################################################################
+#
 # Segnix components needed to be copied into SYS_UDEV_RULES
-###############################################################################
+#
 INSTALL_UDEV_RULES := tools/final-itead.rules
 
 
-###############################################################################
+#
 # headers of core lib
-###############################################################################
+#
 HEADERS_include := itead.h
 HEADERS_include += itead_config.h
 HEADERS_include += itead_debug.h
@@ -89,9 +87,9 @@ HEADERS_include += itead_interrupt.h
 HEADERS_include := $(addprefix include/,$(HEADERS_include))
 
 
-###############################################################################
+#
 # headers of libraries for function shields
-###############################################################################
+#
 
 HEADERS_itead_GSM-GPRS-GPS 	:= call.h gps.h GSM.h inetGSM.h LOG.h SIM900.h sms.h Streaming.h WideTextFinder.h
 HEADERS_itead_GSM-GPRS-GPS	:= $(addprefix libraries/itead_GSM-GPRS-GPS/,$(HEADERS_itead_GSM-GPRS-GPS))
@@ -111,25 +109,25 @@ HEADERS_itead_TinyGPS		:= $(addprefix libraries/itead_TinyGPS/,$(HEADERS_itead_T
 HEADERS_itead_PN532_SPI 	:= PN532.h
 HEADERS_itead_PN532_SPI		:= $(addprefix libraries/itead_PN532_SPI/,$(HEADERS_itead_PN532_SPI))
 
-HEADERS_itead_nRF24L01-lite 		:= nRF24L01P.h
-HEADERS_itead_nRF24L01-lite		:= $(addprefix libraries/itead_nRF24L01-lite/,$(HEADERS_itead_nRF24L01-lite))
+HEADERS_itead_nRF24L01-lite	:= nRF24L01P.h
+HEADERS_itead_nRF24L01-lite	:= $(addprefix libraries/itead_nRF24L01-lite/,$(HEADERS_itead_nRF24L01-lite))
 
 HEADERS_itead_NRF24L01P		:= NRF24L01P.h
 HEADERS_itead_NRF24L01P		:= $(addprefix libraries/itead_NRF24L01P/,$(HEADERS_itead_NRF24L01P))
 
-HEADERS_itead_SHT1x		:= SHT1x.h
-HEADERS_itead_SHT1x		:= $(addprefix libraries/itead_SHT1x/,$(HEADERS_itead_SHT1x))
+HEADERS_itead_SHT1x			:= SHT1x.h
+HEADERS_itead_SHT1x			:= $(addprefix libraries/itead_SHT1x/,$(HEADERS_itead_SHT1x))
 
-HEADERS_itead_IoTgo	:= Dev_Light.h
-HEADERS_itead_IoTgo	+= Dev_Switch.h
-HEADERS_itead_IoTgo	+= Dev_THSensor.h
-HEADERS_itead_IoTgo	+= Dev_THSensorInterface.h
-HEADERS_itead_IoTgo	+= IoTgo_debug.h
-HEADERS_itead_IoTgo	+= IoTgo_device.h
-HEADERS_itead_IoTgo	+= IoTgo_doxygen.h
-HEADERS_itead_IoTgo	+= IoTgo_error.h
-HEADERS_itead_IoTgo	+= IoTgo.h
-HEADERS_itead_IoTgo := $(addprefix libraries/itead_IoTgo/,$(HEADERS_itead_IoTgo))
+HEADERS_itead_IoTgo			:= Dev_Light.h
+HEADERS_itead_IoTgo			+= Dev_Switch.h
+HEADERS_itead_IoTgo			+= Dev_THSensor.h
+HEADERS_itead_IoTgo			+= Dev_THSensorInterface.h
+HEADERS_itead_IoTgo			+= IoTgo_debug.h
+HEADERS_itead_IoTgo			+= IoTgo_device.h
+HEADERS_itead_IoTgo			+= IoTgo_doxygen.h
+HEADERS_itead_IoTgo			+= IoTgo_error.h
+HEADERS_itead_IoTgo			+= IoTgo.h
+HEADERS_itead_IoTgo 		:= $(addprefix libraries/itead_IoTgo/,$(HEADERS_itead_IoTgo))
 
 
 #
@@ -205,24 +203,24 @@ ifeq ($(INSTALL_LIBRARIES_itead_IoTgo),y)
 HEADERS_libraries += $(HEADERS_itead_IoTgo)
 endif
 
-###############################################################################
+#
 # Segnix components needed to be copied into SYS_USR_INCLUDE
-###############################################################################
+#
 INSTALL_USER_INCLUDE := $(HEADERS_include)
 INSTALL_USER_INCLUDE += $(HEADERS_libraries)
 
-###############################################################################
+#
 # Segnix components needed to be copied into SYS_USR_LOCAL_INCLUDE
-###############################################################################
+#
 INSTALL_USER_LOCAL_INCLUDE := $(INSTALL_USER_INCLUDE)
 
 
 
 
-###############################################################################
+#
 # The first target : all
 # command "make" or "make all"
-###############################################################################
+#
 .PHONY: all
 all: $(SUBDIRS)
 	@echo "all done"
@@ -253,15 +251,6 @@ update: uninstall clean all install
 
 .PHONY: install
 install:
-#	chmod 755 \
-#	$(INSTALL_USR_LIB) \
-#	$(INSTALL_USR_LOCAL_LIB) \
-#	$(INSTALL_USR_BIN) \
-#	$(INSTALL_USR_LOCAL_BIN) \
-#	$(INSTALL_UDEV_RULES) \
-#	$(INSTALL_USER_INCLUDE) \
-#	$(INSTALL_USER_LOCAL_INCLUDE)
-	
 # install into 	SYS_USR_LIB
 	cp -f $(INSTALL_USR_LIB) $(SYS_USR_LIB)
 	cd $(SYS_USR_LIB) && chmod 755 $(notdir $(INSTALL_USR_LIB))
@@ -269,7 +258,7 @@ install:
 	cp -f $(INSTALL_USR_LOCAL_LIB) $(SYS_USR_LOCAL_LIB)
 	cd $(SYS_USR_LOCAL_LIB) && chmod 755 $(notdir $(INSTALL_USR_LOCAL_LIB))
 # install into 	SYS_USR_BIN
-	cp -f $(INSTALL_USR_BIN) $(SYS_USR_BIN)
+	cp -rdf $(INSTALL_USR_BIN) $(SYS_USR_BIN)
 	cd $(SYS_USR_BIN) && chmod 755 $(notdir $(INSTALL_USR_BIN))
 # install into 	SYS_USR_LOCAL_BIN
 	cp -f $(INSTALL_USR_LOCAL_BIN) $(SYS_USR_LOCAL_BIN)
@@ -306,11 +295,10 @@ uninstall:
 	@echo "uninstall done"
 
 
-###############################################################################
+#
 # make BoardName to generate include/itead_config.h 
 # to compile with your board supported by Segnix.
-# BoardName: Iteaduino_Plus,Raspberry_Rv2
-###############################################################################
+#
 .PHONY: Iteaduino_Plus
 Iteaduino_Plus:
 	@ echo "#ifndef __ITEAD_CONFIG_H__" > include/itead_config.h
@@ -352,9 +340,9 @@ Raspberry_Pi_Model_BPlus:
 	@ echo "BOARD_TYPE = 'BOARD_RASPBERRY_PI_MODEL_BPLUS'" > SDK_Python/itead_config.py
 	@ echo "config board Raspberry_Pi_Model_BPlus finished"
 
-###############################################################################
+#
 # Manage SDK_Python install clean uninstall
-###############################################################################
+#
 .PHONY: SDK_Python_install
 SDK_Python_install:
 	$(MAKE) -C SDK_Python install
