@@ -77,12 +77,10 @@ Segnix prefectly.
 [Segnix Python API][2], especially and amazingly, is provided for Python users. 
 **A few beautiful lines of code will achieve your goals!**
 
-
-
 # Documentation
 
-Online Segnix API can be reached from [here][2].
-You can find some important and helpful documents in directory [Segnix/doc][3].
+Online Segnix API can be reached at [Segnix API][2].
+You can also find some important and helpful documents in directory [Segnix/doc][3].
 
 # Installation and Uninstallation
 
@@ -168,11 +166,11 @@ If you are a lover of Python, you can install [Segnix Python API][2] by running:
 
 To check the version of Segnix installed, run command:
     
-    $ iteadcompile -v
+    $ segnix -v
     
 For some brief help information:
 
-    $ iteadcompile --help
+    $ segnix --help
 
 ## Uninstall
 
@@ -190,6 +188,35 @@ If you have installed [Segnix Python API][2], you can uninstall it by running:
 [Segnix Python API][2] will be recommanded for Python users.
 Segnix works well with C(.c) and C++(.cpp) programs. Especially, it is
 compatiable with Arduino Sketch(.ino).
+
+## Compilation Helper: segnix
+
+segnix is a script to compile your program conveniently. before November 22, 2014, 
+segnix was named iteadcompile. Actually, segnix is a link to iteadcompile. 
+
+    $ segnix --help
+
+    Usage:
+      segnix objname source.ino [source2.ino] [...]
+      segnix objname source.cpp [source2.cpp] [...]
+      segnix objname source.c [source2.c] [...]
+    Examples for .ino
+      segnix hello hello.ino
+      segnix led led1.ino led2.ino
+      segnix led *.ino
+    Examples for .cpp
+      segnix hello hello.cpp
+      segnix led led1.cpp led2.cpp
+      segnix led *.cpp
+    Examples for .c
+      segnix hello hello.c
+      segnix led led1.c led2.c
+      segnix led *.c
+    NOTES:
+      objname cannot cantian ".ino" or ".c" or ".cpp"
+    Version:
+      segnix [-v]
+      segnix [--version]
 
 ## To use Segnix in Python
 
@@ -246,9 +273,9 @@ Create a new file named "led.c" which reads as follow:
         }
     }
 
-Then run iteadcompile in the terminal
+Then run segnix in the terminal
 
-    $ iteadcompile LED led.c
+    $ segnix LED led.c
 
 You can run the LED program after compilation:
 
@@ -286,9 +313,9 @@ Create a new file named "led.cpp" which reads as follow:
         return 0;
     }
     
-Then run iteadcompile in the terminal
+Then run segnix in the terminal
  
-    $ iteadcompile LED led.cpp
+    $ segnix LED led.cpp
  
 You can run the LED program after compilation:
 
@@ -318,7 +345,7 @@ Create a new file named "led.ino" which contains the following lines:
 
 Then run command as below to compile led.ino:
 
-    $ iteadcompile LED led.ino
+    $ segnix LED led.ino
 
 You can run the LED program after compilation:
 
@@ -327,11 +354,11 @@ You can run the LED program after compilation:
 #### Note: How to understand debug information from compiler
 
 You DO NOT include the itead.h explicitly in your source file with suffix .ino.
-iteadcompile will take care of everything. That means you need to know the method
+segnix will take care of everything. That means you need to know the method
 you should use for locating your .ino sketch bugs. Actually,if you have a sketch
 named "Hello.ino" with a bug at level ERROR in line 25, you will get some ERROR 
 informations telling the ERROR bug in "Hello.cpp" with line 26(25+1) when 
-command "iteadcompile Hello Hello.ino" is executed. Why? iteadcompile insert one 
+command "segnix Hello Hello.ino" is executed. Why? segnix insert one 
 line like `include  "itead.h"`  in the head of your Hello.ino, change the suffix
 .ino to .cpp and compile(using g++) Hello.cpp to generate Hello which is 
 executable binary file. When you encounter other bugs in your sketch,debug 
@@ -378,7 +405,6 @@ this program. If not, see <http://www.gnu.org/licenses/>.
 
 --------------------------------------------------------------------------------
 
-  [0]:https://github.com/itead/Segnix "Segnix"
   [1]:http://arduino.cc/en/Reference/HomePage "Arduino API"
   [2]:http://docs.iteadstudio.com/Segnix/ "Online Segnix API"
   [3]:https://github.com/itead/Segnix/tree/master/doc "Segnix/doc"

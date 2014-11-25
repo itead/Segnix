@@ -33,6 +33,8 @@ PYTHON27_INCLUDES=`python2.7-config --includes`
 #echo "\$@ = " $@
 #echo "\$* = " $*
 
+toolname=`basename $0`
+
 if [[ $1 == --version ]] || [[ $1 == -v ]] || (( $# == 0 )) ; then
 	echo "Segnix v${SDKVERSION}"
 	exit 0
@@ -40,26 +42,26 @@ fi
 
 if [ $# -lt 2 ] || [[ $1 == -h ]] || [[ $1 == --help ]] ; then
         echo "Usage:"
-        echo "  iteadcompile objname source.ino [source2.ino] [...]"
-        echo "  iteadcompile objname source.cpp [source2.cpp] [...]"
-        echo "  iteadcompile objname source.c [source2.c] [...]"
+        echo "  ${toolname} objname source.ino [source2.ino] [...]"
+        echo "  ${toolname} objname source.cpp [source2.cpp] [...]"
+        echo "  ${toolname} objname source.c [source2.c] [...]"
         echo "Examples for .ino"
-        echo "  iteadcompile hello hello.ino"
-        echo "  iteadcompile led led1.ino led2.ino"
-        echo "  iteadcompile led *.ino"
+        echo "  ${toolname} hello hello.ino"
+        echo "  ${toolname} led led1.ino led2.ino"
+        echo "  ${toolname} led *.ino"
         echo "Examples for .cpp"
-        echo "  iteadcompile hello hello.cpp"
-        echo "  iteadcompile led led1.cpp led2.cpp"
-        echo "  iteadcompile led *.cpp"
+        echo "  ${toolname} hello hello.cpp"
+        echo "  ${toolname} led led1.cpp led2.cpp"
+        echo "  ${toolname} led *.cpp"
         echo "Examples for .c"
-        echo "  iteadcompile hello hello.c"
-        echo "  iteadcompile led led1.c led2.c"
-        echo "  iteadcompile led *.c"
+        echo "  ${toolname} hello hello.c"
+        echo "  ${toolname} led led1.c led2.c"
+        echo "  ${toolname} led *.c"
         echo "NOTES:"
         echo "  objname cannot cantian \".ino\" or \".c\" or \".cpp\""
         echo "Version:"
-        echo "  iteadcompile [-v]"
-        echo "  iteadcompile [--version]"
+        echo "  ${toolname} [-v]"
+        echo "  ${toolname} [--version]"
         exit 1
 fi
 
