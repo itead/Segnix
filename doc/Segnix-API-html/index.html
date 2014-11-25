@@ -90,7 +90,7 @@
 <p>You can implement your design based on Segnix in C or C++. <a href="http://docs.iteadstudio.com/Segnix/" title="Online Segnix API">Segnix API</a>, which is compatible with <a href="http://arduino.cc/en/Reference/HomePage" title="Arduino API">Arduino API</a>, makes it easier for those who have some understanding of Arduino to get started. Without any codes modified, the libraries and user's codes for Arduino can be run on Segnix prefectly.</p>
 <p><a href="http://docs.iteadstudio.com/Segnix/" title="Online Segnix API">Segnix Python API</a>, especially and amazingly, is provided for Python users. <b>A few beautiful lines of code will achieve your goals!</b></p>
 <h1>Documentation</h1>
-<p>Online Segnix API can be reached from <a href="http://docs.iteadstudio.com/Segnix/" title="Online Segnix API">here</a>. You can find some important and helpful documents in directory <a href="https://github.com/itead/Segnix/tree/master/doc" title="Segnix/doc">Segnix/doc</a>.</p>
+<p>Online Segnix API can be reached at <a href="http://docs.iteadstudio.com/Segnix/" title="Online Segnix API">Segnix API</a>. You can also find some important and helpful documents in directory <a href="https://github.com/itead/Segnix/tree/master/doc" title="Segnix/doc">Segnix/doc</a>.</p>
 <h1>Installation and Uninstallation</h1>
 <p>Before all, we assume that you have installed the required packages: <code>build-essential git-core</code> in your Debian system. If not, you can install them by command: </p><pre class="fragment">$ sudo apt-get update
 $ sudo apt-get install build-essential git-core
@@ -126,15 +126,39 @@ Editing... and Save
 $ sudo make install
 </pre><p>If you are a lover of Python, you can install <a href="http://docs.iteadstudio.com/Segnix/" title="Online Segnix API">Segnix Python API</a> by running: </p><pre class="fragment">$ sudo make SDK_Python_install
 </pre><h2>Version and Help</h2>
-<p>To check the version of Segnix installed, run command: </p><pre class="fragment">$ iteadcompile -v
-</pre><p>For some brief help information: </p><pre class="fragment">$ iteadcompile --help
+<p>To check the version of Segnix installed, run command: </p><pre class="fragment">$ segnix -v
+</pre><p>For some brief help information: </p><pre class="fragment">$ segnix --help
 </pre><h2>Uninstall</h2>
 <p>To uninstall the Segnix, just run command: </p><pre class="fragment">$ cd Segnix
 $ sudo make uninstall
 </pre><p>If you have installed <a href="http://docs.iteadstudio.com/Segnix/" title="Online Segnix API">Segnix Python API</a>, you can uninstall it by running: </p><pre class="fragment">$ sudo make SDK_Python_uninstall
 </pre><h1>How to Start</h1>
 <p><a href="http://docs.iteadstudio.com/Segnix/" title="Online Segnix API">Segnix Python API</a> will be recommanded for Python users. Segnix works well with C(.c) and C++(.cpp) programs. Especially, it is compatiable with Arduino Sketch(.ino).</p>
-<h2>To use Segnix in Python</h2>
+<h2>Compilation Helper: segnix</h2>
+<p>segnix is a script to compile your program conveniently. before November 22, 2014, segnix was named iteadcompile. Actually, segnix is a link to iteadcompile. </p><pre class="fragment">$ segnix --help
+
+Usage:
+  segnix objname source.ino [source2.ino] [...]
+  segnix objname source.cpp [source2.cpp] [...]
+  segnix objname source.c [source2.c] [...]
+Examples for .ino
+  segnix hello hello.ino
+  segnix led led1.ino led2.ino
+  segnix led *.ino
+Examples for .cpp
+  segnix hello hello.cpp
+  segnix led led1.cpp led2.cpp
+  segnix led *.cpp
+Examples for .c
+  segnix hello hello.c
+  segnix led led1.c led2.c
+  segnix led *.c
+NOTES:
+  objname cannot cantian ".ino" or ".c" or ".cpp"
+Version:
+  segnix [-v]
+  segnix [--version]
+</pre><h2>To use Segnix in Python</h2>
 <p>Create a new file named <code>blink.py</code> which reads as follow: </p><pre class="fragment">#! /usr/bin/env python
 from iteadsdk import *
 LED = PG9
@@ -173,7 +197,7 @@ void main(int argc, char **argv)
         loop();
     }
 }
-</pre><p>Then run iteadcompile in the terminal </p><pre class="fragment">$ iteadcompile LED led.c
+</pre><p>Then run segnix in the terminal </p><pre class="fragment">$ segnix LED led.c
 </pre><p>You can run the LED program after compilation: </p><pre class="fragment">$ sudo ./LED
 </pre><h2>To use Segnix in C++ program</h2>
 <p>Create a new file named "led.cpp" which reads as follow: </p><pre class="fragment">#include &lt;itead.h&gt;
@@ -202,7 +226,7 @@ int main(int argc, char **argv)
     }
     return 0;
 }
-</pre><p>Then run iteadcompile in the terminal </p><pre class="fragment">$ iteadcompile LED led.cpp
+</pre><p>Then run segnix in the terminal </p><pre class="fragment">$ segnix LED led.cpp
 </pre><p>You can run the LED program after compilation: </p><pre class="fragment">$ sudo ./LED
 </pre><h2>To use Segnix like an Arduino sketch(.ino)</h2>
 <p>Create a new file named "led.ino" which contains the following lines: </p><pre class="fragment">#include &lt;stdio.h&gt;
@@ -221,10 +245,10 @@ void loop(void)
     digitalWrite(STATUS_LED1,LOW);
     delay(1000);
 }
-</pre><p>Then run command as below to compile led.ino: </p><pre class="fragment">$ iteadcompile LED led.ino
+</pre><p>Then run command as below to compile led.ino: </p><pre class="fragment">$ segnix LED led.ino
 </pre><p>You can run the LED program after compilation: </p><pre class="fragment">$ sudo ./LED
 </pre><h4>Note: How to understand debug information from compiler</h4>
-<p>You DO NOT include the <a class="el" href="itead_8h.html" title="Provide the implementation of Arduino API. ">itead.h</a> explicitly in your source file with suffix .ino. iteadcompile will take care of everything. That means you need to know the method you should use for locating your .ino sketch bugs. Actually,if you have a sketch named "Hello.ino" with a bug at level ERROR in line 25, you will get some ERROR informations telling the ERROR bug in "Hello.cpp" with line 26(25+1) when command "iteadcompile Hello Hello.ino" is executed. Why? iteadcompile insert one line like <code>include "itead.h"</code> in the head of your Hello.ino, change the suffix .ino to .cpp and compile(using g++) Hello.cpp to generate Hello which is executable binary file. When you encounter other bugs in your sketch,debug skills on C++ program will also helpful for solving your problems.</p>
+<p>You DO NOT include the <a class="el" href="itead_8h.html" title="Provide the implementation of Arduino API. ">itead.h</a> explicitly in your source file with suffix .ino. segnix will take care of everything. That means you need to know the method you should use for locating your .ino sketch bugs. Actually,if you have a sketch named "Hello.ino" with a bug at level ERROR in line 25, you will get some ERROR informations telling the ERROR bug in "Hello.cpp" with line 26(25+1) when command "segnix Hello Hello.ino" is executed. Why? segnix insert one line like <code>include "itead.h"</code> in the head of your Hello.ino, change the suffix .ino to .cpp and compile(using g++) Hello.cpp to generate Hello which is executable binary file. When you encounter other bugs in your sketch,debug skills on C++ program will also helpful for solving your problems.</p>
 <h1>Plan for Next Stage</h1>
 <p>Segnix will support much more hardware platforms and functional modules in the future. In the Linux thriving time, Segnix will make any impossible fanatic idea possible, are you ready?</p>
 <h1>How to Contribute</h1>
@@ -244,7 +268,7 @@ void loop(void)
  </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Nov 24 2014 10:44:30 for Segnix API by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Nov 25 2014 11:31:29 for Segnix API by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
