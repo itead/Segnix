@@ -19,7 +19,7 @@
   <td id="projectlogo"><img alt="Logo" src="ITEAD-logo.JPG"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Segnix API
-   &#160;<span id="projectnumber">latest version</span>
+   &#160;<span id="projectnumber">v2.9.7</span>
    </div>
    <div id="projectbrief">For C/C++ and Python developers</div>
   </td>
@@ -86,96 +86,99 @@
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">/* An unique identifier of user registed on IoTgo platform */</span></div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#define THSENSOR_APIKEY        &quot;9bed6c2c-fbc6-4400-9ef8-087f9f0d996e&quot;</span></div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#define THSENSOR_DATA_PIN    (PB19)</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#define THSENSOR_CLOCK_PIN   (PB18)</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">/* The domain name of IoTgo platform host */</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#define IOT_DOMAIN_NAME     &quot;iotgo.iteadstudio.com&quot;</span></div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;SHT1x sht1x(THSENSOR_DATA_PIN, THSENSOR_CLOCK_PIN);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<a class="code" href="class_t_h_sensor.html">THSensor</a> th(&amp;sht1x);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#define THSENSOR_DATA_PIN    (PB19)</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#define THSENSOR_CLOCK_PIN   (PB18)</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keywordtype">void</span> setup()</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *apikey;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    th.begin();</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    printf(<span class="stringliteral">&quot;Connecting device to server...\n&quot;</span>);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    apikey = th.init(THSENSOR_ID, THSENSOR_APIKEY);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="comment">//apikey = th.init(THSENSOR_ID, THSENSOR_CHECK_CODE, DEVICE_PRODUCT);</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    printf(<span class="stringliteral">&quot;apikey = %s\n&quot;</span>, apikey);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    printf(<span class="stringliteral">&quot;setup done.\n&quot;</span>);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">void</span> loop()</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;{</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keyword">static</span> int32_t counter = 0;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    printf(<span class="stringliteral">&quot;\ncounter = %d\n&quot;</span>, ++counter);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    int32_t ret;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">float</span> temp_c;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">float</span> temp_f;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">float</span> hum;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    ret = th.sync();</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">if</span> (ret)</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    {</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        printf(<span class="stringliteral">&quot;ERROR: sync() = %d\n&quot;</span>, ret);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    {</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        printf(<span class="stringliteral">&quot;sync successfully!\n&quot;</span>);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    ret = th.getAll(&amp;temp_c, &amp;temp_f, &amp;hum);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">if</span> (ret)</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    {</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        printf(<span class="stringliteral">&quot;ERROR: getAll() = %d\n&quot;</span>, ret);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        printf(<span class="stringliteral">&quot;TempC = %.2f&quot;</span>, temp_c);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        printf(<span class="stringliteral">&quot;, TempF = %.2f&quot;</span>, temp_f);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        printf(<span class="stringliteral">&quot;, Hum = %.2f\n&quot;</span>, hum);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    }</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    ret = th.getTemperatureC(&amp;temp_c);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordflow">if</span> (ret)</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    {</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        printf(<span class="stringliteral">&quot;ERROR: getTemperatureC() = %d\n&quot;</span>, ret);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    }</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    {</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        printf(<span class="stringliteral">&quot;TempC = %.2f\n&quot;</span>, temp_c);</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    }</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    ret = th.getTemperatureF(&amp;temp_f);</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordflow">if</span> (ret)</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    {</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        printf(<span class="stringliteral">&quot;ERROR: getTemperatureF() = %d\n&quot;</span>, ret);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    }</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    {</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        printf(<span class="stringliteral">&quot;TempF = %.2f\n&quot;</span>, temp_f);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    }</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    ret = th.getHumidity(&amp;hum);</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordflow">if</span> (ret)</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    {</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        printf(<span class="stringliteral">&quot;ERROR: getHumidity() = %d\n&quot;</span>, ret);</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    }</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    {</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        printf(<span class="stringliteral">&quot;Hum = %.2f\n&quot;</span>, hum);</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    }</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <a class="code" href="group__delay.html#ga13aa1b7af178e63ad6ce8976f4337a40">delay</a>(1000);</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;}</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;SHT1x sht1x(THSENSOR_DATA_PIN, THSENSOR_CLOCK_PIN);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<a class="code" href="class_t_h_sensor.html">THSensor</a> th(&amp;sht1x);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keywordtype">void</span> setup()</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;{</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *apikey;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    th.begin();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    th.setHost(IOT_DOMAIN_NAME);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    printf(<span class="stringliteral">&quot;Connecting device to server...\n&quot;</span>);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    apikey = th.init(THSENSOR_ID, THSENSOR_APIKEY);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="comment">//apikey = th.init(THSENSOR_ID, THSENSOR_CHECK_CODE, DEVICE_PRODUCT);</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    printf(<span class="stringliteral">&quot;apikey = %s\n&quot;</span>, apikey);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    printf(<span class="stringliteral">&quot;setup done.\n&quot;</span>);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keywordtype">void</span> loop()</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;{</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">static</span> int32_t counter = 0;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    printf(<span class="stringliteral">&quot;\ncounter = %d\n&quot;</span>, ++counter);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    int32_t ret;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">float</span> temp_c;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">float</span> temp_f;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">float</span> hum;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    ret = th.sync();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">if</span> (ret)</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        printf(<span class="stringliteral">&quot;ERROR: sync() = %d\n&quot;</span>, ret);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        printf(<span class="stringliteral">&quot;sync successfully!\n&quot;</span>);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    ret = th.getAll(&amp;temp_c, &amp;temp_f, &amp;hum);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">if</span> (ret)</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        printf(<span class="stringliteral">&quot;ERROR: getAll() = %d\n&quot;</span>, ret);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        printf(<span class="stringliteral">&quot;TempC = %.2f&quot;</span>, temp_c);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        printf(<span class="stringliteral">&quot;, TempF = %.2f&quot;</span>, temp_f);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        printf(<span class="stringliteral">&quot;, Hum = %.2f\n&quot;</span>, hum);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    ret = th.getTemperatureC(&amp;temp_c);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">if</span> (ret)</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        printf(<span class="stringliteral">&quot;ERROR: getTemperatureC() = %d\n&quot;</span>, ret);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        printf(<span class="stringliteral">&quot;TempC = %.2f\n&quot;</span>, temp_c);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    ret = th.getTemperatureF(&amp;temp_f);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordflow">if</span> (ret)</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    {</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        printf(<span class="stringliteral">&quot;ERROR: getTemperatureF() = %d\n&quot;</span>, ret);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    }</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        printf(<span class="stringliteral">&quot;TempF = %.2f\n&quot;</span>, temp_f);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    ret = th.getHumidity(&amp;hum);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordflow">if</span> (ret)</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    {</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        printf(<span class="stringliteral">&quot;ERROR: getHumidity() = %d\n&quot;</span>, ret);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    {</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        printf(<span class="stringliteral">&quot;Hum = %.2f\n&quot;</span>, hum);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <a class="code" href="group__delay.html#ga13aa1b7af178e63ad6ce8976f4337a40">delay</a>(1000);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;}</div>
 <div class="ttc" id="_io_tgo__device_8h_html"><div class="ttname"><a href="_io_tgo__device_8h.html">IoTgo_device.h</a></div><div class="ttdoc">Include all classes of devices supported by IoTgo Library, such as Switch, Light and Temperature & Hu...</div></div>
 <div class="ttc" id="class_t_h_sensor_html"><div class="ttname"><a href="class_t_h_sensor.html">THSensor</a></div><div class="ttdoc">THSensor, subclass of IoTgo, provides simple methods to read temperature and humidity from devices...</div><div class="ttdef"><b>Definition:</b> <a href="_dev___t_h_sensor_8h_source.html#l00033">Dev_THSensor.h:33</a></div></div>
 <div class="ttc" id="group__delay_html_ga13aa1b7af178e63ad6ce8976f4337a40"><div class="ttname"><a href="group__delay.html#ga13aa1b7af178e63ad6ce8976f4337a40">delay</a></div><div class="ttdeci">void delay(uint32_t howLong)</div><div class="ttdoc">Make caller sleep for some milliseconds specified by howLong. </div><div class="ttdef"><b>Definition:</b> <a href="itead__delay_8c_source.html#l00061">itead_delay.c:61</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 25 2014 11:31:27 for Segnix API by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Nov 28 2014 10:48:39 for Segnix API by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

@@ -17,7 +17,7 @@
 #define __IOTGO_DOXYGEN_H__
 
 /**
- * @defgroup IoTgo_Device_Library  IoTgo Device Library
+ * @defgroup IoTgo_Device_Library  IoTgo Library
  * @brief Provides the unified API for manipulating devices based on
  *  IoTgo platform. 
  */

@@ -19,7 +19,7 @@
   <td id="projectlogo"><img alt="Logo" src="ITEAD-logo.JPG"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Segnix API
-   &#160;<span id="projectnumber">latest version</span>
+   &#160;<span id="projectnumber">v2.9.7</span>
    </div>
    <div id="projectbrief">For C/C++ and Python developers</div>
   </td>
@@ -80,102 +80,107 @@
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;_check_code = <span class="stringliteral">&quot;invalid&quot;</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;_deviceid = <span class="stringliteral">&quot;invalid&quot;</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;_apikey = <span class="stringliteral">&quot;invalid&quot;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;_DEVICE_TYPE_DIY     = 0</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;_DEVICE_TYPE_PRODUCT = 1</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">def </span>_post(body):</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    host = <span class="stringliteral">&quot;iotgo.iteadstudio.com&quot;</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    url = <span class="stringliteral">&quot;/api/http&quot;</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    extra_headers = {<span class="stringliteral">&quot;Content-type&quot;</span>: <span class="stringliteral">&quot;application/json&quot;</span>}</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    ret = {}</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    conn = httplib.HTTPConnection(host)</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    conn.request(<span class="stringliteral">&quot;POST&quot;</span>, url, body, extra_headers)</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    response = conn.getresponse()</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    ret[<span class="stringliteral">&quot;status&quot;</span>] = response.status</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    ret[<span class="stringliteral">&quot;reason&quot;</span>] = response.reason</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    ret[<span class="stringliteral">&quot;version&quot;</span>] = response.version</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    ret[<span class="stringliteral">&quot;data&quot;</span>] = response.read()</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    conn.close()</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">return</span> ret</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">def </span>init(deviceid, check_code, device_type = _DEVICE_TYPE_DIY):</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">global</span> _check_code</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">global</span> _deviceid</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">global</span> _apikey</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    _check_code = check_code</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    _deviceid = deviceid</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    _apikey = <span class="stringliteral">&quot;invalid&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;_host = <span class="stringliteral">&quot;&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;_DEVICE_TYPE_DIY     = 0</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;_DEVICE_TYPE_PRODUCT = 1</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">def </span>setHost(domain_name):</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">global</span> _host</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    _host = domain_name</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">def </span>_post(body):</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    url = <span class="stringliteral">&quot;/api/http&quot;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    extra_headers = {<span class="stringliteral">&quot;Content-type&quot;</span>: <span class="stringliteral">&quot;application/json&quot;</span>}</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    ret = {}</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    conn = httplib.HTTPConnection(_host)</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    conn.request(<span class="stringliteral">&quot;POST&quot;</span>, url, body, extra_headers)</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    response = conn.getresponse()</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    ret[<span class="stringliteral">&quot;status&quot;</span>] = response.status</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    ret[<span class="stringliteral">&quot;reason&quot;</span>] = response.reason</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    ret[<span class="stringliteral">&quot;version&quot;</span>] = response.version</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    ret[<span class="stringliteral">&quot;data&quot;</span>] = response.read()</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    conn.close()</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">return</span> ret</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">def </span>init(deviceid, check_code, device_type = _DEVICE_TYPE_DIY):</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">global</span> _check_code</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">global</span> _deviceid</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">global</span> _apikey</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">if</span> device_type == _DEVICE_TYPE_DIY:</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        _apikey = _check_code</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&quot;\&quot;apikey\&quot;:&quot;</span> + <span class="stringliteral">&quot;\&quot;&quot;</span> + _apikey + <span class="stringliteral">&quot;\&quot;&quot;</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">elif</span> device_type == _DEVICE_TYPE_PRODUCT:</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        body = {}</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        body[<span class="stringliteral">&quot;action&quot;</span>] = <span class="stringliteral">&quot;register&quot;</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        body[<span class="stringliteral">&quot;apikey&quot;</span>] = _check_code</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        body[<span class="stringliteral">&quot;deviceid&quot;</span>] = _deviceid</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        body = json.dumps(body)</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        ret = _post(body)</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">if</span> ret[<span class="stringliteral">&quot;status&quot;</span>] == 200:</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            data = ret[<span class="stringliteral">&quot;data&quot;</span>]</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            error_index = data.find(<span class="stringliteral">&quot;\&quot;error\&quot;:0&quot;</span>)</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keywordflow">if</span> error_index != -1:</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                apikey_index = data.find(<span class="stringliteral">&quot;\&quot;apikey\&quot;:&quot;</span>)</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                _apikey = data[apikey_index + 10:apikey_index + 10 + 35 + 1]</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                <span class="keywordflow">return</span> <span class="stringliteral">&quot;\&quot;apikey\&quot;:&quot;</span> + <span class="stringliteral">&quot;\&quot;&quot;</span> + _apikey + <span class="stringliteral">&quot;\&quot;&quot;</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">&quot;failed&quot;</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keyword">def </span>query(params):</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    body = {}</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    body[<span class="stringliteral">&quot;action&quot;</span>] = <span class="stringliteral">&quot;query&quot;</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    body[<span class="stringliteral">&quot;apikey&quot;</span>] = _apikey</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    body[<span class="stringliteral">&quot;deviceid&quot;</span>] = _deviceid</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    body[<span class="stringliteral">&quot;params&quot;</span>] = params</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    body = json.dumps(body)</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment">#print body</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    ret = _post(body)</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="comment">#for i in ret: print &quot;%s=&quot; % i, ret[i]</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">if</span> ret[<span class="stringliteral">&quot;status&quot;</span>] == 200:</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">return</span> ret[<span class="stringliteral">&quot;data&quot;</span>]</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">else</span>:</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&quot;failed&quot;</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keyword">def </span>update(params):</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    body = {}</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    body[<span class="stringliteral">&quot;action&quot;</span>] = <span class="stringliteral">&quot;update&quot;</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    body[<span class="stringliteral">&quot;apikey&quot;</span>] = _apikey</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    body[<span class="stringliteral">&quot;deviceid&quot;</span>] = _deviceid</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    body[<span class="stringliteral">&quot;params&quot;</span>] = params</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    body = json.dumps(body)</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="comment">#print body</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    ret = _post(body)</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="comment">#for i in ret: print &quot;%s=&quot; % i, ret[i]</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordflow">if</span> ret[<span class="stringliteral">&quot;status&quot;</span>] == 200:</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keywordflow">return</span> ret[<span class="stringliteral">&quot;data&quot;</span>]</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">else</span>:</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&quot;failed&quot;</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="keyword">def </span>main():</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordflow">print</span> init(<span class="stringliteral">&quot;0000000001&quot;</span>, <span class="stringliteral">&quot;9bed6c2c-fbc6-4400-9ef8-087f9f0d996e&quot;</span>)</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordflow">print</span> update({<span class="stringliteral">&quot;state&quot;</span>:<span class="stringliteral">&quot;on&quot;</span>})</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordflow">print</span> query([<span class="stringliteral">&quot;state&quot;</span>])</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordflow">print</span> update({<span class="stringliteral">&quot;state&quot;</span>:<span class="stringliteral">&quot;off&quot;</span>})</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">print</span> query([<span class="stringliteral">&quot;state&quot;</span>])</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    </div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="keywordflow">if</span> __name__ == <span class="stringliteral">&quot;__main__&quot;</span>: main()</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    _check_code = check_code</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    _deviceid = deviceid</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    _apikey = <span class="stringliteral">&quot;invalid&quot;</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">if</span> device_type == _DEVICE_TYPE_DIY:</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        _apikey = _check_code</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&quot;\&quot;apikey\&quot;:&quot;</span> + <span class="stringliteral">&quot;\&quot;&quot;</span> + _apikey + <span class="stringliteral">&quot;\&quot;&quot;</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">elif</span> device_type == _DEVICE_TYPE_PRODUCT:</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        body = {}</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        body[<span class="stringliteral">&quot;action&quot;</span>] = <span class="stringliteral">&quot;register&quot;</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        body[<span class="stringliteral">&quot;apikey&quot;</span>] = _check_code</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        body[<span class="stringliteral">&quot;deviceid&quot;</span>] = _deviceid</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        body = json.dumps(body)</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        ret = _post(body)</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">if</span> ret[<span class="stringliteral">&quot;status&quot;</span>] == 200:</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            data = ret[<span class="stringliteral">&quot;data&quot;</span>]</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            error_index = data.find(<span class="stringliteral">&quot;\&quot;error\&quot;:0&quot;</span>)</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keywordflow">if</span> error_index != -1:</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                apikey_index = data.find(<span class="stringliteral">&quot;\&quot;apikey\&quot;:&quot;</span>)</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                _apikey = data[apikey_index + 10:apikey_index + 10 + 35 + 1]</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <span class="keywordflow">return</span> <span class="stringliteral">&quot;\&quot;apikey\&quot;:&quot;</span> + <span class="stringliteral">&quot;\&quot;&quot;</span> + _apikey + <span class="stringliteral">&quot;\&quot;&quot;</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">&quot;failed&quot;</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">def </span>query(params):</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    body = {}</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    body[<span class="stringliteral">&quot;action&quot;</span>] = <span class="stringliteral">&quot;query&quot;</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    body[<span class="stringliteral">&quot;apikey&quot;</span>] = _apikey</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    body[<span class="stringliteral">&quot;deviceid&quot;</span>] = _deviceid</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    body[<span class="stringliteral">&quot;params&quot;</span>] = params</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    body = json.dumps(body)</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="comment">#print body</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    ret = _post(body)</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="comment">#for i in ret: print &quot;%s=&quot; % i, ret[i]</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">if</span> ret[<span class="stringliteral">&quot;status&quot;</span>] == 200:</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordflow">return</span> ret[<span class="stringliteral">&quot;data&quot;</span>]</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&quot;failed&quot;</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keyword">def </span>update(params):</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    body = {}</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    body[<span class="stringliteral">&quot;action&quot;</span>] = <span class="stringliteral">&quot;update&quot;</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    body[<span class="stringliteral">&quot;apikey&quot;</span>] = _apikey</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    body[<span class="stringliteral">&quot;deviceid&quot;</span>] = _deviceid</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    body[<span class="stringliteral">&quot;params&quot;</span>] = params</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    body = json.dumps(body)</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="comment">#print body</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    ret = _post(body)</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="comment">#for i in ret: print &quot;%s=&quot; % i, ret[i]</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordflow">if</span> ret[<span class="stringliteral">&quot;status&quot;</span>] == 200:</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordflow">return</span> ret[<span class="stringliteral">&quot;data&quot;</span>]</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordflow">return</span> <span class="stringliteral">&quot;failed&quot;</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="keyword">def </span>main():</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    setHost(<span class="stringliteral">&quot;iotgo.iteadstudio.com&quot;</span>)</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">print</span> init(<span class="stringliteral">&quot;0000000001&quot;</span>, <span class="stringliteral">&quot;9bed6c2c-fbc6-4400-9ef8-087f9f0d996e&quot;</span>)</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordflow">print</span> update({<span class="stringliteral">&quot;state&quot;</span>:<span class="stringliteral">&quot;on&quot;</span>})</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">print</span> query([<span class="stringliteral">&quot;state&quot;</span>])</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordflow">print</span> update({<span class="stringliteral">&quot;state&quot;</span>:<span class="stringliteral">&quot;off&quot;</span>})</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordflow">print</span> query([<span class="stringliteral">&quot;state&quot;</span>])</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="keywordflow">if</span> __name__ == <span class="stringliteral">&quot;__main__&quot;</span>: main()</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 25 2014 11:31:27 for Segnix API by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Nov 28 2014 10:48:39 for Segnix API by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

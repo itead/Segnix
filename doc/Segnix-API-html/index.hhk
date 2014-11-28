@@ -227,8 +227,8 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="group__interrupt__gpio.html"><param name="Name" value="Interruptable GPIO Table"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="group___io_tgo.html#ggaa43214a424c4162f1cb27681446d0814a8edfe25b2eead2238068cb49ffc936c7"><param name="Name" value="IOT_BUFFER_SIZE"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="group___io_tgo.html"><param name="Name" value="IoTgo"></OBJECT>
-  <LI><OBJECT type="text/sitemap"><param name="Local" value="group___io_tgo___device___library.html"><param name="Name" value="IoTgo Device Library"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="md_libraries_itead__io_tgo__r_e_a_d_m_e.html"><param name="Name" value="IoTgo Device Library Help"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="group___io_tgo___device___library.html"><param name="Name" value="IoTgo Library"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="group___io_tgo.html"><param name="Name" value="IoTgo"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="group___io_tgo.html#ggaa43214a424c4162f1cb27681446d0814ad0c911b2d085a377afe5b010cc3795f8"><param name="Name" value="APIKEY_LEN"></OBJECT>
@@ -239,6 +239,7 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="group___io_tgo.html#ggaa43214a424c4162f1cb27681446d0814a8edfe25b2eead2238068cb49ffc936c7"><param name="Name" value="IOT_BUFFER_SIZE"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_io_tgo.html#a7a8ca35adad19a7c5306bb3fabc0333f"><param name="Name" value="IoTgo"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_io_tgo.html#af9928a6b4ccf3b42555d24cc8291d8db"><param name="Name" value="query"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="class_io_tgo.html#a58f23ac3927cf08a1c462e3edcef77db"><param name="Name" value="setHost"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_io_tgo.html#a5faf8b98059dc875b3e0631f21100c95"><param name="Name" value="update"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="class_io_tgo.html#a00ffb072dc21983fcce8f6c928eb1df4"><param name="Name" value="~IoTgo"></OBJECT>
   </UL>
@@ -448,6 +449,7 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_p_i_class.html#ac5aaa13937884b2280cbb4be40c07bd0"><param name="Name" value="setBitOrder"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_p_i_class.html#a4bddb209f5f73375c62cf94760ea51d9"><param name="Name" value="setClockDivider"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_s_p_i_class.html#a13cf0985428fd08a5e056c747e296cc1"><param name="Name" value="setDataMode"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="class_io_tgo.html#a58f23ac3927cf08a1c462e3edcef77db"><param name="Name" value="setHost"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="group__serial.html#gae9008c739a5fe5f8488b586cafcf726a"><param name="Name" value="SoftwareSerial"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="group__serial.html#gae9008c739a5fe5f8488b586cafcf726a"><param name="Name" value="itead_serial.h"></OBJECT>

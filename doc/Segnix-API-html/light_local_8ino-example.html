@@ -19,7 +19,7 @@
   <td id="projectlogo"><img alt="Logo" src="ITEAD-logo.JPG"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Segnix API
-   &#160;<span id="projectnumber">latest version</span>
+   &#160;<span id="projectnumber">v2.9.7</span>
    </div>
    <div id="projectbrief">For C/C++ and Python developers</div>
   </td>
@@ -86,6 +86,9 @@ This program is free software; you can redistribute it and/or modify it under th
 <div class="line"><span class="comment">/* An unique identifier of user registed on IoTgo platform */</span></div>
 <div class="line"><span class="preprocessor">#define LIGHT_APIKEY        &quot;9bed6c2c-fbc6-4400-9ef8-087f9f0d996e&quot;</span></div>
 <div class="line"></div>
+<div class="line"><span class="comment">/* The domain name of IoTgo platform host */</span></div>
+<div class="line"><span class="preprocessor">#define IOT_DOMAIN_NAME     &quot;iotgo.iteadstudio.com&quot;</span></div>
+<div class="line"></div>
 <div class="line"></div>
 <div class="line"><span class="preprocessor">#define LIGHT_PIN           (PG11)</span></div>
 <div class="line"></div>
@@ -94,9 +97,9 @@ This program is free software; you can redistribute it and/or modify it under th
 <div class="line"><span class="keywordtype">void</span> setup()</div>
 <div class="line">{</div>
 <div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *apikey;</div>
-<div class="line"></div>
+<div class="line">    light.<a name="a1"></a><a class="code" href="class_io_tgo.html#a58f23ac3927cf08a1c462e3edcef77db">setHost</a>(IOT_DOMAIN_NAME);</div>
 <div class="line">    printf(<span class="stringliteral">&quot;Connecting device to server...\n&quot;</span>);</div>
-<div class="line">    apikey = light.<a name="a1"></a><a class="code" href="class_io_tgo.html#ac5bf3d5ccff8d01f19653ebfd37ef79c">init</a>(LIGHT_ID, LIGHT_APIKEY);</div>
+<div class="line">    apikey = light.<a name="a2"></a><a class="code" href="class_io_tgo.html#ac5bf3d5ccff8d01f19653ebfd37ef79c">init</a>(LIGHT_ID, LIGHT_APIKEY);</div>
 <div class="line">    <span class="comment">//apikey = light.init(LIGHT_ID, LIGHT_CHECK_CODE, DEVICE_PRODUCT);</span></div>
 <div class="line">    printf(<span class="stringliteral">&quot;apikey = %s\n&quot;</span>, apikey);</div>
 <div class="line">    </div>
@@ -110,7 +113,7 @@ This program is free software; you can redistribute it and/or modify it under th
 <div class="line"></div>
 <div class="line">    int32_t ret;</div>
 <div class="line"></div>
-<div class="line">    ret = light.<a name="a2"></a><a class="code" href="class_light.html#aeeebb19fe450d3e465a1e195100024e8">on</a>();</div>
+<div class="line">    ret = light.<a name="a3"></a><a class="code" href="class_light.html#aeeebb19fe450d3e465a1e195100024e8">on</a>();</div>
 <div class="line">    <span class="keywordflow">if</span>(ret == 0)</div>
 <div class="line">    {</div>
 <div class="line">        printf(<span class="stringliteral">&quot;on\n&quot;</span>);</div>
@@ -120,9 +123,9 @@ This program is free software; you can redistribute it and/or modify it under th
 <div class="line">        printf(<span class="stringliteral">&quot;on() err! ret = %d\n&quot;</span>, ret);</div>
 <div class="line">    }</div>
 <div class="line">    </div>
-<div class="line">    <a name="a3"></a><a class="code" href="group__delay.html#ga13aa1b7af178e63ad6ce8976f4337a40">delay</a>(1000);</div>
+<div class="line">    <a name="a4"></a><a class="code" href="group__delay.html#ga13aa1b7af178e63ad6ce8976f4337a40">delay</a>(1000);</div>
 <div class="line">    </div>
-<div class="line">    ret = light.<a name="a4"></a><a class="code" href="class_light.html#a5e73ee80686f3de647fddcddfe7450f7">off</a>();</div>
+<div class="line">    ret = light.<a name="a5"></a><a class="code" href="class_light.html#a5e73ee80686f3de647fddcddfe7450f7">off</a>();</div>
 <div class="line">    <span class="keywordflow">if</span>(ret == 0)</div>
 <div class="line">    {</div>
 <div class="line">        printf(<span class="stringliteral">&quot;off\n&quot;</span>);</div>
@@ -137,7 +140,7 @@ This program is free software; you can redistribute it and/or modify it under th
 </div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Nov 25 2014 11:31:25 for Segnix API by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Nov 28 2014 10:48:37 for Segnix API by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

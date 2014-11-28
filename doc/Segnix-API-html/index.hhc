@@ -163,7 +163,7 @@
       <LI><OBJECT type="text/sitemap"><param name="Name" value="byte"><param name="Local" value="group__global__datatype.html#gab8ef12fab634c171394422d0ee8baf94"><param name="ImageNumber" value="11"></OBJECT>
       </UL>
     </UL>
-  <LI><OBJECT type="text/sitemap"><param name="Name" value="IoTgo Device Library"><param name="Local" value="group___io_tgo___device___library.html"><param name="ImageNumber" value="1"></OBJECT>
+  <LI><OBJECT type="text/sitemap"><param name="Name" value="IoTgo Library"><param name="Local" value="group___io_tgo___device___library.html"><param name="ImageNumber" value="1"></OBJECT>
     <UL>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="IoTgo"><param name="Local" value="group___io_tgo.html"><param name="ImageNumber" value="1"></OBJECT>
       <UL>
@@ -173,6 +173,7 @@
         <LI><OBJECT type="text/sitemap"><param name="Name" value="~IoTgo"><param name="Local" value="class_io_tgo.html#a00ffb072dc21983fcce8f6c928eb1df4"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="init"><param name="Local" value="class_io_tgo.html#ac5bf3d5ccff8d01f19653ebfd37ef79c"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="query"><param name="Local" value="class_io_tgo.html#af9928a6b4ccf3b42555d24cc8291d8db"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="setHost"><param name="Local" value="class_io_tgo.html#a58f23ac3927cf08a1c462e3edcef77db"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="update"><param name="Local" value="class_io_tgo.html#a5faf8b98059dc875b3e0631f21100c95"><param name="ImageNumber" value="11"></OBJECT>
         </UL>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="IoTgoConstant"><param name="Local" value="group___io_tgo.html#gaa43214a424c4162f1cb27681446d0814"><param name="ImageNumber" value="1"></OBJECT>
@@ -265,6 +266,7 @@
       <LI><OBJECT type="text/sitemap"><param name="Name" value="~IoTgo"><param name="Local" value="class_io_tgo.html#a00ffb072dc21983fcce8f6c928eb1df4"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="init"><param name="Local" value="class_io_tgo.html#ac5bf3d5ccff8d01f19653ebfd37ef79c"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="query"><param name="Local" value="class_io_tgo.html#af9928a6b4ccf3b42555d24cc8291d8db"><param name="ImageNumber" value="11"></OBJECT>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="setHost"><param name="Local" value="class_io_tgo.html#a58f23ac3927cf08a1c462e3edcef77db"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="update"><param name="Local" value="class_io_tgo.html#a5faf8b98059dc875b3e0631f21100c95"><param name="ImageNumber" value="11"></OBJECT>
       </UL>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="Light"><param name="Local" value="class_light.html"><param name="ImageNumber" value="1"></OBJECT>
