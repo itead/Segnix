@@ -23,17 +23,21 @@ import httplib, json
 _check_code = "invalid"
 _deviceid = "invalid"
 _apikey = "invalid"
+_host = ""
 
 _DEVICE_TYPE_DIY     = 0
 _DEVICE_TYPE_PRODUCT = 1
-    
+
+def setHost(domain_name):
+	global _host
+	_host = domain_name
+
 def _post(body):
-    host = "iotgo.iteadstudio.com"
     url = "/api/http"
     extra_headers = {"Content-type": "application/json"}
     ret = {}
     
-    conn = httplib.HTTPConnection(host)
+    conn = httplib.HTTPConnection(_host)
     conn.request("POST", url, body, extra_headers)
     response = conn.getresponse()
     ret["status"] = response.status
@@ -108,6 +112,7 @@ def update(params):
         return "failed"
 
 def main():
+    setHost("iotgo.iteadstudio.com")
     print init("0000000001", "9bed6c2c-fbc6-4400-9ef8-087f9f0d996e")
     print update({"state":"on"})
     print query(["state"])

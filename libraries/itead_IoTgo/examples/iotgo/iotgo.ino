@@ -52,6 +52,9 @@
  */
 #define IOTGO_CHECK_CODE    ""
 
+/* The domain name of IoTgo platform host */
+#define IOT_DOMAIN_NAME     "iotgo.iteadstudio.com"
+
 
 IoTgo iotgo;
 
@@ -72,7 +75,7 @@ void printBody(const char *buffer)
 void setup()
 {
     const char *apikey;
-
+    iotgo.setHost(IOT_DOMAIN_NAME);
     printf("Connecting device to server...\n");
     apikey = iotgo.init(IOTGO_DEVICEID, IOTGO_APIKEY);
     //apikey = iotgo.init(IOTGO_DEVICEID, IOTGO_CHECK_CODE, DEVICE_PRODUCT);

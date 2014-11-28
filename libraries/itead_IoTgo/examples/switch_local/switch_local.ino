@@ -48,6 +48,9 @@
 /* An unique identifier of user registed on IoTgo platform */
 #define SWITCH_APIKEY        "9bed6c2c-fbc6-4400-9ef8-087f9f0d996e"
 
+/* The domain name of IoTgo platform host */
+#define IOT_DOMAIN_NAME     "iotgo.iteadstudio.com"
+
 #define SWITCH_PIN           (PG11)
 
 Switch sw(SWITCH_PIN);
@@ -55,7 +58,7 @@ Switch sw(SWITCH_PIN);
 void setup()
 {
     const char *apikey;
-
+    sw.setHost(IOT_DOMAIN_NAME);
     printf("Connecting device to server...\n");
     
     apikey = sw.init(SWITCH_ID, SWITCH_APIKEY);

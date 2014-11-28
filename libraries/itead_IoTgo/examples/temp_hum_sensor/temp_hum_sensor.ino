@@ -49,6 +49,9 @@
 /* An unique identifier of user registed on IoTgo platform */
 #define THSENSOR_APIKEY        "9bed6c2c-fbc6-4400-9ef8-087f9f0d996e"
 
+/* The domain name of IoTgo platform host */
+#define IOT_DOMAIN_NAME     "iotgo.iteadstudio.com"
+
 #define THSENSOR_DATA_PIN    (PB19)
 #define THSENSOR_CLOCK_PIN   (PB18)
 
@@ -59,7 +62,7 @@ void setup()
 {
     const char *apikey;
     th.begin();
-
+    th.setHost(IOT_DOMAIN_NAME);
     printf("Connecting device to server...\n");
     apikey = th.init(THSENSOR_ID, THSENSOR_APIKEY);
     //apikey = th.init(THSENSOR_ID, THSENSOR_CHECK_CODE, DEVICE_PRODUCT);

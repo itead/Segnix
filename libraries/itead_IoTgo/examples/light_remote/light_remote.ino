@@ -48,6 +48,8 @@
 /* An unique identifier of user registed on IoTgo platform */
 #define LIGHT_APIKEY        "9bed6c2c-fbc6-4400-9ef8-087f9f0d996e"
 
+/* The domain name of IoTgo platform host */
+#define IOT_DOMAIN_NAME     "iotgo.iteadstudio.com"
 
 #define LIGHT_PIN           (PG11)
 
@@ -56,7 +58,7 @@ Light light(LIGHT_PIN);
 void setup()
 {
     const char *apikey;
-
+    light.setHost(IOT_DOMAIN_NAME);
     printf("Connecting device to server...\n");
     apikey = light.init(LIGHT_ID, LIGHT_APIKEY);
     //apikey = light.init(LIGHT_ID, LIGHT_CHECK_CODE, DEVICE_PRODUCT);

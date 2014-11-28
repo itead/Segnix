@@ -61,6 +61,7 @@ class IoTgo
 public: /* public methods */
     IoTgo(void);
     ~IoTgo(void);
+    void setHost(const char *domain_name);
     const char *init(const char *device_id, const char *apikey_like, 
         IoTgoDeviceType device_type = DEVICE_DIY);
     const char *query(const char *params[]);

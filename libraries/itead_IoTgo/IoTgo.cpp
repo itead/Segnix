@@ -61,6 +61,40 @@ IoTgo::~IoTgo(void)
 }
 
 /**
+ * Set the domain name of IoTgo platform host. 
+ * 
+ * @param domain_name - guess what!
+ *
+ * @warning User must call this before init. 
+ */
+void IoTgo::setHost(const char *domain_name)
+{
+    PyObject *pyfun;
+    PyObject *pyargs;
+    PyObject *pyret;
+    
+    pyfun = PyObject_GetAttrString(pymod, "setHost");
+    if (pyfun && PyCallable_Check(pyfun))
+    {
+        pyargs = Py_BuildValue("(s)", domain_name);
+        pyret = PyObject_CallObject(pyfun, pyargs);
+        Py_XDECREF(pyargs);
+        if (pyret == NULL)
+        {
+            IoTgo_perror("setHost failed!");
+        }
+        Py_XDECREF(pyret);
+    }  
+    else
+    {
+        Py_XDECREF(pyfun);
+        IoTgo_perror("Cannot call python:setHost()!\n");
+    }
+    Py_XDECREF(pyfun);
+}
+
+
+/**
  * Get the apikey of user who own the device specified by device_id. 
  * 
  * If the device_type = DEVICE_DIY, apikey_like should be the apikey of 
@@ -132,7 +166,7 @@ const char *IoTgo::init(const char *device_id, const char *apikey_like,
 /**
  * Get the values specified by params from server. 
  * 
- * You must call this after init. 
+ * You can call this after init. 
  *
  * @param params - the list(terminated with NULL) of attributes need to query. 
  *
@@ -202,7 +236,7 @@ const char *IoTgo::query(const char *params[])
 /**
  * Update the values specified by params to server. 
  * 
- * You must call this after init. 
+ * You can call this after init. 
  *
  * @param params - the list(terminated with NULL) of attributes need to update. 
  * @param values - the list(terminated with NULL) of values corresponding to 
