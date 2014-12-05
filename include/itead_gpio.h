@@ -217,6 +217,7 @@ typedef struct
  * -# PI15	
  *
  * @par On ITEAD CORE EVB
+ * -# PB2
  * -# PB5
  * -# PB6	 
  * -# PB7	 
@@ -279,6 +280,7 @@ typedef struct
  * -# PI19	
  * -# PI20	
  * -# PI21	
+ * -# PH27
  *
  * @par On Raspberry Rv2
  * -# GPIO2 
@@ -529,6 +531,8 @@ typedef struct
 #define PI19	(75)   /* itead_gpio_int.c 31 */
 #define PI20	(60)
 #define PI21	(61)
+#define PB2     (62)
+#define PH27    (63)
 
 #elif defined (BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
 

@@ -259,6 +259,8 @@ static const pin_no_port_index_map pnp[] = {
     {PORT_NONE, INDEX_NONE	}, /* 59 */
     {PORT_I, 20	}, /* 60 */
     {PORT_I, 21	}, /* 61 */
+    {PORT_B, 2  }, /* 62 */
+    {PORT_H, 27 }, /* 63 */
 
     [109] = {PORT_I, 10},
     [110] = {PORT_I, 11},
