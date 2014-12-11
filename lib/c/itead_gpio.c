@@ -21,6 +21,7 @@
 #include <stdint.h>
 #include <pthread.h>
 #include <stdlib.h>
+#include <errno.h>
 
 #include <linux/ioctl.h>
 #include <sys/mman.h>
@@ -84,7 +85,7 @@ static volatile uint32_t *gpio_base;
  */
 #define EXPORT_GPIO "echo %d > /sys/class/gpio/export"
 #define UNEXPORT_GPIO "echo %d > /sys/class/gpio/unexport"
-#define DIRCTION_GPIO "echo %s > /sys/class/gpio/gpio%d/direction"
+#define DIRECTION_GPIO "echo %s > /sys/class/gpio/gpio%d/direction"
 #define VALUE_GPIO "/sys/class/gpio/gpio%d/value"
 
 /*
@@ -176,6 +177,33 @@ static inline int unexport_gpio(unsigned int gpio_num)
 
     return status;
 }
+
+/*
+ * @name	: check_export_gpio
+ * @desc	: check gpio export status 
+ * @param	: 
+ * @return	: 1 -  export 
+ *			  0 -  unexport
+ *            2 -  unknown status
+ */
+static inline int check_export_gpio(unsigned int gpio_num)
+{
+    FILE *f_gpio;
+    sprintf(gpio_string,VALUE_GPIO,gpio_num);
+    f_gpio = fopen(gpio_string,"r");
+    if(f_gpio == NULL) {
+        if(errno == ENOENT) {
+            gpio_exported[gpio_num] = 0;
+            return 0;
+        } else {
+            return 2;
+        }
+    }
+    fclose(f_gpio);
+    gpio_exported[gpio_num] = 1;
+    return 1;
+}
+
 #endif
 
 /*
@@ -326,8 +354,10 @@ uint32_t pinMode(uint16_t pin, uint8_t mode)
        CUREG |=  (0x1 << (3*(pin%10)));
    }
 
-#elif define(BOARD_BEAGLEBONEBLACK)
+#elif defined(BOARD_BEAGLEBONEBLACK)
 
+   check_gpio_export(pin);
+   
    if (!export_gpio(pin)) {
        sdkerr("\nexport_gpio failed!\n");
        return 1;
@@ -424,7 +454,7 @@ uint32_t digitalWrite(uint16_t pin, uint8_t val)
     }
     CUREG = 0x1 << (1*(pin%32));
 #elif defined(BOARD_BEAGLEBONEBLACK)
-    if (!export_gpio(pin)) {
+    if (!check_gpio_export(pin)) {
        sdkerr("\nexport_gpio failed!\n");
        return 1;
     }
@@ -508,7 +538,7 @@ uint32_t digitalRead(uint16_t pin)
     cureg = gpio_base + GPIO_GPLEV_OFFSET/4 + pin/32;
     return (CUREG & (0x1<<(pin%32))) ? HIGH : LOW;
 #elif defined(BOARD_BEAGLEBONEBLACK)
-    if (!export_gpio(pin)) {
+    if (!check_export_gpio(pin)) {
        sdkerr("\nexport_gpio failed!\n");
        return 1;
     }
@@ -521,7 +551,7 @@ uint32_t digitalRead(uint16_t pin)
     fclose(f_gpio);
     if(value_gpio == '1') {
         return HIGH;
-    } else if(vlaue_gpio == '0') {
+    } else if(value_gpio == '0') {
         return LOW;
     }
 #endif
