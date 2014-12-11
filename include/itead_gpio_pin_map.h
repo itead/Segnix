@@ -501,7 +501,6 @@ static const pin_no_port_index_map pnp[] = {
    	{PORT_NONE,	INDEX_NONE}	,	// 0 + 130
 	{PORT_NONE,	INDEX_NONE}		// 1
 };
-#endif
 #else
     assert(! "Unsupported Board. You need to choose a valid one.");
 #endif

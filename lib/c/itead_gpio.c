@@ -133,7 +133,7 @@ static inline int do_shell(unsigned char * string)
  * @return	: 1 -  if success.
  *			  0 -  if failed.
  */
-static inline int export_gpio(unsinged int gpio_num)
+static inline int export_gpio(unsigned int gpio_num)
 {
     int status;
     /* export already */
@@ -159,7 +159,7 @@ static inline int export_gpio(unsinged int gpio_num)
  * @return	: 1 -  if success.
  *			  0 -  if failed.
  */
-static inline int unexport_gpio(unsinged int gpio_num)
+static inline int unexport_gpio(unsigned int gpio_num)
 {
     int status;
     /* unexport already */
@@ -217,7 +217,7 @@ static inline int32_t gpio_mmap(void)
         printf("\nmmap error !\n");
         return 0;
     }
-
+#endif
 	return 1;
 }
 
@@ -518,6 +518,7 @@ uint32_t digitalRead(uint16_t pin)
         sdkerr("\nopen gpio value file failed!\n");
     }
     value_gpio = fgetc(f_gpio);
+    fclose(f_gpio);
     if(value_gpio == '1') {
         return HIGH;
     } else if(vlaue_gpio == '0') {
