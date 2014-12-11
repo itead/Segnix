@@ -77,7 +77,7 @@ typedef struct
  * @{
  */
 #define HIGH		(0x1)   /**< HIGH = 0x1  */
-#define LOW			(0x0)   /**< LOW = 0x0  */
+#define LOW		(0x0)   /**< LOW = 0x0  */
 #define INPUT 		(0x0)   /**< INPUT = 0x0  */
 #define OUTPUT 		(0x1)   /**< OUTPUT = 0x1  */
 /** @} */
@@ -333,8 +333,27 @@ typedef struct
  * -# GPIO21
  * -# GPIO26
  *
+ * @par On BeagleBoneBlack
+ * -# GPIO0_7 
+ * -# GPIO0_26 
+ * -# GPIO0_27 
+ * -# GPIO1_12
+ * -# GPIO1_13
+ * -# GPIO1_14
+ * -# GPIO1_15
+ * -# GPIO1_16
+ * -# GPIO1_17
+ * -# GPIO1_21
+ * -# GPIO1_22
+ * -# GPIO1_23
+ * -# GPIO1_24
+ * -# GPIO1_28
+ * -# GPIO1_29
+ * -# GPIO2_1
+ * -# GPIO3_19 
+ * -# GPIO3_21
+ *
  */
-
 
 #if defined(BOARD_ITEADUINO_PLUS)
 
@@ -569,6 +588,30 @@ typedef struct
 #define GPIO21      (34)
 #define GPIO26      (35)
 #endif /* defined(BOARD_RASPBERRY_PI_RV2) */
+
+#elif defined (BOARD_BEAGLEBONEBLACK)
+
+#define GPIO_NUM(port,num)  (port)*32+(num)
+
+#define GPIO0_7   GPIO_NUM(0,7)
+#define GPIO0_26  GPIO_NUM(0,26)
+#define GPIO0_27  GPIO_NUM(0,27)
+#define GPIO1_12  GPIO_NUM(1,12)
+#define GPIO1_13  GPIO_NUM(1,13)
+#define GPIO1_14  GPIO_NUM(1,14)
+#define GPIO1_15  GPIO_NUM(1,15)
+#define GPIO1_16  GPIO_NUM(1,16)
+#define GPIO1_17  GPIO_NUM(1,17)
+#define GPIO1_21  GPIO_NUM(1,21)
+#define GPIO1_22  GPIO_NUM(1,22)
+#define GPIO1_23  GPIO_NUM(1,23)
+#define GPIO1_24  GPIO_NUM(1,24)
+#define GPIO1_28  GPIO_NUM(1,28)
+#define GPIO1_29  GPIO_NUM(1,29)
+#define GPIO2_1   GPIO_NUM(2,1)
+#define GPIO3_19  GPIO_NUM(3,19)
+#define GPIO3_21  GPIO_NUM(3,21)
+
 
 #endif 
 
