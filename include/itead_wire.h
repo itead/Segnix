@@ -79,13 +79,15 @@ public:
  * - Wire1 - I2C1(SDA:GPIO2, SCK:GPIO3)
  */
 
-extern TwoWire & Wire;
+
 
 #if defined(BOARD_ITEADUINO_PLUS) || defined(BOARD_ITEAD_CORE_EVB)
+extern TwoWire & Wire;
 extern TwoWire Wire1;
 extern TwoWire Wire2;
 
 #elif defined (BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
+extern TwoWire & Wire;
 extern TwoWire Wire1;
 
 #endif 
