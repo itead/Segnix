@@ -1,1 +1,3 @@
 cscope*
+*.so
+*.o

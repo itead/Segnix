@@ -356,7 +356,7 @@ uint32_t pinMode(uint16_t pin, uint8_t mode)
 
 #elif defined(BOARD_BEAGLEBONEBLACK)
 
-   check_gpio_export(pin);
+   check_export_gpio(pin);
    
    if (!export_gpio(pin)) {
        sdkerr("\nexport_gpio failed!\n");
@@ -454,7 +454,7 @@ uint32_t digitalWrite(uint16_t pin, uint8_t val)
     }
     CUREG = 0x1 << (1*(pin%32));
 #elif defined(BOARD_BEAGLEBONEBLACK)
-    if (!check_gpio_export(pin)) {
+    if (!check_export_gpio(pin)) {
        sdkerr("\nexport_gpio failed!\n");
        return 1;
     }
