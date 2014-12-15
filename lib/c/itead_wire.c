@@ -84,6 +84,11 @@ static I2C_DEVICE i2c_devices[] = {
 		.fd	  = -1,
 		.node = "/dev/i2c-1" ,
 	},
+#elif defined (BOARD_BEAGLEBONEBLACK)
+    [1] = {
+		.fd	  = -1,
+		.node = "" ,
+	},
 #endif 
 };
 
@@ -92,6 +97,8 @@ static uint32_t valid_dev[] = {
     DEV_I2C1,
     DEV_I2C2,
 #elif defined (BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
+    DEV_I2C1,
+#elif defined (BOARD_BEAGLEBONEBLACK)
     DEV_I2C1,
 #endif 
     DEV_NONE

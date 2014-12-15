@@ -22,6 +22,9 @@ TwoWire Wire2(DEV_I2C2);
 #elif defined (BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
 TwoWire Wire1(DEV_I2C1);
 TwoWire & Wire = Wire1;
+#elif defined (BOARD_BEAGLEBONEBLACK)
+TwoWire Wire1(DEV_I2C1);
+TwoWire & Wire = Wire1;
 #endif 
 
 
