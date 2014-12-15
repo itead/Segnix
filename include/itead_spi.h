@@ -126,13 +126,13 @@ public:
  * - SPI0 - SPI0(CE0:GPIO8, CE1:GPIO7, SCK:GPIO11, MOSI:GPIO10, MISO:GPIO9)
  */
 
-
+extern SPIClass & SPI;
 
 #if defined(BOARD_ITEADUINO_PLUS) || defined (BOARD_ITEAD_CORE_EVB)
-extern SPIClass & SPI;
 extern SPIClass SPI0;
 #elif defined (BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
-extern SPIClass & SPI;
+extern SPIClass SPI0;
+#elif defined (BOARD_BEAGLEBONEBLACK)
 extern SPIClass SPI0;
 #endif 
 

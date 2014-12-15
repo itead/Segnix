@@ -109,6 +109,12 @@ typedef Serial_ SoftwareSerial;
  * - Serial - A reference to Serial0
  * - Serial0 - UART0(RX:GPIO15, TX:GPIO14)
  *
+ * @par On BeagleBoneBlack
+ * - Serial - A reference to Serial1
+ * - Serial1 - UART1(RX:GPIO0_14, TX:GPIO0_15)
+ * - Serial2 - UART2(RX:GPIO0_2 , TX:GPIO0_3 )
+ * - Serial4 - UART4(RX:GPIO0_30, TX:GPIO0_31)
+ *
  */
 
 
@@ -124,6 +130,10 @@ extern Serial_ Serial7;
 extern Serial_ Serial4;
 #elif defined (BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
 extern Serial_ Serial0; /* with aliase 'Serial' */
+#elif defined (BOARD_BEAGLEBONEBLACK)
+extern Serial_ Serial1;
+extern Serial_ Serial2;
+extern Serial_ Serial4; 
 #endif 
 
 #endif /* __cplusplus */
