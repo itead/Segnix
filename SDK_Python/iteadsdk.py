@@ -144,7 +144,7 @@ elif BOARD_TYPE == 'BOARD_RASPBERRY_PI_MODEL_BPLUS':
     Serial0 = Serial_(_DEV_UART0)
     Serial = Serial0
 
-elif BOARD_TYPE == 'BOARD_BEAGLE_BONE_BLACK':
+elif BOARD_TYPE == 'BOARD_BEAGLEBONEBLACK':
     Serial1 = Serial_(_DEV_UART1)
     Serial2 = Serial_(_DEV_UART2)
     Serial4 = Serial_(_DEV_UART4)
@@ -212,7 +212,7 @@ elif BOARD_TYPE == 'BOARD_RASPBERRY_PI_MODEL_BPLUS':
     SPI0 = SPIClass(_DEV_SPI0)
     SPI = SPI0
 
-elif BOARD_TYPE == 'BOARD_BEAGLE_BONE_BLACK':
+elif BOARD_TYPE == 'BOARD_BEAGLEBONEBLACK':
     SPI1 = SPIClass(_DEV_SPI1)
     SPI = SPI1    
     
@@ -252,7 +252,7 @@ elif BOARD_TYPE == 'BOARD_RASPBERRY_PI_MODEL_BPLUS':
     Wire1 = TwoWire(_DEV_I2C1)
     Wire = Wire1
 
-elif BOARD_TYPE == 'BOARD_BEAGLE_BONE_BLACK':
+elif BOARD_TYPE == 'BOARD_BEAGLEBONEBLACK':
     Wire1 = TwoWire(_DEV_I2C1)
     Wire2 = TwoWire(_DEV_I2C2)
     Wire = Wire1    

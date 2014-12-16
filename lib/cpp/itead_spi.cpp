@@ -23,7 +23,7 @@ SPIClass & SPI = SPI0;
 SPIClass SPI0(DEV_SPI0);
 SPIClass & SPI = SPI0;
 #elif defined (BOARD_BEAGLEBONEBLACK)
-SPIClass SPI0(DEV_SPI1);
+SPIClass SPI1(DEV_SPI1);
 SPIClass & SPI = SPI1;
 
 #endif 

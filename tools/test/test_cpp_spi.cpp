@@ -6,15 +6,15 @@ int main(int argc, char **argv)
 	uint8_t i=0;
 	int index = 0;
 	
-	SPI0.begin();
-	SPI0.setDataMode(SPI_MODE0);
-	SPI0.setBitOrder(MSBFIRST);
+	SPI1.begin();
+	SPI1.setDataMode(SPI_MODE0);
+	SPI1.setBitOrder(MSBFIRST);
 	for(index=0;index<256;index++)
 	{
-        rx = SPI0.transfer(index);
+        rx = SPI1.transfer(index);
         printf("Read 0x%x \n", rx);
 	}
-	SPI0.end();
+	SPI1.end();
 	
 	return 0;
 }

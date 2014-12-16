@@ -345,7 +345,7 @@ BeagleBoneBlack:
 	@ echo "#define BOARD_BEAGLEBONEBLACK" >> include/itead_config.h
 	@ echo "#endif" >> include/itead_config.h
 	@ cp tools/config.mk ./
-	@ echo "BOARD_TYPE = 'BeagleBoneBlack'" > SDK_Python/itead_config.py
+	@ echo "BOARD_TYPE = 'BOARD_BEAGLEBONEBLACK'" > SDK_Python/itead_config.py
 	@ echo "config board BeagleBoneBlack"
 
 #
