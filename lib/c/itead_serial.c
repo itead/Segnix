@@ -63,7 +63,7 @@ static SERIAL_PORT ports[] = {
 		.fd = -1,
 		.node = "/dev/ttyAMA0",
 	},
-#elif defined (BOARD_BEAGLEBONEBALCK)
+#elif defined (BOARD_BEAGLEBONEBLACK)
     [1] = {
 		.fd = -1,
 		.node = "/dev/ttyO1",
@@ -145,6 +145,11 @@ uint32_t Serialbegin(uint32_t dev, uint32_t baud)
 			return 1;
 	}
 
+	sdkerr("\ndev is %d\n",dev,baud);
+	sdkerr("port[1].node is %s\n",ports[1].node);
+	sdkerr("port[2].node is %s\n",ports[2].node);
+	sdkerr("port[4].node is %s\n",ports[3].node);
+	sdkerr("port[%d].node is %s\n",dev,ports[dev].node);
   	if ((ports[dev].fd = open(ports[dev].node, 
 		O_RDWR | O_NOCTTY | O_NDELAY | O_NONBLOCK)) == -1) {
 		sdkerr("\nCannot open file:%s\n",ports[dev].node);
@@ -236,6 +241,7 @@ uint32_t Serialwrite (uint32_t dev, uint8_t val)
 		sdkerr("\nbad dev=%d\n",dev);
 		return 0;
 	}
+
 	if(write(ports[dev].fd, &val, 1) < 0)
 	{
 		return 0;
