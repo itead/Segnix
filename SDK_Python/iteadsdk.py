@@ -16,6 +16,7 @@ _supported_board_type = (
     'BOARD_ITEAD_CORE_EVB',
     'BOARD_RASPBERRY_PI_RV2',
     'BOARD_RASPBERRY_PI_MODEL_BPLUS',
+    'BOARD_BEAGLEBONEBLACK',
     )
     
 #
@@ -28,6 +29,8 @@ elif BOARD_TYPE == 'BOARD_ITEAD_CORE_EVB':
 elif BOARD_TYPE == 'BOARD_RASPBERRY_PI_RV2':
     pass
 elif BOARD_TYPE == 'BOARD_RASPBERRY_PI_MODEL_BPLUS':
+    pass
+elif BOARD_TYPE == 'BOARD_BEAGLEBONEBLACK':
     pass
 else:
     print 'Unsupported Board Type = %s .' % (BOARD_TYPE)
@@ -71,6 +74,8 @@ elif BOARD_TYPE == 'BOARD_RASPBERRY_PI_RV2':
     from BOARD_RASPBERRY_PI_RV2_GPIO import *
 elif BOARD_TYPE == 'BOARD_RASPBERRY_PI_MODEL_BPLUS':
     from BOARD_RASPBERRY_PI_MODEL_BPLUS_GPIO import *
+elif BOARD_TYPE == 'BOARD_BEAGLEBONEBLACK':
+    from BOARD_BEAGLE_BONE_BLACK_GPIO import *
 else:
     print 'No GPIO found.'
 
@@ -138,6 +143,12 @@ elif BOARD_TYPE == 'BOARD_RASPBERRY_PI_RV2':
 elif BOARD_TYPE == 'BOARD_RASPBERRY_PI_MODEL_BPLUS':
     Serial0 = Serial_(_DEV_UART0)
     Serial = Serial0
+
+elif BOARD_TYPE == 'BOARD_BEAGLE_BONE_BLACK':
+    Serial1 = Serial_(_DEV_UART1)
+    Serial2 = Serial_(_DEV_UART2)
+    Serial4 = Serial_(_DEV_UART4)
+    Serial = Serial1    
     
 else:
     print 'No Serial bus found'
@@ -200,6 +211,10 @@ elif BOARD_TYPE == 'BOARD_RASPBERRY_PI_RV2':
 elif BOARD_TYPE == 'BOARD_RASPBERRY_PI_MODEL_BPLUS':
     SPI0 = SPIClass(_DEV_SPI0)
     SPI = SPI0
+
+elif BOARD_TYPE == 'BOARD_BEAGLE_BONE_BLACK':
+    SPI1 = SPIClass(_DEV_SPI1)
+    SPI = SPI1    
     
 else:
     print 'No SPI bus found.'
@@ -236,6 +251,11 @@ elif BOARD_TYPE == 'BOARD_RASPBERRY_PI_RV2':
 elif BOARD_TYPE == 'BOARD_RASPBERRY_PI_MODEL_BPLUS':
     Wire1 = TwoWire(_DEV_I2C1)
     Wire = Wire1
+
+elif BOARD_TYPE == 'BOARD_BEAGLE_BONE_BLACK':
+    Wire1 = TwoWire(_DEV_I2C1)
+    Wire2 = TwoWire(_DEV_I2C2)
+    Wire = Wire1    
     
 else:
     print 'No I2C(TwoWire) bus found.'
