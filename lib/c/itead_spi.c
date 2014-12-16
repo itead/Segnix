@@ -56,8 +56,8 @@ static SPI_DEVICE spi_devices[] = {
 		.node	= "/dev/spidev0.0",
 	},
 #elif defined (BOARD_BEAGLEBONEBLACK)
-   [0] = {
-		.node	= "",
+   [1] = {
+		.node	= "/dev/spidev1.1",
 	},
 #endif 
 };
@@ -68,7 +68,7 @@ static uint32_t valid_dev[] = {
 #elif defined (BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
     DEV_SPI0,
 #elif defined (BOARD_BEAGLEBONEBLACK)
-    DEV_SPI0,
+    DEV_SPI1,
 #endif 
     DEV_NONE
 };

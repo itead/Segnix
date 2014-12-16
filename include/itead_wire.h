@@ -77,6 +77,11 @@ public:
  * @par On Raspberry Rv2 and Raspberry Pi Model B+
  * - Wire - A reference to Wire1
  * - Wire1 - I2C1(SDA:GPIO2, SCK:GPIO3)
+ *
+ * @par On BeagleBoneBlack
+ * - Wire - A reference to Wire1
+ * - Wire1 - I2C1(SDA:GPIO0_4, SCK:GPIO0_5)
+ * - Wire2 - I2C2(SDA:GPIO0_12, SCK:GPIO0_13)
  */
 
 extern TwoWire & Wire;
@@ -90,6 +95,7 @@ extern TwoWire Wire1;
 
 #elif defined (BOARD_BEAGLEBONEBLACK)
 extern TwoWire Wire1;
+extern TwoWire Wire2;
 
 #endif 
 

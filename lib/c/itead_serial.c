@@ -63,7 +63,7 @@ static SERIAL_PORT ports[] = {
 		.fd = -1,
 		.node = "/dev/ttyAMA0",
 	},
-#elif defined (BOARD_BEAGLEBONEBALCK)
+#elif defined (BOARD_BEAGLEBONEBLACK)
     [1] = {
 		.fd = -1,
 		.node = "/dev/ttyO1",
@@ -144,7 +144,7 @@ uint32_t Serialbegin(uint32_t dev, uint32_t baud)
 			sdkerr("\nillegal parameter: baud\n");
 			return 1;
 	}
-
+	sdkerr("dev = %d ,baud = %d\n",dev,baud);
   	if ((ports[dev].fd = open(ports[dev].node, 
 		O_RDWR | O_NOCTTY | O_NDELAY | O_NONBLOCK)) == -1) {
 		sdkerr("\nCannot open file:%s\n",ports[dev].node);
