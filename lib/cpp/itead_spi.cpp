@@ -25,7 +25,9 @@ SPIClass & SPI = SPI0;
 #elif defined (BOARD_BEAGLEBONEBLACK)
 SPIClass SPI1(DEV_SPI1);
 SPIClass & SPI = SPI1;
-
+#else
+SPIClass SPINONE;
+SPIClass & SPI = SPINONE;
 #endif 
 
 
