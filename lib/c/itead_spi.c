@@ -57,7 +57,7 @@ static SPI_DEVICE spi_devices[] = {
 	},
 #elif defined (BOARD_BEAGLEBONEBLACK)
    [1] = {
-		.node	= "/dev/spidev1.1",
+		.node	= "/dev/spidev1.0",
 	},
 #endif 
 };
