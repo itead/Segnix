@@ -390,8 +390,8 @@ static const pin_no_port_index_map pnp[] = {
 	{PORT_NONE,	INDEX_NONE}	,	// 9
   	{PORT_NONE,	INDEX_NONE}	,	// 0 + 20
 	{PORT_NONE,	INDEX_NONE}	,	// 1
-	{PORT_NONE,	INDEX_NONE}	,	// 2
-	{PORT_NONE,	INDEX_NONE}	,	// 3
+	{PORT_GPIO0,	    22}	,	// 2
+	{PORT_GPIO0,	    23}	,	// 3
 	{PORT_NONE,	INDEX_NONE}	,	// 4
 	{PORT_NONE,	INDEX_NONE}	,	// 5
 	{PORT_GPIO0,	    26}	,	// 6
@@ -418,13 +418,13 @@ static const pin_no_port_index_map pnp[] = {
 	{PORT_GPIO1,	    15}	,	// 7
 	{PORT_GPIO1,	    16}	,	// 8
 	{PORT_GPIO1,	    17}	,	// 9
-   	{PORT_NONE,	INDEX_NONE}	,	// 0 + 50
-	{PORT_NONE,	INDEX_NONE}	,	// 1
+   	{PORT_GPIO1,	    18}	,	// 0 + 50
+	{PORT_GPIO1,	    19}	,	// 1
 	{PORT_NONE,	INDEX_NONE}	,	// 2
-	{PORT_GPIO1,	    21}	,	// 3
-	{PORT_GPIO1,	    22}	,	// 4
-	{PORT_GPIO1,	    23}	,	// 5
-	{PORT_GPIO1,	    24}	,	// 6
+	{PORT_NONE,	INDEX_NONE}	,	// 3
+	{PORT_NONE,	INDEX_NONE}	,	// 4
+	{PORT_NONE,	INDEX_NONE}	,	// 5
+	{PORT_NONE,	INDEX_NONE}	,	// 6
 	{PORT_NONE,	INDEX_NONE}	,	// 7
 	{PORT_NONE,	INDEX_NONE}	,	// 8
 	{PORT_NONE,	INDEX_NONE}	,	// 9

@@ -334,7 +334,9 @@ typedef struct
  * -# GPIO26
  *
  * @par On BeagleBoneBlack
- * -# GPIO0_7 
+ * -# GPIO0_7
+ * -# GPIO0_22
+ * -# GPIO0_23 
  * -# GPIO0_26 
  * -# GPIO0_27 
  * -# GPIO1_12
@@ -343,10 +345,8 @@ typedef struct
  * -# GPIO1_15
  * -# GPIO1_16
  * -# GPIO1_17
- * -# GPIO1_21
- * -# GPIO1_22
- * -# GPIO1_23
- * -# GPIO1_24
+ * -# GPIO1_18
+ * -# GPIO1_19
  * -# GPIO1_28
  * -# GPIO1_29
  * -# GPIO2_1
@@ -594,6 +594,8 @@ typedef struct
 #define GPIO_NUM(port,num)  (port)*32+(num)
 
 #define GPIO0_7   GPIO_NUM(0,7)
+#define GPIO0_22  GPIO_NUM(0,22)
+#define GPIO0_23  GPIO_NUM(0,23)
 #define GPIO0_26  GPIO_NUM(0,26)
 #define GPIO0_27  GPIO_NUM(0,27)
 #define GPIO1_12  GPIO_NUM(1,12)
@@ -602,10 +604,8 @@ typedef struct
 #define GPIO1_15  GPIO_NUM(1,15)
 #define GPIO1_16  GPIO_NUM(1,16)
 #define GPIO1_17  GPIO_NUM(1,17)
-#define GPIO1_21  GPIO_NUM(1,21)
-#define GPIO1_22  GPIO_NUM(1,22)
-#define GPIO1_23  GPIO_NUM(1,23)
-#define GPIO1_24  GPIO_NUM(1,24)
+#define GPIO1_18  GPIO_NUM(1,18)
+#define GPIO1_19  GPIO_NUM(1,19)
 #define GPIO1_28  GPIO_NUM(1,28)
 #define GPIO1_29  GPIO_NUM(1,29)
 #define GPIO2_1   GPIO_NUM(2,1)
