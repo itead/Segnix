@@ -32,7 +32,7 @@ extern "C"{
 #define DEV_AIN6        6
 #define DEV_AIN7        7
 
-uint32_t        analogRead(uint16_t dev);
+extern uint32_t analogread(uint32_t dev);
     
 #ifdef __cplusplus
 }

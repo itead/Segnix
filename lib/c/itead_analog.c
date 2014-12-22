@@ -19,9 +19,9 @@
 #include <stdlib.h>
 #include <errno.h>
 
-#include <itead_ananlog.h>
+#include <itead_analog.h>
 #include <itead_global.h>
-
+#include <itead_utility.h>
 #define DEBUG
 #include <itead_debug.h>
 
@@ -97,7 +97,7 @@ static uint32_t valid_dev[] = {
  *       for example :[0 to 4095] --- 12-bit ADC
  *                    [0 to 1023] --- 10-bit ADC
  */
-uint32_t analogRead(uint16_t dev)
+uint32_t analogread(uint32_t dev)
 {
     uint8_t result_c[5] = {0};
     uint32_t data;

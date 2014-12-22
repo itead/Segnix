@@ -26,7 +26,7 @@ typedef struct {
     AnalogClass *s;
 } PyAnalogClass;
 
-/* Implementation of slots used by Serial_Type */
+/* Implementation of slots used by AnalogClassType */
 
 static int
 AnalogClass_init(PyAnalogClass *self, PyObject *args, PyObject *kwds)
@@ -49,7 +49,7 @@ AnalogClass_init(PyAnalogClass *self, PyObject *args, PyObject *kwds)
         return -1;
     } 
 
-    self->s = new Serial_(dev);
+    self->s = new AnalogClass(dev);
     
     debug("AnalogClass_init done\n");
     
@@ -67,7 +67,7 @@ AnalogClass_dealloc(PyAnalogClass* self)
 static PyObject*
 AnalogClass_analogRead(PyAnalogClass *self, PyObject *args)
 {
-    uint8_t ret;
+    uint32_t ret;
     ret = self->s->analogRead();
     return Py_BuildValue("B", ret);
 }
@@ -75,6 +75,7 @@ AnalogClass_analogRead(PyAnalogClass *self, PyObject *args)
 
 static PyMethodDef AnalogClass_methods[] = 
 {
+    {
         "analogRead",
         (PyCFunction)AnalogClass_analogRead, 
         METH_VARARGS,
@@ -139,7 +140,7 @@ inititeadanalog(void)
 {
     PyObject* iteadanalog;
     
-    iteadadc = Py_InitModule3
+    iteadanalog = Py_InitModule3
         (
         "iteadanalog",
         module_iteadanalog_methods,            
