@@ -4,6 +4,7 @@ so_file := iteadcfunction.so
 so_file += iteadserial.so
 so_file += iteadspi.so
 so_file += iteadwire.so
+so_file += iteadanalog.so
 
 py_dir := .
 py_install_dir := $(so_install_dir)
@@ -12,7 +13,8 @@ py_file += iteadsdk.py
 py_file += BOARD_ITEADUINO_PLUS_GPIO.py  
 py_file += BOARD_ITEAD_CORE_EVB_GPIO.py  
 py_file += BOARD_RASPBERRY_PI_RV2_GPIO.py          
-py_file += BOARD_RASPBERRY_PI_MODEL_BPLUS_GPIO.py  
+py_file += BOARD_RASPBERRY_PI_MODEL_BPLUS_GPIO.py
+py_file += BOARD_BEAGLE_BONE_BLACK_GPIO.py  
 
 
 .PHONY: install 

@@ -37,7 +37,9 @@
 #include <linux/time.h>
 #include <linux/signal.h>
 
-//#define DEBUG
+#ifndef DEBUG
+#define DEBUG
+#endif
 
 #ifdef DEBUG
 #define debug(fmt, args...)		                                                    \

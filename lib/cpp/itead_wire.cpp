@@ -17,11 +17,20 @@
 
 #if defined(BOARD_ITEADUINO_PLUS) || defined(BOARD_ITEAD_CORE_EVB)
 TwoWire Wire1(DEV_I2C1);
-TwoWire & Wire = Wire1;
 TwoWire Wire2(DEV_I2C2);
+TwoWire & Wire = Wire1;
 #elif defined (BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
 TwoWire Wire1(DEV_I2C1);
 TwoWire & Wire = Wire1;
+#elif defined (BOARD_BEAGLEBONEBLACK)
+/** bb-kernel-3.8.13-bone68 with capmgr    */
+/** /dev/i2c-1 is I2C2; /dev/i2c-2 is I2C1 */
+TwoWire Wire1(DEV_I2C2);
+TwoWire Wire2(DEV_I2C1);
+TwoWire & Wire = Wire1;
+#else
+TwoWire WireNONE;
+TwoWire & Wire = WireNONE;
 #endif 
 
 

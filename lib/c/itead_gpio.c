@@ -21,9 +21,11 @@
 #include <stdint.h>
 #include <pthread.h>
 #include <stdlib.h>
+#include <errno.h>
 
 #include <linux/ioctl.h>
 #include <sys/mman.h>
+#include <sys/wait.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 
@@ -37,7 +39,7 @@
 
 
 typedef struct PinPwmInfo{
-	uint16_t 	pin_no;
+    uint16_t 	pin_no;
 	uint8_t 	duty;
 	pthread_t	tid;
 	uint8_t		state;
@@ -65,6 +67,144 @@ static PinPwmInfo           pin_pwm_infos[PIN_PWM_MAX];
 static int                  fd_dev_mem = -1;
 static volatile uint32_t *gpio_base;
 
+
+/*
+ * On BeagleBoneBlack , We use sysfs interface to control GPIO
+ * With kernel config :
+ *    > Device Driver
+ *      > GPIO SUPPORT
+ *        > /sys/class/gpio/... (sysfs interface) 
+ */
+#ifdef BOARD_BEAGLEBONEBLACK
+
+/*
+ * EXPORT_GPIO   	- bash command to export gpio with it's num 
+ * UNEXPORT_GPIO 	- bash command to unexport gpio with it's num
+ * DIRECTION_GPIO   - bash command to set gpio direction status
+ * VALUE_GPIO 		- path to gpio value file
+ */
+#define EXPORT_GPIO "echo %d > /sys/class/gpio/export"
+#define UNEXPORT_GPIO "echo %d > /sys/class/gpio/unexport"
+#define DIRECTION_GPIO "echo %s > /sys/class/gpio/gpio%d/direction"
+#define VALUE_GPIO "/sys/class/gpio/gpio%d/value"
+
+/*
+ * gpio_string[60]    - store the bash command to excute.
+ * gpio_exported[132] - store 132 GPIOs' export status.
+ *                          1-export , 0-unexport
+ */
+static unsigned char gpio_string[60];
+static unsigned char gpio_exported[132] = {0};
+
+/*
+ * @name	: do_shell
+ * @desc	: excute a bash command stored in *string
+ * @param	: 
+ * @return	: 1 -  if success.
+ *			  0 -  if failed.
+ */
+static inline int do_shell(unsigned char * string)
+{
+    pid_t status;
+    status = system(string);
+    if (status == -1) {
+        sdkerr("\nsystem call sh error.\n");
+        return 0;
+    }
+
+    if (WIFEXITED(status) == 0) {
+        sdkerr("\nbash command excute error.\n");
+        return 0;
+    }
+
+    if (WEXITSTATUS(status) != 0) {
+        sdkerr("\nbash command return status error.\n");
+        sdkerr("return status is [0x%x].\n",status);
+        return 0;
+    }
+    
+    return 1;
+}
+
+/*
+ * @name	: export_gpio
+ * @desc	: export a gpio to sysfs interface
+ *            if succeed ,the gpio is ready 
+ * @param	: 
+ * @return	: 1 -  if success.
+ *			  0 -  if failed.
+ */
+static inline int export_gpio(unsigned int gpio_num)
+{
+    int status;
+    /* export already */
+    if (gpio_exported[gpio_num] == 1) {
+        return 1;
+    }
+
+    sprintf(gpio_string,EXPORT_GPIO,gpio_num);
+    status = do_shell(gpio_string);
+
+    if (status == 1) {
+        gpio_exported[gpio_num] = 1;
+    }
+
+    return status;
+}
+
+/*
+ * @name	: unexport_gpio
+ * @desc	: unexport a gpio from sysfs interface
+ *            if succeed ,gpio can not be set further
+ * @param	: 
+ * @return	: 1 -  if success.
+ *			  0 -  if failed.
+ */
+static inline int unexport_gpio(unsigned int gpio_num)
+{
+    int status;
+    /* unexport already */
+    if (gpio_exported[gpio_num] == 0) {
+        return 1;
+    }
+
+    sprintf(gpio_string,UNEXPORT_GPIO,gpio_num);
+    status = do_shell(gpio_string);
+
+    if (status == 1) {
+        gpio_exported[gpio_num] = 0;
+    }
+
+    return status;
+}
+
+/*
+ * @name	: check_export_gpio
+ * @desc	: check gpio export status 
+ * @param	: 
+ * @return	: 1 -  export 
+ *			  0 -  unexport
+ *            2 -  unknown status
+ */
+static inline int check_export_gpio(unsigned int gpio_num)
+{
+    FILE *f_gpio;
+    sprintf(gpio_string,VALUE_GPIO,gpio_num);
+    f_gpio = fopen(gpio_string,"r");
+    if(f_gpio == NULL) {
+        if(errno == ENOENT) {
+            gpio_exported[gpio_num] = 0;
+            return 0;
+        } else {
+            return 2;
+        }
+    }
+    fclose(f_gpio);
+    gpio_exported[gpio_num] = 1;
+    return 1;
+}
+
+#endif
 
 /*
  * @name	: gpio_mmap
@@ -106,7 +246,6 @@ static inline int32_t gpio_mmap(void)
         return 0;
     }
 #endif
-
 	return 1;
 }
 
@@ -171,7 +310,7 @@ uint32_t pinMode(uint16_t pin, uint8_t mode)
 	volatile uint32_t *cureg;
     uint16_t port_no ;
 	uint16_t index ;
-    
+
 	debug("\npinMode begin\n");
 	
 	if (!vertify_mode(mode)) {
@@ -215,6 +354,24 @@ uint32_t pinMode(uint16_t pin, uint8_t mode)
        CUREG |=  (0x1 << (3*(pin%10)));
    }
 
+#elif defined(BOARD_BEAGLEBONEBLACK)
+
+   check_export_gpio(pin);
+   
+   if (!export_gpio(pin)) {
+       sdkerr("\nexport_gpio failed!\n");
+       return 1;
+   }
+
+   if (mode == INPUT) {
+       sprintf(gpio_string,DIRECTION_GPIO,"in",pin);
+   } else if(mode == OUTPUT) {
+       sprintf(gpio_string,DIRECTION_GPIO,"out",pin);
+   }
+  
+   if (!do_shell(gpio_string)) {
+       sdkerr("\nset gpio direction failed!\n");
+   }
 #endif
 
 	return 0;
@@ -295,8 +452,21 @@ uint32_t digitalWrite(uint16_t pin, uint8_t val)
     } else {
         cureg = gpio_base + GPIO_GPCLR_OFFSET/4 + pin/32;
     }
-    CUREG = 0x1 << (1*(pin%32)); 
-
+    CUREG = 0x1 << (1*(pin%32));
+#elif defined(BOARD_BEAGLEBONEBLACK)
+    if (!check_export_gpio(pin)) {
+       sdkerr("\nexport_gpio failed!\n");
+       return 1;
+    }
+    if ( val == HIGH) {
+        sprintf(gpio_string,DIRECTION_GPIO,"high",pin);
+    } else if (val == LOW) {
+        sprintf(gpio_string,DIRECTION_GPIO,"low",pin);
+    }
+    
+    if (!do_shell(gpio_string)) {
+        sdkerr("\nset gpio output level failed!\n");
+    }    
 #endif
 	
 	return 0;
@@ -312,14 +482,14 @@ uint32_t digitalRead(uint16_t pin)
 {
 	uint32_t ret;
 	uint32_t msg=0;
-	debug("\ndigitalRead begin\n");
 	int wait_cnt=0;
 	int i;
     volatile uint32_t *cureg;
     uint16_t port_no ;
 	uint16_t index ;
 	pthread_t	tid = pthread_self();
-
+    FILE *f_gpio;
+    int value_gpio;
 	if (!vertify_pin(pin)) {
 		sdkerr("\nIllegal parameter : pin=%u\n",pin);
 		return 2;
@@ -367,6 +537,23 @@ uint32_t digitalRead(uint16_t pin)
     pin   = pnp[pin].index;
     cureg = gpio_base + GPIO_GPLEV_OFFSET/4 + pin/32;
     return (CUREG & (0x1<<(pin%32))) ? HIGH : LOW;
+#elif defined(BOARD_BEAGLEBONEBLACK)
+    if (!check_export_gpio(pin)) {
+       sdkerr("\nexport_gpio failed!\n");
+       return 1;
+    }
+    sprintf(gpio_string,VALUE_GPIO,pin);
+    f_gpio = fopen(gpio_string,"r");
+    if(f_gpio == NULL) {
+        sdkerr("\nopen gpio value file failed!\n");
+    }
+    value_gpio = fgetc(f_gpio);
+    fclose(f_gpio);
+    if(value_gpio == '1') {
+        return HIGH;
+    } else if(value_gpio == '0') {
+        return LOW;
+    }
 #endif
 }
 

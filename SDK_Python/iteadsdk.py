@@ -16,6 +16,7 @@ _supported_board_type = (
     'BOARD_ITEAD_CORE_EVB',
     'BOARD_RASPBERRY_PI_RV2',
     'BOARD_RASPBERRY_PI_MODEL_BPLUS',
+    'BOARD_BEAGLEBONEBLACK',
     )
     
 #
@@ -28,6 +29,8 @@ elif BOARD_TYPE == 'BOARD_ITEAD_CORE_EVB':
 elif BOARD_TYPE == 'BOARD_RASPBERRY_PI_RV2':
     pass
 elif BOARD_TYPE == 'BOARD_RASPBERRY_PI_MODEL_BPLUS':
+    pass
+elif BOARD_TYPE == 'BOARD_BEAGLEBONEBLACK':
     pass
 else:
     print 'Unsupported Board Type = %s .' % (BOARD_TYPE)
@@ -43,6 +46,7 @@ from iteadcfunction         import *
 from iteadserial            import Serial_
 from iteadspi               import SPIClass
 from iteadwire              import TwoWire
+from iteadanalog            import AnalogClass
 
 
 ###############################################################################
@@ -71,6 +75,8 @@ elif BOARD_TYPE == 'BOARD_RASPBERRY_PI_RV2':
     from BOARD_RASPBERRY_PI_RV2_GPIO import *
 elif BOARD_TYPE == 'BOARD_RASPBERRY_PI_MODEL_BPLUS':
     from BOARD_RASPBERRY_PI_MODEL_BPLUS_GPIO import *
+elif BOARD_TYPE == 'BOARD_BEAGLEBONEBLACK':
+    from BOARD_BEAGLE_BONE_BLACK_GPIO import *
 else:
     print 'No GPIO found.'
 
@@ -138,6 +144,12 @@ elif BOARD_TYPE == 'BOARD_RASPBERRY_PI_RV2':
 elif BOARD_TYPE == 'BOARD_RASPBERRY_PI_MODEL_BPLUS':
     Serial0 = Serial_(_DEV_UART0)
     Serial = Serial0
+
+elif BOARD_TYPE == 'BOARD_BEAGLEBONEBLACK':
+    Serial1 = Serial_(_DEV_UART1)
+    Serial2 = Serial_(_DEV_UART2)
+    Serial4 = Serial_(_DEV_UART4)
+    Serial = Serial1    
     
 else:
     print 'No Serial bus found'
@@ -200,6 +212,10 @@ elif BOARD_TYPE == 'BOARD_RASPBERRY_PI_RV2':
 elif BOARD_TYPE == 'BOARD_RASPBERRY_PI_MODEL_BPLUS':
     SPI0 = SPIClass(_DEV_SPI0)
     SPI = SPI0
+
+elif BOARD_TYPE == 'BOARD_BEAGLEBONEBLACK':
+    SPI1 = SPIClass(_DEV_SPI1)
+    SPI = SPI1    
     
 else:
     print 'No SPI bus found.'
@@ -236,10 +252,46 @@ elif BOARD_TYPE == 'BOARD_RASPBERRY_PI_RV2':
 elif BOARD_TYPE == 'BOARD_RASPBERRY_PI_MODEL_BPLUS':
     Wire1 = TwoWire(_DEV_I2C1)
     Wire = Wire1
+
+elif BOARD_TYPE == 'BOARD_BEAGLEBONEBLACK':
+    Wire1 = TwoWire(_DEV_I2C1)
+    Wire2 = TwoWire(_DEV_I2C2)
+    Wire = Wire1    
     
 else:
     print 'No I2C(TwoWire) bus found.'
 
+###############################################################################
+# About analog(ADC) module stuff
+###############################################################################
+#
+# bus number
+#
+_DEV_AIN0 = 0
+_DEV_AIN1 = 1
+_DEV_AIN2 = 2
+_DEV_AIN3 = 3
+_DEV_AIN4 = 4
+_DEV_AIN5 = 5
+_DEV_AIN6 = 6
+_DEV_AIN7 = 7
+
+# 
+# Create objects for available channels
+#
+if BOARD_TYPE == 'BOARD_BEAGLEBONEBLACK':
+    Analog0 = AnalogClass(_DEV_AIN0)
+    Analog1 = AnalogClass(_DEV_AIN1)
+    Analog2 = AnalogClass(_DEV_AIN2)
+    Analog3 = AnalogClass(_DEV_AIN3)
+    Analog4 = AnalogClass(_DEV_AIN4)
+    Analog5 = AnalogClass(_DEV_AIN5)
+    Analog6 = AnalogClass(_DEV_AIN6)
+    Analog7 = AnalogClass(_DEV_AIN7)
+    Analog = Analog0
+    
+else:
+    print 'No ADC channel found'
 
 
 ###############################################################################

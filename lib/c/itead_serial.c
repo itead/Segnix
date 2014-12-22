@@ -63,6 +63,19 @@ static SERIAL_PORT ports[] = {
 		.fd = -1,
 		.node = "/dev/ttyAMA0",
 	},
+#elif defined (BOARD_BEAGLEBONEBLACK)
+    [1] = {
+		.fd = -1,
+		.node = "/dev/ttyO1",
+	},
+    [2] = {
+		.fd = -1,
+		.node = "/dev/ttyO2",
+	},
+    [4] = {
+		.fd = -1,
+		.node = "/dev/ttyO4",
+	},
 #endif 
 
 };
@@ -77,6 +90,10 @@ static uint32_t valid_dev[] = {
     DEV_UART4,
 #elif defined (BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
     DEV_UART0,
+#elif defined (BOARD_BEAGLEBONEBLACK)
+    DEV_UART1,
+    DEV_UART2,
+    DEV_UART4,
 #endif 
     DEV_NONE
 };
@@ -219,6 +236,7 @@ uint32_t Serialwrite (uint32_t dev, uint8_t val)
 		sdkerr("\nbad dev=%d\n",dev);
 		return 0;
 	}
+
 	if(write(ports[dev].fd, &val, 1) < 0)
 	{
 		return 0;

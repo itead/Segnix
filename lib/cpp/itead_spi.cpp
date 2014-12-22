@@ -22,7 +22,12 @@ SPIClass & SPI = SPI0;
 #elif defined (BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
 SPIClass SPI0(DEV_SPI0);
 SPIClass & SPI = SPI0;
-
+#elif defined (BOARD_BEAGLEBONEBLACK)
+SPIClass SPI1(DEV_SPI1);
+SPIClass & SPI = SPI1;
+#else
+SPIClass SPINONE;
+SPIClass & SPI = SPINONE;
 #endif 
 
 

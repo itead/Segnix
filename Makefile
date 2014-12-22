@@ -83,6 +83,7 @@ HEADERS_include += itead_spi.h
 HEADERS_include += itead_utility.h
 HEADERS_include += itead_wire.h
 HEADERS_include += itead_interrupt.h
+HEADERS_include += itead_analog.h
 
 HEADERS_include := $(addprefix include/,$(HEADERS_include))
 
@@ -272,7 +273,6 @@ install:
 # install into 	SYS_USR_LOCAL_INCLUDE
 	cp -f $(INSTALL_USER_LOCAL_INCLUDE) $(SYS_USR_LOCAL_INCLUDE)
 	cd $(SYS_USR_LOCAL_INCLUDE) && chmod 755 $(notdir $(INSTALL_USER_LOCAL_INCLUDE))
-	
 	@echo "install done"
 
 .PHONY: uninstall
@@ -291,7 +291,6 @@ uninstall:
 	cd $(SYS_USR_INCLUDE) && rm -f $(notdir $(INSTALL_USER_INCLUDE))
 # uninstall from 	SYS_USR_LOCAL_INCLUDE
 	cd $(SYS_USR_LOCAL_INCLUDE) && rm -f $(notdir $(INSTALL_USER_LOCAL_INCLUDE))
-	
 	@echo "uninstall done"
 
 
@@ -339,6 +338,16 @@ Raspberry_Pi_Model_BPlus:
 	@ cp tools/config.mk ./
 	@ echo "BOARD_TYPE = 'BOARD_RASPBERRY_PI_MODEL_BPLUS'" > SDK_Python/itead_config.py
 	@ echo "config board Raspberry_Pi_Model_BPlus finished"
+
+.PHONY: BeagleBoneBlack
+BeagleBoneBlack:
+	@ echo "#ifndef __ITEAD_CONFIG_H__" > include/itead_config.h
+	@ echo "#define __ITEAD_CONFIG_H__" >> include/itead_config.h
+	@ echo "#define BOARD_BEAGLEBONEBLACK" >> include/itead_config.h
+	@ echo "#endif" >> include/itead_config.h
+	@ cp tools/config.mk ./
+	@ echo "BOARD_TYPE = 'BOARD_BEAGLEBONEBLACK'" > SDK_Python/itead_config.py
+	@ echo "config board BeagleBoneBlack"
 
 #
 # Manage SDK_Python install clean uninstall

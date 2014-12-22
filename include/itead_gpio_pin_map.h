@@ -344,6 +344,163 @@ static const pin_no_port_index_map pnp[] = {
 #endif
 };
 
+#elif defined(BOARD_BEAGLEBONEBLACK)
+    
+#define PIN_MAX		117
+#define PIN_MIN		7
+
+#define GPIO_SIZE   (1*BLOCK_SIZE)
+#define GPIO0_BASE  (0x44E0_7000)
+#define GPIO1_BASE  (0x4804_C000)
+#define GPIO2_BASE  (0x481A_C000)
+#define GPIO3_BASE  (0x441A_E000)
+
+#define GPIO_OE           (0x134)
+#define GPIO_DATAIN       (0x138)
+#define GPIO_DATAOUT      (0x13C)
+#define GPIO_CLEARDATAOUT (0x190)
+#define GPIO_SETDATAOUT   (0x194)
+
+#define PORT_GPIO0   0
+#define PORT_GPIO1   1
+#define PORT_GPIO2   2
+#define PORT_GPIO3   3
+
+static const pin_no_port_index_map pnp[] = {
+/*	port_no	  index				pin_no 		*/    
+	{PORT_NONE,	INDEX_NONE}	,	// 0
+	{PORT_NONE,	INDEX_NONE}	,	// 1
+	{PORT_NONE,	INDEX_NONE}	,	// 2
+	{PORT_NONE,	INDEX_NONE}	,	// 3
+	{PORT_NONE,	INDEX_NONE}	,	// 4
+	{PORT_NONE,	INDEX_NONE}	,	// 5
+	{PORT_NONE,	INDEX_NONE}	,	// 6
+	{PORT_GPIO0 ,        7} ,	// 7
+	{PORT_NONE,	INDEX_NONE}	,	// 8
+	{PORT_NONE,	INDEX_NONE}	,	// 9
+    {PORT_NONE,	INDEX_NONE}	,	// 0 + 10
+	{PORT_NONE,	INDEX_NONE}	,	// 1
+	{PORT_NONE,	INDEX_NONE}	,	// 2
+	{PORT_NONE,	INDEX_NONE}	,	// 3
+	{PORT_NONE,	INDEX_NONE}	,	// 4
+	{PORT_NONE,	INDEX_NONE}	,	// 5
+	{PORT_NONE,	INDEX_NONE}	,	// 6
+	{PORT_NONE,	INDEX_NONE}	,	// 7
+	{PORT_NONE,	INDEX_NONE}	,	// 8
+	{PORT_NONE,	INDEX_NONE}	,	// 9
+  	{PORT_NONE,	INDEX_NONE}	,	// 0 + 20
+	{PORT_NONE,	INDEX_NONE}	,	// 1
+	{PORT_GPIO0,	    22}	,	// 2
+	{PORT_GPIO0,	    23}	,	// 3
+	{PORT_NONE,	INDEX_NONE}	,	// 4
+	{PORT_NONE,	INDEX_NONE}	,	// 5
+	{PORT_GPIO0,	    26}	,	// 6
+	{PORT_GPIO0,	    27}	,	// 7
+	{PORT_NONE,	INDEX_NONE}	,	// 8
+	{PORT_NONE,	INDEX_NONE}	,	// 9
+   	{PORT_NONE,	INDEX_NONE}	,	// 0 + 30
+	{PORT_NONE,	INDEX_NONE}	,	// 1
+	{PORT_NONE,	INDEX_NONE}	,	// 2
+	{PORT_NONE,	INDEX_NONE}	,	// 3
+	{PORT_NONE,	INDEX_NONE}	,	// 4
+	{PORT_NONE,	INDEX_NONE}	,	// 5
+	{PORT_NONE,	INDEX_NONE}	,	// 6
+	{PORT_NONE,	INDEX_NONE}	,	// 7
+	{PORT_NONE,	INDEX_NONE}	,	// 8
+	{PORT_NONE,	INDEX_NONE}	,	// 9
+   	{PORT_NONE,	INDEX_NONE}	,	// 0 + 40
+	{PORT_NONE,	INDEX_NONE}	,	// 1
+	{PORT_NONE,	INDEX_NONE}	,	// 2
+	{PORT_NONE,	INDEX_NONE}	,	// 3
+	{PORT_GPIO1,	    12}	,	// 4
+	{PORT_GPIO1,	    13}	,	// 5
+	{PORT_GPIO1,	    14}	,	// 6
+	{PORT_GPIO1,	    15}	,	// 7
+	{PORT_GPIO1,	    16}	,	// 8
+	{PORT_GPIO1,	    17}	,	// 9
+   	{PORT_GPIO1,	    18}	,	// 0 + 50
+	{PORT_GPIO1,	    19}	,	// 1
+	{PORT_NONE,	INDEX_NONE}	,	// 2
+	{PORT_NONE,	INDEX_NONE}	,	// 3
+	{PORT_NONE,	INDEX_NONE}	,	// 4
+	{PORT_NONE,	INDEX_NONE}	,	// 5
+	{PORT_NONE,	INDEX_NONE}	,	// 6
+	{PORT_NONE,	INDEX_NONE}	,	// 7
+	{PORT_NONE,	INDEX_NONE}	,	// 8
+	{PORT_NONE,	INDEX_NONE}	,	// 9
+   	{PORT_GPIO1,	    28}	,	// 0 + 60
+	{PORT_GPIO1,	    29}	,	// 1
+	{PORT_NONE,	INDEX_NONE}	,	// 2
+	{PORT_NONE,	INDEX_NONE}	,	// 3
+	{PORT_NONE,	INDEX_NONE}	,	// 4
+	{PORT_GPIO2,	     1}	,	// 5
+	{PORT_NONE,	INDEX_NONE}	,	// 6
+	{PORT_NONE,	INDEX_NONE}	,	// 7
+	{PORT_NONE,	INDEX_NONE}	,	// 8
+	{PORT_NONE,	INDEX_NONE}	,	// 9
+   	{PORT_NONE,	INDEX_NONE}	,	// 0 + 70
+	{PORT_NONE,	INDEX_NONE}	,	// 1
+	{PORT_NONE,	INDEX_NONE}	,	// 2
+	{PORT_NONE,	INDEX_NONE}	,	// 3
+	{PORT_NONE,	INDEX_NONE}	,	// 4
+	{PORT_NONE,	INDEX_NONE}	,	// 5
+	{PORT_NONE,	INDEX_NONE}	,	// 6
+	{PORT_NONE,	INDEX_NONE}	,	// 7
+	{PORT_NONE,	INDEX_NONE}	,	// 8
+	{PORT_NONE,	INDEX_NONE}	,	// 9
+   	{PORT_NONE,	INDEX_NONE}	,	// 0 + 80
+	{PORT_NONE,	INDEX_NONE}	,	// 1
+	{PORT_NONE,	INDEX_NONE}	,	// 2
+	{PORT_NONE,	INDEX_NONE}	,	// 3
+	{PORT_NONE,	INDEX_NONE}	,	// 4
+	{PORT_NONE,	INDEX_NONE}	,	// 5
+	{PORT_NONE,	INDEX_NONE}	,	// 6
+	{PORT_NONE,	INDEX_NONE}	,	// 7
+	{PORT_NONE,	INDEX_NONE}	,	// 8
+	{PORT_NONE,	INDEX_NONE}	,	// 9
+   	{PORT_NONE,	INDEX_NONE}	,	// 0 + 90
+	{PORT_NONE,	INDEX_NONE}	,	// 1
+	{PORT_NONE,	INDEX_NONE}	,	// 2
+	{PORT_NONE,	INDEX_NONE}	,	// 3
+	{PORT_NONE,	INDEX_NONE}	,	// 4
+	{PORT_NONE,	INDEX_NONE}	,	// 5
+	{PORT_NONE,	INDEX_NONE}	,	// 6
+	{PORT_NONE,	INDEX_NONE}	,	// 7
+	{PORT_NONE,	INDEX_NONE}	,	// 8
+	{PORT_NONE,	INDEX_NONE}	,	// 9
+   	{PORT_NONE,	INDEX_NONE}	,	// 0 + 100
+	{PORT_NONE,	INDEX_NONE}	,	// 1
+	{PORT_NONE,	INDEX_NONE}	,	// 2
+	{PORT_NONE,	INDEX_NONE}	,	// 3
+	{PORT_NONE,	INDEX_NONE}	,	// 4
+	{PORT_NONE,	INDEX_NONE}	,	// 5
+	{PORT_NONE,	INDEX_NONE}	,	// 6
+	{PORT_NONE,	INDEX_NONE}	,	// 7
+	{PORT_NONE,	INDEX_NONE}	,	// 8
+	{PORT_NONE,	INDEX_NONE}	,	// 9
+   	{PORT_NONE,	INDEX_NONE}	,	// 0 + 110
+	{PORT_NONE,	INDEX_NONE}	,	// 1
+	{PORT_NONE,	INDEX_NONE}	,	// 2
+	{PORT_NONE,	INDEX_NONE}	,	// 3
+	{PORT_NONE,	INDEX_NONE}	,	// 4
+	{PORT_GPIO3,	    19}	,	// 5
+	{PORT_NONE,	INDEX_NONE}	,	// 6
+	{PORT_GPIO3,	    21}	,	// 7
+	{PORT_NONE,	INDEX_NONE}	,	// 8
+	{PORT_NONE,	INDEX_NONE}	,	// 9
+   	{PORT_NONE,	INDEX_NONE}	,	// 0 + 120
+	{PORT_NONE,	INDEX_NONE}	,	// 1
+	{PORT_NONE,	INDEX_NONE}	,	// 2
+	{PORT_NONE,	INDEX_NONE}	,	// 3
+	{PORT_NONE,	INDEX_NONE}	,	// 4
+	{PORT_NONE,	INDEX_NONE}	,	// 5
+	{PORT_NONE,	INDEX_NONE}	,	// 6
+	{PORT_NONE,	INDEX_NONE}	,	// 7
+	{PORT_NONE,	INDEX_NONE}	,	// 8
+	{PORT_NONE,	INDEX_NONE}	,	// 9
+   	{PORT_NONE,	INDEX_NONE}	,	// 0 + 130
+	{PORT_NONE,	INDEX_NONE}		// 1
+};
 #else
     assert(! "Unsupported Board. You need to choose a valid one.");
 #endif

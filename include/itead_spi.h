@@ -124,6 +124,10 @@ public:
  * @par On Raspberry Rv2 and Raspberry Pi Model B+
  * - SPI - A reference to SPI0
  * - SPI0 - SPI0(CE0:GPIO8, CE1:GPIO7, SCK:GPIO11, MOSI:GPIO10, MISO:GPIO9)
+ *
+ * @par On BeagleBoneBlack
+ * - SPI - A reference to SPI1
+ * - SPI1 - SPI1(CS0:GPIO3_17, SCK:GPIO3_14, MOSI:GPIO3_16, MISO:GPIO3_15)
  */
 
 extern SPIClass & SPI;
@@ -132,6 +136,8 @@ extern SPIClass & SPI;
 extern SPIClass SPI0;
 #elif defined (BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)
 extern SPIClass SPI0;
+#elif defined (BOARD_BEAGLEBONEBLACK)
+extern SPIClass SPI1;
 #endif 
 
 #endif
