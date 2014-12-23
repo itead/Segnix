@@ -57,7 +57,6 @@
 <h1>Features</h1>
 <p>At present, Segnix has a set of <b>core features</b> as below:</p>
 <ul>
-<li>Support for external interrupts operations</li>
 <li>Support for upper-layer time functions</li>
 <li>Support for PWM output with any GPIO</li>
 <li>Support for GPIO operations</li>
@@ -65,6 +64,8 @@
 <li>Support for UART bus operations</li>
 <li>Support for I2C bus operations</li>
 <li>Support for SPI bus operations</li>
+<li>Support for external interrupts operations(Only for <code>ITEAD CORE EVB</code>)</li>
+<li>Support for ADC (Only for <code>BeagleBone Black</code>)</li>
 </ul>
 <p>Based on core features, plenty of <b>functional features</b> can be reached:</p>
 <ul>
@@ -84,8 +85,8 @@
 <li>ITEAD CORE EVB(IBOX)</li>
 <li>Raspberry Pi Rv2</li>
 <li>Raspberry Pi Model B+</li>
+<li>BeagleBone Black</li>
 </ul>
-<p>If you don't know yet Iteaduino Plus, IBOX or ITEAD Core EVB, see <a href="http://imall.iteadstudio.com">http://imall.iteadstudio.com</a>.</p>
 <h1>Which Language for Developing?</h1>
 <p>You can implement your design based on Segnix in C or C++. <a href="http://docs.iteadstudio.com/Segnix/" title="Online Segnix API">Segnix API</a>, which is compatible with <a href="http://arduino.cc/en/Reference/HomePage" title="Arduino API">Arduino API</a>, makes it easier for those who have some understanding of Arduino to get started. Without any codes modified, the libraries and user's codes for Arduino can be run on Segnix prefectly.</p>
 <p><a href="http://docs.iteadstudio.com/Segnix/" title="Online Segnix API">Segnix Python API</a>, especially and amazingly, is provided for Python users. <b>A few beautiful lines of code will achieve your goals!</b></p>
@@ -115,6 +116,8 @@ $ cd Segnix
 <li>Raspberry Pi Rv2 <pre class="fragment">$ make Raspberry_Pi_Rv2
 </pre></li>
 <li>Raspberry Pi Model B+ <pre class="fragment">$ make Raspberry_Pi_Model_BPlus
+</pre></li>
+<li>Beagle bone black <pre class="fragment">$ make BeagleBone_Black
 </pre></li>
 </ul>
 <h3>Step 3: Select Functional Libraries to Install (Optional)</h3>
@@ -268,7 +271,7 @@ void loop(void)
  </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Dec 23 2014 11:47:52 for Segnix API by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Dec 23 2014 12:00:52 for Segnix API by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

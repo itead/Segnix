@@ -34,7 +34,6 @@ as a rapid prototyping development tool.
 
 At present, Segnix has a set of **core features** as below:
 
-  - Support for external interrupts operations
   - Support for upper-layer time functions
   - Support for PWM output with any GPIO
   - Support for GPIO operations
@@ -42,6 +41,8 @@ At present, Segnix has a set of **core features** as below:
   - Support for UART bus operations
   - Support for I2C bus operations
   - Support for SPI bus operations
+  - Support for external interrupts operations(Only for `ITEAD CORE EVB`)
+  - Support for ADC (Only for `BeagleBone Black`)
 
 Based on core features, plenty of **functional features** can be reached:
 
@@ -62,9 +63,7 @@ At present, platforms supported by Segnix are following:
   - ITEAD CORE EVB(IBOX)
   - Raspberry Pi Rv2 
   - Raspberry Pi Model B+
-
-If you don't know yet Iteaduino Plus, IBOX or ITEAD Core EVB, see 
-<http://imall.iteadstudio.com>.
+  - BeagleBone Black
 
 # Which Language for Developing?
 
@@ -137,6 +136,11 @@ You **MUST** choose the one fitting your board.
   - Raspberry Pi Model B+
 
 		$ make Raspberry_Pi_Model_BPlus
+
+  - Beagle bone black
+
+        $ make BeagleBone_Black
+
 
 ### Step 3: Select Functional Libraries to Install (Optional)
 

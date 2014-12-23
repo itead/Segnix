@@ -338,7 +338,7 @@ Raspberry_Pi_Model_BPlus:
 	@ echo "BOARD_TYPE = 'BOARD_RASPBERRY_PI_MODEL_BPLUS'" > SDK_Python/itead_config.py
 	@ echo "config board Raspberry_Pi_Model_BPlus finished"
 
-.PHONY: BeagleBoneBlack
+.PHONY: BeagleBone_Black
 BeagleBoneBlack:
 	@ echo "#ifndef __ITEAD_CONFIG_H__" > include/itead_config.h
 	@ echo "#define __ITEAD_CONFIG_H__" >> include/itead_config.h
