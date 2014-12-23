@@ -72,75 +72,80 @@
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#elif defined (BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<a class="code" href="class_serial__.html">Serial_</a> Serial0(DEV_UART0);</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<a class="code" href="class_serial__.html">Serial_</a> &amp; Serial = Serial0;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#endif </span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;Serial_::Serial_()</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;{</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    this-&gt;dev = DEV_NONE;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    started = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;Serial_::Serial_(uint32_t dev)</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;{</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    this-&gt;dev = dev;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    started = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_serial__.html#a36546867b13599aae7c631917ab93ee7">   47</a></span>&#160;Serial_::operator bool() {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">return</span> started;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#elif defined (BOARD_BEAGLEBONEBLACK)</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<a class="code" href="class_serial__.html">Serial_</a> Serial1(DEV_UART1);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<a class="code" href="class_serial__.html">Serial_</a> Serial2(DEV_UART2);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<a class="code" href="class_serial__.html">Serial_</a> Serial4(DEV_UART4);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<a class="code" href="class_serial__.html">Serial_</a> &amp; Serial = Serial1;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#endif </span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;Serial_::Serial_()</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    this-&gt;dev = DEV_NONE;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    started = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;Serial_::Serial_(uint32_t dev)</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    this-&gt;dev = dev;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    started = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="class_serial__.html#a984629eaff89d671ec66a89a79c65d35">   57</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="class_serial__.html#a984629eaff89d671ec66a89a79c65d35">Serial_::available</a>(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;{</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">return</span> (<span class="keywordtype">int</span>)Serialavailable(dev);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="class_serial__.html#a867826dc2664fecd1b8f20ca62ee0551">   67</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_serial__.html#a867826dc2664fecd1b8f20ca62ee0551">Serial_::begin</a>(uint32_t baud_count)</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;{</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    Serialbegin(dev, baud_count);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    started = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="class_serial__.html#a52da5cb9d181aff87e7c03c5d006108c">   74</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_serial__.html#a52da5cb9d181aff87e7c03c5d006108c">Serial_::end</a>(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;{</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    Serialend(dev);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    started = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="class_serial__.html#a05a4294bee6d036ceb03f6784cf5df42">   83</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_serial__.html#a05a4294bee6d036ceb03f6784cf5df42">Serial_::flush</a>(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;{</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    Serialflush(dev);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="class_serial__.html#aed4d3bc4228c5da5e3770abdd5dc238e">   95</a></span>&#160;uint8_t <a class="code" href="class_serial__.html#aed4d3bc4228c5da5e3770abdd5dc238e">Serial_::read</a>(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;{</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">if</span> (Serialavailable(dev)) {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordflow">return</span> Serialread(dev);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    }</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
-<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="class_serial__.html#a06d139c809618288b34d631f747b84b3">  111</a></span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="class_serial__.html#a06d139c809618288b34d631f747b84b3">Serial_::write</a>(uint8_t c)</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;{</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    Serialwrite(dev,c);</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;}</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="class_serial__.html#a36546867b13599aae7c631917ab93ee7">   52</a></span>&#160;Serial_::operator bool() {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">return</span> started;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="class_serial__.html#a984629eaff89d671ec66a89a79c65d35">   62</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="class_serial__.html#a984629eaff89d671ec66a89a79c65d35">Serial_::available</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;{</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">return</span> (<span class="keywordtype">int</span>)Serialavailable(dev);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="class_serial__.html#a867826dc2664fecd1b8f20ca62ee0551">   72</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_serial__.html#a867826dc2664fecd1b8f20ca62ee0551">Serial_::begin</a>(uint32_t baud_count)</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;{</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    Serialbegin(dev, baud_count);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    started = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="class_serial__.html#a52da5cb9d181aff87e7c03c5d006108c">   79</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_serial__.html#a52da5cb9d181aff87e7c03c5d006108c">Serial_::end</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;{</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    Serialend(dev);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    started = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="class_serial__.html#a05a4294bee6d036ceb03f6784cf5df42">   88</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="class_serial__.html#a05a4294bee6d036ceb03f6784cf5df42">Serial_::flush</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;{</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    Serialflush(dev);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;}</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="class_serial__.html#aed4d3bc4228c5da5e3770abdd5dc238e">  100</a></span>&#160;uint8_t <a class="code" href="class_serial__.html#aed4d3bc4228c5da5e3770abdd5dc238e">Serial_::read</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;{</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">if</span> (Serialavailable(dev)) {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordflow">return</span> Serialread(dev);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="class_serial__.html#a06d139c809618288b34d631f747b84b3">  116</a></span>&#160;<span class="keywordtype">size_t</span> <a class="code" href="class_serial__.html#a06d139c809618288b34d631f747b84b3">Serial_::write</a>(uint8_t c)</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;{</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    Serialwrite(dev,c);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
 <div class="ttc" id="class_serial___html"><div class="ttname"><a href="class_serial__.html">Serial_</a></div><div class="ttdoc">Provide methods to manipulate serial port. </div><div class="ttdef"><b>Definition:</b> <a href="itead__serial_8h_source.html#l00060">itead_serial.h:60</a></div></div>
-<div class="ttc" id="class_serial___html_a06d139c809618288b34d631f747b84b3"><div class="ttname"><a href="class_serial__.html#a06d139c809618288b34d631f747b84b3">Serial_::write</a></div><div class="ttdeci">virtual size_t write(uint8_t c)</div><div class="ttdoc">Write one byte to serial. </div><div class="ttdef"><b>Definition:</b> <a href="itead__serial_8cpp_source.html#l00111">itead_serial.cpp:111</a></div></div>
+<div class="ttc" id="class_serial___html_a06d139c809618288b34d631f747b84b3"><div class="ttname"><a href="class_serial__.html#a06d139c809618288b34d631f747b84b3">Serial_::write</a></div><div class="ttdeci">virtual size_t write(uint8_t c)</div><div class="ttdoc">Write one byte to serial. </div><div class="ttdef"><b>Definition:</b> <a href="itead__serial_8cpp_source.html#l00116">itead_serial.cpp:116</a></div></div>
 <div class="ttc" id="itead__utility_8h_html"><div class="ttname"><a href="itead__utility_8h.html">itead_utility.h</a></div><div class="ttdoc">Provide utilities used in Segnix. </div></div>
-<div class="ttc" id="class_serial___html_aed4d3bc4228c5da5e3770abdd5dc238e"><div class="ttname"><a href="class_serial__.html#aed4d3bc4228c5da5e3770abdd5dc238e">Serial_::read</a></div><div class="ttdeci">uint8_t read(void)</div><div class="ttdoc">Read one byte from received buffer. </div><div class="ttdef"><b>Definition:</b> <a href="itead__serial_8cpp_source.html#l00095">itead_serial.cpp:95</a></div></div>
-<div class="ttc" id="class_serial___html_a984629eaff89d671ec66a89a79c65d35"><div class="ttname"><a href="class_serial__.html#a984629eaff89d671ec66a89a79c65d35">Serial_::available</a></div><div class="ttdeci">int available(void)</div><div class="ttdoc">Check if there are unread data. </div><div class="ttdef"><b>Definition:</b> <a href="itead__serial_8cpp_source.html#l00057">itead_serial.cpp:57</a></div></div>
-<div class="ttc" id="class_serial___html_a05a4294bee6d036ceb03f6784cf5df42"><div class="ttname"><a href="class_serial__.html#a05a4294bee6d036ceb03f6784cf5df42">Serial_::flush</a></div><div class="ttdeci">void flush(void)</div><div class="ttdoc">Empty the buffer of tx and rx instead waiting for outgoing completed. </div><div class="ttdef"><b>Definition:</b> <a href="itead__serial_8cpp_source.html#l00083">itead_serial.cpp:83</a></div></div>
-<div class="ttc" id="class_serial___html_a52da5cb9d181aff87e7c03c5d006108c"><div class="ttname"><a href="class_serial__.html#a52da5cb9d181aff87e7c03c5d006108c">Serial_::end</a></div><div class="ttdeci">void end(void)</div><div class="ttdoc">Close serial. </div><div class="ttdef"><b>Definition:</b> <a href="itead__serial_8cpp_source.html#l00074">itead_serial.cpp:74</a></div></div>
-<div class="ttc" id="class_serial___html_a867826dc2664fecd1b8f20ca62ee0551"><div class="ttname"><a href="class_serial__.html#a867826dc2664fecd1b8f20ca62ee0551">Serial_::begin</a></div><div class="ttdeci">void begin(uint32_t baud_count)</div><div class="ttdoc">Start serial with baudrate. </div><div class="ttdef"><b>Definition:</b> <a href="itead__serial_8cpp_source.html#l00067">itead_serial.cpp:67</a></div></div>
+<div class="ttc" id="class_serial___html_aed4d3bc4228c5da5e3770abdd5dc238e"><div class="ttname"><a href="class_serial__.html#aed4d3bc4228c5da5e3770abdd5dc238e">Serial_::read</a></div><div class="ttdeci">uint8_t read(void)</div><div class="ttdoc">Read one byte from received buffer. </div><div class="ttdef"><b>Definition:</b> <a href="itead__serial_8cpp_source.html#l00100">itead_serial.cpp:100</a></div></div>
+<div class="ttc" id="class_serial___html_a984629eaff89d671ec66a89a79c65d35"><div class="ttname"><a href="class_serial__.html#a984629eaff89d671ec66a89a79c65d35">Serial_::available</a></div><div class="ttdeci">int available(void)</div><div class="ttdoc">Check if there are unread data. </div><div class="ttdef"><b>Definition:</b> <a href="itead__serial_8cpp_source.html#l00062">itead_serial.cpp:62</a></div></div>
+<div class="ttc" id="class_serial___html_a05a4294bee6d036ceb03f6784cf5df42"><div class="ttname"><a href="class_serial__.html#a05a4294bee6d036ceb03f6784cf5df42">Serial_::flush</a></div><div class="ttdeci">void flush(void)</div><div class="ttdoc">Empty the buffer of tx and rx instead waiting for outgoing completed. </div><div class="ttdef"><b>Definition:</b> <a href="itead__serial_8cpp_source.html#l00088">itead_serial.cpp:88</a></div></div>
+<div class="ttc" id="class_serial___html_a52da5cb9d181aff87e7c03c5d006108c"><div class="ttname"><a href="class_serial__.html#a52da5cb9d181aff87e7c03c5d006108c">Serial_::end</a></div><div class="ttdeci">void end(void)</div><div class="ttdoc">Close serial. </div><div class="ttdef"><b>Definition:</b> <a href="itead__serial_8cpp_source.html#l00079">itead_serial.cpp:79</a></div></div>
+<div class="ttc" id="class_serial___html_a867826dc2664fecd1b8f20ca62ee0551"><div class="ttname"><a href="class_serial__.html#a867826dc2664fecd1b8f20ca62ee0551">Serial_::begin</a></div><div class="ttdeci">void begin(uint32_t baud_count)</div><div class="ttdoc">Start serial with baudrate. </div><div class="ttdef"><b>Definition:</b> <a href="itead__serial_8cpp_source.html#l00072">itead_serial.cpp:72</a></div></div>
 <div class="ttc" id="itead__serial_8h_html"><div class="ttname"><a href="itead__serial_8h.html">itead_serial.h</a></div><div class="ttdoc">Provide the implementation of Arduino API on Serial. </div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 28 2014 10:48:38 for Segnix API by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Dec 23 2014 11:47:49 for Segnix API by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

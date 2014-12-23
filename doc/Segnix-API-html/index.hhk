@@ -4,6 +4,12 @@
 <param name="FrameName" value="right">
 </OBJECT>
 <UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="group__gpio.html#ga02960372320033852d2eed84609d6b4e"><param name="Name" value="analogRead"></OBJECT>
+  <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="group__gpio.html#ga02960372320033852d2eed84609d6b4e"><param name="Name" value="gpio"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="group__gpio.html#ga02960372320033852d2eed84609d6b4e"><param name="Name" value="itead_gpio.c"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="group__gpio.html#ga02960372320033852d2eed84609d6b4e"><param name="Name" value="itead_gpio.h"></OBJECT>
+  </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="group__gpio.html#ga28ad5a387b3a9f122b86753d667ced3f"><param name="Name" value="analogWrite"></OBJECT>
   <UL>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="group__gpio.html#ga28ad5a387b3a9f122b86753d667ced3f"><param name="Name" value="gpio"></OBJECT>
@@ -17,6 +23,7 @@
     <LI><OBJECT type="text/sitemap"><param name="Local" value="group__interrupt.html#ga01241fd930bd6036539f790bf3907b1d"><param name="Name" value="itead_interrupt.c"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="group__interrupt.html#ga01241fd930bd6036539f790bf3907b1d"><param name="Name" value="itead_interrupt.h"></OBJECT>
   </UL>
+  <LI><OBJECT type="text/sitemap"><param name="Local" value="group__adc_channel_name.html"><param name="Name" value="Available ADC pin"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="group__gpio_pin_name.html"><param name="Name" value="Available Pin Name"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="class_serial__.html#a984629eaff89d671ec66a89a79c65d35"><param name="Name" value="available"></OBJECT>
   <UL>
@@ -164,6 +171,7 @@
   <LI><OBJECT type="text/sitemap"><param name="Local" value="group__gpio.html"><param name="Name" value="GPIO"></OBJECT>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="group__gpio.html"><param name="Name" value="gpio"></OBJECT>
   <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="group__gpio.html#ga02960372320033852d2eed84609d6b4e"><param name="Name" value="analogRead"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="group__gpio.html#ga28ad5a387b3a9f122b86753d667ced3f"><param name="Name" value="analogWrite"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="group__gpio.html#gab7c7473c803a6ab42702ddd105ef9958"><param name="Name" value="digitalRead"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="group__gpio.html#ga4960a163187f8df8b5d57dc255b69330"><param name="Name" value="digitalRead16"></OBJECT>
@@ -266,6 +274,7 @@
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="itead__gpio_8c.html"><param name="Name" value="itead_gpio.c"></OBJECT>
   <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="itead__gpio_8c.html#ga02960372320033852d2eed84609d6b4e"><param name="Name" value="analogRead"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="itead__gpio_8c.html#ga28ad5a387b3a9f122b86753d667ced3f"><param name="Name" value="analogWrite"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="itead__gpio_8c.html#gab7c7473c803a6ab42702ddd105ef9958"><param name="Name" value="digitalRead"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="itead__gpio_8c.html#ga4960a163187f8df8b5d57dc255b69330"><param name="Name" value="digitalRead16"></OBJECT>
@@ -279,6 +288,7 @@
   </UL>
   <LI><OBJECT type="text/sitemap"><param name="Local" value="itead__gpio_8h.html"><param name="Name" value="itead_gpio.h"></OBJECT>
   <UL>
+    <LI><OBJECT type="text/sitemap"><param name="Local" value="itead__gpio_8h.html#ga02960372320033852d2eed84609d6b4e"><param name="Name" value="analogRead"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="itead__gpio_8h.html#ga28ad5a387b3a9f122b86753d667ced3f"><param name="Name" value="analogWrite"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="itead__gpio_8h.html#gab7c7473c803a6ab42702ddd105ef9958"><param name="Name" value="digitalRead"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Local" value="itead__gpio_8h.html#ga4960a163187f8df8b5d57dc255b69330"><param name="Name" value="digitalRead16"></OBJECT>

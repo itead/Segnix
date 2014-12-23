@@ -137,6 +137,7 @@ group__global.html
 group__global__macro.html
 group__global__datatype.html
 group__gpio_pin_name.html
+group__adc_channel_name.html
 group__serial__instance.html
 group__spi__instance.html
 group__i2c__instance.html

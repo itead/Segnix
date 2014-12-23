@@ -57,6 +57,8 @@
 Modules</h2></td></tr>
 <tr class="memitem:group__gpio_pin_name"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__gpio_pin_name.html">Available Pin Name</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__adc_channel_name"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__adc_channel_name.html">Available ADC pin</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
@@ -91,6 +93,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga28ad5a387b3a9f122b86753d667ced3f"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__gpio.html#ga28ad5a387b3a9f122b86753d667ced3f">analogWrite</a> (uint16_t pin, uint8_t duty)</td></tr>
 <tr class="memdesc:ga28ad5a387b3a9f122b86753d667ced3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output pwm with duty via the pin.  <a href="#ga28ad5a387b3a9f122b86753d667ced3f">More...</a><br /></td></tr>
 <tr class="separator:ga28ad5a387b3a9f122b86753d667ced3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga02960372320033852d2eed84609d6b4e"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__gpio.html#ga02960372320033852d2eed84609d6b4e">analogRead</a> (uint32_t pin)</td></tr>
+<tr class="memdesc:ga02960372320033852d2eed84609d6b4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get adc input via pin.  <a href="#ga02960372320033852d2eed84609d6b4e">More...</a><br /></td></tr>
+<tr class="separator:ga02960372320033852d2eed84609d6b4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5e33c9c523a376c539251677cdee5aff"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__gpio.html#ga5e33c9c523a376c539251677cdee5aff">set8BitsBUS</a> (STRUCT_8BITS_BUS *bus, uint16_t DB0, uint16_t DB1, uint16_t DB2, uint16_t DB3, uint16_t DB4, uint16_t DB5, uint16_t DB6, uint16_t DB7, uint8_t mode)</td></tr>
 <tr class="memdesc:ga5e33c9c523a376c539251677cdee5aff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set every pin of the bus to the mode specified.  <a href="#ga5e33c9c523a376c539251677cdee5aff">More...</a><br /></td></tr>
 <tr class="separator:ga5e33c9c523a376c539251677cdee5aff"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -113,6 +118,34 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Details about pinMode, digitalWrite, digitalRead, analogWrite, digitalRead8, and digitalWrite8 etc. </p>
 <h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="ga02960372320033852d2eed84609d6b4e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t analogRead </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>pin</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get adc input via pin. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pin</td><td>- the adc input channel. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the adc result if possible. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The result is an integer value. Its range depends on the ADC's precision. for example :[0 to 4095] &mdash; 12-bit ADC [0 to 1023] &mdash; 10-bit ADC </dd></dl>
+
+<p>Definition at line <a class="el" href="itead__gpio_8c_source.html#l00975">975</a> of file <a class="el" href="itead__gpio_8c_source.html">itead_gpio.c</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="ga28ad5a387b3a9f122b86753d667ced3f"></a>
 <div class="memitem">
 <div class="memproto">
@@ -149,7 +182,7 @@ Functions</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd>May be unstable when the duty be close to 0 or 255. A delay should be insert between two analogWrite calls. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="_dimmer_8ino-example.html#a5">Dimmer.ino</a>, and <a class="el" href="_fade_8ino-example.html#a2">Fade.ino</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="itead__gpio_8c_source.html#l00634">634</a> of file <a class="el" href="itead__gpio_8c_source.html">itead_gpio.c</a>.</p>
+<p>Definition at line <a class="el" href="itead__gpio_8c_source.html#l00888">888</a> of file <a class="el" href="itead__gpio_8c_source.html">itead_gpio.c</a>.</p>
 
 </div>
 </div>
@@ -177,7 +210,7 @@ Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>HIGH or LOW if success, 2 if failed. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="_button_8ino-example.html#a3">Button.ino</a>, <a class="el" href="_debounce_8ino-example.html#a6">Debounce.ino</a>, <a class="el" href="_digital_read_serial_8ino-example.html#a3">DigitalReadSerial.ino</a>, and <a class="el" href="_state_change_detection_8ino-example.html#a4">StateChangeDetection.ino</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="itead__gpio_8c_source.html#l00311">311</a> of file <a class="el" href="itead__gpio_8c_source.html">itead_gpio.c</a>.</p>
+<p>Definition at line <a class="el" href="itead__gpio_8c_source.html#l00548">548</a> of file <a class="el" href="itead__gpio_8c_source.html">itead_gpio.c</a>.</p>
 
 </div>
 </div>
@@ -204,7 +237,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>value of bus </dd></dl>
 
-<p>Definition at line <a class="el" href="itead__gpio_8c_source.html#l00549">549</a> of file <a class="el" href="itead__gpio_8c_source.html">itead_gpio.c</a>.</p>
+<p>Definition at line <a class="el" href="itead__gpio_8c_source.html#l00803">803</a> of file <a class="el" href="itead__gpio_8c_source.html">itead_gpio.c</a>.</p>
 
 </div>
 </div>
@@ -231,7 +264,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>value of bus </dd></dl>
 
-<p>Definition at line <a class="el" href="itead__gpio_8c_source.html#l00524">524</a> of file <a class="el" href="itead__gpio_8c_source.html">itead_gpio.c</a>.</p>
+<p>Definition at line <a class="el" href="itead__gpio_8c_source.html#l00778">778</a> of file <a class="el" href="itead__gpio_8c_source.html">itead_gpio.c</a>.</p>
 
 </div>
 </div>
@@ -270,7 +303,7 @@ Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>0 if success, 1 if failed. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="_blink_8ino-example.html#a2">Blink.ino</a>, <a class="el" href="_blink_without_delay_8ino-example.html#a5">BlinkWithoutDelay.ino</a>, <a class="el" href="_button_8ino-example.html#a5">Button.ino</a>, <a class="el" href="_debounce_8ino-example.html#a5">Debounce.ino</a>, <a class="el" href="_for_loop_iteration_8ino-example.html#a2">ForLoopIteration.ino</a>, <a class="el" href="_state_change_detection_8ino-example.html#a8">StateChangeDetection.ino</a>, and <a class="el" href="switch_case2_8ino-example.html#a5">switchCase2.ino</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="itead__gpio_8c_source.html#l00230">230</a> of file <a class="el" href="itead__gpio_8c_source.html">itead_gpio.c</a>.</p>
+<p>Definition at line <a class="el" href="itead__gpio_8c_source.html#l00454">454</a> of file <a class="el" href="itead__gpio_8c_source.html">itead_gpio.c</a>.</p>
 
 </div>
 </div>
@@ -308,7 +341,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 if success, 1 if failed. </dd></dl>
 
-<p>Definition at line <a class="el" href="itead__gpio_8c_source.html#l00504">504</a> of file <a class="el" href="itead__gpio_8c_source.html">itead_gpio.c</a>.</p>
+<p>Definition at line <a class="el" href="itead__gpio_8c_source.html#l00758">758</a> of file <a class="el" href="itead__gpio_8c_source.html">itead_gpio.c</a>.</p>
 
 </div>
 </div>
@@ -346,7 +379,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 if success, 1 if failed. </dd></dl>
 
-<p>Definition at line <a class="el" href="itead__gpio_8c_source.html#l00483">483</a> of file <a class="el" href="itead__gpio_8c_source.html">itead_gpio.c</a>.</p>
+<p>Definition at line <a class="el" href="itead__gpio_8c_source.html#l00737">737</a> of file <a class="el" href="itead__gpio_8c_source.html">itead_gpio.c</a>.</p>
 
 </div>
 </div>
@@ -391,7 +424,7 @@ Functions</h2></td></tr>
 </dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="_blink_8ino-example.html#a0">Blink.ino</a>, <a class="el" href="_blink_without_delay_8ino-example.html#a1">BlinkWithoutDelay.ino</a>, <a class="el" href="_button_8ino-example.html#a0">Button.ino</a>, <a class="el" href="_debounce_8ino-example.html#a2">Debounce.ino</a>, <a class="el" href="_digital_read_serial_8ino-example.html#a1">DigitalReadSerial.ino</a>, <a class="el" href="_dimmer_8ino-example.html#a1">Dimmer.ino</a>, <a class="el" href="_fade_8ino-example.html#a0">Fade.ino</a>, <a class="el" href="_for_loop_iteration_8ino-example.html#a0">ForLoopIteration.ino</a>, <a class="el" href="_state_change_detection_8ino-example.html#a0">StateChangeDetection.ino</a>, and <a class="el" href="switch_case2_8ino-example.html#a1">switchCase2.ino</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="itead__gpio_8c_source.html#l00168">168</a> of file <a class="el" href="itead__gpio_8c_source.html">itead_gpio.c</a>.</p>
+<p>Definition at line <a class="el" href="itead__gpio_8c_source.html#l00374">374</a> of file <a class="el" href="itead__gpio_8c_source.html">itead_gpio.c</a>.</p>
 
 </div>
 </div>
@@ -541,7 +574,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 if success, 1 if failed. </dd></dl>
 
-<p>Definition at line <a class="el" href="itead__gpio_8c_source.html#l00439">439</a> of file <a class="el" href="itead__gpio_8c_source.html">itead_gpio.c</a>.</p>
+<p>Definition at line <a class="el" href="itead__gpio_8c_source.html#l00693">693</a> of file <a class="el" href="itead__gpio_8c_source.html">itead_gpio.c</a>.</p>
 
 </div>
 </div>
@@ -635,14 +668,14 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 if success, 1 if failed. </dd></dl>
 
-<p>Definition at line <a class="el" href="itead__gpio_8c_source.html#l00389">389</a> of file <a class="el" href="itead__gpio_8c_source.html">itead_gpio.c</a>.</p>
+<p>Definition at line <a class="el" href="itead__gpio_8c_source.html#l00643">643</a> of file <a class="el" href="itead__gpio_8c_source.html">itead_gpio.c</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 28 2014 10:48:40 for Segnix API by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Dec 23 2014 11:47:51 for Segnix API by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

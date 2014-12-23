@@ -964,10 +964,10 @@ uint32_t analogWrite(uint16_t pin, uint8_t duty)
 }
 
 /**
- * get adc input via pin
+ * Get adc input via pin. 
  * 
- * @param dev - the adc input channel.
- * @return the adc result if possible , -1 if failed.
+ * @param pin - the adc input channel.
+ * @return the adc result if possible.
  * @note The result is an integer value. Its range depends on the ADC's precision.
  *       for example :[0 to 4095] --- 12-bit ADC
  *                    [0 to 1023] --- 10-bit ADC

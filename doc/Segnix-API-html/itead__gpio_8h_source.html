@@ -117,285 +117,324 @@
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
 <div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="group__gpio.html#ga5bb885982ff66a2e0a0a45a8ee9c35e2">   79</a></span>&#160;<span class="preprocessor">#define HIGH        (0x1)   </span></div>
-<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="group__gpio.html#gab811d8c6ff3a505312d3276590444289">   80</a></span>&#160;<span class="preprocessor">#define LOW         (0x0)   </span></div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="group__gpio.html#gab811d8c6ff3a505312d3276590444289">   80</a></span>&#160;<span class="preprocessor">#define LOW     (0x0)   </span></div>
 <div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="group__gpio.html#ga1bb283bd7893b9855e2f23013891fc82">   81</a></span>&#160;<span class="preprocessor">#define INPUT       (0x0)   </span></div>
 <div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="group__gpio.html#ga61a3c9a18380aafb6e430e79bf596557">   82</a></span>&#160;<span class="preprocessor">#define OUTPUT      (0x1)   </span></div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;<span class="preprocessor">#if defined(BOARD_ITEADUINO_PLUS)</span></div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;<span class="preprocessor">#define PD0     9</span></div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;<span class="preprocessor">#define PD1     10</span></div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;<span class="preprocessor">#define PD2     11</span></div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;<span class="preprocessor">#define PD3     12</span></div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;<span class="preprocessor">#define PD4     13</span></div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;<span class="preprocessor">#define PD5     14</span></div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;<span class="preprocessor">#define PD6     15</span></div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;<span class="preprocessor">#define PD7     16</span></div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;<span class="preprocessor">#define PD8     17</span></div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;<span class="preprocessor">#define PD9     18</span></div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;<span class="preprocessor">#define PD10    19  </span></div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="preprocessor">#define PD11    20  </span></div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;<span class="preprocessor">#define PD12    21  </span></div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;<span class="preprocessor">#define PD13    22  </span></div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;<span class="preprocessor">#define PD14    23  </span></div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;<span class="preprocessor">#define PD15    24  </span></div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;<span class="preprocessor">#define PD16    25  </span></div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;<span class="preprocessor">#define PD17    26  </span></div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;<span class="preprocessor">#define PD18    27  </span></div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;<span class="preprocessor">#define PD19    28  </span></div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;<span class="preprocessor">#define PD20    29  </span></div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;<span class="preprocessor">#define PD21    30  </span></div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;<span class="preprocessor">#define PD22    31  </span></div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;<span class="preprocessor">#define PD23    32  </span></div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;<span class="preprocessor">#define PD24    33  </span></div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;<span class="preprocessor">#define PD25    34  </span></div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;<span class="preprocessor">#define PD26    35</span></div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;<span class="preprocessor">#define PD27    36</span></div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;<span class="preprocessor">#define PH0     37</span></div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;<span class="preprocessor">#define PH1     38</span></div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;<span class="preprocessor">#define PH2     39</span></div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="preprocessor">#define PH3     40</span></div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;<span class="preprocessor">#define PH4     41</span></div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;<span class="preprocessor">#define PH5     42</span></div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;<span class="preprocessor">#define PH6     43</span></div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;<span class="preprocessor">#define PH7     44</span></div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;<span class="preprocessor">#define PH8     45</span></div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;<span class="preprocessor">#define PH9     46</span></div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;<span class="preprocessor">#define PH10    47</span></div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;<span class="preprocessor">#define PH11    48</span></div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;<span class="preprocessor">#define PH12    49</span></div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;<span class="preprocessor">#define PH13    50</span></div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;<span class="preprocessor">#define PH14    51</span></div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;<span class="preprocessor">#define PH15    52</span></div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;<span class="preprocessor">#define PH16    53</span></div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;<span class="preprocessor">#define PH17    54</span></div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;<span class="preprocessor">#define PH18    55</span></div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;<span class="preprocessor">#define PH19    56</span></div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;<span class="preprocessor">#define PH20    57</span></div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;<span class="preprocessor">#define PH21    58</span></div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;<span class="preprocessor">#define PH22    59</span></div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;<span class="preprocessor">#define PH23    60</span></div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;<span class="preprocessor">#define PH24    61</span></div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;<span class="preprocessor">#define PH25    62</span></div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;<span class="preprocessor">#define PH26    63</span></div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;<span class="preprocessor">#define PH27    64</span></div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;<span class="preprocessor">#define PB18    67</span></div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;<span class="preprocessor">#define PB19    68</span></div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;<span class="preprocessor">#define PB20    69</span></div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;<span class="preprocessor">#define PB21    70</span></div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;<span class="preprocessor">#define PB22    71</span></div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;<span class="preprocessor">#define PB23    72</span></div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;<span class="preprocessor">#define PI19    75  </span></div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;<span class="preprocessor">#define PI18    76</span></div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;<span class="preprocessor">#define PI17    77</span></div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;<span class="preprocessor">#define PI16    78</span></div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;<span class="preprocessor">#define PG0     79</span></div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;<span class="preprocessor">#define PG1     80</span></div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;<span class="preprocessor">#define PG2     81</span></div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;<span class="preprocessor">#define PG3     82</span></div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;<span class="preprocessor">#define PG4     83</span></div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;<span class="preprocessor">#define PG5     84</span></div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;<span class="preprocessor">#define PG6     85</span></div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;<span class="preprocessor">#define PG7     86</span></div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;<span class="preprocessor">#define PG8     87</span></div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;<span class="preprocessor">#define PG9     88</span></div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;<span class="preprocessor">#define PG10    89</span></div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;<span class="preprocessor">#define PG11    90</span></div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;<span class="preprocessor">#define PE0     91</span></div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;<span class="preprocessor">#define PE1     92</span></div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;<span class="preprocessor">#define PE2     93</span></div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;<span class="preprocessor">#define PE3     94</span></div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;<span class="preprocessor">#define PE4     95</span></div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;<span class="preprocessor">#define PE5     96</span></div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;<span class="preprocessor">#define PE6     97</span></div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;<span class="preprocessor">#define PE7     98</span></div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;<span class="preprocessor">#define PE8     99</span></div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;<span class="preprocessor">#define PE9     100</span></div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;<span class="preprocessor">#define PE10    101</span></div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;<span class="preprocessor">#define PE11    102</span></div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;<span class="preprocessor">#define PI0     103</span></div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;<span class="preprocessor">#define PI1     104</span></div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;<span class="preprocessor">#define PI2     105</span></div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;<span class="preprocessor">#define PI3     107</span></div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;<span class="preprocessor">#define PB2     108 </span></div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;<span class="preprocessor">#define PI10    109</span></div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;<span class="preprocessor">#define PI11    110</span></div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;<span class="preprocessor">#define PI12    111</span></div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;<span class="preprocessor">#define PI13    112</span></div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;<span class="preprocessor">#define PI4     113</span></div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;<span class="preprocessor">#define PI5     114</span></div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;<span class="preprocessor">#define PI6     113</span></div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;<span class="preprocessor">#define PI7     116</span></div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;<span class="preprocessor">#define PI8     117</span></div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;<span class="preprocessor">#define PI9     118</span></div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;<span class="preprocessor">#define PI20    119</span></div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;<span class="preprocessor">#define PI21    120</span></div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;<span class="preprocessor">#define PB3     121</span></div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;<span class="preprocessor">#define PB4     122</span></div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;<span class="preprocessor">#define PB5     123</span></div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;<span class="preprocessor">#define PB6     124</span></div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;<span class="preprocessor">#define PB7     125</span></div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;<span class="preprocessor">#define PB8     126</span></div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;<span class="preprocessor">#define PB9     127</span></div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;<span class="preprocessor">#define PB10    128</span></div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;<span class="preprocessor">#define PB11    129</span></div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;<span class="preprocessor">#define PB12    130</span></div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;<span class="preprocessor">#define PB13    131</span></div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;</div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;<span class="preprocessor">#define PB14    133</span></div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;<span class="preprocessor">#define PB15    134</span></div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;<span class="preprocessor">#define PB16    135</span></div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;<span class="preprocessor">#define PB17    136</span></div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;<span class="preprocessor">#define PI14    137</span></div>
-<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;<span class="preprocessor">#define PI15    138</span></div>
-<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;</div>
-<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;<span class="preprocessor">#elif defined (BOARD_ITEAD_CORE_EVB)</span></div>
-<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;</div>
-<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;<span class="preprocessor">#define PB5     (0)</span></div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;<span class="preprocessor">#define PB6     (1)</span></div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;<span class="preprocessor">#define PB7     (2)</span></div>
-<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;<span class="preprocessor">#define PB8     (3)</span></div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;<span class="preprocessor">#define PB18    (4)</span></div>
-<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;<span class="preprocessor">#define PB19    (5)</span></div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;<span class="preprocessor">#define PB20    (6)</span></div>
-<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;<span class="preprocessor">#define PB21    (7)</span></div>
-<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;<span class="preprocessor">#define PB22    (8)</span></div>
-<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;<span class="preprocessor">#define PB23    (9)</span></div>
-<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;<span class="preprocessor">#define PD0     (10)</span></div>
-<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;<span class="preprocessor">#define PD1     (11)</span></div>
-<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;<span class="preprocessor">#define PD2     (12)</span></div>
-<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;<span class="preprocessor">#define PD3     (13)</span></div>
-<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;<span class="preprocessor">#define PD4     (14)</span></div>
-<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;<span class="preprocessor">#define PD5     (15)</span></div>
-<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;<span class="preprocessor">#define PD6     (16)</span></div>
-<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;<span class="preprocessor">#define PD7     (17)</span></div>
-<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;<span class="preprocessor">#define PD8     (18)</span></div>
-<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;<span class="preprocessor">#define PD9     (19)</span></div>
-<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;<span class="preprocessor">#define PD10    (20)</span></div>
-<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;<span class="preprocessor">#define PD11    (21)</span></div>
-<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;<span class="preprocessor">#define PD12    (22)</span></div>
-<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;<span class="preprocessor">#define PD13    (23)</span></div>
-<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;<span class="preprocessor">#define PD14    (24)</span></div>
-<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;<span class="preprocessor">#define PD15    (25)</span></div>
-<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;<span class="preprocessor">#define PD16    (26)</span></div>
-<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;<span class="preprocessor">#define PD17    (27)</span></div>
-<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;<span class="preprocessor">#define PD18    (28)</span></div>
-<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;<span class="preprocessor">#define PD19    (29)</span></div>
-<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;<span class="preprocessor">#define PD20    (30)</span></div>
-<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;<span class="preprocessor">#define PD21    (31)</span></div>
-<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;<span class="preprocessor">#define PD22    (32)</span></div>
-<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;<span class="preprocessor">#define PD23    (33)</span></div>
-<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;<span class="preprocessor">#define PD24    (34)</span></div>
-<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;<span class="preprocessor">#define PD25    (35)</span></div>
-<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;<span class="preprocessor">#define PD26    (36)</span></div>
-<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;<span class="preprocessor">#define PD27    (37)</span></div>
-<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;<span class="preprocessor">#define PG0     (38)</span></div>
-<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;<span class="preprocessor">#define PG1     (39)</span></div>
-<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;<span class="preprocessor">#define PG2     (40)</span></div>
-<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;<span class="preprocessor">#define PG3     (41)</span></div>
-<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;<span class="preprocessor">#define PG4     (42)</span></div>
-<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;<span class="preprocessor">#define PG5     (43)</span></div>
-<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;<span class="preprocessor">#define PG6     (44)</span></div>
-<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;<span class="preprocessor">#define PG7     (45)</span></div>
-<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;<span class="preprocessor">#define PG8     (46)</span></div>
-<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;<span class="preprocessor">#define PG9     (47)</span></div>
-<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;<span class="preprocessor">#define PG10    (48)</span></div>
-<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;<span class="preprocessor">#define PG11    (49)</span></div>
-<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;<span class="preprocessor">#define PI10    (109)   </span><span class="comment">/* itead_gpio_int.c 22 */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;<span class="preprocessor">#define PI11    (110)   </span><span class="comment">/* itead_gpio_int.c 23 */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;<span class="preprocessor">#define PI12    (111)   </span><span class="comment">/* itead_gpio_int.c 24 */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;<span class="preprocessor">#define PI13    (112)   </span><span class="comment">/* itead_gpio_int.c 25 */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;<span class="preprocessor">#define PI14    (137)   </span><span class="comment">/* itead_gpio_int.c 26 */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;<span class="preprocessor">#define PI15    (138)   </span><span class="comment">/* itead_gpio_int.c 27 */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;<span class="preprocessor">#define PI16    (78)   </span><span class="comment">/* itead_gpio_int.c 28 */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;<span class="preprocessor">#define PI17    (77)   </span><span class="comment">/* itead_gpio_int.c 29 */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;<span class="preprocessor">#define PI18    (76)   </span><span class="comment">/* itead_gpio_int.c 30 */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;<span class="preprocessor">#define PI19    (75)   </span><span class="comment">/* itead_gpio_int.c 31 */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;<span class="preprocessor">#define PI20    (60)</span></div>
-<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;<span class="preprocessor">#define PI21    (61)</span></div>
-<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;</div>
-<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;<span class="preprocessor">#elif defined (BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)</span></div>
-<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;</div>
-<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;<span class="preprocessor">#define GPIO2       3 </span></div>
-<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;<span class="preprocessor">#define GPIO3       5 </span></div>
-<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;<span class="preprocessor">#define GPIO4       7 </span></div>
-<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;<span class="preprocessor">#define GPIO14      8 </span></div>
-<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;<span class="preprocessor">#define GPIO15      10</span></div>
-<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;<span class="preprocessor">#define GPIO17      11</span></div>
-<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;<span class="preprocessor">#define GPIO18      12</span></div>
-<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;<span class="preprocessor">#define GPIO27      13</span></div>
-<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;<span class="preprocessor">#define GPIO22      15</span></div>
-<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;<span class="preprocessor">#define GPIO23      16</span></div>
-<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;<span class="preprocessor">#define GPIO24      18</span></div>
-<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;<span class="preprocessor">#define GPIO10      19</span></div>
-<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;<span class="preprocessor">#define GPIO9       21</span></div>
-<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;<span class="preprocessor">#define GPIO25      22</span></div>
-<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;<span class="preprocessor">#define GPIO11      23</span></div>
-<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;<span class="preprocessor">#define GPIO8       24</span></div>
-<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;<span class="preprocessor">#define GPIO7       26</span></div>
-<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;<span class="preprocessor">#if defined(BOARD_RASPBERRY_PI_RV2)</span></div>
-<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;<span class="preprocessor">#define GPIO28      29</span></div>
-<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;<span class="preprocessor">#define GPIO29      30</span></div>
-<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;<span class="preprocessor">#define GPIO30      31</span></div>
-<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;<span class="preprocessor">#define GPIO31      32</span></div>
-<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;<span class="preprocessor">#elif defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)</span></div>
-<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;<span class="preprocessor">#define GPIO5       (27)</span></div>
-<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;<span class="preprocessor">#define GPIO6       (28)</span></div>
-<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;<span class="preprocessor">#define GPIO12      (29)</span></div>
-<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;<span class="preprocessor">#define GPIO13      (30)</span></div>
-<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;<span class="preprocessor">#define GPIO16      (31)</span></div>
-<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;<span class="preprocessor">#define GPIO19      (32)</span></div>
-<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;<span class="preprocessor">#define GPIO20      (33)</span></div>
-<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;<span class="preprocessor">#define GPIO21      (34)</span></div>
-<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;<span class="preprocessor">#define GPIO26      (35)</span></div>
-<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* defined(BOARD_RASPBERRY_PI_RV2) */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;</div>
-<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;<span class="preprocessor">#endif </span></div>
-<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;</div>
-<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;uint32_t <a class="code" href="group__gpio.html#gadb921491181428f3c1b2b4ede4b24ab3">pinMode</a>(uint16_t pin, uint8_t mode);</div>
-<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;uint32_t <a class="code" href="group__gpio.html#gabd3edb4d236c5da4fb5a763bd4780bf4">digitalWrite</a>(uint16_t pin, uint8_t val);</div>
-<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;uint32_t <a class="code" href="group__gpio.html#gab7c7473c803a6ab42702ddd105ef9958">digitalRead</a>(uint16_t pin);</div>
-<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;uint32_t <a class="code" href="group__gpio.html#ga28ad5a387b3a9f122b86753d667ced3f">analogWrite</a>(uint16_t pin, uint8_t duty);</div>
-<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;</div>
-<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;uint32_t <a class="code" href="group__gpio.html#ga5e33c9c523a376c539251677cdee5aff">set8BitsBUS</a>(STRUCT_8BITS_BUS *bus,</div>
-<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;    uint16_t DB0, uint16_t DB1, uint16_t DB2, uint16_t DB3,</div>
-<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;    uint16_t DB4, uint16_t DB5, uint16_t DB6, uint16_t DB7,</div>
-<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;    uint8_t mode);</div>
-<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;</div>
-<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;uint32_t <a class="code" href="group__gpio.html#gacc1d989f83103e6feaf33b6d95eec829">set16BitsBUS</a>(STRUCT_16BITS_BUS *bus, </div>
-<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;    uint16_t DB0, uint16_t DB1, uint16_t DB2, uint16_t DB3,</div>
-<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;    uint16_t DB4, uint16_t DB5, uint16_t DB6, uint16_t DB7,</div>
-<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;    uint16_t DB8, uint16_t DB9, uint16_t DB10,uint16_t DB11,</div>
-<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;    uint16_t DB12,uint16_t DB13,uint16_t DB14,uint16_t DB15,</div>
-<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;    uint8_t mode);</div>
-<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;</div>
-<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;uint32_t <a class="code" href="group__gpio.html#gac2014414fc4759460320c0dc260ccb08">digitalWrite8</a>(STRUCT_8BITS_BUS *bus, uint8_t val);</div>
-<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;uint32_t <a class="code" href="group__gpio.html#gaa40435713d300b1469bd12a4206df6d2">digitalWrite16</a>(STRUCT_16BITS_BUS *bus, uint16_t val);</div>
-<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;uint8_t <a class="code" href="group__gpio.html#ga6308dffb386ebe805108296f3e679381">digitalRead8</a>(STRUCT_8BITS_BUS *bus);</div>
-<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;uint16_t <a class="code" href="group__gpio.html#ga4960a163187f8df8b5d57dc255b69330">digitalRead16</a>(STRUCT_16BITS_BUS *bus);</div>
-<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;</div>
-<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;} <span class="comment">// extern &quot;C&quot;</span></div>
-<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;</div>
-<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;</div>
-<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="group__gpio_html_ga5e33c9c523a376c539251677cdee5aff"><div class="ttname"><a href="group__gpio.html#ga5e33c9c523a376c539251677cdee5aff">set8BitsBUS</a></div><div class="ttdeci">uint32_t set8BitsBUS(STRUCT_8BITS_BUS *bus, uint16_t DB0, uint16_t DB1, uint16_t DB2, uint16_t DB3, uint16_t DB4, uint16_t DB5, uint16_t DB6, uint16_t DB7, uint8_t mode)</div><div class="ttdoc">Set every pin of the bus to the mode specified. </div><div class="ttdef"><b>Definition:</b> <a href="itead__gpio_8c_source.html#l00389">itead_gpio.c:389</a></div></div>
-<div class="ttc" id="group__gpio_html_gac2014414fc4759460320c0dc260ccb08"><div class="ttname"><a href="group__gpio.html#gac2014414fc4759460320c0dc260ccb08">digitalWrite8</a></div><div class="ttdeci">uint32_t digitalWrite8(STRUCT_8BITS_BUS *bus, uint8_t val)</div><div class="ttdoc">Write val to bus. </div><div class="ttdef"><b>Definition:</b> <a href="itead__gpio_8c_source.html#l00483">itead_gpio.c:483</a></div></div>
-<div class="ttc" id="group__gpio_html_gadb921491181428f3c1b2b4ede4b24ab3"><div class="ttname"><a href="group__gpio.html#gadb921491181428f3c1b2b4ede4b24ab3">pinMode</a></div><div class="ttdeci">uint32_t pinMode(uint16_t pin, uint8_t mode)</div><div class="ttdoc">Set pin as INPUT or OUTPUT mode. </div><div class="ttdef"><b>Definition:</b> <a href="itead__gpio_8c_source.html#l00168">itead_gpio.c:168</a></div></div>
-<div class="ttc" id="group__gpio_html_ga6308dffb386ebe805108296f3e679381"><div class="ttname"><a href="group__gpio.html#ga6308dffb386ebe805108296f3e679381">digitalRead8</a></div><div class="ttdeci">uint8_t digitalRead8(STRUCT_8BITS_BUS *bus)</div><div class="ttdoc">Read value from bus. </div><div class="ttdef"><b>Definition:</b> <a href="itead__gpio_8c_source.html#l00524">itead_gpio.c:524</a></div></div>
-<div class="ttc" id="group__gpio_html_gacc1d989f83103e6feaf33b6d95eec829"><div class="ttname"><a href="group__gpio.html#gacc1d989f83103e6feaf33b6d95eec829">set16BitsBUS</a></div><div class="ttdeci">uint32_t set16BitsBUS(STRUCT_16BITS_BUS *bus, uint16_t DB0, uint16_t DB1, uint16_t DB2, uint16_t DB3, uint16_t DB4, uint16_t DB5, uint16_t DB6, uint16_t DB7, uint16_t DB8, uint16_t DB9, uint16_t DB10, uint16_t DB11, uint16_t DB12, uint16_t DB13, uint16_t DB14, uint16_t DB15, uint8_t mode)</div><div class="ttdoc">Set every pin of the bus to the mode specified. </div><div class="ttdef"><b>Definition:</b> <a href="itead__gpio_8c_source.html#l00439">itead_gpio.c:439</a></div></div>
-<div class="ttc" id="group__gpio_html_gaa40435713d300b1469bd12a4206df6d2"><div class="ttname"><a href="group__gpio.html#gaa40435713d300b1469bd12a4206df6d2">digitalWrite16</a></div><div class="ttdeci">uint32_t digitalWrite16(STRUCT_16BITS_BUS *bus, uint16_t val)</div><div class="ttdoc">Write val to bus. </div><div class="ttdef"><b>Definition:</b> <a href="itead__gpio_8c_source.html#l00504">itead_gpio.c:504</a></div></div>
-<div class="ttc" id="group__gpio_html_ga4960a163187f8df8b5d57dc255b69330"><div class="ttname"><a href="group__gpio.html#ga4960a163187f8df8b5d57dc255b69330">digitalRead16</a></div><div class="ttdeci">uint16_t digitalRead16(STRUCT_16BITS_BUS *bus)</div><div class="ttdoc">Read value from bus. </div><div class="ttdef"><b>Definition:</b> <a href="itead__gpio_8c_source.html#l00549">itead_gpio.c:549</a></div></div>
-<div class="ttc" id="group__gpio_html_ga28ad5a387b3a9f122b86753d667ced3f"><div class="ttname"><a href="group__gpio.html#ga28ad5a387b3a9f122b86753d667ced3f">analogWrite</a></div><div class="ttdeci">uint32_t analogWrite(uint16_t pin, uint8_t duty)</div><div class="ttdoc">Output pwm with duty via the pin. </div><div class="ttdef"><b>Definition:</b> <a href="itead__gpio_8c_source.html#l00634">itead_gpio.c:634</a></div></div>
-<div class="ttc" id="group__gpio_html_gabd3edb4d236c5da4fb5a763bd4780bf4"><div class="ttname"><a href="group__gpio.html#gabd3edb4d236c5da4fb5a763bd4780bf4">digitalWrite</a></div><div class="ttdeci">uint32_t digitalWrite(uint16_t pin, uint8_t val)</div><div class="ttdoc">Write val to the specific gpio(by pin number). </div><div class="ttdef"><b>Definition:</b> <a href="itead__gpio_8c_source.html#l00230">itead_gpio.c:230</a></div></div>
-<div class="ttc" id="group__gpio_html_gab7c7473c803a6ab42702ddd105ef9958"><div class="ttname"><a href="group__gpio.html#gab7c7473c803a6ab42702ddd105ef9958">digitalRead</a></div><div class="ttdeci">uint32_t digitalRead(uint16_t pin)</div><div class="ttdoc">Read state of the specific gpio(by pin number). </div><div class="ttdef"><b>Definition:</b> <a href="itead__gpio_8c_source.html#l00311">itead_gpio.c:311</a></div></div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;<span class="preprocessor">#if defined(BOARD_ITEADUINO_PLUS)</span></div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;<span class="preprocessor">#define PD0     9</span></div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;<span class="preprocessor">#define PD1     10</span></div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;<span class="preprocessor">#define PD2     11</span></div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;<span class="preprocessor">#define PD3     12</span></div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;<span class="preprocessor">#define PD4     13</span></div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;<span class="preprocessor">#define PD5     14</span></div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;<span class="preprocessor">#define PD6     15</span></div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;<span class="preprocessor">#define PD7     16</span></div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;<span class="preprocessor">#define PD8     17</span></div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;<span class="preprocessor">#define PD9     18</span></div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="preprocessor">#define PD10    19  </span></div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;<span class="preprocessor">#define PD11    20  </span></div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;<span class="preprocessor">#define PD12    21  </span></div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;<span class="preprocessor">#define PD13    22  </span></div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;<span class="preprocessor">#define PD14    23  </span></div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;<span class="preprocessor">#define PD15    24  </span></div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;<span class="preprocessor">#define PD16    25  </span></div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;<span class="preprocessor">#define PD17    26  </span></div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;<span class="preprocessor">#define PD18    27  </span></div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;<span class="preprocessor">#define PD19    28  </span></div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;<span class="preprocessor">#define PD20    29  </span></div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;<span class="preprocessor">#define PD21    30  </span></div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;<span class="preprocessor">#define PD22    31  </span></div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;<span class="preprocessor">#define PD23    32  </span></div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;<span class="preprocessor">#define PD24    33  </span></div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;<span class="preprocessor">#define PD25    34  </span></div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;<span class="preprocessor">#define PD26    35</span></div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;<span class="preprocessor">#define PD27    36</span></div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;<span class="preprocessor">#define PH0     37</span></div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;<span class="preprocessor">#define PH1     38</span></div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;<span class="preprocessor">#define PH2     39</span></div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;<span class="preprocessor">#define PH3     40</span></div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;<span class="preprocessor">#define PH4     41</span></div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;<span class="preprocessor">#define PH5     42</span></div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;<span class="preprocessor">#define PH6     43</span></div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;<span class="preprocessor">#define PH7     44</span></div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;<span class="preprocessor">#define PH8     45</span></div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;<span class="preprocessor">#define PH9     46</span></div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;<span class="preprocessor">#define PH10    47</span></div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;<span class="preprocessor">#define PH11    48</span></div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;<span class="preprocessor">#define PH12    49</span></div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;<span class="preprocessor">#define PH13    50</span></div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;<span class="preprocessor">#define PH14    51</span></div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;<span class="preprocessor">#define PH15    52</span></div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;<span class="preprocessor">#define PH16    53</span></div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;<span class="preprocessor">#define PH17    54</span></div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;<span class="preprocessor">#define PH18    55</span></div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;<span class="preprocessor">#define PH19    56</span></div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;<span class="preprocessor">#define PH20    57</span></div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;<span class="preprocessor">#define PH21    58</span></div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;<span class="preprocessor">#define PH22    59</span></div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;<span class="preprocessor">#define PH23    60</span></div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;<span class="preprocessor">#define PH24    61</span></div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;<span class="preprocessor">#define PH25    62</span></div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;<span class="preprocessor">#define PH26    63</span></div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;<span class="preprocessor">#define PH27    64</span></div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;<span class="preprocessor">#define PB18    67</span></div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;<span class="preprocessor">#define PB19    68</span></div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;<span class="preprocessor">#define PB20    69</span></div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;<span class="preprocessor">#define PB21    70</span></div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;<span class="preprocessor">#define PB22    71</span></div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;<span class="preprocessor">#define PB23    72</span></div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;<span class="preprocessor">#define PI19    75  </span></div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;<span class="preprocessor">#define PI18    76</span></div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;<span class="preprocessor">#define PI17    77</span></div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;<span class="preprocessor">#define PI16    78</span></div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;<span class="preprocessor">#define PG0     79</span></div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;<span class="preprocessor">#define PG1     80</span></div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;<span class="preprocessor">#define PG2     81</span></div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;<span class="preprocessor">#define PG3     82</span></div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;<span class="preprocessor">#define PG4     83</span></div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;<span class="preprocessor">#define PG5     84</span></div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;<span class="preprocessor">#define PG6     85</span></div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;<span class="preprocessor">#define PG7     86</span></div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;<span class="preprocessor">#define PG8     87</span></div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;<span class="preprocessor">#define PG9     88</span></div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;<span class="preprocessor">#define PG10    89</span></div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;<span class="preprocessor">#define PG11    90</span></div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;<span class="preprocessor">#define PE0     91</span></div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;<span class="preprocessor">#define PE1     92</span></div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;<span class="preprocessor">#define PE2     93</span></div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;<span class="preprocessor">#define PE3     94</span></div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;<span class="preprocessor">#define PE4     95</span></div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;<span class="preprocessor">#define PE5     96</span></div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;<span class="preprocessor">#define PE6     97</span></div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;<span class="preprocessor">#define PE7     98</span></div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;<span class="preprocessor">#define PE8     99</span></div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;<span class="preprocessor">#define PE9     100</span></div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;<span class="preprocessor">#define PE10    101</span></div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;<span class="preprocessor">#define PE11    102</span></div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;<span class="preprocessor">#define PI0     103</span></div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;<span class="preprocessor">#define PI1     104</span></div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;<span class="preprocessor">#define PI2     105</span></div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;<span class="preprocessor">#define PI3     107</span></div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;<span class="preprocessor">#define PB2     108 </span></div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;<span class="preprocessor">#define PI10    109</span></div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;<span class="preprocessor">#define PI11    110</span></div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;<span class="preprocessor">#define PI12    111</span></div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;<span class="preprocessor">#define PI13    112</span></div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;<span class="preprocessor">#define PI4     113</span></div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;<span class="preprocessor">#define PI5     114</span></div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;<span class="preprocessor">#define PI6     113</span></div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;<span class="preprocessor">#define PI7     116</span></div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;<span class="preprocessor">#define PI8     117</span></div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;<span class="preprocessor">#define PI9     118</span></div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;<span class="preprocessor">#define PI20    119</span></div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;<span class="preprocessor">#define PI21    120</span></div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;<span class="preprocessor">#define PB3     121</span></div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;<span class="preprocessor">#define PB4     122</span></div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;<span class="preprocessor">#define PB5     123</span></div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;<span class="preprocessor">#define PB6     124</span></div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;<span class="preprocessor">#define PB7     125</span></div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;<span class="preprocessor">#define PB8     126</span></div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;<span class="preprocessor">#define PB9     127</span></div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;<span class="preprocessor">#define PB10    128</span></div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;<span class="preprocessor">#define PB11    129</span></div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;<span class="preprocessor">#define PB12    130</span></div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;<span class="preprocessor">#define PB13    131</span></div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;<span class="preprocessor">#define PB14    133</span></div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;<span class="preprocessor">#define PB15    134</span></div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;<span class="preprocessor">#define PB16    135</span></div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;<span class="preprocessor">#define PB17    136</span></div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;<span class="preprocessor">#define PI14    137</span></div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;<span class="preprocessor">#define PI15    138</span></div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;<span class="preprocessor">#elif defined (BOARD_ITEAD_CORE_EVB)</span></div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;<span class="preprocessor">#define PB5     (0)</span></div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;<span class="preprocessor">#define PB6     (1)</span></div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;<span class="preprocessor">#define PB7     (2)</span></div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;<span class="preprocessor">#define PB8     (3)</span></div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;<span class="preprocessor">#define PB18    (4)</span></div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;<span class="preprocessor">#define PB19    (5)</span></div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;<span class="preprocessor">#define PB20    (6)</span></div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;<span class="preprocessor">#define PB21    (7)</span></div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;<span class="preprocessor">#define PB22    (8)</span></div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;<span class="preprocessor">#define PB23    (9)</span></div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;<span class="preprocessor">#define PD0     (10)</span></div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;<span class="preprocessor">#define PD1     (11)</span></div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;<span class="preprocessor">#define PD2     (12)</span></div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;<span class="preprocessor">#define PD3     (13)</span></div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;<span class="preprocessor">#define PD4     (14)</span></div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;<span class="preprocessor">#define PD5     (15)</span></div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;<span class="preprocessor">#define PD6     (16)</span></div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;<span class="preprocessor">#define PD7     (17)</span></div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;<span class="preprocessor">#define PD8     (18)</span></div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;<span class="preprocessor">#define PD9     (19)</span></div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;<span class="preprocessor">#define PD10    (20)</span></div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;<span class="preprocessor">#define PD11    (21)</span></div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;<span class="preprocessor">#define PD12    (22)</span></div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;<span class="preprocessor">#define PD13    (23)</span></div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;<span class="preprocessor">#define PD14    (24)</span></div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;<span class="preprocessor">#define PD15    (25)</span></div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;<span class="preprocessor">#define PD16    (26)</span></div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;<span class="preprocessor">#define PD17    (27)</span></div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;<span class="preprocessor">#define PD18    (28)</span></div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;<span class="preprocessor">#define PD19    (29)</span></div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;<span class="preprocessor">#define PD20    (30)</span></div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;<span class="preprocessor">#define PD21    (31)</span></div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;<span class="preprocessor">#define PD22    (32)</span></div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;<span class="preprocessor">#define PD23    (33)</span></div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;<span class="preprocessor">#define PD24    (34)</span></div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;<span class="preprocessor">#define PD25    (35)</span></div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;<span class="preprocessor">#define PD26    (36)</span></div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;<span class="preprocessor">#define PD27    (37)</span></div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;<span class="preprocessor">#define PG0     (38)</span></div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;<span class="preprocessor">#define PG1     (39)</span></div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;<span class="preprocessor">#define PG2     (40)</span></div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;<span class="preprocessor">#define PG3     (41)</span></div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;<span class="preprocessor">#define PG4     (42)</span></div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;<span class="preprocessor">#define PG5     (43)</span></div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;<span class="preprocessor">#define PG6     (44)</span></div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;<span class="preprocessor">#define PG7     (45)</span></div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;<span class="preprocessor">#define PG8     (46)</span></div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;<span class="preprocessor">#define PG9     (47)</span></div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;<span class="preprocessor">#define PG10    (48)</span></div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;<span class="preprocessor">#define PG11    (49)</span></div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;<span class="preprocessor">#define PI10    (109)   </span><span class="comment">/* itead_gpio_int.c 22 */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;<span class="preprocessor">#define PI11    (110)   </span><span class="comment">/* itead_gpio_int.c 23 */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;<span class="preprocessor">#define PI12    (111)   </span><span class="comment">/* itead_gpio_int.c 24 */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;<span class="preprocessor">#define PI13    (112)   </span><span class="comment">/* itead_gpio_int.c 25 */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;<span class="preprocessor">#define PI14    (137)   </span><span class="comment">/* itead_gpio_int.c 26 */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;<span class="preprocessor">#define PI15    (138)   </span><span class="comment">/* itead_gpio_int.c 27 */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;<span class="preprocessor">#define PI16    (78)   </span><span class="comment">/* itead_gpio_int.c 28 */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;<span class="preprocessor">#define PI17    (77)   </span><span class="comment">/* itead_gpio_int.c 29 */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;<span class="preprocessor">#define PI18    (76)   </span><span class="comment">/* itead_gpio_int.c 30 */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;<span class="preprocessor">#define PI19    (75)   </span><span class="comment">/* itead_gpio_int.c 31 */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;<span class="preprocessor">#define PI20    (60)</span></div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;<span class="preprocessor">#define PI21    (61)</span></div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;<span class="preprocessor">#define PB2     (62)</span></div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;<span class="preprocessor">#define PH27    (63)</span></div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;<span class="preprocessor">#elif defined (BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)</span></div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;</div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;<span class="preprocessor">#define GPIO2       3 </span></div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;<span class="preprocessor">#define GPIO3       5 </span></div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;<span class="preprocessor">#define GPIO4       7 </span></div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;<span class="preprocessor">#define GPIO14      8 </span></div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;<span class="preprocessor">#define GPIO15      10</span></div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;<span class="preprocessor">#define GPIO17      11</span></div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;<span class="preprocessor">#define GPIO18      12</span></div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;<span class="preprocessor">#define GPIO27      13</span></div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;<span class="preprocessor">#define GPIO22      15</span></div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;<span class="preprocessor">#define GPIO23      16</span></div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;<span class="preprocessor">#define GPIO24      18</span></div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;<span class="preprocessor">#define GPIO10      19</span></div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;<span class="preprocessor">#define GPIO9       21</span></div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;<span class="preprocessor">#define GPIO25      22</span></div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;<span class="preprocessor">#define GPIO11      23</span></div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;<span class="preprocessor">#define GPIO8       24</span></div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;<span class="preprocessor">#define GPIO7       26</span></div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;<span class="preprocessor">#if defined(BOARD_RASPBERRY_PI_RV2)</span></div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;<span class="preprocessor">#define GPIO28      29</span></div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;<span class="preprocessor">#define GPIO29      30</span></div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;<span class="preprocessor">#define GPIO30      31</span></div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;<span class="preprocessor">#define GPIO31      32</span></div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;<span class="preprocessor">#elif defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)</span></div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;<span class="preprocessor">#define GPIO5       (27)</span></div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;<span class="preprocessor">#define GPIO6       (28)</span></div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;<span class="preprocessor">#define GPIO12      (29)</span></div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;<span class="preprocessor">#define GPIO13      (30)</span></div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;<span class="preprocessor">#define GPIO16      (31)</span></div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;<span class="preprocessor">#define GPIO19      (32)</span></div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;<span class="preprocessor">#define GPIO20      (33)</span></div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;<span class="preprocessor">#define GPIO21      (34)</span></div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;<span class="preprocessor">#define GPIO26      (35)</span></div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* defined(BOARD_RASPBERRY_PI_RV2) */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;</div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;<span class="preprocessor">#elif defined (BOARD_BEAGLEBONEBLACK)</span></div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;</div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;<span class="preprocessor">#define GPIO_NUM(port,num)  (port)*32+(num)</span></div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;</div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;<span class="preprocessor">#define GPIO0_7   GPIO_NUM(0,7)</span></div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;<span class="preprocessor">#define GPIO0_22  GPIO_NUM(0,22)</span></div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;<span class="preprocessor">#define GPIO0_23  GPIO_NUM(0,23)</span></div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;<span class="preprocessor">#define GPIO0_26  GPIO_NUM(0,26)</span></div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;<span class="preprocessor">#define GPIO0_27  GPIO_NUM(0,27)</span></div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;<span class="preprocessor">#define GPIO1_12  GPIO_NUM(1,12)</span></div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;<span class="preprocessor">#define GPIO1_13  GPIO_NUM(1,13)</span></div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;<span class="preprocessor">#define GPIO1_14  GPIO_NUM(1,14)</span></div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;<span class="preprocessor">#define GPIO1_15  GPIO_NUM(1,15)</span></div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;<span class="preprocessor">#define GPIO1_16  GPIO_NUM(1,16)</span></div>
+<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;<span class="preprocessor">#define GPIO1_17  GPIO_NUM(1,17)</span></div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;<span class="preprocessor">#define GPIO1_18  GPIO_NUM(1,18)</span></div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;<span class="preprocessor">#define GPIO1_19  GPIO_NUM(1,19)</span></div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;<span class="preprocessor">#define GPIO1_28  GPIO_NUM(1,28)</span></div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;<span class="preprocessor">#define GPIO1_29  GPIO_NUM(1,29)</span></div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;<span class="preprocessor">#define GPIO2_1   GPIO_NUM(2,1)</span></div>
+<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;<span class="preprocessor">#define GPIO3_19  GPIO_NUM(3,19)</span></div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;<span class="preprocessor">#define GPIO3_21  GPIO_NUM(3,21)</span></div>
+<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;</div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;</div>
+<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;<span class="preprocessor">#endif </span></div>
+<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;</div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;<span class="preprocessor">#if defined (BOARD_BEAGLEBONEBLACK)    </span></div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;<span class="comment">/* Only define number of channels */</span></div>
+<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;<span class="preprocessor">#define AIN0        0</span></div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;<span class="preprocessor">#define AIN1        1</span></div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;<span class="preprocessor">#define AIN2        2</span></div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;<span class="preprocessor">#define AIN3        3</span></div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;<span class="preprocessor">#define AIN4        4</span></div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;<span class="preprocessor">#define AIN5        5</span></div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;<span class="preprocessor">#define AIN6        6</span></div>
+<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;<span class="preprocessor">#define AIN7        7</span></div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;<span class="preprocessor">#endif  </span></div>
+<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;</div>
+<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;uint32_t <a class="code" href="group__gpio.html#gadb921491181428f3c1b2b4ede4b24ab3">pinMode</a>(uint16_t pin, uint8_t mode);</div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;uint32_t <a class="code" href="group__gpio.html#gabd3edb4d236c5da4fb5a763bd4780bf4">digitalWrite</a>(uint16_t pin, uint8_t val);</div>
+<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;uint32_t <a class="code" href="group__gpio.html#gab7c7473c803a6ab42702ddd105ef9958">digitalRead</a>(uint16_t pin);</div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;uint32_t <a class="code" href="group__gpio.html#ga28ad5a387b3a9f122b86753d667ced3f">analogWrite</a>(uint16_t pin, uint8_t duty);</div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;uint32_t <a class="code" href="group__gpio.html#ga02960372320033852d2eed84609d6b4e">analogRead</a>(uint32_t pin);</div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;uint32_t <a class="code" href="group__gpio.html#ga5e33c9c523a376c539251677cdee5aff">set8BitsBUS</a>(STRUCT_8BITS_BUS *bus,</div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;    uint16_t DB0, uint16_t DB1, uint16_t DB2, uint16_t DB3,</div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;    uint16_t DB4, uint16_t DB5, uint16_t DB6, uint16_t DB7,</div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;    uint8_t mode);</div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;</div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;uint32_t <a class="code" href="group__gpio.html#gacc1d989f83103e6feaf33b6d95eec829">set16BitsBUS</a>(STRUCT_16BITS_BUS *bus, </div>
+<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;    uint16_t DB0, uint16_t DB1, uint16_t DB2, uint16_t DB3,</div>
+<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;    uint16_t DB4, uint16_t DB5, uint16_t DB6, uint16_t DB7,</div>
+<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;    uint16_t DB8, uint16_t DB9, uint16_t DB10,uint16_t DB11,</div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;    uint16_t DB12,uint16_t DB13,uint16_t DB14,uint16_t DB15,</div>
+<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;    uint8_t mode);</div>
+<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;</div>
+<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;uint32_t <a class="code" href="group__gpio.html#gac2014414fc4759460320c0dc260ccb08">digitalWrite8</a>(STRUCT_8BITS_BUS *bus, uint8_t val);</div>
+<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;uint32_t <a class="code" href="group__gpio.html#gaa40435713d300b1469bd12a4206df6d2">digitalWrite16</a>(STRUCT_16BITS_BUS *bus, uint16_t val);</div>
+<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;uint8_t <a class="code" href="group__gpio.html#ga6308dffb386ebe805108296f3e679381">digitalRead8</a>(STRUCT_8BITS_BUS *bus);</div>
+<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;uint16_t <a class="code" href="group__gpio.html#ga4960a163187f8df8b5d57dc255b69330">digitalRead16</a>(STRUCT_16BITS_BUS *bus);</div>
+<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;</div>
+<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;} <span class="comment">// extern &quot;C&quot;</span></div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;</div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;</div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="group__gpio_html_ga5e33c9c523a376c539251677cdee5aff"><div class="ttname"><a href="group__gpio.html#ga5e33c9c523a376c539251677cdee5aff">set8BitsBUS</a></div><div class="ttdeci">uint32_t set8BitsBUS(STRUCT_8BITS_BUS *bus, uint16_t DB0, uint16_t DB1, uint16_t DB2, uint16_t DB3, uint16_t DB4, uint16_t DB5, uint16_t DB6, uint16_t DB7, uint8_t mode)</div><div class="ttdoc">Set every pin of the bus to the mode specified. </div><div class="ttdef"><b>Definition:</b> <a href="itead__gpio_8c_source.html#l00643">itead_gpio.c:643</a></div></div>
+<div class="ttc" id="group__gpio_html_gac2014414fc4759460320c0dc260ccb08"><div class="ttname"><a href="group__gpio.html#gac2014414fc4759460320c0dc260ccb08">digitalWrite8</a></div><div class="ttdeci">uint32_t digitalWrite8(STRUCT_8BITS_BUS *bus, uint8_t val)</div><div class="ttdoc">Write val to bus. </div><div class="ttdef"><b>Definition:</b> <a href="itead__gpio_8c_source.html#l00737">itead_gpio.c:737</a></div></div>
+<div class="ttc" id="group__gpio_html_gadb921491181428f3c1b2b4ede4b24ab3"><div class="ttname"><a href="group__gpio.html#gadb921491181428f3c1b2b4ede4b24ab3">pinMode</a></div><div class="ttdeci">uint32_t pinMode(uint16_t pin, uint8_t mode)</div><div class="ttdoc">Set pin as INPUT or OUTPUT mode. </div><div class="ttdef"><b>Definition:</b> <a href="itead__gpio_8c_source.html#l00374">itead_gpio.c:374</a></div></div>
+<div class="ttc" id="group__gpio_html_ga6308dffb386ebe805108296f3e679381"><div class="ttname"><a href="group__gpio.html#ga6308dffb386ebe805108296f3e679381">digitalRead8</a></div><div class="ttdeci">uint8_t digitalRead8(STRUCT_8BITS_BUS *bus)</div><div class="ttdoc">Read value from bus. </div><div class="ttdef"><b>Definition:</b> <a href="itead__gpio_8c_source.html#l00778">itead_gpio.c:778</a></div></div>
+<div class="ttc" id="group__gpio_html_gacc1d989f83103e6feaf33b6d95eec829"><div class="ttname"><a href="group__gpio.html#gacc1d989f83103e6feaf33b6d95eec829">set16BitsBUS</a></div><div class="ttdeci">uint32_t set16BitsBUS(STRUCT_16BITS_BUS *bus, uint16_t DB0, uint16_t DB1, uint16_t DB2, uint16_t DB3, uint16_t DB4, uint16_t DB5, uint16_t DB6, uint16_t DB7, uint16_t DB8, uint16_t DB9, uint16_t DB10, uint16_t DB11, uint16_t DB12, uint16_t DB13, uint16_t DB14, uint16_t DB15, uint8_t mode)</div><div class="ttdoc">Set every pin of the bus to the mode specified. </div><div class="ttdef"><b>Definition:</b> <a href="itead__gpio_8c_source.html#l00693">itead_gpio.c:693</a></div></div>
+<div class="ttc" id="group__gpio_html_gaa40435713d300b1469bd12a4206df6d2"><div class="ttname"><a href="group__gpio.html#gaa40435713d300b1469bd12a4206df6d2">digitalWrite16</a></div><div class="ttdeci">uint32_t digitalWrite16(STRUCT_16BITS_BUS *bus, uint16_t val)</div><div class="ttdoc">Write val to bus. </div><div class="ttdef"><b>Definition:</b> <a href="itead__gpio_8c_source.html#l00758">itead_gpio.c:758</a></div></div>
+<div class="ttc" id="group__gpio_html_ga4960a163187f8df8b5d57dc255b69330"><div class="ttname"><a href="group__gpio.html#ga4960a163187f8df8b5d57dc255b69330">digitalRead16</a></div><div class="ttdeci">uint16_t digitalRead16(STRUCT_16BITS_BUS *bus)</div><div class="ttdoc">Read value from bus. </div><div class="ttdef"><b>Definition:</b> <a href="itead__gpio_8c_source.html#l00803">itead_gpio.c:803</a></div></div>
+<div class="ttc" id="group__gpio_html_ga28ad5a387b3a9f122b86753d667ced3f"><div class="ttname"><a href="group__gpio.html#ga28ad5a387b3a9f122b86753d667ced3f">analogWrite</a></div><div class="ttdeci">uint32_t analogWrite(uint16_t pin, uint8_t duty)</div><div class="ttdoc">Output pwm with duty via the pin. </div><div class="ttdef"><b>Definition:</b> <a href="itead__gpio_8c_source.html#l00888">itead_gpio.c:888</a></div></div>
+<div class="ttc" id="group__gpio_html_ga02960372320033852d2eed84609d6b4e"><div class="ttname"><a href="group__gpio.html#ga02960372320033852d2eed84609d6b4e">analogRead</a></div><div class="ttdeci">uint32_t analogRead(uint32_t pin)</div><div class="ttdoc">Get adc input via pin. </div><div class="ttdef"><b>Definition:</b> <a href="itead__gpio_8c_source.html#l00975">itead_gpio.c:975</a></div></div>
+<div class="ttc" id="group__gpio_html_gabd3edb4d236c5da4fb5a763bd4780bf4"><div class="ttname"><a href="group__gpio.html#gabd3edb4d236c5da4fb5a763bd4780bf4">digitalWrite</a></div><div class="ttdeci">uint32_t digitalWrite(uint16_t pin, uint8_t val)</div><div class="ttdoc">Write val to the specific gpio(by pin number). </div><div class="ttdef"><b>Definition:</b> <a href="itead__gpio_8c_source.html#l00454">itead_gpio.c:454</a></div></div>
+<div class="ttc" id="group__gpio_html_gab7c7473c803a6ab42702ddd105ef9958"><div class="ttname"><a href="group__gpio.html#gab7c7473c803a6ab42702ddd105ef9958">digitalRead</a></div><div class="ttdeci">uint32_t digitalRead(uint16_t pin)</div><div class="ttdoc">Read state of the specific gpio(by pin number). </div><div class="ttdef"><b>Definition:</b> <a href="itead__gpio_8c_source.html#l00548">itead_gpio.c:548</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 28 2014 10:48:38 for Segnix API by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Dec 23 2014 11:47:49 for Segnix API by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

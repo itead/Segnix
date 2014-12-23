@@ -67,14 +67,17 @@
 <code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &lt;pthread.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;errno.h&gt;</code><br />
 <code>#include &lt;linux/ioctl.h&gt;</code><br />
 <code>#include &lt;sys/mman.h&gt;</code><br />
+<code>#include &lt;sys/wait.h&gt;</code><br />
 <code>#include &lt;sys/types.h&gt;</code><br />
 <code>#include &lt;sys/stat.h&gt;</code><br />
 <code>#include &lt;<a class="el" href="itead__gpio_8h_source.html">itead_gpio.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="itead__delay_8h_source.html">itead_delay.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="itead__gpio__pin__map_8h_source.html">itead_gpio_pin_map.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="itead__global_8h_source.html">itead_global.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="itead__utility_8h_source.html">itead_utility.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="itead__debug_8h_source.html">itead_debug.h</a>&gt;</code><br />
 </div>
 <p><a href="itead__gpio_8c_source.html">Go to the source code of this file.</a></p>
@@ -111,6 +114,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga28ad5a387b3a9f122b86753d667ced3f"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__gpio.html#ga28ad5a387b3a9f122b86753d667ced3f">analogWrite</a> (uint16_t pin, uint8_t duty)</td></tr>
 <tr class="memdesc:ga28ad5a387b3a9f122b86753d667ced3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output pwm with duty via the pin.  <a href="group__gpio.html#ga28ad5a387b3a9f122b86753d667ced3f">More...</a><br /></td></tr>
 <tr class="separator:ga28ad5a387b3a9f122b86753d667ced3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga02960372320033852d2eed84609d6b4e"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__gpio.html#ga02960372320033852d2eed84609d6b4e">analogRead</a> (uint32_t pin)</td></tr>
+<tr class="memdesc:ga02960372320033852d2eed84609d6b4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get adc input via pin.  <a href="group__gpio.html#ga02960372320033852d2eed84609d6b4e">More...</a><br /></td></tr>
+<tr class="separator:ga02960372320033852d2eed84609d6b4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Provide the implementation of Arduino API on gpio. </p>
@@ -123,7 +129,7 @@ This program is free software; you can redistribute it and/or modify it under th
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 28 2014 10:48:39 for Segnix API by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Dec 23 2014 11:47:51 for Segnix API by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

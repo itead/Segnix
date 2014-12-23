@@ -119,28 +119,30 @@
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;};</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="keyword">extern</span> <a class="code" href="class_s_p_i_class.html">SPIClass</a> &amp; SPI;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="preprocessor">#if defined(BOARD_ITEADUINO_PLUS) || defined (BOARD_ITEAD_CORE_EVB)</span></div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="keyword">extern</span> <a class="code" href="class_s_p_i_class.html">SPIClass</a> SPI0;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="preprocessor">#elif defined (BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)</span></div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="keyword">extern</span> <a class="code" href="class_s_p_i_class.html">SPIClass</a> SPI0;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="preprocessor">#endif </span></div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="class_s_p_i_class_html_a1e7942a78831ffb48ebdd9f0aea59835"><div class="ttname"><a href="class_s_p_i_class.html#a1e7942a78831ffb48ebdd9f0aea59835">SPIClass::transfer</a></div><div class="ttdeci">uint8_t transfer(uint8_t val)</div><div class="ttdoc">Send and Receive data. </div><div class="ttdef"><b>Definition:</b> <a href="itead__spi_8cpp_source.html#l00094">itead_spi.cpp:94</a></div></div>
-<div class="ttc" id="class_s_p_i_class_html_a79d89d8e3f5f1b003cb7b0aed2d77eab"><div class="ttname"><a href="class_s_p_i_class.html#a79d89d8e3f5f1b003cb7b0aed2d77eab">SPIClass::end</a></div><div class="ttdeci">void end()</div><div class="ttdoc">Close SPI bus. </div><div class="ttdef"><b>Definition:</b> <a href="itead__spi_8cpp_source.html#l00047">itead_spi.cpp:47</a></div></div>
-<div class="ttc" id="class_s_p_i_class_html_a4a2646959a242f6af423b04734c003f0"><div class="ttname"><a href="class_s_p_i_class.html#a4a2646959a242f6af423b04734c003f0">SPIClass::begin</a></div><div class="ttdeci">void begin()</div><div class="ttdoc">Init SPI bus. </div><div class="ttdef"><b>Definition:</b> <a href="itead__spi_8cpp_source.html#l00041">itead_spi.cpp:41</a></div></div>
-<div class="ttc" id="class_s_p_i_class_html_a4bddb209f5f73375c62cf94760ea51d9"><div class="ttname"><a href="class_s_p_i_class.html#a4bddb209f5f73375c62cf94760ea51d9">SPIClass::setClockDivider</a></div><div class="ttdeci">void setClockDivider(uint8_t divider)</div><div class="ttdoc">Set clock divider. </div><div class="ttdef"><b>Definition:</b> <a href="itead__spi_8cpp_source.html#l00084">itead_spi.cpp:84</a></div></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="keyword">extern</span> <a class="code" href="class_s_p_i_class.html">SPIClass</a> &amp; SPI;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="preprocessor">#if defined(BOARD_ITEADUINO_PLUS) || defined (BOARD_ITEAD_CORE_EVB)</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="keyword">extern</span> <a class="code" href="class_s_p_i_class.html">SPIClass</a> SPI0;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="preprocessor">#elif defined (BOARD_RASPBERRY_PI_RV2) || defined(BOARD_RASPBERRY_PI_MODEL_BPLUS)</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="keyword">extern</span> <a class="code" href="class_s_p_i_class.html">SPIClass</a> SPI0;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="preprocessor">#elif defined (BOARD_BEAGLEBONEBLACK)</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="keyword">extern</span> <a class="code" href="class_s_p_i_class.html">SPIClass</a> SPI1;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="preprocessor">#endif </span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="class_s_p_i_class_html_a1e7942a78831ffb48ebdd9f0aea59835"><div class="ttname"><a href="class_s_p_i_class.html#a1e7942a78831ffb48ebdd9f0aea59835">SPIClass::transfer</a></div><div class="ttdeci">uint8_t transfer(uint8_t val)</div><div class="ttdoc">Send and Receive data. </div><div class="ttdef"><b>Definition:</b> <a href="itead__spi_8cpp_source.html#l00099">itead_spi.cpp:99</a></div></div>
+<div class="ttc" id="class_s_p_i_class_html_a79d89d8e3f5f1b003cb7b0aed2d77eab"><div class="ttname"><a href="class_s_p_i_class.html#a79d89d8e3f5f1b003cb7b0aed2d77eab">SPIClass::end</a></div><div class="ttdeci">void end()</div><div class="ttdoc">Close SPI bus. </div><div class="ttdef"><b>Definition:</b> <a href="itead__spi_8cpp_source.html#l00052">itead_spi.cpp:52</a></div></div>
+<div class="ttc" id="class_s_p_i_class_html_a4a2646959a242f6af423b04734c003f0"><div class="ttname"><a href="class_s_p_i_class.html#a4a2646959a242f6af423b04734c003f0">SPIClass::begin</a></div><div class="ttdeci">void begin()</div><div class="ttdoc">Init SPI bus. </div><div class="ttdef"><b>Definition:</b> <a href="itead__spi_8cpp_source.html#l00046">itead_spi.cpp:46</a></div></div>
+<div class="ttc" id="class_s_p_i_class_html_a4bddb209f5f73375c62cf94760ea51d9"><div class="ttname"><a href="class_s_p_i_class.html#a4bddb209f5f73375c62cf94760ea51d9">SPIClass::setClockDivider</a></div><div class="ttdeci">void setClockDivider(uint8_t divider)</div><div class="ttdoc">Set clock divider. </div><div class="ttdef"><b>Definition:</b> <a href="itead__spi_8cpp_source.html#l00089">itead_spi.cpp:89</a></div></div>
 <div class="ttc" id="class_s_p_i_class_html"><div class="ttname"><a href="class_s_p_i_class.html">SPIClass</a></div><div class="ttdoc">Provide simple methods to manipulate SPI bus. </div><div class="ttdef"><b>Definition:</b> <a href="itead__spi_8h_source.html#l00092">itead_spi.h:92</a></div></div>
-<div class="ttc" id="class_s_p_i_class_html_a13cf0985428fd08a5e056c747e296cc1"><div class="ttname"><a href="class_s_p_i_class.html#a13cf0985428fd08a5e056c747e296cc1">SPIClass::setDataMode</a></div><div class="ttdeci">void setDataMode(uint8_t mode)</div><div class="ttdoc">Set data mode. </div><div class="ttdef"><b>Definition:</b> <a href="itead__spi_8cpp_source.html#l00075">itead_spi.cpp:75</a></div></div>
-<div class="ttc" id="class_s_p_i_class_html_ac5aaa13937884b2280cbb4be40c07bd0"><div class="ttname"><a href="class_s_p_i_class.html#ac5aaa13937884b2280cbb4be40c07bd0">SPIClass::setBitOrder</a></div><div class="ttdeci">void setBitOrder(uint8_t order)</div><div class="ttdoc">Set bit order on SPI data lines. </div><div class="ttdef"><b>Definition:</b> <a href="itead__spi_8cpp_source.html#l00056">itead_spi.cpp:56</a></div></div>
+<div class="ttc" id="class_s_p_i_class_html_a13cf0985428fd08a5e056c747e296cc1"><div class="ttname"><a href="class_s_p_i_class.html#a13cf0985428fd08a5e056c747e296cc1">SPIClass::setDataMode</a></div><div class="ttdeci">void setDataMode(uint8_t mode)</div><div class="ttdoc">Set data mode. </div><div class="ttdef"><b>Definition:</b> <a href="itead__spi_8cpp_source.html#l00080">itead_spi.cpp:80</a></div></div>
+<div class="ttc" id="class_s_p_i_class_html_ac5aaa13937884b2280cbb4be40c07bd0"><div class="ttname"><a href="class_s_p_i_class.html#ac5aaa13937884b2280cbb4be40c07bd0">SPIClass::setBitOrder</a></div><div class="ttdeci">void setBitOrder(uint8_t order)</div><div class="ttdoc">Set bit order on SPI data lines. </div><div class="ttdef"><b>Definition:</b> <a href="itead__spi_8cpp_source.html#l00061">itead_spi.cpp:61</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Nov 28 2014 10:48:38 for Segnix API by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Dec 23 2014 11:47:49 for Segnix API by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

@@ -20,10 +20,14 @@
     <LI><OBJECT type="text/sitemap"><param name="Name" value="Available Pin Name"><param name="Local" value="group__gpio_pin_name.html"><param name="ImageNumber" value="11"></OBJECT>
       <UL>
       </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="Available ADC pin"><param name="Local" value="group__adc_channel_name.html"><param name="ImageNumber" value="11"></OBJECT>
+      <UL>
+      </UL>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="HIGH"><param name="Local" value="group__gpio.html#ga5bb885982ff66a2e0a0a45a8ee9c35e2"><param name="ImageNumber" value="11"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="INPUT"><param name="Local" value="group__gpio.html#ga1bb283bd7893b9855e2f23013891fc82"><param name="ImageNumber" value="11"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="LOW"><param name="Local" value="group__gpio.html#gab811d8c6ff3a505312d3276590444289"><param name="ImageNumber" value="11"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="OUTPUT"><param name="Local" value="group__gpio.html#ga61a3c9a18380aafb6e430e79bf596557"><param name="ImageNumber" value="11"></OBJECT>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="analogRead"><param name="Local" value="group__gpio.html#ga02960372320033852d2eed84609d6b4e"><param name="ImageNumber" value="11"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="analogWrite"><param name="Local" value="group__gpio.html#ga28ad5a387b3a9f122b86753d667ced3f"><param name="ImageNumber" value="11"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="digitalRead"><param name="Local" value="group__gpio.html#gab7c7473c803a6ab42702ddd105ef9958"><param name="ImageNumber" value="11"></OBJECT>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="digitalRead16"><param name="Local" value="group__gpio.html#ga4960a163187f8df8b5d57dc255b69330"><param name="ImageNumber" value="11"></OBJECT>
@@ -488,6 +492,7 @@
         <LI><OBJECT type="text/sitemap"><param name="Name" value="INPUT"><param name="Local" value="group__gpio.html#ga1bb283bd7893b9855e2f23013891fc82"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="LOW"><param name="Local" value="group__gpio.html#gab811d8c6ff3a505312d3276590444289"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="OUTPUT"><param name="Local" value="group__gpio.html#ga61a3c9a18380aafb6e430e79bf596557"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="analogRead"><param name="Local" value="group__gpio.html#ga02960372320033852d2eed84609d6b4e"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="analogWrite"><param name="Local" value="group__gpio.html#ga28ad5a387b3a9f122b86753d667ced3f"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="digitalRead"><param name="Local" value="group__gpio.html#gab7c7473c803a6ab42702ddd105ef9958"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="digitalRead16"><param name="Local" value="group__gpio.html#ga4960a163187f8df8b5d57dc255b69330"><param name="ImageNumber" value="11"></OBJECT>
@@ -563,6 +568,7 @@
           </UL>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="itead_gpio.c"><param name="Local" value="itead__gpio_8c.html"><param name="ImageNumber" value="1"></OBJECT>
           <UL>
+          <LI><OBJECT type="text/sitemap"><param name="Name" value="analogRead"><param name="Local" value="group__gpio.html#ga02960372320033852d2eed84609d6b4e"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="analogWrite"><param name="Local" value="group__gpio.html#ga28ad5a387b3a9f122b86753d667ced3f"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="digitalRead"><param name="Local" value="group__gpio.html#gab7c7473c803a6ab42702ddd105ef9958"><param name="ImageNumber" value="11"></OBJECT>
           <LI><OBJECT type="text/sitemap"><param name="Name" value="digitalRead16"><param name="Local" value="group__gpio.html#ga4960a163187f8df8b5d57dc255b69330"><param name="ImageNumber" value="11"></OBJECT>
@@ -595,8 +601,12 @@
         <UL>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="itead_print.cpp"><param name="Local" value="itead__print_8cpp.html"><param name="ImageNumber" value="11"></OBJECT>
         <LI><OBJECT type="text/sitemap"><param name="Name" value="itead_serial.cpp"><param name="Local" value="itead__serial_8cpp.html"><param name="ImageNumber" value="11"></OBJECT>
-        <LI><OBJECT type="text/sitemap"><param name="Name" value="itead_spi.cpp"><param name="Local" value="itead__spi_8cpp.html"><param name="ImageNumber" value="11"></OBJECT>
-        <LI><OBJECT type="text/sitemap"><param name="Name" value="itead_wire.cpp"><param name="Local" value="itead__wire_8cpp.html"><param name="ImageNumber" value="11"></OBJECT>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="itead_spi.cpp"><param name="Local" value="itead__spi_8cpp.html"><param name="ImageNumber" value="1"></OBJECT>
+          <UL>
+          </UL>
+        <LI><OBJECT type="text/sitemap"><param name="Name" value="itead_wire.cpp"><param name="Local" value="itead__wire_8cpp.html"><param name="ImageNumber" value="1"></OBJECT>
+          <UL>
+          </UL>
         </UL>
       </UL>
     <LI><OBJECT type="text/sitemap"><param name="Name" value="libraries"><param name="Local" value="dir_b69c24f6b0e27e2584409cb4dbda6514.html"><param name="ImageNumber" value="1"></OBJECT>
