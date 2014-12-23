@@ -4,6 +4,7 @@ so_file := iteadcfunction.so
 so_file += iteadserial.so
 so_file += iteadspi.so
 so_file += iteadwire.so
+so_file += iteadanalog.so
 
 py_dir := .
 py_install_dir := $(so_install_dir)

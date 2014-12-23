@@ -46,6 +46,7 @@ from iteadcfunction         import *
 from iteadserial            import Serial_
 from iteadspi               import SPIClass
 from iteadwire              import TwoWire
+from iteadanalog            import AnalogClass
 
 
 ###############################################################################
@@ -79,24 +80,7 @@ elif BOARD_TYPE == 'BOARD_BEAGLEBONEBLACK':
 else:
     print 'No GPIO found.'
 
-###############################################################################
-# About analog(ADC) module stuff
-###############################################################################
-#
-# adc pin number
-#
-if BOARD_TYPE == 'BOARD_BEAGLEBONEBLACK':
-    AIN0 = 0
-    AIN1 = 1
-    AIN2 = 2
-    AIN3 = 3
-    AIN4 = 4
-    AIN5 = 5
-    AIN6 = 6
-    AIN7 = 7
-else:
-    print 'No ADC pin found.'
-    
+
 ###############################################################################
 # About Interrupt module stuff
 ###############################################################################
@@ -276,6 +260,38 @@ elif BOARD_TYPE == 'BOARD_BEAGLEBONEBLACK':
     
 else:
     print 'No I2C(TwoWire) bus found.'
+
+###############################################################################
+# About analog(ADC) module stuff
+###############################################################################
+#
+# bus number
+#
+_DEV_AIN0 = 0
+_DEV_AIN1 = 1
+_DEV_AIN2 = 2
+_DEV_AIN3 = 3
+_DEV_AIN4 = 4
+_DEV_AIN5 = 5
+_DEV_AIN6 = 6
+_DEV_AIN7 = 7
+
+# 
+# Create objects for available channels
+#
+if BOARD_TYPE == 'BOARD_BEAGLEBONEBLACK':
+    Analog0 = AnalogClass(_DEV_AIN0)
+    Analog1 = AnalogClass(_DEV_AIN1)
+    Analog2 = AnalogClass(_DEV_AIN2)
+    Analog3 = AnalogClass(_DEV_AIN3)
+    Analog4 = AnalogClass(_DEV_AIN4)
+    Analog5 = AnalogClass(_DEV_AIN5)
+    Analog6 = AnalogClass(_DEV_AIN6)
+    Analog7 = AnalogClass(_DEV_AIN7)
+    Analog = Analog0
+    
+else:
+    print 'No ADC channel found'
 
 
 ###############################################################################
