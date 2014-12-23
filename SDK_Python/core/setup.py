@@ -26,12 +26,6 @@ mod_iteadwire = Extension(
     sources     = ['iteadwire-py.cpp']
     )
 
-mod_iteadanalog = Extension(
-    'iteadanalog',
-    libraries   = ['iteadc', 'iteadcpp'],
-    sources     = ['iteadanalog-py.cpp']
-    )
-
 
 setup(	
     name            = "ITEAD-OS-SDK-Py",       # Package name
@@ -47,7 +41,6 @@ setup(
     					mod_iteadserial,	# Python interface of Serial_ in iteadcpp.so
     					mod_iteadspi,		# Python interface of SPIClass in iteadcpp.so
     					mod_iteadwire,		# Python interface of TwoWire in iteadcpp.so
-            				mod_iteadanalog,        # Python interface of AnalogClass in iteadcpp.so
     				  ]
     )
 

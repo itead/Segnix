@@ -59,6 +59,19 @@ static PyObject * Py_digitalRead(PyObject *self, PyObject *args)
     return Py_BuildValue("I", ret);
 }
 
+static PyObject * Py_analogRead(PyObject *self, PyObject *args)
+{
+    uint32_t ret;
+    uint16_t pin;
+    
+    if (!PyArg_ParseTuple(args, "H", &pin))
+        return NULL;
+
+    ret = analogRead(pin);
+
+    return Py_BuildValue("I", ret);
+}
+
 static PyObject * Py_analogWrite(PyObject *self, PyObject *args)
 {
     uint32_t ret;
@@ -319,6 +332,12 @@ static PyMethodDef iteadcfunction_methods[] =
         Py_digitalRead, 
         METH_VARARGS, 
         "Read pin"
+    },
+    {
+        "analogRead", 
+        Py_analogRead, 
+        METH_VARARGS, 
+        "Read adc pin"
     },
     {   
         "analogWrite", 
