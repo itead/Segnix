@@ -68,6 +68,13 @@ static PinPwmInfo           pin_pwm_infos[PIN_PWM_MAX];
 static int                  fd_dev_mem = -1;
 static volatile uint32_t *gpio_base;
 
+#ifdef BOARD_BEAGLEBONEBLACK
+static volatile uint32_t *gpio0_base;
+static volatile uint32_t *gpio1_base;
+static volatile uint32_t *gpio2_base;
+static volatile uint32_t *gpio3_base;
+#endif
+
 /*
  * ADC set for analogRead()
   */
@@ -312,6 +319,43 @@ static inline int32_t gpio_mmap(void)
         printf("\nmmap error !\n");
         return 0;
     }
+#elif defined(BOARD_BEAGLEBONEBLACK)
+    if ((gpio0_base = (volatile uint32_t *)mmap(0, 
+            GPIO_SIZE, 
+            PROT_READ|PROT_WRITE, 
+            MAP_SHARED,
+            fd_dev_mem, 
+            GPIO0_BASE)) == MAP_FAILED){
+        printf("\nmmap error !\n");
+        return 0;
+    }
+    if ((gpio1_base = (volatile uint32_t *)mmap(0, 
+           GPIO_SIZE, 
+           PROT_READ|PROT_WRITE, 
+           MAP_SHARED,
+           fd_dev_mem, 
+           GPIO1_BASE)) == MAP_FAILED){
+        printf("\nmmap error !\n");
+        return 0;
+    }
+    if ((gpio2_base = (volatile uint32_t *)mmap(0, 
+           GPIO_SIZE, 
+           PROT_READ|PROT_WRITE, 
+           MAP_SHARED,
+           fd_dev_mem, 
+           GPIO2_BASE)) == MAP_FAILED){
+        printf("\nmmap error !\n");
+        return 0;
+    }
+    if ((gpio3_base = (volatile uint32_t *)mmap(0, 
+           GPIO_SIZE, 
+           PROT_READ|PROT_WRITE, 
+           MAP_SHARED,
+           fd_dev_mem, 
+           GPIO3_BASE)) == MAP_FAILED){
+        printf("\nmmap error !\n");
+        return 0;
+    }
 #endif
 	return 1;
 }
@@ -375,6 +419,7 @@ uint32_t pinMode(uint16_t pin, uint8_t mode)
 {
 	uint32_t msg=0;
 	volatile uint32_t *cureg;
+    uint32_t reg;
     uint16_t port_no ;
 	uint16_t index ;
 
@@ -430,6 +475,7 @@ uint32_t pinMode(uint16_t pin, uint8_t mode)
        return 1;
    }
 
+#if 0 /* two ways to set gpio mode */
    if (mode == INPUT) {
        sprintf(gpio_string,DIRECTION_GPIO,"in",pin);
    } else if(mode == OUTPUT) {
@@ -439,8 +485,37 @@ uint32_t pinMode(uint16_t pin, uint8_t mode)
    if (!do_shell(gpio_string)) {
        sdkerr("\nset gpio direction failed!\n");
    }
+#else
+    port_no = pnp[pin].port_no;
+    index   = pnp[pin].index;
+    switch(port_no) {
+    case 0:
+        cureg = gpio0_base + GPIO_OE;
+        break;
+    case 1:
+        cureg = gpio1_base + GPIO_OE;
+        break;
+    case 2:
+        cureg = gpio2_base + GPIO_OE;
+        break;
+    case 3:
+        cureg = gpio3_base + GPIO_OE;
+        break;
+    default:
+        break;
+    }
+    if (mode == INPUT) {
+        reg = CUREG;    
+        reg = reg |  (1 <<  index);
+        CUREG = reg;
+    } else if(mode == OUTPUT) {
+        reg = CUREG;    
+        reg = reg & (0xFFFFFFFF - (1 <<  index));
+        CUREG = reg;
+    }
+    
 #endif
-
+#endif
 	return 0;
 }
 
@@ -525,6 +600,7 @@ uint32_t digitalWrite(uint16_t pin, uint8_t val)
        sdkerr("\nexport_gpio failed!\n");
        return 1;
     }
+#if 0    
     if ( val == HIGH) {
         sprintf(gpio_string,DIRECTION_GPIO,"high",pin);
     } else if (val == LOW) {
@@ -533,7 +609,47 @@ uint32_t digitalWrite(uint16_t pin, uint8_t val)
     
     if (!do_shell(gpio_string)) {
         sdkerr("\nset gpio output level failed!\n");
-    }    
+    }
+#else
+    port_no = pnp[pin].port_no;
+    index   = pnp[pin].index;
+    if ( val == HIGH )  {
+        switch(port_no) {
+        case 0:
+            cureg = gpio0_base + GPIO_SETDATAOUT;
+            break;
+        case 1:
+            cureg = gpio1_base + GPIO_SETDATAOUT;
+            break;
+        case 2:
+            cureg = gpio2_base + GPIO_SETDATAOUT;
+            break;
+        case 3:
+            cureg = gpio3_base + GPIO_SETDATAOUT;
+            break;
+        default:
+            break;
+        }
+    } else if (val == LOW ) {
+        switch(port_no) {
+        case 0:
+            cureg = gpio0_base + GPIO_CLEARDATAOUT;
+            break;
+        case 1:
+            cureg = gpio1_base + GPIO_CLEARDATAOUT;
+            break;
+        case 2:
+            cureg = gpio2_base + GPIO_CLEARDATAOUT;
+            break;
+        case 3:
+            cureg = gpio3_base + GPIO_CLEARDATAOUT;
+            break;
+        default:
+            break;
+        }
+    }
+    CUREG |=  1 << index;
+#endif
 #endif
 	
 	return 0;
@@ -604,11 +720,14 @@ uint32_t digitalRead(uint16_t pin)
     pin   = pnp[pin].index;
     cureg = gpio_base + GPIO_GPLEV_OFFSET/4 + pin/32;
     return (CUREG & (0x1<<(pin%32))) ? HIGH : LOW;
+    
 #elif defined(BOARD_BEAGLEBONEBLACK)
     if (!check_export_gpio(pin)) {
        sdkerr("\nexport_gpio failed!\n");
        return 1;
     }
+
+#if 0
     sprintf(gpio_string,VALUE_GPIO,pin);
     f_gpio = fopen(gpio_string,"r");
     if(f_gpio == NULL) {
@@ -621,6 +740,28 @@ uint32_t digitalRead(uint16_t pin)
     } else if(value_gpio == '0') {
         return LOW;
     }
+#else
+    /* get port_no and index by pin_no */
+	port_no = pnp[pin].port_no;
+	index   = pnp[pin].index;
+    switch(port_no) {
+    case 0 :
+      	cureg = (volatile uint32_t *)((uint32_t)gpio0_base + GPIO_DATAIN;
+        break;
+    case 1:
+        cureg = (volatile uint32_t *)((uint32_t)gpio1_base + GPIO_DATAIN;
+        break;
+    case 2:
+        cureg = (volatile uint32_t *)((uint32_t)gpio2_base + GPIO_DATAIN;
+        break;
+    case 3:
+       	cureg = (volatile uint32_t *)((uint32_t)gpio3_base + GPIO_DATAIN;
+        break;
+    default:
+        break;
+    }
+    return (CUREG & (0x1 << index) ? HIGH : LOW;
+#endif    
 #endif
 }
 

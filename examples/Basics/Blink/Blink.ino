@@ -17,7 +17,10 @@
  
 // We assume that pin 13 has an LED connected on your board.
 // give it a name:
-int led = 13;
+//int led = 13;
+
+//test on BeagleBone Black
+int led = GPIO1_28;
 
 // the setup routine runs once when you press reset:
 void setup() {                
