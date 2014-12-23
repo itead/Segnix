@@ -21,6 +21,7 @@
 #include <itead_spi.h>
 #include <itead_serial.h>
 #include <itead_wire.h>
+#include <itead_analog.h>
 #include <itead_print.h>
 #include <itead_interrupt.h>
 
