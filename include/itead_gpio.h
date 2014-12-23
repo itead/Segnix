@@ -616,6 +616,38 @@ typedef struct
 #endif 
 
 /**
+ * @ingroup gpio
+ * @defgroup adcChannelName Available ADC pin
+ * @details Accroding to different boards, user can use adc pin below directly, intead of a number, 
+ *  since these have been defined in Segnix. When calling analogRead() functions, user can pass ADC  
+ *  pin replacing a number.
+ * 
+ * @par On BeagleBoneBlack
+ * -# AIN0
+ * -# AIN1
+ * -# AIN2
+ * -# AIN3
+ * -# AIN4
+ * -# AIN5
+ * -# AIN6
+ * -# AIN7
+ *
+ */
+
+
+#if defined (BOARD_BEAGLEBONEBLACK)    
+/* Only define number of channels */
+#define AIN0        0
+#define AIN1        1
+#define AIN2        2
+#define AIN3        3
+#define AIN4        4
+#define AIN5        5
+#define AIN6        6
+#define AIN7        7
+#endif  
+
+/**
  * @addtogroup gpio
  * @{
  */
@@ -624,7 +656,7 @@ uint32_t pinMode(uint16_t pin, uint8_t mode);
 uint32_t digitalWrite(uint16_t pin, uint8_t val);
 uint32_t digitalRead(uint16_t pin);
 uint32_t analogWrite(uint16_t pin, uint8_t duty);
-
+uint32_t analogRead(uint32_t pin);
 uint32_t set8BitsBUS(STRUCT_8BITS_BUS *bus,
 	uint16_t DB0, uint16_t DB1, uint16_t DB2, uint16_t DB3,
 	uint16_t DB4, uint16_t DB5, uint16_t DB6, uint16_t DB7,
@@ -643,6 +675,9 @@ uint8_t digitalRead8(STRUCT_8BITS_BUS *bus);
 uint16_t digitalRead16(STRUCT_16BITS_BUS *bus);
 
 /** @} */
+
+    
+
 
 #ifdef __cplusplus
 } // extern "C"

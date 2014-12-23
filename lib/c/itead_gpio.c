@@ -33,6 +33,7 @@
 #include <itead_delay.h>
 #include <itead_gpio_pin_map.h>
 #include <itead_global.h>
+#include <itead_utility.h>
 
 //#define DEBUG
 #include <itead_debug.h>
@@ -67,6 +68,72 @@ static PinPwmInfo           pin_pwm_infos[PIN_PWM_MAX];
 static int                  fd_dev_mem = -1;
 static volatile uint32_t *gpio_base;
 
+/*
+ * ADC set for analogRead()
+  */
+
+typedef struct ANALOG_CHANNEL_ST {
+    FILE *fd;		// file descriptor of node after open
+    char *node;		// node name of specific adc channel
+                    // under /sys/bus/iio/devices/iio:device0
+} ANALOG_CHANNEL;
+
+static ANALOG_CHANNEL channel[] = {
+#if defined(BOARD_BEAGLEBONEBLACK)
+    [0] = {
+        .fd = NULL,
+        .node = "/sys/bus/iio/devices/iio:device0/in_voltage0_raw",
+    },
+    [1] = {
+        .fd = NULL,
+        .node = "/sys/bus/iio/devices/iio:device0/in_voltage1_raw",
+    },
+    [2] = {
+        .fd = NULL,
+        .node = "/sys/bus/iio/devices/iio:device0/in_voltage2_raw",
+    },
+    [3] = {
+        .fd = NULL,
+        .node = "/sys/bus/iio/devices/iio:device0/in_voltage3_raw",
+    },
+    [4] = {
+        .fd = NULL,
+        .node = "/sys/bus/iio/devices/iio:device0/in_voltage4_raw",
+    },
+    [5] = {
+        .fd = NULL,
+        .node = "/sys/bus/iio/devices/iio:device0/in_voltage5_raw",
+    },
+    [6] = {
+        .fd = NULL,
+        .node = "/sys/bus/iio/devices/iio:device0/in_voltage6_raw",
+    },
+    [7] = {
+        .fd = NULL,
+        .node = "/sys/bus/iio/devices/iio:device0/in_voltage7_raw",
+    },
+#else
+    [0] = {
+        .fd = NULL,
+        .node = "\0",
+    },
+#endif    
+};
+
+static uint32_t valid_dev[] = {
+#ifdef BOARD_BEAGLEBONEBLACK
+    AIN0,
+    AIN1,
+    AIN2,
+    AIN3,
+    AIN4,
+    AIN5,
+    AIN6,
+    AIN7,
+#else
+    DEV_NONE,
+#endif    
+};
 
 /*
  * On BeagleBoneBlack , We use sysfs interface to control GPIO
@@ -896,3 +963,33 @@ uint32_t analogWrite(uint16_t pin, uint8_t duty)
 	return 0;
 }
 
+/**
+ * get adc input via pin
+ * 
+ * @param dev - the adc input channel.
+ * @return the adc result if possible , -1 if failed.
+ * @note The result is an integer value. Its range depends on the ADC's precision.
+ *       for example :[0 to 4095] --- 12-bit ADC
+ *                    [0 to 1023] --- 10-bit ADC
+ */
+uint32_t analogRead(uint32_t pin)
+{
+    uint8_t result_c[5] = {0};
+    uint32_t data;
+
+	if (!vertify_dev(pin,valid_dev)) {
+        sdkerr("\nanalogread:bad pin=%d\n",pin);
+		return -1;
+	}
+
+  	if ((channel[pin].fd = fopen(channel[pin].node,"r")) == NULL) {
+        sdkerr("\nCannot open file:%s\n",channel[pin].node);
+        return -1;
+    }
+
+    fgets(result_c,5,channel[pin].fd);
+    fclose(channel[pin].fd);
+    data = atoi(result_c);
+
+	return data;
+}
