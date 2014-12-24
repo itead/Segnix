@@ -349,12 +349,13 @@ static const pin_no_port_index_map pnp[] = {
 #define PIN_MAX		117
 #define PIN_MIN		7
 
-#define GPIO_SIZE   (1*BLOCK_SIZE)
-#define GPIO0_BASE  (0x44E0_7000)
-#define GPIO1_BASE  (0x4804_C000)
-#define GPIO2_BASE  (0x481A_C000)
-#define GPIO3_BASE  (0x441A_E000)
-
+#define GPIO0_BASE  (0x44E07000)
+#define GPIO1_BASE  (0x4804C000)
+#define GPIO1_END   (0x4804DFFF)  
+#define GPIO2_BASE  (0x481AC000)
+#define GPIO3_BASE  (0x441AE000)
+#define GPIO_SIZE   (GPIO1_END - GPIO1_BASE)
+  
 #define GPIO_OE           (0x134)
 #define GPIO_DATAIN       (0x138)
 #define GPIO_DATAOUT      (0x13C)

@@ -19,6 +19,9 @@
  */
 
 int led = 13;           // the pin that the LED is attached to
+//test on BeagleBone Black
+led = GPIO1_17;
+
 int brightness = 0;    // how bright the LED is
 int fadeAmount = 5;    // how many points to fade the LED by
 

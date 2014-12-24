@@ -19,6 +19,9 @@
 // We assume that digital pin 9 has a pushbutton attached to it. Give it a name:
 int pushButton = 9;
 
+// test on BeagleBone Black
+pushButton = GPIO1_16;
+
 // the setup routine runs once when you press reset:
 void setup() {
   // initialize serial communication at 9600 bits per second:

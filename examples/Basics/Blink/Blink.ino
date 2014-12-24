@@ -17,18 +17,27 @@
  
 // We assume that pin 13 has an LED connected on your board.
 // give it a name:
-int led = 13;
+//int led = 13;
+
+//test on BeagleBone Black
+int led = GPIO1_28;
 
 // the setup routine runs once when you press reset:
 void setup() {                
   // initialize the digital pin as an output.
-  pinMode(led, OUTPUT);     
+ pinMode(led, OUTPUT);
+//int ret;
+//  pinMode(led, INPUT);
+//  ret = digitalRead(led);
+//  printf("ret is %d\n",ret);
+  digitalWrite(led, LOW);   // turn the LED on (HIGH is the voltage level)
 }
 
 // the loop routine runs over and over again forever:
 void loop() {
-  digitalWrite(led, HIGH);   // turn the LED on (HIGH is the voltage level)
-  delay(1000);               // wait for a second
+
+digitalWrite(led, HIGH);   // turn the LED on (HIGH is the voltage level)
+//  delay(1000);               // wait for a second
   digitalWrite(led, LOW);    // turn the LED off by making the voltage LOW
-  delay(1000);               // wait for a second
+//  delay(1000);               // wait for a second
 }

@@ -68,6 +68,7 @@ static PinPwmInfo           pin_pwm_infos[PIN_PWM_MAX];
 static int                  fd_dev_mem = -1;
 static volatile uint32_t *gpio_base;
 
+
 /*
  * ADC set for analogRead()
   */
@@ -136,7 +137,8 @@ static uint32_t valid_dev[] = {
 };
 
 /*
- * On BeagleBoneBlack , We use sysfs interface to control GPIO
+ * On BeagleBoneBlack , We use sysfs interface to export GPIO.
+ * And we directly control gpio registers to speed up gpio set.
  * With kernel config :
  *    > Device Driver
  *      > GPIO SUPPORT
@@ -152,8 +154,23 @@ static uint32_t valid_dev[] = {
  */
 #define EXPORT_GPIO "echo %d > /sys/class/gpio/export"
 #define UNEXPORT_GPIO "echo %d > /sys/class/gpio/unexport"
-#define DIRECTION_GPIO "echo %s > /sys/class/gpio/gpio%d/direction"
 #define VALUE_GPIO "/sys/class/gpio/gpio%d/value"
+
+static volatile void *gpio0_base = NULL;
+static volatile void *gpio1_base = NULL;
+static volatile void *gpio2_base = NULL;
+static volatile void *gpio3_base = NULL;
+
+static volatile uint32_t *gpio_oe_addr = NULL;
+static volatile uint32_t *gpio_datain_addr = NULL;
+static volatile uint32_t *gpio0_setdataout_addr = NULL;
+static volatile uint32_t *gpio0_cleardataout_addr = NULL;
+static volatile uint32_t *gpio1_setdataout_addr = NULL;
+static volatile uint32_t *gpio1_cleardataout_addr = NULL;
+static volatile uint32_t *gpio2_setdataout_addr = NULL;
+static volatile uint32_t *gpio2_cleardataout_addr = NULL;
+static volatile uint32_t *gpio3_setdataout_addr = NULL;
+static volatile uint32_t *gpio3_cleardataout_addr = NULL;
 
 /*
  * gpio_string[60]    - store the bash command to excute.
@@ -312,6 +329,52 @@ static inline int32_t gpio_mmap(void)
         printf("\nmmap error !\n");
         return 0;
     }
+#elif defined(BOARD_BEAGLEBONEBLACK)
+    if ((gpio0_base = mmap(0, 
+            GPIO_SIZE, 
+            PROT_READ|PROT_WRITE, 
+            MAP_SHARED,
+            fd_dev_mem, 
+            GPIO0_BASE)) == MAP_FAILED){
+        printf("\nmmap error !\n");
+        return 0;
+    }
+    if ((gpio1_base = mmap(0, 
+           GPIO_SIZE, 
+           PROT_READ|PROT_WRITE, 
+           MAP_SHARED,
+           fd_dev_mem, 
+           GPIO1_BASE)) == MAP_FAILED){
+        printf("\nmmap error !\n");
+        return 0;
+    }
+    if ((gpio2_base = mmap(0, 
+           GPIO_SIZE, 
+           PROT_READ|PROT_WRITE, 
+           MAP_SHARED,
+           fd_dev_mem, 
+           GPIO2_BASE)) == MAP_FAILED){
+        printf("\nmmap error !\n");
+        return 0;
+    }
+    if ((gpio3_base = mmap(0, 
+           GPIO_SIZE, 
+           PROT_READ|PROT_WRITE, 
+           MAP_SHARED,
+           fd_dev_mem, 
+           GPIO3_BASE)) == MAP_FAILED){
+        printf("\nmmap error !\n");
+        return 0;
+    }
+    gpio0_setdataout_addr = gpio0_base + GPIO_SETDATAOUT;
+    gpio0_cleardataout_addr = gpio0_base + GPIO_CLEARDATAOUT;
+    gpio1_setdataout_addr = gpio1_base + GPIO_SETDATAOUT;
+    gpio1_cleardataout_addr = gpio1_base + GPIO_CLEARDATAOUT;
+    gpio2_setdataout_addr = gpio2_base + GPIO_SETDATAOUT;
+    gpio2_cleardataout_addr = gpio2_base + GPIO_CLEARDATAOUT;
+    gpio3_setdataout_addr = gpio3_base + GPIO_SETDATAOUT;
+    gpio3_cleardataout_addr = gpio3_base + GPIO_CLEARDATAOUT;
+
 #endif
 	return 1;
 }
@@ -375,7 +438,8 @@ uint32_t pinMode(uint16_t pin, uint8_t mode)
 {
 	uint32_t msg=0;
 	volatile uint32_t *cureg;
-    uint16_t port_no ;
+	uint32_t reg;
+	uint16_t port_no ;
 	uint16_t index ;
 
 	debug("\npinMode begin\n");
@@ -430,17 +494,35 @@ uint32_t pinMode(uint16_t pin, uint8_t mode)
        return 1;
    }
 
-   if (mode == INPUT) {
-       sprintf(gpio_string,DIRECTION_GPIO,"in",pin);
-   } else if(mode == OUTPUT) {
-       sprintf(gpio_string,DIRECTION_GPIO,"out",pin);
-   }
-  
-   if (!do_shell(gpio_string)) {
-       sdkerr("\nset gpio direction failed!\n");
-   }
-#endif
+   port_no = pnp[pin].port_no;
+   index   = pnp[pin].index;
+   switch(port_no) {
+   case 0:
+     gpio_oe_addr = gpio0_base + GPIO_OE;
+     break;
+   case 1:
+     gpio_oe_addr = gpio1_base + GPIO_OE;
+     break;
+   case 2:
+     gpio_oe_addr = gpio2_base + GPIO_OE;
+     break;
+   case 3:
+     gpio_oe_addr = gpio3_base + GPIO_OE;
+     break;
+    default:
+      break;
+    }
+    if (mode == INPUT) {
+      reg = *gpio_oe_addr;
+      reg = reg |  (1 << index);
+      *gpio_oe_addr = reg;
+    } else if(mode == OUTPUT) {
+      reg = *gpio_oe_addr;
+      reg = reg & (0xFFFFFFFF - (1 <<  index));
+      *gpio_oe_addr = reg;
+    }
 
+#endif
 	return 0;
 }
 
@@ -456,8 +538,8 @@ uint32_t digitalWrite(uint16_t pin, uint8_t val)
 	uint32_t msg=0;
 	int i;
 	int wait_cnt=0;
-    volatile uint32_t *cureg;
-    uint16_t port_no ;
+	volatile uint32_t *cureg;
+	uint16_t port_no ;
 	uint16_t index ;
 	pthread_t	tid = pthread_self();
 
@@ -521,22 +603,38 @@ uint32_t digitalWrite(uint16_t pin, uint8_t val)
     }
     CUREG = 0x1 << (1*(pin%32));
 #elif defined(BOARD_BEAGLEBONEBLACK)
-    if (!check_export_gpio(pin)) {
-       sdkerr("\nexport_gpio failed!\n");
-       return 1;
+    port_no = pnp[pin].port_no;
+    index   = pnp[pin].index;
+    switch(port_no) {
+    case 0:
+      if (val == LOW)
+	*gpio0_cleardataout_addr |= (1 << index);
+      else
+	*gpio0_setdataout_addr |= (1 << index);
+      break;
+    case 1:
+      if (val == LOW)
+	*gpio1_cleardataout_addr |= (1 << index);
+      else
+	*gpio1_setdataout_addr |= (1 << index);
+      break;
+    case 2:
+      if (val == LOW)
+	*gpio2_cleardataout_addr |= (1 << index);
+      else
+	*gpio2_setdataout_addr |= (1 << index);
+      break;
+    case 3:
+      if (val == LOW)
+	*gpio3_cleardataout_addr |= (1 << index);
+      else
+	*gpio3_setdataout_addr |= (1 << index);
+      break;
+    default:
+      break;
     }
-    if ( val == HIGH) {
-        sprintf(gpio_string,DIRECTION_GPIO,"high",pin);
-    } else if (val == LOW) {
-        sprintf(gpio_string,DIRECTION_GPIO,"low",pin);
-    }
-    
-    if (!do_shell(gpio_string)) {
-        sdkerr("\nset gpio output level failed!\n");
-    }    
 #endif
-	
-	return 0;
+    return 0;
 }
 
 /**
@@ -552,6 +650,7 @@ uint32_t digitalRead(uint16_t pin)
 	int wait_cnt=0;
 	int i;
     volatile uint32_t *cureg;
+    uint32_t reg;
     uint16_t port_no ;
 	uint16_t index ;
 	pthread_t	tid = pthread_self();
@@ -604,23 +703,35 @@ uint32_t digitalRead(uint16_t pin)
     pin   = pnp[pin].index;
     cureg = gpio_base + GPIO_GPLEV_OFFSET/4 + pin/32;
     return (CUREG & (0x1<<(pin%32))) ? HIGH : LOW;
+    
 #elif defined(BOARD_BEAGLEBONEBLACK)
     if (!check_export_gpio(pin)) {
        sdkerr("\nexport_gpio failed!\n");
        return 1;
     }
-    sprintf(gpio_string,VALUE_GPIO,pin);
-    f_gpio = fopen(gpio_string,"r");
-    if(f_gpio == NULL) {
-        sdkerr("\nopen gpio value file failed!\n");
+
+    /* get port_no and index by pin_no */
+    port_no = pnp[pin].port_no;
+    index   = pnp[pin].index;
+    switch(port_no) {
+    case 0 :
+      gpio_datain_addr = gpio0_base + GPIO_DATAIN;
+      break;
+    case 1:
+      gpio_datain_addr = gpio1_base + GPIO_DATAIN;
+        break;
+    case 2:
+      gpio_datain_addr = gpio2_base + GPIO_DATAIN;
+        break;
+    case 3:
+      gpio_datain_addr = gpio3_base + GPIO_DATAIN;
+        break;
+    default:
+        break;
     }
-    value_gpio = fgetc(f_gpio);
-    fclose(f_gpio);
-    if(value_gpio == '1') {
-        return HIGH;
-    } else if(value_gpio == '0') {
-        return LOW;
-    }
+    reg = *gpio_datain_addr;
+    reg = (reg & (1 << index)) ? HIGH : LOW;
+    return reg;
 #endif
 }
 
