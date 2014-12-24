@@ -162,9 +162,15 @@ static volatile void *gpio2_base = NULL;
 static volatile void *gpio3_base = NULL;
 
 static volatile uint32_t *gpio_oe_addr = NULL;
-static volatile uint32_t *gpio_setdataout_addr = NULL;
-static volatile uint32_t *gpio_cleardataout_addr = NULL;
 static volatile uint32_t *gpio_datain_addr = NULL;
+static volatile uint32_t *gpio0_setdataout_addr = NULL;
+static volatile uint32_t *gpio0_cleardataout_addr = NULL;
+static volatile uint32_t *gpio1_setdataout_addr = NULL;
+static volatile uint32_t *gpio1_cleardataout_addr = NULL;
+static volatile uint32_t *gpio2_setdataout_addr = NULL;
+static volatile uint32_t *gpio2_cleardataout_addr = NULL;
+static volatile uint32_t *gpio3_setdataout_addr = NULL;
+static volatile uint32_t *gpio3_cleardataout_addr = NULL;
 
 /*
  * gpio_string[60]    - store the bash command to excute.
@@ -360,6 +366,15 @@ static inline int32_t gpio_mmap(void)
         printf("\nmmap error !\n");
         return 0;
     }
+    gpio0_setdataout_addr = gpio0_base + GPIO_SETDATAOUT;
+    gpio0_cleardataout_addr = gpio0_base + GPIO_CLEARDATAOUT;
+    gpio1_setdataout_addr = gpio1_base + GPIO_SETDATAOUT;
+    gpio1_cleardataout_addr = gpio1_base + GPIO_CLEARDATAOUT;
+    gpio2_setdataout_addr = gpio2_base + GPIO_SETDATAOUT;
+    gpio2_cleardataout_addr = gpio2_base + GPIO_CLEARDATAOUT;
+    gpio3_setdataout_addr = gpio3_base + GPIO_SETDATAOUT;
+    gpio3_cleardataout_addr = gpio3_base + GPIO_CLEARDATAOUT;
+
 #endif
 	return 1;
 }
@@ -588,48 +603,35 @@ uint32_t digitalWrite(uint16_t pin, uint8_t val)
     }
     CUREG = 0x1 << (1*(pin%32));
 #elif defined(BOARD_BEAGLEBONEBLACK)
-    if (!check_export_gpio(pin)) {
-       sdkerr("\nexport_gpio failed!\n");
-       return 1;
-    }
     port_no = pnp[pin].port_no;
     index   = pnp[pin].index;
-    if ( val == HIGH )  {
-        switch(port_no) {
-        case 0:
-            gpio_setdataout_addr = gpio0_base + GPIO_SETDATAOUT;
-            break;
-        case 1:
-	    gpio_setdataout_addr = gpio1_base + GPIO_SETDATAOUT;
-            break;
-        case 2:
-            gpio_setdataout_addr = gpio2_base + GPIO_SETDATAOUT;
-            break;
-        case 3:
-            gpio_setdataout_addr = gpio3_base + GPIO_SETDATAOUT;
-            break;
-        default:
-            break;
-        }
-	*gpio_setdataout_addr |= (1 << index);
-    } else if (val == LOW ) {
-        switch(port_no) {
-        case 0:
-            gpio_cleardataout_addr = gpio0_base + GPIO_CLEARDATAOUT;
-            break;
-        case 1:
-            gpio_cleardataout_addr = gpio1_base + GPIO_CLEARDATAOUT;
-            break;
-        case 2:
-            gpio_cleardataout_addr = gpio2_base + GPIO_CLEARDATAOUT;
-            break;
-        case 3:
-            gpio_cleardataout_addr = gpio3_base + GPIO_CLEARDATAOUT;
-            break;
-        default:
-            break;
-        }
-	*gpio_cleardataout_addr = (1 << index);
+    switch(port_no) {
+    case 0:
+      if (val == LOW)
+	*gpio0_cleardataout_addr |= (1 << index);
+      else
+	*gpio0_setdataout_addr |= (1 << index);
+      break;
+    case 1:
+      if (val == LOW)
+	*gpio1_cleardataout_addr |= (1 << index);
+      else
+	*gpio1_setdataout_addr |= (1 << index);
+      break;
+    case 2:
+      if (val == LOW)
+	*gpio2_cleardataout_addr |= (1 << index);
+      else
+	*gpio2_setdataout_addr |= (1 << index);
+      break;
+    case 3:
+      if (val == LOW)
+	*gpio3_cleardataout_addr |= (1 << index);
+      else
+	*gpio3_setdataout_addr |= (1 << index);
+      break;
+    default:
+      break;
     }
 #endif
     return 0;
