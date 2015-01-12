@@ -270,8 +270,10 @@ elif BOARD_TYPE == 'BOARD_RASPBERRY_PI_MODEL_BPLUS':
     Wire = Wire1
 
 elif BOARD_TYPE == 'BOARD_BEAGLEBONEBLACK':
-    Wire1 = TwoWire(_DEV_I2C1)
-    Wire2 = TwoWire(_DEV_I2C2)
+    #bb-kernel-3.8.13-bone68 with capmgr 
+    #/dev/i2c-1 is I2C2; /dev/I2c-2 is I2C1
+    Wire1 = TwoWire(_DEV_I2C2)
+    Wire2 = TwoWire(_DEV_I2C1)
     Wire = Wire1    
     
 else:

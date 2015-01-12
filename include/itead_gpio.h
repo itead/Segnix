@@ -334,7 +334,6 @@ typedef struct
  * -# GPIO26
  *
  * @par On BeagleBoneBlack
- * -# GPIO0_7
  * -# GPIO0_22
  * -# GPIO0_23 
  * -# GPIO0_26 
