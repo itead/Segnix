@@ -92,7 +92,7 @@ them by command:
 
 If you are a Python user, the following packages should be installed:
 
-    $ sudo apt-get python2.7 python2.7-dev
+    $ sudo apt-get install python2.7 python2.7-dev
 
 #### Note
 
