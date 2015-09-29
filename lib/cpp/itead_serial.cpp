@@ -15,6 +15,7 @@
 #include <cstddef>
 #include <itead_serial.h>
 #include <itead_utility.h>
+#include <itead.h>
 
 #ifdef BOARD_ITEADUINO_PLUS
 Serial_ Serial2(DEV_UART2);
@@ -97,6 +98,24 @@ void Serial_::flush(void)
  * 
  * @return The first unread data
  */
+uint8_t Serial_::readBytes(char *buffer, size_t length)
+{
+	size_t count = 0;
+  while (count < length) 
+  {
+  	while (Serialavailable(dev)) 
+  	{
+	    int c =Serialread(dev);
+	    if (c < 0) break;
+	    *buffer++ = (char)c;
+	    count++;
+  	} 
+  	delay(10);
+  }
+  return count;
+}
+
+
 uint8_t Serial_::read(void)
 {
 	if (Serialavailable(dev)) {

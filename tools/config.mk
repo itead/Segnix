@@ -19,6 +19,7 @@
 #     User MUST select one INSTALL_LIBRARIES_* as "y" at least.
 #
 INSTALL_LIBRARIES_itead_GSM-GPRS-GPS    := y
+INSTALL_LIBRARIES_itead_Nextion      := y
 INSTALL_LIBRARIES_itead_LiquidCrystal   := y
 INSTALL_LIBRARIES_itead_SSD1306         := y
 INSTALL_LIBRARIES_itead_GFX             := y

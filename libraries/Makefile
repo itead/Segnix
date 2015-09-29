@@ -5,6 +5,10 @@ ifeq ($(INSTALL_LIBRARIES_itead_GSM-GPRS-GPS),y)
 OBJS += itead_GSM-GPRS-GPS.o
 endif
 
+ifeq ($(INSTALL_LIBRARIES_itead_Nextion),y)
+OBJS += itead_Nextion.o
+endif
+
 ifeq ($(INSTALL_LIBRARIES_itead_LiquidCrystal),y)
 OBJS += itead_LiquidCrystal.o
 endif

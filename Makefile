@@ -83,6 +83,7 @@ HEADERS_include += itead_spi.h
 HEADERS_include += itead_utility.h
 HEADERS_include += itead_wire.h
 HEADERS_include += itead_interrupt.h
+HEADERS_include += itead_String.h
 
 HEADERS_include := $(addprefix include/,$(HEADERS_include))
 
@@ -130,6 +131,23 @@ HEADERS_itead_IoTgo			+= IoTgo.h
 HEADERS_itead_IoTgo 		:= $(addprefix libraries/itead_IoTgo/,$(HEADERS_itead_IoTgo))
 
 
+HEADERS_itead_Nextion 	:= NexButton.h 
+HEADERS_itead_Nextion   += NexConfig.h 
+HEADERS_itead_Nextion   += NexCrop.h 
+HEADERS_itead_Nextion   += NexGauge.h
+HEADERS_itead_Nextion   += NexHardware.h 
+HEADERS_itead_Nextion   += NexHotspot.h 
+HEADERS_itead_Nextion   += NexObject.h 
+HEADERS_itead_Nextion   += NexPage.h 
+HEADERS_itead_Nextion   += NexPicture.h 
+HEADERS_itead_Nextion   += NexProgressBar.h
+HEADERS_itead_Nextion   += NexSlider.h
+HEADERS_itead_Nextion   += NexText.h
+HEADERS_itead_Nextion   += Nextion.h
+HEADERS_itead_Nextion   += NexTouch.h
+HEADERS_itead_Nextion   += NexWaveform.h
+HEADERS_itead_Nextion	  := $(addprefix libraries/itead_Nextion/,$(HEADERS_itead_Nextion))
+
 #
 # include config.mk for optional libraries.
 #
@@ -147,6 +165,7 @@ endif
 # export for other programs.
 #
 export INSTALL_LIBRARIES_itead_GSM-GPRS-GPS
+export INSTALL_LIBRARIES_itead_Nextion
 export INSTALL_LIBRARIES_itead_LiquidCrystal
 export INSTALL_LIBRARIES_itead_SSD1306
 export INSTALL_LIBRARIES_itead_GFX
@@ -165,6 +184,10 @@ HEADERS_libraries :=
 
 ifeq ($(INSTALL_LIBRARIES_itead_GSM-GPRS-GPS),y)
 HEADERS_libraries += $(HEADERS_itead_GSM-GPRS-GPS)
+endif
+
+ifeq ($(INSTALL_LIBRARIES_itead_Nextion),y)
+HEADERS_libraries += $(HEADERS_itead_Nextion)
 endif
 
 ifeq ($(INSTALL_LIBRARIES_itead_LiquidCrystal),y)

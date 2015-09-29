@@ -74,6 +74,7 @@ public:
 	void end(void);
 	void flush(void);
 	uint8_t read(void);
+	uint8_t readBytes(char *buffer, size_t length);
 	virtual size_t write(uint8_t c);
 
 };

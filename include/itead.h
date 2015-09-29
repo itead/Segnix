@@ -23,6 +23,7 @@
 #include <itead_wire.h>
 #include <itead_print.h>
 #include <itead_interrupt.h>
+#include <itead_String.h>
 
 
 #endif
