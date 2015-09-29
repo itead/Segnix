@@ -54,6 +54,7 @@ Based on core features, plenty of **functional features** can be reached:
   - Support for nRF24L01 module
   - Support for Temperature and Humidity module
   - Support for [IoTgo platform](http://iotgo.iteadstudio.com)
+  - Support for [Nextion](http://nextion.itead.cc)
 
 # Where Can It Run?
 
