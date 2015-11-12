@@ -146,6 +146,8 @@ HEADERS_itead_Nextion   += NexText.h
 HEADERS_itead_Nextion   += Nextion.h
 HEADERS_itead_Nextion   += NexTouch.h
 HEADERS_itead_Nextion   += NexWaveform.h
+HEADERS_itead_Nextion   += NexDualStateButton.h
+HEADERS_itead_Nextion   += NexNumber.h
 HEADERS_itead_Nextion	  := $(addprefix libraries/itead_Nextion/,$(HEADERS_itead_Nextion))
 
 #

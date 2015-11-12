@@ -12,6 +12,8 @@ OBJS += NexSlider.o
 OBJS += NexText.o
 OBJS += NexTouch.o
 OBJS += NexWaveform.o
+OBJS += NexDualStateButton.o
+OBJS += NexNumber.o
 
 itead_Nextion.o: $(OBJS)
 	$(SDK_LINKER) -r -o $@ $^

@@ -1,0 +1,32 @@
+digraph "NexObject"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="NexObject",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="NexGauge",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_nex_gauge.html",tooltip="NexGauge component. "];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="NexProgressBar",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_nex_progress_bar.html",tooltip="NexProgressBar component. "];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="NexTouch",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_nex_touch.html",tooltip="Father class of the components with touch events. "];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="NexButton",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_nex_button.html",tooltip="NexButton component. "];
+  Node4 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="NexCrop",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_nex_crop.html",tooltip="NexCrop component. "];
+  Node4 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="NexDSButton",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_nex_d_s_button.html",tooltip="NexDSButton component. "];
+  Node4 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="NexHotspot",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_nex_hotspot.html",tooltip="NexHotspot component. "];
+  Node4 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="NexNumber",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_nex_number.html",tooltip="NexNumber component. "];
+  Node4 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="NexPage",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_nex_page.html",tooltip="A special component , which can contain other components such as NexButton, NexText and NexWaveform..."];
+  Node4 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="NexPicture",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_nex_picture.html",tooltip="NexPicture component. "];
+  Node4 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="NexSlider",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_nex_slider.html",tooltip="NexSlider component. "];
+  Node4 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="NexText",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_nex_text.html",tooltip="NexText component. "];
+  Node1 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node14 [label="NexWaveform",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_nex_waveform.html",tooltip="NexWaveform component. "];
+}
